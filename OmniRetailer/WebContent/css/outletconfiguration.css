@@ -1,0 +1,86 @@
+#outlet_innerview {
+	height: 470px;
+    width: 91%;
+}
+#grocery_toolbar{
+width: 9%;
+    float: right;
+    margin-top: -470px;
+    height: 498px;
+    border-left: 1px solid #CCCCCC;
+}
+#model_main_div{
+	height	: 300px;
+	//border : 1px solid #CCCCCC;
+}
+#model_main_div_storages{
+	width : 75%;
+	height:300px;
+	overflow : auto;
+}
+#model_main_div_toolbar{
+	height : 300px;
+	width:25%;
+	float: right;
+	//background: green;
+	margin-top:-300px;
+//	border : 1px solid #CCCCCC;
+}
+#model_sub_tool_bar{
+	color : #666666;
+}
+#systemsTable,#systemsTableEdit{
+	width: 100%;
+	border : 1px solid #CCCCCC;
+}
+.storageTd:hover {
+	background: #FCF6F6;
+	color : #666666;
+	height : 45px;
+	width : 150px;
+}
+/* .storageTd {
+	color : #666666;
+	height : 45px;
+} */
+#addSearchProduct,#addSearchProductEdit{
+    padding: 7px 50px 7px 30px;
+    MARGIN-LEFT: 20px;
+    border-radius: 5px;
+    border: 1px solid #CCCCCC;
+    background: url("../images/search.png") 5px 8px no-repeat;
+}
+#selectedLabel ,#productSpan,#productSpan1,#selectedLabelEdit,#productSpanEdit,#productSpan1Edit{
+	margin-left : 25px;
+	
+}
+.titleClass{
+	
+	}
+.titleClass:hover {
+  color: #666666;
+  position: relative;
+}
+
+.titleClass[title]:hover:after {
+  content: attr(title);
+  padding: 4px 8px;
+  color: #666666;
+  position: absolute;
+  left: 0;
+  top: 100%;
+  white-space: nowrap;
+  z-index: 20px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  -moz-box-shadow: 0px 0px 4px #222;
+  -webkit-box-shadow: 0px 0px 4px #222;
+  box-shadow: 0px 0px 4px #222;
+  background-image: -moz-linear-gradient(top, #eeeeee, #cccccc);
+  background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #eeeeee),color-stop(1, #cccccc));
+  background-image: -webkit-linear-gradient(top, #eeeeee, #cccccc);
+  background-image: -moz-linear-gradient(top, #eeeeee, #cccccc);
+  background-image: -ms-linear-gradient(top, #eeeeee, #cccccc);
+  background-image: -o-linear-gradient(top, #eeeeee, #cccccc);
+}

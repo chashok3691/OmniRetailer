@@ -1,0 +1,27 @@
+/* html, body {
+	width: 100%;
+	height: 100%;
+}
+
+#sketch {
+	border: 1px solid #cccccc;
+	height: 100%;
+	position: relative;
+}
+
+#tmp_canvas {
+	position: absolute;
+	left: 0px; right: 0;
+	bottom: 0; top: 0;
+} */
+#warehouse_innerview {
+	height: 470px;
+    width: 91%;
+}
+#warehouse_toolbar{
+width: 9%;
+    float: right;
+    margin-top: -470px;
+    height: 498px;
+    border-left: 1px solid #CCCCCC;
+}
