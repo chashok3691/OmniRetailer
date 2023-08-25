@@ -1034,41 +1034,45 @@ position:relative;
 			 </c:forEach>
 		</div>
 		
+		
+		
+	
                      <div class="form-group col-lg-6" style="padding-left:0px;margin-bottom:0px !important">
                         <label style="font-family: Calibri;color: gray;"><spring:message code="credit.terms.label" /></label>
                         <textarea class="form-control" name="credit_terms" style="resize: none;" id="credit_terms" required >${purchaseOrderBeanObj.credit_terms}</textarea>
-                         <span id="credit_termsError" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
                     </div>
                 
                      <div class="form-group col-lg-6" style="padding-right:0px;margin-bottom:0px !important">
                         <label style="font-family: Calibri;color: gray;"><spring:message code="payment.terms.label" /></label>
                         <textarea class="form-control" style="resize: none;" id="payment_terms" name="payment_terms">${purchaseOrderBeanObj.payment_terms}</textarea>
-                        <span id="payment_termsError" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
                     </div>
                 
-                    	<div class="form-group col-lg-6" style="padding-left:0px;margin-bottom:0px !important">
+                    			<div class="form-group col-lg-6" style="padding-left:0px;margin-bottom:0px !important">
 							<label style="font-family: Calibri;color: gray;"><spring:message code="shipping.terms.label" /></label>
 							<textarea  class="form-control" name="shipping_terms" id="shipping_terms" style="resize: none;" >${purchaseOrderBeanObj.shipping_terms}</textarea>
-						    <span id="shipping_termsError" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
 						</div>
 					
 						<div class="form-group col-lg-6" style="padding-right:0px;margin-bottom:0px !important">
 							<label style="font-family: Calibri;color: gray;"><spring:message code="remarks.label" /></label>
 							<textarea  class="form-control" name="remarks" id="remarks" style="resize: none;" >${purchaseOrderBeanObj.remarks}</textarea>
-						<span id="remarksError" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
 						</div>
+					
+		
 		</div>
 		
 		 <div class="col-lg-4">
+		
+		
 		  <div class="col-lg-12 nopadding">
-			<div class="col-lg-6">
+					
+					<div class="col-lg-6">
 					<label style="font-family: Calibri;color: gray;"><spring:message code="sub.total.label" /> </label>
 					
 					 <c:forEach var="summaryList" items="${purchaseOrderBeanObj.purchaseItems}" varStatus="thecount">
 				<c:set var="qtyissued" value="${qtyissued+((summaryList.quantity)*(summaryList.itemPrice))}" scope="page" />
 				</c:forEach>
 						<input type="text" class="form-control" id="subtotalCost" name="products_cost" readonly="readonly" value="${purchaseOrderBeanObj.products_cost}"/>
-		</div>
+					</div>
 				
 				
 					<div class="col-lg-6 ">

@@ -368,11 +368,11 @@ $(document).ready(function(){
 									<span style="color:red; font-size:2;font-weight:bold;" id="errStates"></span> 
                                     	</div>
 										  
-										<div class="form-group col-lg-2">
+											<div class="form-group col-lg-2">
                                              <label style="font-family: Calibri;color: gray;"><spring:message code="loyalty.locations.label" /> <span style="color:red; font-size:2">*</span></label>
                                             <select id ="location" multiple="multiple" class="form-control"  style= "width:100%;" >
     											<!-- <option >Select State</option> -->
-    									    <c:forEach var="locationDetails" items="${locationsbasedzone}">
+    									<c:forEach var="locationDetails" items="${locationsbasedzone}">
 												<option value="${locationDetails}">${locationDetails}</option>
 											</c:forEach>			
     											
@@ -381,17 +381,23 @@ $(document).ready(function(){
                                     	</div>
                                       
                                     	
-                                      <div class="form-group col-lg-6">
+                                      	<div class="form-group col-lg-6">
                                              <label style="font-family: Calibri;color: gray;"><spring:message code="card.description.label" /></label>
-                                            <textarea style="resize:none;padding: 10px 10px;" id="description" class="form-control" name="description" rows="3">${giftVoucher.description}</textarea>
-                                     	    <span style="color:red; font-size:2;font-weight: bold" id="errdescription"></span>
-                                      </div>
-                                     </div>
-									  <br>
-									 
+                                            <textarea style="resize:none;padding: 10px 10px;" class="form-control"  name="description" rows="3">${giftVoucher.description}</textarea>
+                                     	</div>
+                                     	</div>
+									  
+                                     	  <br>
+									  
+                             
+                               
+                               
                                <div class="col-lg-12" style="padding-left:0px;">
-								<div class="row" style="margin-top: 1.5%"> 
-								 	<div class="form-group col-lg-7" style="text-align:center;  margin-bottom: 0px;    ;">
+									
+										<div class="row" style="margin-top: 1.5%"> 
+								 			
+								 
+								   <div class="form-group col-lg-7" style="text-align:center;  margin-bottom: 0px;    ;">
 										<input type="text"  class="form-control searchItems" value="${searchCriteria}" id="searchItems"  placeholder="Search Gift Vouchers here.."   style="height:30PX;text-align:left;background:url(${pageContext.request.contextPath}/images/search.png) no-repeat;background-position:right;" />
 											<div class="services">
 						    					<div class="items">
@@ -474,7 +480,7 @@ $(document).ready(function(){
                                                <td ><input class="form-control issuedAt${theCount.count}" type="text"  id="issuedAt${theCount.count}"  readonly="readonly" value="${voucherInfo.issuedAt}"></td>
                                                 <td><input class="form-control customerName${theCount.count}" type="text"  readonly="readonly" id="customerName${theCount.count}" value="${voucherInfo.customerName}"></td>
                                               	<td><input class="form-control customerEmail${theCount.count}" type="text"  readonly="readonly" id="customerEmail${theCount.count}" value="${voucherInfo.customerEmail}"></td>
-                                                <td><input class="form-control customerMobile${theCount.count}" type="text" size="10" maxlength="10" oninput="this.value = this.value.replace(/[^0-9]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');"  readonly="readonly" id="customerMobile${theCount.count}" value="${voucherInfo.customerMobile}"></td>
+                                                <td><input class="form-control customerMobile${theCount.count}" type="text"   readonly="readonly" id="customerMobile${theCount.count}" value="${voucherInfo.customerMobile}"></td>
                                                
                                                <c:set var="inside" value="1"></c:set> 
                                                </c:if>
@@ -486,46 +492,59 @@ $(document).ready(function(){
                                                <td ><input class="form-control issuedAt${theCount.count}" type="text"  id="issuedAt${theCount.count}"  readonly="readonly" value=""></td>
                                                 <td><input class="form-control customerName${theCount.count}" type="text"  readonly="readonly" id="customerName${theCount.count}" value=""></td>
                                               	<td><input class="form-control customerEmail${theCount.count}" type="text"  readonly="readonly" id="customerEmail${theCount.count}" value=""></td>
-                                                <td><input class="form-control customerMobile${theCount.count}" type="text" size="10" maxlength="10" oninput="this.value = this.value.replace(/[^0-9]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');"  readonly="readonly" id="customerMobile${theCount.count}" value=""></td>
+                                                <td><input class="form-control customerMobile${theCount.count}" type="text"   readonly="readonly" id="customerMobile${theCount.count}" value=""></td>
                                              
                                                </c:if>
+                                               
+                                              
+                                               
                                                <input type="hidden" id="assignedStatus${theCount.count}" value="${voucher.assignedStatus}">
+                                
                                  
                                                 <td>
                                                 <select class="form-control voucherStatus${theCount.count}" style="width:100%"  id="voucherStatus${theCount.count}"  disabled="disabled" >
-                                                 <option value="1"${voucher.voucherStatus == 1?'selected':''}>Active</option>
+                                             <option value="1"${voucher.voucherStatus == 1?'selected':''}>Active</option>
     	                                        <option value="0"${voucher.voucherStatus == 0?'selected':''}>InActive</option>
                                                 </select>
                                                 </td>
                                                 
-                            <c:set var="inside2" value="0"></c:set> 
-                                <c:forEach var="voucherInfo" items="${giftVoucher.customerGiftVouchers}" >
+                                              
+                                               <c:set var="inside2" value="0"></c:set> 
+                                   <c:forEach var="voucherInfo" items="${giftVoucher.customerGiftVouchers}" >
                                                   
                                  <c:if test="${voucher.voucherCode==voucherInfo.voucherCode}">
-                                        <td><select class="form-control claimStatus${theCount.count}" style="width:100%"  id="claimStatus${theCount.count}"  disabled="disabled" >
+                                              
+                                                <td><select class="form-control claimStatus${theCount.count}" style="width:100%"  id="claimStatus${theCount.count}"  disabled="disabled" >
                                             <option value="1"${voucherInfo.claimStatus == 1?'selected':''}>Yes</option>
     	                                        <option value="0"${voucherInfo.claimStatus == 0?'selected':''}>No</option>
                                                 </select>
-                                        </td>
+                                                </td>
                                                 <td id="claimedAt${theCount.count}">${voucherInfo.claimedAt}</td>
                                                 <td id="billRef${theCount.count}">${voucherInfo.billRef}</td>
                                                 <td id="voucherValue${theCount.count}">${voucherInfo.voucherValue}</td>
                                                 <td id="validityDate${theCount.count}">${voucherInfo.validityDateStr}</td>
                                                  <c:set var="inside2" value="1"></c:set> 
                                                 </c:if>
-                                 </c:forEach>
+                                                </c:forEach>
                                                 
                                                 <c:if test="${inside2 == 0}">
+                                                
+                                                
                                                  <td><select class="form-control claimStatus${theCount.count}" style="width:100%"  id="claimStatus${theCount.count}"  disabled="disabled" >
     	                                        <option value="0"${voucherInfo.claimStatus == 0?'selected':''}>No</option>
                                                 <option value="1"${voucherInfo.claimStatus == 1?'selected':''}>Yes</option>
                                                 </select>
                                                 </td>
+                                                
+                                                
                                                 <td id="claimedAt${theCount.count}"></td>
                                                 <td id="billRef${theCount.count}"></td>
                                                 <td id="voucherValue${theCount.count}"></td>
                                                 <td id="validityDate${theCount.count}"></td>
-                                               </c:if>
+                                                
+                                                </c:if>
+                                                
+                                                
                                             <td id="Edit${theCount.count}"> <a style="color:#2e7ea7 !important;cursor: pointer;" onclick="return voucherEdit('${theCount.count}')">Edit</a></td>
                                                 
                                             </tr>
@@ -535,6 +554,9 @@ $(document).ready(function(){
                                         </table>
                                         <br/>
                                     </div>
+                                     
+                                 
+                                    
                                     </div>
            
 			 <div class="col-lg-12" style = "padding:0px;">
@@ -566,6 +588,8 @@ $(document).ready(function(){
               		<input type="button" class='paginationButton' value="&#62;" onclick="searchGiftVouchers('','${totalValue}',false)">
               	</div> 
               	</c:if>
+              	
+              	
                   
                   
                   <div class="col-lg-6" style = "padding:0px;">
@@ -589,17 +613,21 @@ $(document).ready(function(){
              
 				</div>
                   </div> 
-			       <input type = "hidden" name = "zone"  id ="zone" value = ""/>
-						 <input type="hidden" id="selectedLocation"  name="locations" value="${locationList}">
-					</div>      
-                        <br>      
+			               
+                                     <input type = "hidden" name = "zone"  id ="zone" value = ""/>
+									                                     <input type="hidden" id="selectedLocation"  name="locations" value="${locationList}">
+									
+                                    
+                               </div>      
+                               
+                               <br>      
 						<div class="row" style="text-align: right;">
 						 <input type="button" class="btnCls" style="" onclick="validateGiftVouchers('edit','giftVouchers')" value="<spring:message code="submit.label" />" />
 							<input type="button" class="btn bg-olive btn-inline" style="margin-left:2%; margin-right: 1%;" onclick="viewGiftVouchers('giftVouchers','GiftVoucher','0','menu');" value="<spring:message code="back.label" />" />
 						</div>
 						<br/>
-                          <div class="box-footer">
-                          </div>
+                                    <div class="box-footer">
+                                    </div>
                          </div>           
                                 </form>
                             </div>
@@ -619,7 +647,7 @@ $(document).ready(function(){
                 $("#validityDate").inputmask("dd/mm/yyyy", {"placeholder": "dd/mm/yyyy"});
                 $("#validTo").inputmask("dd/mm/yyyy", {"placeholder": "dd/mm/yyyy"});
             });
-</script>
+            </script>
         <script type="text/javascript">
             $(function() {
                $('#cardsDetails').dataTable({

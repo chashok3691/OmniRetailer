@@ -201,12 +201,12 @@ white-space: nowrap;
                                         </div>
                                         
                                         
-                             <div class="form-group col-lg-2"  style="margin-bottom:0px">
+                                        <div class="form-group col-lg-2"  style="margin-bottom:0px">
                                         <label><spring:message code="shiper_id.label" /></label>
-                                       <input class="form-control"   name="transporter" id="transporter"  type="text" />
-                                        <span id="transporterError" style="text-align:right;color:red;font-weight:bold;"></span>
+                             <input class="form-control"   name="transporter" id="transporter"  type="text" />
                                         
-                              </div>
+                                        
+                                        </div>
                                         <div class="form-group col-lg-1" style="margin-bottom:0px"></div>
                                         <div class="form-group col-lg-2" style="margin-bottom:0px">
                                             <label><spring:message code="delivered.by.label" /> <span class="requiredField">*</span></label>
@@ -265,8 +265,6 @@ white-space: nowrap;
                                           <div class="form-group col-lg-2" >
                                             <label><spring:message code="received.label" /> <spring:message code="by.label" /> </label>
                                             <input type="text" class="form-control" id="received" name="Received_by"  value="${stockIssueDetails.received_by}"/>
-                                           <span id="receivedError" style="text-align:right;color:red;font-weight:bold;"></span>
-                                       
                                         </div> 
                                         <div class="form-group col-lg-1"></div>
                                   <div class="form-group col-lg-2" style="margin-bottom: 0px;margin-top: 23px;">
@@ -654,9 +652,9 @@ white-space: nowrap;
 						
 							
 								 <div class="form-group  col-lg-4">
-                                         <textarea class="form-control" name="remarks" id="remarks" rows="4" style="resize: none;" >${stockIssueDetails.remarks}</textarea>
- 								         <span id="remarksError" style="text-align:right;color:red;font-weight:bold;"></span>
- 								</div>
+                                         	
+                <textarea class="form-control" name="remarks" id="remarks" rows="4" style="resize: none;" >${stockIssueDetails.remarks}</textarea>
+ 										 </div>
  										 
  									<div class="form-group col-lg-4" style="border:1px solid #ccc"> 
  										<div class="form-group col-lg-12" style="margin-bottom: 0px; margin-top: 1%;"> 

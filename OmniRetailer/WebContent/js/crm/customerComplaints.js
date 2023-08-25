@@ -143,6 +143,7 @@ function appendComplaints(complaintsList)
 		for(var i=0; i<complaintsList.length; i++){
 				var row = '<tr id=dynamicDiv'+i+'><td>'+complaintsList[i].complaintID+'</td><td>'+complaintsList[i].createdBy+'</td><td>'+complaintsList[i].dateTimeStr+'</td><td>'+complaintsList[i].complaintType+'</td><td>'+complaintsList[i].complaintStatus+'</td><td>'+complaintsList[i].complaintDetails+'</td></tr>';
 				$("#example1 tbody").append(row);
+			
 		}
 		var  op = '<a id="Complaint"  data-toggle="modal" data-target="#myModal1"></a>';
 		 $("#triggerEvent").append(op);
@@ -370,17 +371,24 @@ function validateCustomerComplaintsForm(operation){
 	debugger;
 	var customerComplaints = {}, customer = {};
 	var CurrentDate=getCurrentDate().split(" ");
+	 
 	var  finalstr=CurrentDate[0];
+
 	var noOfDays = daydiff(parseDateMMDDYYYY(finalstr), parseDate($('#estimatedClosureDate').val()));
+	
 	if(noOfDays < 0){
 		 $("#estimatedClosureDateError").html("Estimated Closure Date can't be Past Date");
 		return false;
 	}
+	
 	var dobDiff = daydiff(parseDateMMDDYYYY(finalstr), parseDate($('#dob').val()));
+ 
 	if(dobDiff > 0){
 		 $("#dobError").html("Birth Date  can't be Future Date");
 		return false;
 	}
+	
+	
 	
 	if($("#phoneNumber").val().trim() == ""){
 		$("#phoneNumber").focus();
@@ -401,16 +409,10 @@ function validateCustomerComplaintsForm(operation){
 	if(contactNo.trim() == ""){
 		$("#phoneNumber").focus();
 		$("#error").html("Mobile Number Required");
+		
+		
 		return false;
 	}
-	
-	if(parseInt($("#customerEmail").val().length)>100){
-		 $("#customerEmail").focus();
-			$("#customerEmailError").html("Email can't exceeds 100 Characters");
-			return;
-	}else{
-	 $("#customerEmailError").html(" ");
- }
 	
 	if($("#firstName").val().trim() == ""){
 		$("#firstName").focus();
@@ -418,99 +420,11 @@ function validateCustomerComplaintsForm(operation){
 		return;
 	}
 	
-	if(parseInt($("#firstName").val().length)>50){
-		 $("#firstName").focus();
-			$("#firstNameError").html("First Name can't exceeds 50 Characters");
-			return;
-	}else{
-	 $("#firstNameError").html(" ");
-  }
-	
 	if($("#lastName").val().trim() == ""){
 		$("#lastName").focus();
 		$("#lastNameError").html("Enter Last Name");
 		return;
 	}
-	
-	if(parseInt($("#lastName").val().length)>50){
-		 $("#lastName").focus();
-			$("#lastNameError").html("Last Name can't exceeds 50 Characters");
-			return;
-	}else{
-	 $("#lastNameError").html(" ");
-    }
-	
-	if(parseInt($("#houseNumber").val().length)>20){
-		 $("#houseNumber").focus();
-			$("#houseNumberError").html("House Number can't exceeds 20 Character");
-			return;
-	}else{
-	 $("#houseNumberError").html(" ");
- }
-	 if(parseInt($("#streetName").val().length)>200){
-		 $("#streetName").focus();
-			$("#streetNameError").html("Street Name can't exceeds 200 Character");
-			return;
-	}else{
-	 $("#streetNameError").html(" ");
-   }
-	 
-	 if(parseInt($("#locality").val().length)>150){
-		 $("#locality").focus();
-			$("#localityError").html("Locality can't exceeds 150 Character");
-			return;
-	}else{
-	 $("#localityError").html(" ");
-   }
-	 
-	 if(parseInt($("#city").val().length)>30){
-		 $("#city").focus();
-			$("#cityError").html("City can't exceeds 30 Characters");
-			return;
-	}else{
-	 $("#cityError").html(" ");
-   }
-	 
-	 if(parseInt($("#zipcode").val().length)>6){
-		 $("#zipcode").focus();
-		 $("#zipcodeError").html("Zip Code can't exceeds 6 Digits");
-			return;
-	}else{
-	     $("#zipcodeError").html(" ");
-   }
-	
-	 if(parseInt($("#landmark").val().length)>150){
-		 $("#landmark").focus();
-			$("#landmarkError").html("Landmark can't exceeds 150 Characters");
-			return;
-	}else{
-	 $("#landmarkError").html(" ");
-   }
-	 
-	 if(parseInt($("#organizationName").val().length)>50){
-		 $("#organizationName").focus();
-			$("#organizationNameError").html("Organization Name can't exceeds 50 Characters");
-			return;
-	}else{
-	 $("#organizationNameError").html(" ");
-   }
-	 
-	 if(parseInt($("#createdBy").val().length)>50){
-		 $("#createdBy").focus();
-		 $("#createdByError").html("Created By can't exceeds 50 Characters");
-			return;
-	}else{
-	 $("#createdByError").html(" ");
-    }
-	 
-	 if(parseInt($("#complaintDetails").val().length)>100){
-		 $("#complaintDetails").focus();
-		 $("#complaintDetailsError").html("Complaint Details can't exceeds 100 Characters");
-			return;
-	}else{
-	 $("#complaintDetailsError").html(" ");
-    }
-	
 	
 	if($("#dob").val().trim() == ""){
 		$("#dob").focus();
@@ -529,6 +443,8 @@ function validateCustomerComplaintsForm(operation){
 		$("#estimatedClosureDateError").html("Select Estimated Closure Date");
 		return;
 	}
+
+	
 	if($("#storeLocation").val().trim() == ""){
 		$("#storeLocation").focus();
 		$("#StorelocationError").html("Select Location");
@@ -574,7 +490,7 @@ function validateCustomerComplaintsForm(operation){
 	if($("#storeLocation").val() != "")
 		customerComplaints.storeLocation = $("#storeLocation").val();
 
-	    customerComplaints.customerObj=customer;
+	customerComplaints.customerObj=customer;
 	
 		var formData = JSON.stringify(customerComplaints);
 //		console.log(formData);
@@ -583,8 +499,10 @@ function validateCustomerComplaintsForm(operation){
 		   URL = contextPath + "/crm/createCustomerComplaints.do";
 	   }
 	   else if(operation=="edit"){
+		   
 		   URL = contextPath + "/crm/updateCustomerComplaints.do";
 	   }
+	   
 	  	 $.ajax({
 			type: "POST",
 			url : URL,
@@ -607,7 +525,10 @@ function validateCustomerComplaintsForm(operation){
 			});
 }
 
+
+
 function validateCustomerNumber(){
+		
 		 phoneNumberParser();
 		 var output = $("#output").val();
 		 if(output.indexOf(":")<0){

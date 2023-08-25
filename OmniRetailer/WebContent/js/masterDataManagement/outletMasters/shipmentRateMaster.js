@@ -285,11 +285,11 @@ function validateShipmentRateForm(operation){
 	}
 	
 	var remarks = $("#remarks").val().trim();
-	 if(remarks.trim() != "" && parseInt($("#remarks").val().length)>250){
+	 if(remarks.trim() != "" && parseInt($("#remarks").val().length)>=250){
 			$("#remarks").focus();
 			$("#remarksError").html("Remarks can't exceeds 250 Characters");
 			return false;
-	}
+		}
 
 	shipmentRateMaster.sno = $("#sno").val();
 	shipmentRateMaster.locationId = $("#locationId").val();

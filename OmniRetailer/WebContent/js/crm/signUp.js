@@ -137,40 +137,20 @@ function validateCustomerSignup(operation){
 	$("#toError").html("");
 	
 	var online = window.navigator.onLine;
- 	if(!online){
+ 	if(!online)
+ 	{
  	alert("check your internet connection,please try agian after some time");
  	return;
  	}
-   var contextPath = $("#contextPath").val();
+	var contextPath = $("#contextPath").val();
    var programId = $("#programId").val();
-   if(programId == null || programId.trim() == "" || typeof programId == 'undefined'){
+   if(programId == null || programId.trim() == "" || typeof programId == 'undefined')
+   	{
    		$("#programId").val("");
    		$("#programId").focus();
    		$("#programIdError").html("Program Id can't be empty");
    		return;
    	}
-   if(parseInt($("#programId").val().length)>50){
-		 $("#programId").focus();
-			$("#programIdError").html("Program Id can't exceeds 50 Characters");
-			return;
-	}else{
-	 $("#programIdError").html(" ");
- } 
- 
-   if(parseInt($("#programDescription").val().length)>100){
-		 $("#programDescription").focus();
-			$("#programDescriptionError").html("Program Description can't exceeds 100 Characters");
-			return;
-	}else{
-	 $("#programDescriptionError").html(" ");
-   } 
-   
-   var noOfDays = daydiff(parseDate($('#from').val()), parseDate($('#to').val()));
-	if(noOfDays < 0){
-		$("#toError").html("End Date can't be less than Start Date");
-		return;
-	}
-   
    var programDescription = $("#programDescription").val();
    var noOfSignUps = $("#noOfReferral").val();
    
@@ -210,6 +190,7 @@ function validateCustomerSignup(operation){
 		return;
 	}
    var couponRef = $("#couponRef").val();
+   
    var status = $("#status").val();
    if(status == "true"){
 	   status = true;
@@ -217,32 +198,41 @@ function validateCustomerSignup(operation){
 	   status =false;
    }
    
+   
    var rewardType = $("#rewardtype").val();
+   
    var loyaltyPlan = $("#loyaltyPlan").val();
   	if(loyaltyPlan == undefined || loyaltyPlan == null || loyaltyPlan == ""){
   		loyaltyPlan = "";
-     }  	   	 
+}  	   	 
    
    
    var offer = $("#offer").val();
 	if(offer == undefined || offer == null || offer == ""){
 		offer = "";
-     }  	   	 
+}  	   	 
+   
+   
    var signupCash = $("#signupCash").val();
    if(signupCash == undefined || signupCash == null || signupCash == "")
 	   signupCash = 0;
+   
    var customerType = $("#customerType").val();
+   
+  
    var maxRecords = "10";
 	  if($("#maxRecords").length>0)
 		  maxRecords = $("#maxRecords").val();
 		 var searchName = "";
-	   	 if($("#searchCategory").length>0)
-	   	    searchName = $("#searchCategory").val();
+	   	  if($("#searchCategory").length>0)
+	   	searchName = $("#searchCategory").val();
+   
 
    if(operation=="new"){
     URL = contextPath + "/crm/createCustomerSignup.do";
   	}
   	else if(operation=="edit"){
+  		
   	 URL = contextPath + "/crm/updateCustomerSignUp.do";
   	}
  
@@ -265,6 +255,7 @@ function validateCustomerSignup(operation){
    finalObj.loyaltyPlan = loyaltyPlan;
    finalObj.offerId = offer;
    finalObj.signupCash = signupCash;
+   
    
     var  formData=JSON.stringify(finalObj);
     console.log(formData);

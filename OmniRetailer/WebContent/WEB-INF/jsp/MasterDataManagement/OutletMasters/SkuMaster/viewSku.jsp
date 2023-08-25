@@ -1342,7 +1342,7 @@ img.thumbnail {
 																		type="hidden" class="form-control allField req"
 																		id="pluStoreLocation${selectedLocationId}${priceListCount}"
 																		readonly="readonly" value="${plu.storeLocation}" /> <input
-																		type="text" class="form-control allField req pluCost" style="width:60%"
+																		type="text" class="form-control allField req pluCost" style=""
 																		onkeydown="clearError(this);"
 																		onblur="calcMarkUp(this);" readonly="readonly"
 																		id="pluCostPrice${selectedLocationId}${priceListCount}"
@@ -1356,7 +1356,7 @@ img.thumbnail {
 																<div class="form-group col-lg-2 " style="margin-left: 14px;">
 																	<label><spring:message code="mrpprice.label" /> <span
 																		style="color: red; font-size: 2">*</span></label> <input
-																		type="text" class="form-control allField req" style="width:60%"
+																		type="text" class="form-control allField req" style=""
 																		onkeydown="clearError(this);" readonly="readonly"
 																		id="pluPrice${selectedLocationId}${priceListCount}"
 																		value="${plu.price}"
@@ -1370,7 +1370,7 @@ img.thumbnail {
 																	<label><spring:message code="sale.price.label" />
 																		<span style="color: red; font-size: 2">*</span></label> <input
 																		type="text" class="form-control allField req pluSale"
-																		readonly="readonly" onkeydown="clearError(this);" style="width:60%"
+																		readonly="readonly" onkeydown="clearError(this);" style=""
 																		onblur="calcMarkUp(this);"
 																		id="pluSalePrice${selectedLocationId}${priceListCount}"
 																		value="${plu.salePrice}"
@@ -1385,7 +1385,7 @@ img.thumbnail {
 																	<label><spring:message code="ws.price.label" />
 																		<span style="color: red; font-size: 2">*</span></label> <input
 																		type="text" class="form-control allField req "
-																		readonly="readonly" onkeydown="clearError(this);" style="width:60%"
+																		readonly="readonly" onkeydown="clearError(this);" style=""
 																		id="pluWsPrice${selectedLocationId}${priceListCount}"
 																		value="${plu.wholesalePrice}"
 																		oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');"
@@ -1397,15 +1397,29 @@ img.thumbnail {
 																
 															
 															<div class="form-group col-lg-2" style="padding-right:0px">
+															
+															
+															<label><spring:message
+																			code="sale.price.one.label" /> </label> <input
+																		type="text" id="salePriceOne${selectedLocationId}${priceListCount}"
+																		name="salePriceOne" style="resize: none; " disabled
+																		class="form-control allField"
+																		value="${plu.salePrice1}"
+																		placeholder="Enter Sale Price 1"> <span
+																		id="businessCategoryQuickError"
+																		style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
+															
+															
+															
                             
-									<label><spring:message code="businessCategory.label" />
+									<%-- <label><spring:message code="businessCategory.label" />
 										</label>
 									<input type="text" id="businessCategoryDetail${selectedLocationId}${priceListCount}" 
 										name="productPrecautions" style="resize: none;width:80%" disabled
 										class="form-control allField" value="${plu.businessCategory}">
 									<span id="businessCategoryQuickError"
-										style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
-								</div>
+										style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span> --%>
+							                    	</div>
 															
 																<%-- <div class="form-group col-lg-2" style="margin-left: 1px;">
 																	<label><spring:message code="ean.label" /></label> <input
@@ -1472,7 +1486,7 @@ img.thumbnail {
 																		type="text" class="form-control allField"
 																		onkeydown="clearError(this);" readonly="readonly"
 																		id="pluMbq${selectedLocationId}${priceListCount}"
-																		value="${plu.mbq}" style="width:60%"
+																		value="${plu.mbq}" style=""
 																		placeholder="<spring:message code="enter.mbq.label" />" />
 																	<span
 																		id="pluMbq${selectedLocationId}${priceListCount}Error"
@@ -1486,7 +1500,7 @@ img.thumbnail {
 																		type="text" class="form-control allField req"
 																		onkeydown="clearError(this);" readonly="readonly"
 																		id="pluQuantity${selectedLocationId}${priceListCount}"
-																		value="${plu.quantityInHand}" style="width:80%"
+																		value="${plu.quantityInHand}" style=""
 																		oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');"
 																		placeholder="<spring:message code="enter.quantity.in.hand.label" />" />
 																	<span
@@ -1499,21 +1513,34 @@ img.thumbnail {
 																		type="text" class="form-control allField"
 																		onkeydown="clearError(this);" readonly="readonly"
 																		id="pluAcp${selectedLocationId}${priceListCount}"
-																		value="${plu.acp}" style="width:80%"
+																		value="${plu.acp}" style=""
 																		placeholder="<spring:message code="enter.acp.label" />" />
 																	<span
 																		id="pluAcp${selectedLocationId}${priceListCount}Error"
 																		style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
 																</div>
-																<div class="form-group col-lg-2 span2" style="padding-right: 0px;"> 
-									<label><spring:message code="businessSubcategory.label" />
+																<div class="form-group col-lg-2 " style="padding-right: 0px;"> 
+																
+																
+																<label><spring:message code="businessCategory.label" />
+										</label>
+									<input type="text" id="businessCategoryDetail${selectedLocationId}${priceListCount}" 
+										name="productPrecautions" style="resize: none;" disabled
+										class="form-control allField" value="${plu.businessCategory}">
+									<span id="businessCategoryQuickError"
+										style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
+																
+																
+																
+																
+									<%-- <label><spring:message code="businessSubcategory.label" />
 										</label>
 									<input type="text" id="businessSubcategoryDetail${selectedLocationId}${priceListCount}" 
 										style="resize: none;width:80%" disabled
 										class="form-control allField"  value="${plu.businessSubCategory}"
 									">
 									<span id="productSideEffectsError"
-										style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
+										style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span> --%>
 
 								</div>		
 																
@@ -1828,7 +1855,7 @@ img.thumbnail {
                                            	<label><spring:message code="min.sales.quantity.label" /><span style="color: red; font-size: 2">*</span></label></label> <input
 													type="text" class="form-control allField" disabled
 													id="priceMinSaleQty${selectedLocationId}${priceListCount}" value="${plu.min_sale_qty}"
-													placeholder="<spring:message code="min.sales.quantity.label" />" style="width:80%"/>
+													placeholder="<spring:message code="min.sales.quantity.label" />" style="width:88%"/>
                                         <span id="priceminSaleQtyError"
 											style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
                                          </div>
@@ -1841,18 +1868,33 @@ img.thumbnail {
 										                                      	<option value="true" ${'true' == plu.skuStatus ? 'selected' : ''} >Active</option>
 		                                  		                                <option value="false" ${'false' == plu.skuStatus ? 'selected' : ''} >In-Active</option>
 											
-										                                    </select> 
+										                              </select> 
 																</div>
-																
-																
-																 <div class="form-group col-lg-2" style="">
-                                           	<label>Material Type</label> <input
+
+
+																<div class="form-group col-lg-2" style="padding-right: 0px;">
+
+
+
+																	<label><spring:message
+																			code="businessSubcategory.label" /> </label> <input
+																		type="text"
+																		id="businessSubcategoryDetail${selectedLocationId}${priceListCount}"
+																		style="resize: none;" disabled
+																		class="form-control allField"
+																		value="${plu.businessSubCategory}"">
+																	<span id="productSideEffectsError"
+																		style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
+
+
+
+																	<%-- 	<label>Material Type</label> <input
 													type="text"   class="form-control allField"
 													id="materailType${selectedLocationId}${priceListCount}" value="${plu.materialType}"
-													placeholder="Material Type" style="width:70%" />
-                                         </div>
-																
-																	<%-- <div class="form-group col-lg-2" style="padding-right:0px">
+													placeholder="Material Type" style="width:70%" /> --%>
+																</div>
+
+																<%-- <div class="form-group col-lg-2" style="padding-right:0px">
                             
 									<label><spring:message code="businessCategory.label" />
 										</label>
@@ -1914,7 +1956,7 @@ img.thumbnail {
 									
 							<div class="form-group col-lg-2 span2" style="padding-left:14px" >
                                            	<label><spring:message code="pack.size.label" /></label> <input
-													type="text" class="form-control allField" disabled style="width:60%"
+													type="text" class="form-control allField" disabled style=""
 													id="pricePackSize${selectedLocationId}${priceListCount}" value="${plu.pack_size}"
 													placeholder="<spring:message code="enter.pack.size.label" />" />
                                         </div>
@@ -1943,7 +1985,7 @@ img.thumbnail {
 									<label><spring:message code="stock.factory.label" />
 										</label>
 									<input type="text" id="stockfactor" 
-										style="resize: none;width:60%" disabled
+										style="resize: none;width:94%" disabled
 										class="form-control allField"  value="${plu.stockFactor}"
 									">
 									<span id="productSideEffectsError"
@@ -1953,8 +1995,16 @@ img.thumbnail {
 								
 								
 								
-								<div class="form-group col-lg-2">
-									<label>Zero Stock Billing</label>
+								<div class="form-group col-lg-2" style="padding-left: 6px;">
+								
+									<label>Material Type</label> <input
+													type="text"   class="form-control allField" disabled
+													id="materailType${selectedLocationId}${priceListCount}" value="${plu.materialType}"
+													placeholder="Material Type" style="" />
+								
+								
+								
+									<%-- <label>Zero Stock Billing</label>
 									<div class="col-lg-10" style="padding-left: 0px">
 										<select class="form-control" readonly="readonly" name="zeroStockbilling" id="zeroStockbilling">
 											<option value="true" ${plu.zeroStockBilling == true ? 'selected' : ''}><spring:message
@@ -1962,7 +2012,7 @@ img.thumbnail {
 							 				<option value="false" ${plu.zeroStockBilling == false ? 'selected' : ''}><spring:message
 													code="no.label" /></option>
 										</select>
-									</div>
+									</div> --%>
 								</div>
 								
 												
@@ -1972,7 +2022,20 @@ img.thumbnail {
 											
 											<div class="row-fluid-5">
 										
-							<div class="form-group col-lg-2 " style="padding: 0px;">
+										<div class="form-group col-lg-2 " style="padding: 0px;">
+										
+										<label>Zero Stock Billing</label>
+									<div class="col-lg-10" style="padding-left: 0px">
+										<select class="form-control" readonly="readonly" name="zeroStockbilling" id="zeroStockbilling">
+											<option value="true" ${plu.zeroStockBilling == true ? 'selected' : ''}><spring:message
+													code="yes.label" /></option>
+							 				<option value="false" ${plu.zeroStockBilling == false ? 'selected' : ''}><spring:message
+													code="no.label" /></option>
+										</select>
+									</div>
+										
+										</div>
+							<div class="form-group col-lg-2 " style="margin-left: 15px;">
 										<label>EAN</label>
 									<div class="col-lg-12" style="padding: 0px;">
 									<input type="text" onblur="criteria(this)" id="eanAllLocation0"  style="" class="form-control"  value="${plu.ean}" placeholder="Enter EAN number" readonly="readonly">
@@ -1980,9 +2043,9 @@ img.thumbnail {
 									</div>
 							</div>				
 									
-								<div class="form-group col-lg-2 " style="margin-left:15px;padding-right:0px">
+								<div class="form-group col-lg-2 " style="padding-left: 19px;padding-right: 0px;">
 										<label>Stock Status</label>
-										<select class="form-control allField req"  style="width:80%" id="skuStockStatus${selectedLocationId}${priceListCount}" disabled>
+										<select class="form-control allField req"  style="width:80%" id="skuStockStatus${selectedLocationId}${priceListCount}" disabled >
 									         <option value="true" ${'true' == plu.stockStatus ? 'selected' : ''} >Active</option> <%-- ${'true' == plu.skuStockStatus ? 'selected' : ''} --%>
 		                                  	 <option value="false" ${'false' == plu.stockStatus ? 'selected' : ''} >In-Active</option><%--  --%>
 											
@@ -2009,11 +2072,11 @@ img.thumbnail {
 															
 															
 															
-																	<div class="form-group col-lg-5" style="padding-right:0px">
+																	<div class="form-group col-lg-4" style="padding-right:0px">
 								
 									<label><spring:message code="technicalSpecification.label" />
 										</label>
-									<textarea rows="2" id="technicalSpecDetail${selectedLocationId}${priceListCount}"  style="resize:none"
+									<textarea rows="2" id="technicalSpecDetail${selectedLocationId}${priceListCount}"  style="height: 75px;width: 102%;resize:none"
 										class="form-control allField" disabled
 										">${plu.technical_specification}</textarea>
 									<span id="productSideEffectsError"
@@ -2022,13 +2085,13 @@ img.thumbnail {
 								</div>
 							
 															
-																<div class="form-group col-lg-5">
+																<div class="form-group col-lg-4" style="padding-right: 0px;padding-left: 40px;">
 																	<label><spring:message code="description.label" />
 																		<span style="color: red; font-size: 2">*</span></label>
 																	<textarea rows="2" class="form-control allField"
 																		onkeydown="clearError(this);" readonly="readonly"
 																		id="pluDesc${selectedLocationId}${priceListCount}"
-																		style="resize: none;" required
+																		style="height: 75px;resize: none;" required
 																		placeholder="<spring:message code="enter.description.label" />">${plu.description}</textarea>
 																	<span
 																		id="pluDesc${selectedLocationId}${priceListCount}Error"

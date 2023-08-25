@@ -259,7 +259,6 @@ position:relative;
                 	  <div class="form-group col-lg-11" style="padding-left:0px">
                         <label>Product Description</label>
 						<input type="text" class="form-control" name="programDescription" id="programDescription" value="${customerSignup.campaignDescription}" required />
-                      <span id="programDescriptionError" style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
                       </div> 
                      </div>
                      

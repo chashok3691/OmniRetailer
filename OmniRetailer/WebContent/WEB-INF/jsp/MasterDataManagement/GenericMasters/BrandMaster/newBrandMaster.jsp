@@ -117,7 +117,6 @@ if(subcategoryArray != undefined){
 		        <div class="col-lg-12">
 		            <label><spring:message code="description1.label" /></label>
 		            <textarea onblur="criteria(this)" class="form-control" style="resize:none;" id="description1" placeholder="<spring:message code="enter.description1" />"></textarea>
-		          <span id="description1Error" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
 		        </div>   
 		     </div>
 		     <div class="row">
@@ -314,7 +313,6 @@ if(subcategoryArray != undefined){
  		 <div class="col-lg-12" >
 			<label><spring:message code="description2.label" /></label>
             <textarea class="form-control" onblur="criteria(this)" style="resize:none;" id="description2" placeholder="<spring:message code="enter.description2" />"></textarea>
-		    <span id="description2Error" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
 		</div>
 	</div>
 	<div class="row">  

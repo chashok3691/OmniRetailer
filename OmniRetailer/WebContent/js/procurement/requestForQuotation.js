@@ -720,6 +720,7 @@ function parseDateDDMMYYYY(str){
 }
 
 function validateRequestForQuotation(status,type){
+	
 	 //purpose:for checking internet conection
 	var online = window.navigator.onLine;
   	if(!online)
@@ -735,12 +736,12 @@ function validateRequestForQuotation(status,type){
 		 focusDiv('fromlocationError');
 		 return;
 	 }
-	 /*finalObj.fromLocation = $("#fromlocation").val();
+	 finalObj.fromLocation = $("#fromlocation").val();
 	 if($("#fromCompany").val() == ""){
 		 $("#Error").html("Please save your Profile Settings under Customer Settings Menu");
 		 focusDiv('Error');
 		 return;
-	}*/
+	}
 	 finalObj.fromCompany = $("#fromCompany").val();	
 	 finalObj.fromAddressStreet =$("#fromStreetName").val();
 	 finalObj.fromAddressLocality = $("#fromAddress").val();
@@ -809,11 +810,11 @@ function validateRequestForQuotation(status,type){
 				 focusDiv('Error');
 				 return;
 			}
-		
 		$("#selectedItemsList tbody").html("");
 		for(var i=1;i<=len;i++){
 			var idAttr = $("#productsList tr:eq("+i+") td:last").attr("id");
 			idAttr = idAttr.replace('Del','');
+			
 			
 			var sku = $("#skuId"+idAttr).val();
 			var pack = $("#quantity"+idAttr).val();
@@ -822,8 +823,16 @@ function validateRequestForQuotation(status,type){
 			$("."+sku).each(function() { 
 
 			     selectedPack = selectedPack+parseInt($(this).text()); 
+			    
+			   
+
 			});
-		
+			
+			
+			
+			
+			
+			
 			/*alert(pack+" "+selectedPack);*/
 			if(pack != selectedPack){
 				$("#Error").html("Quantity requested for "+$("#skuId"+idAttr).val()+" is not equal to sum of Quantity allocated to Delivery Locations");
@@ -861,38 +870,6 @@ function validateRequestForQuotation(status,type){
 			//	}
 			}
 		});
-		
-		 if(parseInt($("#purchaseTerms").val().length)>100){
- 			 $("#purchaseTerms").focus();
- 				$("#purchaseTermsError").html("Purchase Terms can't exceeds 100 Characters");
- 				return;
- 		}else{
- 	   	 $("#purchaseTermsError").html(" ");
- 	 }
-		 if(parseInt($("#shipmentTerms").val().length)>100){
- 			 $("#shipmentTerms").focus();
- 				$("#shipmentTermsError").html("Shipment Terms can't exceeds 100 Characters");
- 				return;
- 		}else{
- 	   	 $("#shipmentTermsError").html(" ");
- 	 }
-		 
-		 if(parseInt($("#paymentInstructions").val().length)>150){
- 			 $("#paymentInstructions").focus();
- 				$("#paymentInstructionsError").html("Payment Instructions can't exceeds 150 Characters");
- 				return;
- 		}else{
- 	   	 $("#paymentInstructionsError").html(" ");
- 	 }
-		
-		 if(parseInt($("#specialInstructions").val().length)>250){
- 			 $("#specialInstructions").focus();
- 			 $("#specialInstructionsError").html("Special Instructions can't exceeds 250 Characters");
- 				return;
- 		}else{
- 	   	 $("#specialInstructionsError").html(" ");
- 	 }
-		
 		finalObj.selectedLocationList = selectedLocationList;
 		finalObj.itemsList = itemsList;
 		finalObj.shipmentLocationsList = shipmentLocationsList;
@@ -911,9 +888,6 @@ function validateRequestForQuotation(status,type){
 		finalObj.shipmentMode=$("#shipping_mode").val();
 		finalObj.repeatSupply=$("#repeatSupply").val();
 		finalObj.repeatPeriod=$("#repeatPeriod").val();
-		
-	
-		
 //		var items = JSON.stringify(itemsList);
 //		var deliveryLocations = JSON.stringify(shipmentLocationsList);
 //		$("#whPurchaseItems").val(items);
@@ -950,3 +924,5 @@ function validateRequestForQuotation(status,type){
 	    		}
 	    	 });
 }	 
+
+

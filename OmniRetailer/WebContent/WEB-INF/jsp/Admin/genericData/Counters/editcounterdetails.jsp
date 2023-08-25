@@ -241,9 +241,7 @@ $("#currencyCode").keydown(function(){
                              <div class="form-group">
                                 <label><spring:message code="remarks.label" /></label>
                                   <textarea class="form-control" style="resize:none;"  onblur="criteria(this)" name = "counterRemarks" id="counterRemarks">${remarks}</textarea>
-                            
-                             <span id="counterRemarksError" style="text-align:right;color: red;font-size: 2;font-weight: bold;margin-left: 20px;white-space: nowrap;"></span>
-                             </div>
+                              </div>
                               
                           </div><!-- /.box-body -->
                          <br>			

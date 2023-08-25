@@ -106,11 +106,19 @@ public class WarehouseReport {
     private String updatedDate;
     private String redeemBillId;
     
+    private String yearlySerialBillId;
     
     
     
-    
-    public String getRedeemBillId() {
+    public String getYearlySerialBillId() {
+		return yearlySerialBillId;
+	}
+
+	public void setYearlySerialBillId(String yearlySerialBillId) {
+		this.yearlySerialBillId = yearlySerialBillId;
+	}
+
+	public String getRedeemBillId() {
 		return redeemBillId;
 	}
 

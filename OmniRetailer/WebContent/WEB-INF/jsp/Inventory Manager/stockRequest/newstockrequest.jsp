@@ -466,8 +466,6 @@ $(document).ready(function(){
               <div class="form-group col-lg-12">
                       <label><spring:message code="order.remarks.label" /></label>
                        <textarea class="form-control" onblur="criteria(this)" id="remarks" name="remarks" rows="2" style="resize: none;">${stockRequestsObj.remarks}</textarea>
-               <span id="remarksError" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
-               
                </div>
            </div>
             <div class="modal fade popup-display" id="items-modal" tabindex="-1" role="dialog" aria-hidden="true">
@@ -553,6 +551,10 @@ $(document).ready(function(){
  </div>
 </section>
 </body>
+
+
+
+
 
 
 </html>

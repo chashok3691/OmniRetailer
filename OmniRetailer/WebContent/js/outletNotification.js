@@ -103,15 +103,6 @@ function validateOutletNotification(operation){
 		$("#notificationTypeError").html("Please Select Notification Type");
 		return;
 	}
-	
-	if(parseInt($("#notificationSubject").val().length)>50){
-		 $("#notificationSubject").focus();
-		 $("#notificationSubjectError").html("Subject can't exceeds 50 Characters");
-			return;
-	}else{
-  	 $("#notificationSubjectError").html(" ");
-  }
-	
 	finalObj.messageType = $("#notificationType").val();
 	if($("#notificationSubject").val().trim() == ""){
 		$("#notificationSubjectError").html("Please Enter Notification Subject");
@@ -131,17 +122,6 @@ function validateOutletNotification(operation){
 		alert("Please Select Role");
 		return;
 	}
-	
-	
-	
-	if(parseInt($("#notificationMessage").val().length)>200){
-		 $("#notificationMessage").focus();
-		 $("#notificationMessageError").html("Notification Message can't exceeds 200 Characters");
-			return;
-	}else{
-  	 $("#notificationMessageError").html(" ");
-  }
-	
 	var obj = null,i=0;
 	if($("#workLocation").val() != null){
 		var locations = $("#workLocation").val().toString().split(',');

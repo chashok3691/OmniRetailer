@@ -961,7 +961,7 @@ public class InventoryManagerController {
 			customerIdStr = (String)request.getSession().getAttribute("customerId");
 			emailIdStr = (String)request.getSession().getAttribute("emailId");
 			billOfMaterialResponse  = outletMasterServiceObj.getBoms(searchNameStr,customerIdStr, emailIdStr,"0","","100",location);
-			if(billOfMaterialResponse.getBomList() != null || billOfMaterialResponse.getBomList().size() != 0){
+			if(billOfMaterialResponse.getBomList() != null && billOfMaterialResponse.getBomList().size() >= 0){
 		   if(billOfMaterialResponse.getBomList().size() == 1){
 			wareHouseSkuResponse = skuServiceObj.getWarehousemasterSKUDetails(billOfMaterialResponse.getBomList().get(0).getProductId(),customerIdStr, emailIdStr,"");
 			////System.out.println(gson.toJson(wareHouseSkuResponse));
@@ -2517,7 +2517,10 @@ emailIdStr = (String)request.getSession().getAttribute("emailId");
 			if(flowUnder.equals("outlet")){
 			//	locationsList = adminServiceObj.getOutletLocationsList(customerIdStr,emailIdStr,true);
 				
-			if(zone == null || zone.trim().equals(""))
+				
+
+				
+				if(zone == null || zone.trim().equals(""))
 					locationBeansList = genericMasterServiceObj.getLocationDetails("",customerIdStr, emailIdStr,"-1","Retail Outlet",false,true,false);
 				else
 					locationBeansList = genericMasterServiceObj.getLocationsOnZoneAndBussinessActivity(zone, customerIdStr, emailIdStr, "Retail Outlet");
@@ -2552,7 +2555,10 @@ emailIdStr = (String)request.getSession().getAttribute("emailId");
 				}
 				
 			}
-			    modelAndViewObj.addObject("zoneList", zoneList);
+			
+			
+				
+				modelAndViewObj.addObject("zoneList", zoneList);
 				modelAndViewObj.addObject("departmentList", departmentList);
 				modelAndViewObj.addObject("categoryList", categoryList);
 				modelAndViewObj.addObject("subCategoryDetailsList", subCategoryDetailsList);
@@ -3565,7 +3571,10 @@ emailIdStr = (String)request.getSession().getAttribute("emailId");
 			}*/
 			
 			List<ZoneMaster> zoneList =(List<ZoneMaster>)request.getSession().getAttribute("zoneList");
-		    modelAndViewObj = new ModelAndView();
+			
+			
+			
+			modelAndViewObj = new ModelAndView();
 			/*if(locationsList==null  || locationsList.size()==0 ){
 				modelAndViewObj.addObject("err",AppProperties.getAppMessageByProperty("LOCATIONS_NOT_AVAILABLE"));
 			}else{*/
@@ -16440,6 +16449,58 @@ Map<String,Object> storesListMap = storeServiceObj.getStoresList(customerId, ema
 	
 	 
 
+	/*@RequestMapping("/newpackage")
+	public ModelAndView newpackage(
+			
+			@RequestParam("type") String type,@RequestParam("zone") String zone,@RequestParam("flowUnder") String flowUnder,HttpServletRequest request,HttpServletResponse response){
+		modelAndViewObj = new ModelAndView();
+	try {
+		String customerIdStr=null,emailIdStr=null;
+		List<String> locationsListValue=new ArrayList<String>();
+		ArrayList<LocationBean> locationBeansList = new ArrayList<LocationBean>();
+		String locationListAll = "";
+		
+			customerIdStr = (String)request.getSession().getAttribute("customerId");
+			emailIdStr  = (String)request.getSession().getAttribute("emailId");
+			List<ZoneMaster> zoneList =(List<ZoneMaster>)request.getSession().getAttribute("zoneList");
+			if(zoneList==null || zoneList.size()==0 || zoneList.isEmpty()){
+				 zoneList = genericMasterServiceObj.getZones(null, customerIdStr, emailIdStr,"","","");
+				request.getSession().setAttribute("zoneList", zoneList);
+			}
+		
+		if(flowUnder.equals("outlet")){
+			
+				if(zone == null || zone.trim().equals(""))
+					locationBeansList = genericMasterServiceObj.getLocationDetails("",customerIdStr, emailIdStr,"-1","Retail Outlet",false,true,false);
+				else
+					locationBeansList = genericMasterServiceObj.getLocationsOnZoneAndBussinessActivity(zone, customerIdStr, emailIdStr, "Retail Outlet");
+				
+				
+			}else{
+				locationBeansList = genericMasterServiceObj.getLocationDetails("",customerIdStr, emailIdStr,"-1","Warehouse",false,false,true);
+				
+			}
+			
+			modelAndViewObj.addObject("locationsList", locationBeansList);
+			
+			List<EmployeeBean> empList = genericMasterServiceObj.getEmployees("",customerIdStr, emailIdStr,"-1","","",false,"");
+			modelAndViewObj.addObject("empInfo", empList);
+		
+		if(type.equals("view"))
+			modelAndViewObj.setViewName("Inventory Manager/warehouse/packagingandprocessing/newpackage");
+		else
+			modelAndViewObj.setViewName("Inventory Manager/warehouse/packagingandprocessing/newpackage");
+			
+		
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+	return modelAndViewObj;
+	}
+	*/
+
+	
+	
 	@RequestMapping("/newpackage")
 	public ModelAndView newpackage(
 			
@@ -16473,8 +16534,8 @@ Map<String,Object> storesListMap = storeServiceObj.getStoresList(customerId, ema
 			}
 			
 			modelAndViewObj.addObject("locationsList", locationBeansList);
-		
-		
+			List<EmployeeBean> empList = genericMasterServiceObj.getEmployees("",customerIdStr, emailIdStr,"-1","","",false,"");
+			modelAndViewObj.addObject("empInfo", empList);
 		if(type.equals("view"))
 			modelAndViewObj.setViewName("Inventory Manager/warehouse/packagingandprocessing/newpackage");
 		else
@@ -16486,11 +16547,9 @@ Map<String,Object> storesListMap = storeServiceObj.getStoresList(customerId, ema
 	}
 	return modelAndViewObj;
 	}
-	
 
 
-
-		@RequestMapping("/viewPackagingandProcessing")
+	/*	@RequestMapping("/viewPackagingandProcessing")
 		public ModelAndView viewPackagingandProcessing(@RequestParam("index") String index,
 				@RequestParam("location") String locationStr,@RequestParam("maxRecords") String maxRecords,@RequestParam("flowUnder") String flowUnder,
 				@RequestParam("zone") String zone,@RequestParam("category") String category,
@@ -16558,16 +16617,16 @@ Map<String,Object> storesListMap = storeServiceObj.getStoresList(customerId, ema
 										locationBeansList = genericMasterServiceObj.getLocationsOnZoneAndBussinessActivity(zone, customerIdStr, emailIdStr, "Retail Outlet");
 									
 									//locationBeansList = genericMasterServiceObj.getLocationDetails("",customerIdStr, emailIdStr,"-1","Retail Outlet",false,true,true);	
-									/*if((locationStr.trim()).equals(null) || locationStr.trim().isEmpty())
+									if((locationStr.trim()).equals(null) || locationStr.trim().isEmpty())
 									{
 										locationStr = locationBeansList.get(0).getLocationId();
-									}*/
+									}
 									
 								}else{
 								//	locationsList = adminServiceObj.getWarehouseLocationsList(customerIdStr, emailIdStr,true);
 									locationBeansList = genericMasterServiceObj.getLocationDetails("",customerIdStr, emailIdStr,"-1","Warehouse",false,false,true);
-									/*if((locationStr.trim()).equals(null) || locationStr.trim().isEmpty())
-									locationStr = locationsList.get(0);*/
+									if((locationStr.trim()).equals(null) || locationStr.trim().isEmpty())
+									locationStr = locationsList.get(0);
 //								modelAndViewObj.addObject("locationsList", locationsList);
 								}
 								
@@ -16660,7 +16719,183 @@ Map<String,Object> storesListMap = storeServiceObj.getStoresList(customerId, ema
 				e.printStackTrace();
 				}
 			return modelAndViewObj;
+		}*/
+	
+	
+	
+	@RequestMapping("/viewPackagingandProcessing")
+	public ModelAndView viewPackagingandProcessing(@RequestParam("index") String index,
+			@RequestParam("location") String locationStr,@RequestParam("maxRecords") String maxRecords,@RequestParam("flowUnder") String flowUnder,
+			@RequestParam("zone") String zone,@RequestParam("category") String category,
+			@RequestParam("subcategory") String subcategory,@RequestParam("brand") String brand,@RequestParam("department") String department,
+			@RequestParam("startdate") String startdate,@RequestParam("enddate") String enddate,
+			@RequestParam("stockdownload") Boolean stockdownload,@RequestParam("suppliername") String suppliername,
+			@RequestParam("searchCriteria") String searchCriteria,
+			HttpServletRequest request,HttpServletResponse response) {
+	
+					try {
+						
+						com.tlabs.posweb.beans.Response responseobj = null;
+						String customerIdStr=null,emailIdStr=null,resultStr;
+						List<SkuDetails> skuDetailsList=null;
+						//List<String> locationsList=null;
+						List<String> locationsListValue=new ArrayList<String>();
+						ArrayList<LocationBean> locationBeansList = new ArrayList<LocationBean>();
+						List<ProcessingAndPackaging> packageList = null;
+						String locationListAll = "";
+						
+							int start = 1,  end = Integer.parseInt(maxRecords);
+							customerIdStr = (String)request.getSession().getAttribute("customerId");
+							emailIdStr  = (String)request.getSession().getAttribute("emailId");
+							List<ZoneMaster> zoneList =(List<ZoneMaster>)request.getSession().getAttribute("zoneList");
+							if(zoneList==null || zoneList.size()==0 || zoneList.isEmpty()){
+								 zoneList = genericMasterServiceObj.getZones(null, customerIdStr, emailIdStr,index,"","");
+								request.getSession().setAttribute("zoneList", zoneList);
+							}
+							List<Department> departmentList =(List<Department>)request.getSession().getAttribute("departmentList");
+							if(departmentList==null || departmentList.size()==0 || departmentList.isEmpty()){
+								departmentList = departmentServiceObj.getDepartmentDetails(null,null, customerIdStr, emailIdStr,index,false);
+								request.getSession().setAttribute("departmentList", departmentList);
+							}
+							List<ProductCategoryBean> categoryList =(List<ProductCategoryBean>)request.getSession().getAttribute("categoryList");
+							if(categoryList==null || categoryList.size()==0 || categoryList.isEmpty()){
+								categoryList = outletMasterServiceObj.getCategoryDetails("",customerIdStr, emailIdStr,"-1");
+								request.getSession().setAttribute("categoryList", categoryList);
+							}
+							List<ProductSubCategoryBean> subCategoryDetailsList =(List<ProductSubCategoryBean>)request.getSession().getAttribute("subCategoryDetailsList");
+							if(subCategoryDetailsList==null || subCategoryDetailsList.size()==0 || subCategoryDetailsList.isEmpty()){
+								subCategoryDetailsList = outletMasterServiceObj.getSubCategoryDetails("",customerIdStr, emailIdStr,"-1","",false);
+								request.getSession().setAttribute("subCategoryDetailsList", subCategoryDetailsList);
+							}
+							List<Suppliers> supplierList =(List<Suppliers>)request.getSession().getAttribute("supplierList");
+							if(supplierList==null || supplierList.size()==0 || supplierList.isEmpty()){
+								 supplierList = outletMasterServiceObj.getSuppliers(customerIdStr, emailIdStr,"-1","","");
+								request.getSession().setAttribute("supplierList", supplierList);
+							}
+//							List<String> brandsList = adminServiceObj.getBrandNamesList(customerIdStr,emailIdStr);
+							
+							List<String> brandsList = (List<String>)request.getSession().getAttribute("brandsList");
+							if(brandsList==null || brandsList.size()==0 || brandsList.isEmpty()){
+							 brandsList = adminServiceObj.getBrandNamesList(customerIdStr,emailIdStr);
+								request.getSession().setAttribute("brandsList", brandsList);
+							}
+							
+							modelAndViewObj = new ModelAndView();
+							if(flowUnder.equals("outlet")){
+							//	locationsList = adminServiceObj.getOutletLocationsList(customerIdStr,emailIdStr,true);
+								
+								
+
+								
+								if(zone == null || zone.trim().equals(""))
+									locationBeansList = genericMasterServiceObj.getLocationDetails("",customerIdStr, emailIdStr,"-1","Retail Outlet",false,true,false);
+								else
+									locationBeansList = genericMasterServiceObj.getLocationsOnZoneAndBussinessActivity(zone, customerIdStr, emailIdStr, "Retail Outlet");
+								
+								//locationBeansList = genericMasterServiceObj.getLocationDetails("",customerIdStr, emailIdStr,"-1","Retail Outlet",false,true,true);	
+								/*if((locationStr.trim()).equals(null) || locationStr.trim().isEmpty())
+								{
+									locationStr = locationBeansList.get(0).getLocationId();
+								}*/
+								
+							}else{
+							//	locationsList = adminServiceObj.getWarehouseLocationsList(customerIdStr, emailIdStr,true);
+								locationBeansList = genericMasterServiceObj.getLocationDetails("",customerIdStr, emailIdStr,"-1","Warehouse",false,false,true);
+								/*if((locationStr.trim()).equals(null) || locationStr.trim().isEmpty())
+								locationStr = locationsList.get(0);*/
+//							modelAndViewObj.addObject("locationsList", locationsList);
+							}
+							
+							modelAndViewObj.addObject("locationsList", locationBeansList);
+							if(locationStr.equals("all")|| locationStr.equals("")){
+								if(locationBeansList != null){
+									for(int i=0;i<locationBeansList.size();i++){
+									
+										locationsListValue.add(locationBeansList.get(i).getLocationId());
+											
+									}
+								for (String string : locationsListValue) {
+									
+									locationListAll = locationListAll+string+",";
+								}
+								}
+								
+							}
+							
+							
+		 resultStr = skuServiceObj.getpackage("","",startdate,enddate,locationStr,"",customerIdStr,emailIdStr,index,flowUnder,zone,category,subcategory,brand,department,stockdownload,suppliername,maxRecords,locationListAll,"",searchCriteria);
+		
+		
+		
+		String responseCode = Response.getResponseCode(resultStr);
+		if(responseCode.equals(AppProperties.getAppMessageByProperty("RESPONSE_SUCCESS_CODE").trim())){
+			responseobj = gson.fromJson(resultStr, com.tlabs.posweb.beans.Response.class);
+			
+		for(int i=0;i<responseobj.getPackagingList().size();i++){
+			
+			responseobj.getPackagingList().get(i).setTotalRecords(responseobj.getTotalRecords());
+		
+			for(int j=0;j<responseobj.getPackagingList().get(i).getPackagingDetails().size();j++){
+				
+				responseobj.getPackagingList().get(i).setNoOfItems(responseobj.getPackagingList().get(i).getPackagingDetails().get(j).getNoOfPacks());
+
+				
+			}
 		}
+		
+        
+		
+		//////System.out.println(gson.toJson(responseobj.getPackagingList()));
+		
+		if(responseobj.getPackagingList() == null || responseobj.getPackagingList().size() == 0){
+			modelAndViewObj.addObject("totalRecords","0");
+			modelAndViewObj.addObject("index", "0");
+			modelAndViewObj.addObject("totalValue", "0");
+		}
+		else{
+			
+			if(responseobj.getPackagingList().size()<Integer.parseInt(maxRecords)){
+				end = (responseobj.getPackagingList().size())+(Integer.parseInt(index));
+			}else{
+				end = (Integer.parseInt(index)+end);
+			}
+			modelAndViewObj.addObject("totalRecords", (responseobj.getPackagingList().get(0).getTotalRecords()));
+			modelAndViewObj.addObject("index", (Integer.parseInt(index)+start));
+			modelAndViewObj.addObject("totalValue", end);
+			modelAndViewObj.addObject("packageList", responseobj.getPackagingList());
+			
+		}
+		}else{
+			 resultStr = Response.getResponseMessage(resultStr);
+			 
+		}
+		
+								modelAndViewObj.addObject("zoneList", zoneList);
+								modelAndViewObj.addObject("departmentList", departmentList);
+								modelAndViewObj.addObject("categoryList", categoryList);
+								modelAndViewObj.addObject("subCategoryDetailsList", subCategoryDetailsList);
+								modelAndViewObj.addObject("brandsList", brandsList);
+								
+								modelAndViewObj.addObject("selectedLocation",locationStr);
+							modelAndViewObj.addObject("maxRecords",Integer.parseInt(maxRecords));
+							modelAndViewObj.addObject("startdate", startdate);
+							modelAndViewObj.addObject("enddate", enddate);
+							modelAndViewObj.addObject("zone", zone);
+							modelAndViewObj.addObject("category", category);
+							modelAndViewObj.addObject("subcategory", subcategory);
+							modelAndViewObj.addObject("brand", brand);
+							modelAndViewObj.addObject("department", department);
+							modelAndViewObj.addObject("suppliername", suppliername);
+						
+					
+						
+						
+						modelAndViewObj.setViewName("Inventory Manager/warehouse/packagingandprocessing/packagingandprocessingsummary");
+		}catch(Exception e){
+			e.printStackTrace();
+			}
+		return modelAndViewObj;
+	}
 		
 
 
@@ -16758,6 +16993,8 @@ public ModelAndView viewStockHistory(@RequestParam("index") String index,
 			
 		}
 		
+		
+			
 			modelAndViewObj.addObject("zoneList", zoneList);
 			modelAndViewObj.addObject("departmentList", departmentList);
 			modelAndViewObj.addObject("categoryList", categoryList);
@@ -16951,7 +17188,7 @@ public ModelAndView getWareHousespos(@RequestParam("index")String index,@Request
 	return modelAndViewObj;
 }
 
-@RequestMapping(value="/addPackagingNew",method=RequestMethod.POST)
+/*@RequestMapping(value="/addPackagingNew",method=RequestMethod.POST)
 public ModelAndView addPackagingNew(@RequestParam("formData")String data,HttpServletRequest request,HttpServletResponse response){
 	ProcessingAndPackaging packageObj = null;
 	String customerIdStr=null,emailIdStr=null;
@@ -17094,13 +17331,220 @@ public ModelAndView addPackagingNew(@RequestParam("formData")String data,HttpSer
 	
 	return modelAndViewObj;
 }
+*/
+
+
+@RequestMapping(value="/addPackagingNew",method=RequestMethod.POST)
+public ModelAndView addPackagingNew(@RequestParam("formData")String data,HttpServletRequest request,HttpServletResponse response){
+	ProcessingAndPackaging packageObj = null;
+	String customerIdStr=null,emailIdStr=null;
+	String resultStr = "";
+	com.tlabs.posweb.beans.Response responseobj = null;
+	List<SkuDetails> skuDetailsList=null;
+	//List<String> locationsList=null;
+	List<String> locationsListValue=new ArrayList<String>();
+	ArrayList<LocationBean> locationBeansList = new ArrayList<LocationBean>();
+	List<ProcessingAndPackaging> packageList = null;
+	String locationListAll = "";
+	modelAndViewObj = new ModelAndView();
+	try{
+     String Data=data;
+     //////System.out.println(Data);
+          int start = 1,  end = Integer.parseInt("10");
+          String maxRecords = "10", index="0";
+		packageObj = gson.fromJson(Data,ProcessingAndPackaging.class);
+		
+		customerIdStr = (String)request.getSession().getAttribute("customerId");
+		emailIdStr  = (String)request.getSession().getAttribute("emailId");
+		resultStr = warehouseServiceObj.addpackage(packageObj,customerIdStr,emailIdStr);
+		
+		if(resultStr == AppProperties.getAppMessageByProperty("PACKAGING_CREATED_SUCCESFULLY").trim() || resultStr == AppProperties.getAppMessageByProperty("PACKAGING_UPDATED_SUCCESFULLY").trim()){
+			modelAndViewObj.addObject("success",resultStr);
+		}else{
+			modelAndViewObj.addObject("err",resultStr);
+		}
+		
+		
+			List<ZoneMaster> zoneList =(List<ZoneMaster>)request.getSession().getAttribute("zoneList");
+			if(zoneList==null || zoneList.size()==0 || zoneList.isEmpty()){
+				 zoneList = genericMasterServiceObj.getZones(null, customerIdStr, emailIdStr,"0","","");
+				request.getSession().setAttribute("zoneList", zoneList);
+			}
+			List<Department> departmentList =(List<Department>)request.getSession().getAttribute("departmentList");
+			if(departmentList==null || departmentList.size()==0 || departmentList.isEmpty()){
+				departmentList = departmentServiceObj.getDepartmentDetails(null,null, customerIdStr, emailIdStr,"0",false);
+				request.getSession().setAttribute("departmentList", departmentList);
+			}
+			List<ProductCategoryBean> categoryList =(List<ProductCategoryBean>)request.getSession().getAttribute("categoryList");
+			if(categoryList==null || categoryList.size()==0 || categoryList.isEmpty()){
+				categoryList = outletMasterServiceObj.getCategoryDetails("",customerIdStr, emailIdStr,"-1");
+				request.getSession().setAttribute("categoryList", categoryList);
+			}
+			List<ProductSubCategoryBean> subCategoryDetailsList =(List<ProductSubCategoryBean>)request.getSession().getAttribute("subCategoryDetailsList");
+			if(subCategoryDetailsList==null || subCategoryDetailsList.size()==0 || subCategoryDetailsList.isEmpty()){
+				subCategoryDetailsList = outletMasterServiceObj.getSubCategoryDetails("",customerIdStr, emailIdStr,"-1","",false);
+				request.getSession().setAttribute("subCategoryDetailsList", subCategoryDetailsList);
+			}
+			List<Suppliers> supplierList =(List<Suppliers>)request.getSession().getAttribute("supplierList");
+			if(supplierList==null || supplierList.size()==0 || supplierList.isEmpty()){
+				 supplierList = outletMasterServiceObj.getSuppliers(customerIdStr, emailIdStr,"-1","","");
+				request.getSession().setAttribute("supplierList", supplierList);
+			}
+//			List<String> brandsList = adminServiceObj.getBrandNamesList(customerIdStr,emailIdStr);
+			
+			List<String> brandsList = (List<String>)request.getSession().getAttribute("brandsList");
+			if(brandsList==null || brandsList.size()==0 || brandsList.isEmpty()){
+			 brandsList = adminServiceObj.getBrandNamesList(customerIdStr,emailIdStr);
+				request.getSession().setAttribute("brandsList", brandsList);
+			}
+			
+			
+				locationBeansList = genericMasterServiceObj.getLocationDetails("",customerIdStr, emailIdStr,"-1","Warehouse",false,false,true);
+				
+			
+			modelAndViewObj.addObject("locationsList", locationBeansList);
+			
+				if(locationBeansList != null){
+					for(int i=0;i<locationBeansList.size();i++){
+					
+						locationsListValue.add(locationBeansList.get(i).getLocationId());
+							
+					}
+				for (String string : locationsListValue) {
+					
+					locationListAll = locationListAll+string+",";
+				}
+				}
+				if(packageObj.getPackagingRefId() != null && packageObj.getPackagingRefId() != "" && !packageObj.getPackagingRefId().equals("")){
+					resultStr = skuServiceObj.getpackage("","","","","","",customerIdStr,emailIdStr,"","","","","","","",false,"","","",packageObj.getPackagingRefId(),"");
+					responseobj = gson.fromJson(resultStr, com.tlabs.posweb.beans.Response.class);
+				}	
+				else{
+					List <ProcessingAndPackaging> tempProcessingAndPackaging = new ArrayList<>();
+					tempProcessingAndPackaging.add(packageObj);
+					responseobj = new com.tlabs.posweb.beans.Response();
+					responseobj.setPackagingList(tempProcessingAndPackaging);
+					
+				}
+					
+					
+				 
+				 Set<String> SKUids = null;
+				 List<String> listSKUs =   new ArrayList<String>(); ;
+				 
+				 for(int i = 0; i< responseobj.getPackagingList().get(0).getPackagingDetails().size();i++){
+					 
+					  
+					 listSKUs.add(responseobj.getPackagingList().get(0).getPackagingDetails().get(i).getChildSkuId());  
+				       
+				        
+				 }
+				 SKUids = new LinkedHashSet<String>(listSKUs);  
+				// ////System.out.println(SKUids);
+				 	/*List <String> previousStates = new ArrayList<>();
+				    previousStates.add("Submitted");
+					
+					
+					List <String> nextWorkFlowStates =new ArrayList<>();
+					
+					nextWorkFlowStates.add("Confirm");
+					nextWorkFlowStates.add("Cancel");
+					*/
+					
+					/*modelAndViewObj.addObject("previousStates", previousStates);
+					modelAndViewObj.addObject("nextWorkFlowStates", nextWorkFlowStates);*/
+				 modelAndViewObj.addObject("previousStates", responseobj.getPackagingList().get(0).getPreviousWorkFlowStates());
+					modelAndViewObj.addObject("nextWorkFlowStates", responseobj.getPackagingList().get(0).getNextWorkFlowStates());
+
+				 
+				 modelAndViewObj.addObject("locationsList", locationBeansList);
+				 modelAndViewObj.addObject("zoneList", zoneList);
+				 modelAndViewObj.addObject("SKUids", SKUids);
+
+				 modelAndViewObj.addObject("packages", responseobj.getPackagingList().get(0));
+				 modelAndViewObj.addObject("packagesList", responseobj.getPackagingList().get(0).getPackagingDetails());
+				 modelAndViewObj.addObject("packagesLists", gson.toJson(responseobj.getPackagingList().get(0).getPackagingDetails()));
+				 
+				 //////System.out.println(gson.toJson(responseobj.getPackagingList().get(0).getPackagingDetails()));
+				// modelAndViewObj.addObject("packagesLists", responseobj.getPackagingList().get(0).getPackagingDetails().toString());
+
+				 List<EmployeeBean> empList = genericMasterServiceObj.getEmployees("",customerIdStr, emailIdStr,"-1","","",false,"");
+			     modelAndViewObj.addObject("empInfo", empList);
+					
+			
+			
+			if(packageObj.getOperation().equals("submit"))
+				modelAndViewObj.setViewName("Inventory Manager/warehouse/packagingandprocessing/newpackage");
+			else
+				modelAndViewObj.setViewName("Inventory Manager/warehouse/packagingandprocessing/editpackage");
+				
+			
+		
+		
+		
+		/* resultStr = skuServiceObj.getpackage("","","","","","",customerIdStr,emailIdStr,"0","","","","","","",false,"","10",locationListAll,"");*/
+			
+			
+			/*
+			String responseCode = Response.getResponseCode(resultStr);
+			if(responseCode.equals(AppProperties.getAppMessageByProperty("RESPONSE_SUCCESS_CODE").trim())){
+				responseobj = gson.fromJson(resultStr, com.tlabs.posweb.beans.Response.class);
+				
+			for(int i=0;i<responseobj.getPackagingList().size();i++){
+				
+				responseobj.getPackagingList().get(i).setTotalRecords(responseobj.getTotalRecords());
+			}
+			
+			
+			//////System.out.println(gson.toJson(responseobj.getPackagingList()));
+			
+			if(responseobj.getPackagingList() == null || responseobj.getPackagingList().size() == 0){
+				modelAndViewObj.addObject("totalRecords","0");
+				modelAndViewObj.addObject("index", "0");
+				modelAndViewObj.addObject("totalValue", "0");
+			}
+			else{
+				
+				if(responseobj.getPackagingList().size()<Integer.parseInt(maxRecords)){
+					end = (responseobj.getPackagingList().size())+(Integer.parseInt(index));
+				}else{
+					end = (Integer.parseInt(index)+end);
+				}
+				modelAndViewObj.addObject("totalRecords", (responseobj.getPackagingList().get(0).getTotalRecords()));
+				modelAndViewObj.addObject("index", (Integer.parseInt(index)+start));
+				modelAndViewObj.addObject("totalValue", end);
+				modelAndViewObj.addObject("packageList", responseobj.getPackagingList());
+				
+			}
+			}else{
+				 resultStr = Response.getResponseMessage(resultStr);
+				 
+			}
+		
+			modelAndViewObj.addObject("zoneList", zoneList);
+			modelAndViewObj.addObject("departmentList", departmentList);
+			modelAndViewObj.addObject("categoryList", categoryList);
+			modelAndViewObj.addObject("maxRecords",Integer.parseInt(maxRecords));
+
+			modelAndViewObj.addObject("subCategoryDetailsList", subCategoryDetailsList);
+			modelAndViewObj.addObject("brandsList", brandsList);
+		
+		modelAndViewObj.setViewName("Inventory Manager/warehouse/packagingandprocessing/packagingandprocessingsummary");
+		*/
+	}catch(Exception exception){
+		exception.printStackTrace();
+		modelAndViewObj.setViewName("Inventory Manager/warehouse/packagingandprocessing/packagingandprocessingsummary");
+	}
+	
+	return modelAndViewObj;
+}
 
 
 
 
 
 
-@RequestMapping("/viewEditPack")
+/*@RequestMapping("/viewEditPack")
 public ModelAndView viewEditPack(@RequestParam("packageId")String packageId,@RequestParam("operation")String operation,HttpServletRequest request,HttpServletResponse response){
 	String customerIdStr=null,emailIdStr=null;
 	String resultStr = "";
@@ -17172,6 +17616,94 @@ public ModelAndView viewEditPack(@RequestParam("packageId")String packageId,@Req
 	
 	return modelAndViewObj;
 }
+*/
+
+
+@RequestMapping("/viewEditPack")
+public ModelAndView viewEditPack(@RequestParam("packageId")String packageId,@RequestParam("operation")String operation,HttpServletRequest request,HttpServletResponse response){
+	String customerIdStr=null,emailIdStr=null;
+	String resultStr = "";
+	com.tlabs.posweb.beans.Response responseobj = null;
+	//List<String> locationsList=null;
+	ArrayList<LocationBean> locationBeansList = new ArrayList<LocationBean>();
+	modelAndViewObj = new ModelAndView();
+	try {
+		
+		
+			customerIdStr = (String)request.getSession().getAttribute("customerId");
+			emailIdStr  = (String)request.getSession().getAttribute("emailId");
+			List<ZoneMaster> zoneList =(List<ZoneMaster>)request.getSession().getAttribute("zoneList");
+			if(zoneList==null || zoneList.size()==0 || zoneList.isEmpty()){
+				 zoneList = genericMasterServiceObj.getZones(null, customerIdStr, emailIdStr,"","","");
+				request.getSession().setAttribute("zoneList", zoneList);
+			}
+		
+		
+				locationBeansList = genericMasterServiceObj.getLocationDetails("",customerIdStr, emailIdStr,"-1","Warehouse",false,false,true);
+				
+			
+			
+			
+			
+			 resultStr = skuServiceObj.getpackage("","","","","","",customerIdStr,emailIdStr,"","","","","","","",false,"","","",packageId,"");
+
+			
+			 responseobj = gson.fromJson(resultStr, com.tlabs.posweb.beans.Response.class);
+			 Set<String> SKUids = null;
+			 List<String> listSKUs =   new ArrayList<String>(); ;
+			 
+			 for(int i = 0; i< responseobj.getPackagingList().get(0).getPackagingDetails().size();i++){
+				 
+				  
+				 listSKUs.add(responseobj.getPackagingList().get(0).getPackagingDetails().get(i).getChildSkuId());  
+			       
+			        
+			 }
+			 SKUids = new LinkedHashSet<String>(listSKUs);  
+			// ////System.out.println(SKUids);
+			 	/*List <String> previousStates = new ArrayList<>();
+			    previousStates.add("Submitted");
+				
+				
+				List <String> nextWorkFlowStates =new ArrayList<>();
+				nextWorkFlowStates.add("Confirm");
+				nextWorkFlowStates.add("Cancel");*/
+				
+				/*modelAndViewObj.addObject("previousStates", previousStates);
+				modelAndViewObj.addObject("nextWorkFlowStates", nextWorkFlowStates);*/
+				modelAndViewObj.addObject("previousStates", responseobj.getPackagingList().get(0).getPreviousWorkFlowStates());
+				modelAndViewObj.addObject("nextWorkFlowStates", responseobj.getPackagingList().get(0).getNextWorkFlowStates());
+
+			 
+			 modelAndViewObj.addObject("locationsList", locationBeansList);
+			 modelAndViewObj.addObject("zoneList", zoneList);
+			 modelAndViewObj.addObject("SKUids", SKUids);
+
+			 modelAndViewObj.addObject("packages", responseobj.getPackagingList().get(0));
+			 modelAndViewObj.addObject("packagesList", responseobj.getPackagingList().get(0).getPackagingDetails());
+			 modelAndViewObj.addObject("packagesLists", gson.toJson(responseobj.getPackagingList().get(0).getPackagingDetails()));
+			 
+			 //////System.out.println(gson.toJson(responseobj.getPackagingList().get(0).getPackagingDetails()));
+			// modelAndViewObj.addObject("packagesLists", responseobj.getPackagingList().get(0).getPackagingDetails().toString());
+
+
+				
+		
+		
+		if(operation.equals("view"))
+			modelAndViewObj.setViewName("Inventory Manager/warehouse/packagingandprocessing/viewpackage");
+		else
+			modelAndViewObj.setViewName("Inventory Manager/warehouse/packagingandprocessing/editpackage");
+			
+		
+	}catch(Exception exception){
+		exception.printStackTrace();
+		modelAndViewObj.setViewName("Inventory Manager/warehouse/packagingandprocessing/packagingandprocessingsummary");
+	}
+	
+	return modelAndViewObj;
+}
+
 
 
 @RequestMapping(value = "/warehouseStorageMaster")

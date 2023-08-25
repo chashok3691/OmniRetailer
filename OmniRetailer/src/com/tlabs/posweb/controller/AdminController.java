@@ -558,7 +558,11 @@ public class AdminController {
 
 			modelAndViewObj.addObject("countertax",counter.getTaxCode());
 	    	modelAndViewObj.addObject("taxDetails",taxDetails);
-		 modelAndViewObj.addObject("menuDetailsList", menuDetailsList);
+			
+			
+			
+			
+			 modelAndViewObj.addObject("menuDetailsList", menuDetailsList);
 			if(!str_response.equals(AppProperties.getAppMessageByProperty("COUNTER_CREATE_SUCCESS").trim()))
 				modelAndViewObj.addObject("err", str_response);
 			else
