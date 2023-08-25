@@ -26,6 +26,7 @@
 	<script type= "text/javascript" src = "${pageContext.request.contextPath}/js/controller.js"></script>
 	<script type= "text/javascript" src = "${pageContext.request.contextPath}/js/countriesAndStates.js"></script>
 	<script type= "text/javascript" src = "${pageContext.request.contextPath}/js/crm/customerNotification.js"></script>
+
 <style type="text/css">
 	
 .calendar_icon{
@@ -146,6 +147,7 @@ $(document).ready(function(){
 						<!--  <select id ="city" class="form-control" >
 							<option >Select State</option>
 						</select> -->
+        	      <span id="cityError" style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
         	 	</div>
         	 	<div class="form-group col-lg-6">
         	 		<label><spring:message code="gender.label" /></label>
@@ -264,14 +266,17 @@ $(document).ready(function(){
              		<div class="form-group col-lg-7 greetingSMS"  id="birthDaySms">
 	           			<label><spring:message code="birth.day.label" /></label>
 			            <textarea rows="1" id="birthdayMsg" style="resize: none;" class="form-control" placeholder="<spring:message code="enter.festivals.label" />" ></textarea>
+             		    <span id="birthdayMsgError" style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
              		</div>
              	   <div class="form-group col-lg-2 greetingSub" style="display: none;">
              	   		<label><spring:message code="birth.day.label" /></label>
              	   		<textarea rows="1" id="birthdayMailSub" style="resize: none;" class="form-control" placeholder="<spring:message code="enter.sub.label" />" ></textarea>
+             	     <span id="birthdayMailSubError" style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
              	   </div>
              	   <div class="form-group col-lg-5 greetingMail" style="display: none;">
              	   		<label> </label>
              	   		<textarea rows="1" id="birthdayMailMsg" style="resize: none;" class="form-control" placeholder="<spring:message code="enter.festivals.label" />" ></textarea>
+             	       <span id="birthdayMailMsgError" style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
              	   </div>
              	</div>
              	<div class="row">
@@ -283,14 +288,18 @@ $(document).ready(function(){
              		<div class="form-group col-lg-7 greetingSMS">
              			<label><spring:message code="marriage.day.label" /></label>
 		                <textarea rows="1" id="marriagedayMsg" style="resize: none;" class="form-control" placeholder="<spring:message code="enter.festivals.label" />" ></textarea>
+             		    <span id="marriagedayMsgError" style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
              		</div>
              		 <div class="form-group col-lg-2 greetingSub" style="display: none;">
              	   		<label><spring:message code="marriage.day.label" /></label>
              	   		<textarea rows="1" id="marriagedayMailSub" style="resize: none;" class="form-control" placeholder="<spring:message code="enter.sub.label" />" ></textarea>
+             	   <span id="marriagedayMailSubError" style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
              	   </div>
              	   <div class="form-group col-lg-5 greetingMail" style="display: none;">
              	   		<label> </label>
              	   		<textarea rows="1" id="marriagedayMailMsg" style="resize: none;" class="form-control" placeholder="<spring:message code="enter.festivals.label" />" ></textarea>
+             	     <span id="marriagedayMailMsgError" style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
+             	  
              	   </div>
              	</div>
              	<div class="row">
@@ -305,14 +314,17 @@ $(document).ready(function(){
              		<div class="form-group col-lg-7 greetingSMS" style="margin-top: 5px;">
              			<label><spring:message code="festivals.label" /></label>
 		                <textarea rows="1" id="festivalMsg" style="resize: none;" class="form-control" placeholder="<spring:message code="enter.festivals.label" />" ></textarea>
+             		    <span id="festivalMsgError" style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
              		</div>
              		<div class="form-group col-lg-2 greetingSub" style="display: none;margin-top: 5px;">
              	   		<label><spring:message code="festivals.label" /></label>
              	   		<textarea rows="1" id="festivalMailSub" style="resize: none;" class="form-control" placeholder="<spring:message code="enter.sub.label" />" ></textarea>
+             	        <span id="festivalMailSubError" style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
              	   </div>
              	   <div class="form-group col-lg-5 greetingMail" style="display: none;margin-top: 5px;">
 						<label> </label>
              	   		<textarea rows="1" id="festivalMailMsg" style="resize: none;" class="form-control" placeholder="<spring:message code="enter.festivals.label" />" ></textarea>
+             	       <span id="festivalMailMsgError" style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
              	   </div>
              	</div>
              	<div class="row">
@@ -377,6 +389,7 @@ $(document).ready(function(){
         					<div class="col-lg-2">
         						 <label><spring:message code="deal_end_date.label" /></label>
                                  <input class="form-control calendar_icon" readonly="readonly" style="background-color: white;" id="dealsEndDate" size="20" type="text" onfocus="callCalender('dealsEndDate')" onclick="callCalender('dealsEndDate')" placeholder="DD/MM/YYYY"/>
+        					<span id="dealsEndDateError" style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
         					</div>  
         					<div class="col-lg-3">
 	        					<div class="row">
@@ -412,13 +425,16 @@ $(document).ready(function(){
 		                
 		                <div class="campaignSMS">
 			                <textarea rows="2" id="dealsMsg" style="resize: none;margin-top: 5px;" class="form-control" placeholder="<spring:message code="enter.festivals.label" />" ></textarea>
+	             		<span id="dealsMsgError" style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
 	             		</div>
 	             		<div class="row">
 	             		   <div class="col-lg-4 campaignSub" style="display: none;">
 		             	   		<textarea rows="2" id="dealsMailSub" style="resize: none;margin-top: 5px;" class="form-control" placeholder="<spring:message code="enter.sub.label" />" ></textarea>
+		             	       <span id="dealsMailSubError" style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
 		             	   </div>
 		             	   <div class="col-lg-8 campaignMail" style="display: none;">
 		             	   		<textarea rows="2" id="dealsMailMsg" style="resize: none;margin-top: 5px;" class="form-control" placeholder="<spring:message code="enter.festivals.label" />" ></textarea>
+		             	    <span id="dealsMailMsgError" style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
 		             	   </div>
 	             		</div>
 		                
@@ -435,6 +451,7 @@ $(document).ready(function(){
         					<div class="col-lg-2">
         						 <label><spring:message code="deal_end_date.label" /></label>
                                  <input class="form-control calendar_icon" readonly="readonly" style="background-color: white;" id="offersEndDate" size="20" type="text" onfocus="callCalender('offersEndDate')" onclick="callCalender('offersEndDate')" placeholder="DD/MM/YYYY"/>
+        					     <span id="offersEndDateError" style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
         					</div>  
         					<div class="col-lg-3">
 	        					<div class="row">
@@ -470,16 +487,18 @@ $(document).ready(function(){
 		                
 		                <div class="campaignSMS">
 			                <textarea rows="2" id="offersMsg" style="resize: none;margin-top: 5px;" class="form-control" placeholder="<spring:message code="enter.festivals.label" />" ></textarea>
+	             		<span id="offersMsgError" style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
 	             		</div>
 	             		<div class="row">
 	             		   <div class="col-lg-4 campaignSub" style="display: none;">
 		             	   		<textarea rows="2" id="offersMailSub" style="resize: none;margin-top: 5px;" class="form-control" placeholder="<spring:message code="enter.sub.label" />" ></textarea>
+		             	     <span id="offersMailSubError" style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
 		             	   </div>
 		             	   <div class="col-lg-8 campaignMail" style="display: none;">
 		             	   		<textarea rows="2" id="offersMailMsg" style="resize: none;margin-top: 5px;" class="form-control" placeholder="<spring:message code="enter.festivals.label" />" ></textarea>
+		             	   <span id="offersMailMsgError" style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
 		             	   </div>
 	             		</div>
-	             		
              		</div>
              	</div>
              	<div class="row">
@@ -494,6 +513,7 @@ $(document).ready(function(){
         					<div class="col-lg-2">
         						 <label><spring:message code="deal_end_date.label" /></label>
                                  <input class="form-control calendar_icon" readonly="readonly" style="background-color: white;" id="periodicEndDate" size="20" type="text" onfocus="callCalender('periodicEndDate')" onclick="callCalender('periodicEndDate')" placeholder="DD/MM/YYYY"/>
+        					     <span id="periodicEndDateError" style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
         					</div>  
         					<div class="col-lg-3">
 	        					<div class="row">
@@ -520,13 +540,16 @@ $(document).ready(function(){
 		               
 		               <div class="campaignSMS">
 			                <textarea rows="2" id="periodicMsg" style="resize: none;margin-top: 5px;" class="form-control" placeholder="<spring:message code="enter.festivals.label" />" ></textarea>
-	             		</div>
+	             		    <span id="periodicMsgError" style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
+	             	  </div>
 	             		<div class="row">
 	             		   <div class="col-lg-4 campaignSub" style="display: none;">
 		             	   		<textarea rows="2" id="periodicMailSub" style="resize: none;margin-top: 5px;" class="form-control" placeholder="<spring:message code="enter.sub.label" />" ></textarea>
+		             	       <span id="periodicMailSubError" style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
 		             	   </div>
 		             	   <div class="col-lg-8 campaignMail" style="display: none;">
 		             	   		<textarea rows="2" id="periodicMailMsg" style="resize: none;margin-top: 5px;" class="form-control" placeholder="<spring:message code="enter.festivals.label" />" ></textarea>
+		             	        <span id="periodicMailMsgError" style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
 		             	   </div>
 	             		</div>
 	             		
@@ -605,13 +628,16 @@ $(document).ready(function(){
     	         		</div>
 		                <div class="arrivalSMS">
 			                <textarea rows="2" id="arrivalMsg" style="resize: none;margin-top: 5px;" class="form-control" placeholder="<spring:message code="enter.festivals.label" />" ></textarea>
+	             		    <span id="arrivalMsgError" style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
 	             		</div>
 	             		<div class="row">
 	             		   <div class="col-lg-4 arrivalSub" style="display: none;">
 		             	   		<textarea rows="2" id="arrivalMailSub" style="resize: none;margin-top: 5px;" class="form-control" placeholder="<spring:message code="enter.sub.label" />" ></textarea>
+		             	        <span id="arrivalMailSubError" style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
 		             	   </div>
 		             	   <div class="col-lg-8 arrivalMail" style="display: none;">
 		             	   		<textarea rows="2" id="arrivalMailMsg" style="resize: none;margin-top: 5px;" class="form-control" placeholder="<spring:message code="enter.festivals.label" />" ></textarea>
+		             	        <span id="arrivalMailMsgError" style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
 		             	   </div>
 	             		</div>
 		                
@@ -689,13 +715,16 @@ $(document).ready(function(){
     	         		</div>
 		                <div class="outletSMS">
 			                <textarea rows="2" id="outletMsg" style="resize: none;margin-top: 5px;" class="form-control" placeholder="<spring:message code="enter.festivals.label" />" ></textarea>
+	             		     <span id="outletMsgError" style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
 	             		</div>
 	             		<div class="row">
 	             		   <div class="col-lg-4 outletSub" style="display: none;">
 		             	   		<textarea rows="2" id="outletMailSub" style="resize: none;margin-top: 5px;" class="form-control" placeholder="<spring:message code="enter.sub.label" />" ></textarea>
+		             	 <span id="outletMailSubError" style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
 		             	   </div>
 		             	   <div class="col-lg-8 outletMail" style="display: none;">
 		             	   		<textarea rows="2" id="outletMailMsg" style="resize: none;margin-top: 5px;" class="form-control" placeholder="<spring:message code="enter.festivals.label" />" ></textarea>
+		             	  <span id="outletMailMsgError" style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
 		             	   </div>
 	             		</div>
              		</div>

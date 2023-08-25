@@ -45,17 +45,15 @@ public class CustomerService {
 	@Autowired
 	SessionScope sessionScope;
 	//private static Logger log = Logger.getLogger(CustomerService.class);
-	
 	public String createCustomer(Customer customerObj){
 		String resultStr = null;
 		try {
 			//CustomerProxy customerProxtObj = new CustomerProxy();
 		   customerObj.setRequestHeader(RequestHeaderUtil.getRequestHeader(sessionScope));
-			if(customerObj.getAddressList() != null)
+		    if(customerObj.getAddressList() != null)
 				for(CustomerAddress customerAddressObj : customerObj.getAddressList())
 					if(customerAddressObj.isEmpty())
 						customerObj.getAddressList().remove(customerAddressObj);
-			
 			
 /*			// log.info("Request String:::::::"+gson.toJson(customerObj));
 //			//////////////System.out.println("Request String:::::::"+gson.toJson(customerObj));
@@ -63,15 +61,13 @@ public class CustomerService {
 			// log.info("Response String:::::::"+resultStr);
 //			//////////////System.out.println("Response String:::::::"+resultStr);
 */			
-			
-			
-			////////System.out.println("Request String:::::::"+gson.toJson(customerObj));
+			System.out.println("Request String:::::::"+gson.toJson(customerObj));
 			
 			/**	added by - vasudev   purpose - using rest service call instead of soap call*/
 			RestfulServiceConnection restfulServiceConnectionObj = new RestfulServiceConnection();
 			resultStr = restfulServiceConnectionObj.getResponse(AppProperties.getRESTFulCloudServiceURL("create_customer"), gson.toJson(customerObj),"POST");
 
-			////////System.out.println(resultStr);
+			System.out.println("Response String:::::::"+resultStr);
 			String responseCode = Response.getResponseCode(resultStr);
 			if(responseCode.equals(AppProperties.getAppMessageByProperty("RESPONSE_SUCCESS_CODE").trim())){
 				resultStr = AppProperties.getAppMessageByProperty("CUSTOMER_CREATE_SUCCESS").trim();
@@ -98,10 +94,7 @@ public class CustomerService {
 		return resultStr;
 	}
 	
-	
-	
-	
-	
+
 	public String createCustomerReferral(CustomerReferralMaster customerReferralMaster,String customerId,String emailId){
 		String result = null;
 		try {
@@ -118,11 +111,11 @@ public class CustomerService {
 			customerReferralMaster.setStates("");
 			customerReferralMaster.setLocations("");
 			
-			////////System.out.println("create_Customer_Referral request::::::::::::"+gson.toJson(customerReferralMaster));
+		//////	System.out.println("create_Customer_Referral request::::::::::::"+gson.toJson(customerReferralMaster));
 //			result = utitlitymaster.createProductCategory(gson.toJson(customerReferralMaster));
 			result = restfulServiceConnectionObj.getResponse(AppProperties.getRESTFulCloudServiceURL("create_Customer_Referral"), gson.toJson(customerReferralMaster),"POST");
 			
-			////////System.out.println("Response String:::::::::::"+result);
+		///////	System.out.println("create_Customer_Referral Response String:::::::::::"+result);
 			String responseCode = Response.getResponseCode(result);
 			if(responseCode.equals(AppProperties.getAppMessageByProperty("RESPONSE_SUCCESS_CODE").trim())){
 				result = AppProperties.getAppMessageByProperty("REFERRAL_CREATED_SUCCESS").trim();
@@ -442,13 +435,11 @@ public class CustomerService {
 			customerObj.setMobileNumber(phone);
 			customerObj.setRequestHeader(RequestHeaderUtil.getRequestHeader(sessionScope));
 			
-			
 			/*// log.info("Request String:::::::"+gson.toJson(customerObj));
 			resultStr = customerProxtObj.getCustomerDetails(gson.toJson(customerObj));
 			// log.info("Response String:::::::"+resultStr);
 //			//
 */			
-			
 			/**	added by - vasudev   purpose - using rest service call instead of soap call*/
 			RestfulServiceConnection restfulServiceConnectionObj = new RestfulServiceConnection();
 			resultStr = restfulServiceConnectionObj.getResponse(AppProperties.getRESTFulCloudServiceURL("Customer_Service_customer_details"),gson.toJson(customerObj), "POST");
@@ -575,7 +566,6 @@ public class CustomerService {
 			{
 				RestfulServiceConnection restfulServiceConnectionObj = new RestfulServiceConnection(); 
 				resultStr = restfulServiceConnectionObj.getResponseFromPost(AppProperties.getRESTFulCloudServiceURL("create_customer_notification"), gson.toJson(filterInputObj));
-		
 			}
 			else
 			{
@@ -990,7 +980,7 @@ public class CustomerService {
 			customersList.get(0).setTotalRecords(customerReferralsList.getTotalRecords());
 			if(customerReferralsList.getFilePath()!=null)
 				customersList.get(0).setFilePath(customerReferralsList.getFilePath());
-				}
+			}
 				}
 		} catch (NoSuchElementException nse) {
 			nse.printStackTrace();

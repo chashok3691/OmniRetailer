@@ -1421,6 +1421,22 @@ function appendProducts(productsList,searchCategory){
 		$("#Error").html("");
 		debugger;
 		
+		if(parseInt($("#city").val().length)>20){
+			 $("#city").focus();
+				$("#cityError").html("City Name can't exceeds 20 Characters");
+				return;
+		}else {
+	   	 $("#cityError").html(" ");
+	   }
+		
+		var noOfDays = daydiff(parseDate($('#fromDate').val()), parseDate($('#endDate').val()));
+		 if(noOfDays < 0){
+			 $("#endDateError").html("End Date can't be less than Start Date");
+			 return;
+		 }else{
+	  	   	 $("#endDateError").html(" ");
+	  	 }
+		 
 		if($("#dealName").val() == null || $("#dealName").val() ==""){
 			$("#dealNameErr").html("Enter Deal Name");
 			$("#dealName").focus();
@@ -1434,6 +1450,30 @@ function appendProducts(productsList,searchCategory){
 			$("#dealName").focus();
 			return;
 		}
+		
+		if(parseInt($("#dealName").val().length)>255){
+			 $("#dealName").focus();
+				$("#dealNameErr").html("Deal Name can't exceeds 255 Characters");
+				return;
+		}else {
+	   	 $("#dealNameErr").html(" ");
+	   }
+		
+		var noOfDays = daydiff(parseDate($('#dealStartDate').val()), parseDate($('#dealEndDate').val()));
+		 if(noOfDays < 0){
+			 $("#dealEndDateError").html("Deal End Date can't be less than Start Date");
+			 return;
+		 }else{
+	  	   	 $("#dealEndDateError").html(" ");
+	  	 }
+		 if(parseInt($("#dealDesc").val().length)>250){
+			 $("#dealDesc").focus();
+				$("#dealDescError").html("Deal Description can't exceeds 250 Characters");
+				return;
+		}else {
+	   	 $("#dealDescError").html(" ");
+	   }
+		
 		var location = $("#dealLocation").val();
 		if(location == null || location ==""){
 			$("#Error").html("select one location");
@@ -1451,7 +1491,8 @@ function appendProducts(productsList,searchCategory){
 			$("#dealEndDateError").html("End Date Required");
 			return;
 		}
-		var dateTime = getCurrentDate();
+		
+		  var dateTime = getCurrentDate();
 		  var date = dateTime.split(' ');
 		  date = date[0].split('/');
 		  var formatedDate = date[2]+"/"+date[0]+"/"+date[1];
@@ -1473,6 +1514,38 @@ function appendProducts(productsList,searchCategory){
 			 focusDiv('Error');
 			 return;
 		 }
+		 
+		 if(parseInt($("#dealImageText").val().length)>250){
+			 $("#dealImageText").focus();
+				$("#dealImageTextErr").html("Deal Tag Line can't exceeds 250 Characters");
+				return;
+		}else {
+	   	 $("#dealImageTextErr").html(" ");
+	   }
+		 
+		 if(parseInt($("#saleText").val().length)>250){
+			 $("#saleText").focus();
+				$("#saleTextErr").html("Deal Sale Text can't exceeds 250 Characters");
+				return;
+		}else {
+	   	 $("#saleTextErr").html(" ");
+	   }
+		 if(parseInt($("#dealText").val().length)>250){
+			 $("#dealText").focus();
+				$("#dealTextErr").html("Deal Text can't exceeds 250 Characters");
+				return;
+		}else {
+	   	 $("#dealTextErr").html(" ");
+	   }
+		 
+		 if(parseInt($("#closedReason").val().length)>250){
+			 $("#closedReason").focus();
+				$("#closedReasonError").html("Closed Reason can't exceeds 250 Characters");
+				return;
+		}else {
+	   	 $("#closedReasonError").html(" ");
+	   }
+		 
 			var finalObj = {};
 			finalObj.dealName = $("#dealName").val();
 			finalObj.dealDescription = $("#dealDesc").val();
@@ -1643,8 +1716,6 @@ function appendProducts(productsList,searchCategory){
 						finalObj.brand = $("#sale_brand").val();
 						
 						}
-					
-						
 				}
 
 				if($("#dealcategory").val() == "item_specific"){
@@ -1670,8 +1741,6 @@ function appendProducts(productsList,searchCategory){
 						salePluCode.push($(this).val());
 					});
 					//finalObj.sellPluCode = salePluCode.toString();
-					
-					
 					if(salePluCode.length>0)
 						{
 						finalObj.repeat = $("#isRepeatItem").prop("checked");
@@ -1768,8 +1837,7 @@ function appendProducts(productsList,searchCategory){
 					focusDiv('Error');
 					return;
 				}
-				
-					rangeitems = {
+				rangeitems = {
 							"range" : "",
 							"minimumPurchaseQuantity" : "1",
 							"minimumPurchaseamount" : "0",
@@ -1856,10 +1924,7 @@ function appendProducts(productsList,searchCategory){
 						 focusDiv('Error');
 						return;
 						}
-					
-					
-					
-					var rewardTyp=$("#offerRewardCriteria").val();
+				var rewardTyp=$("#offerRewardCriteria").val();
 					
 					if(rewardTyp=="Quantity Based")
 					{
@@ -2051,9 +2116,6 @@ function appendProducts(productsList,searchCategory){
 						 focusDiv('Error');
 						  return;
 						}
-					
-					
-					
 					var rewardTyp=$("#offerRewardCriteriaGroup").val();
 					finalObj.rewardType = rewardTyp;
 					if(rewardTyp=="Quantity Based")
@@ -2328,7 +2390,6 @@ if(totalranges.range.length==0)
 					 focusDiv('Error');
 					return;
 				}
-			 
 				}*/
 			
 			finalObj.dealRanges = JSON.stringify(totalranges);
@@ -2753,6 +2814,14 @@ if(totalranges.range.length==0)
 					return;
 				}
 				
+				if(parseInt($("#city").val().length)>20){
+					 $("#city").focus();
+						$("#cityError").html("City Name can't exceeds 20 Characters");
+						return;
+				}else {
+			   	 $("#cityError").html(" ");
+			    }
+				
 				var str = $("#editdealName").val();
 				if(/^[a-zA-Z0-9#_ ]*$/.test(str) == false) {
 				   // alert('Your search string contains illegal characters.');
@@ -2760,6 +2829,54 @@ if(totalranges.range.length==0)
 					$("#editdealName").focus();
 					return;
 				}
+				
+				if(parseInt($("#editdealName").val().length)>255){
+					 $("#editdealName").focus();
+						$("#dealNameErr").html("Deal Name can't exceeds 255 Characters");
+						return;
+				}else {
+			   	 $("#dealNameErr").html(" ");
+			   }
+				
+				 if(parseInt($("#dealDesc").val().length)>250){
+					 $("#dealDesc").focus();
+						$("#dealDescError").html("Deal Description can't exceeds 250 Characters");
+						return;
+				}else {
+			   	 $("#dealDescError").html(" ");
+			   }
+				 
+				 if(parseInt($("#dealImageText").val().length)>250){
+					 $("#dealImageText").focus();
+						$("#dealImageTextErr").html("Deal Tag Line can't exceeds 250 Characters");
+						return;
+				}else {
+			   	 $("#dealImageTextErr").html(" ");
+			   }
+				 
+				 if(parseInt($("#saleText").val().length)>250){
+					 $("#saleText").focus();
+						$("#saleTextErr").html("Deal Sale Text can't exceeds 250 Characters");
+						return;
+				}else {
+			   	 $("#saleTextErr").html(" ");
+			   }
+				 if(parseInt($("#dealText").val().length)>250){
+					 $("#dealText").focus();
+						$("#dealTextErr").html("Deal Text can't exceeds 250 Characters");
+						return;
+				}else {
+			   	 $("#dealTextErr").html(" ");
+			   }
+				 
+				 if(parseInt($("#closedReason").val().length)>250){
+					 $("#closedReason").focus();
+						$("#closedReasonError").html("Closed Reason can't exceeds 250 Characters");
+						return;
+				}else {
+			   	 $("#closedReasonError").html(" ");
+			   }
+				 
 				
 				var location = $("#editdealLocation").val();
 				if(location == null || location ==""){
@@ -3697,7 +3814,7 @@ if(totalranges.range.length==0)
 			 		if($("#from").val() != "" && $("#to").val() != ""){
 			 			var noOfDays = daydiff(parseDate($('#from').val()), parseDate($('#to').val()));
 						 if(noOfDays < 0){
-							 alert("Start Date can't be less than End Date");
+							 alert("End Date can't be less than Start Date");
 							 return;
 						 }
 						 startDate = $("#from").val();

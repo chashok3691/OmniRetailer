@@ -289,11 +289,6 @@ $("#groupId").on('input',function(e){
 });
 
 
-
-
-
-
-
 /**
  * 
  * @author Akhil M
@@ -317,8 +312,6 @@ function validateCustomerGroupMasterForm(operation, index){
 		var location = $("#location").val();
 	    var file = $("#fileUploadCSV").val();  
 
-    
-
 		/*	$(".Error").html("");
 			if(customerFiles.length <= 0)
 				{
@@ -331,34 +324,57 @@ function validateCustomerGroupMasterForm(operation, index){
 		if(file != undefined)
 	     filename = file.replace(/^.*[\\\/]/, '');
 		
-		
-		
 	    if($("#groupId").val().trim() == ""){
 	    	$("#groupIdError").html("Enter Group Name");
 	    	$("#groupId").focus();
 	    	return;
 	    }
-	
-	
+	    
+	    if(parseInt($("#groupId").val().length)>20){
+	 		 $("#groupId").focus();
+	 			$("#groupIdError").html("Group ID can't exceeds 20 Character");
+	 			return;
+	 	}else{
+	 	 $("#groupIdError").html(" ");
+	   }
+	    
+	    if(parseInt($("#groupCategory").val().length)>50){
+	 		 $("#groupCategory").focus();
+	 			$("#groupCategoryError").html("Group Category can't exceeds 50 Character");
+	 			return;
+	 	}else{
+	 	 $("#groupCategoryError").html(" ");
+	   }
+	    
+	    if(parseInt($("#groupDescription").val().length)>150){
+	 		 $("#groupDescription").focus();
+	 			$("#groupDescriptionError").html("Group Description can't exceeds 150 Character");
+	 			return;
+	 	}else{
+	 	 $("#groupIdError").html(" ");
+	   }
+	    
 	 if(start_date==""){
-		$("#groupIdError").html("Please enter Start Date");
+		$("#endDateError").html("Please enter Start Date");
 	$("#startDate").focus();
 	return;
      }
      if(end_date==""){
-	$("#groupIdError").html("Please enter End Date");
+	$("#endDateError").html("Please enter End Date");
 	$("#endDate").focus();
 	return;
      }
+     
+     var noOfDays = daydiff(parseDate($('#startDate').val()), parseDate($('#endDate').val()));
+	 if(noOfDays < 0){
+		 $("#endDateError").html("End Date can't be less than Start Date");
+		 return;
+	 }else{
+  	   	 $("#endDateError").html(" ");
+  	 }
+     
 	var customerGroupMaster = {}, groupChilds = [];
-    
-	
-	
 	customerGroupMaster.filePath= filename;
-	
-	
-	
-	
 	customerGroupMaster.group_id  = group_id;
 	customerGroupMaster.group_category = group_category;
 	customerGroupMaster.zone = zone;
@@ -368,12 +384,7 @@ function validateCustomerGroupMasterForm(operation, index){
 	customerGroupMaster.endDate = end_date;
 	customerGroupMaster.location = location;
 	
-	
-		 var len = parseInt($("#customersList tr").length)-1;
-		
-		
-  	
-  	
+    var len = parseInt($("#customersList tr").length)-1;
   	var maxRecords=10;
   	if($("#maxRecords").length > 0)
   		maxRecords = $("#maxRecords").val();
@@ -388,8 +399,6 @@ function validateCustomerGroupMasterForm(operation, index){
 	 	serialNo=idAttr;
 	 /*	if(("#slno"+idAttr).length > 0)
 	   		serialNo = $("#sNo"+idAttr).val(); */
-		
-		 
 		var obj = 
 		{        
 				mobile_no:$("#mobile"+idAttr).text(),
@@ -402,9 +411,7 @@ function validateCustomerGroupMasterForm(operation, index){
 				//itemStatus: $("#status"+idAttr).text()
 		};
 		groupChilds.push(obj);
-
 	}
- 
   	
  customerGroupMaster.customerGroupItems = groupChilds;
 	var contextPath = $("#contextPath").val();
@@ -438,7 +445,6 @@ function validateCustomerGroupMasterForm(operation, index){
 		   $("#mainDiv").removeClass('disabled');
 		}
 		});
-
 } 
 
 

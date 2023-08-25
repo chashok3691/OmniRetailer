@@ -943,12 +943,21 @@ function addItem(sku) {
 }
 
 function validateMenuCategory(operation) {
-	debugger;
+	
 	var menu_name = $("#menu_name").val();
 	if (menu_name == "") {
 		$("#menuNameError").html("Menu Name is required");
-		return false;
+		return;
 	}
+	debugger;
+	if(parseInt($("#menu_name").val().length)>100){
+		 $("#menu_name").focus();
+		 $("#menuNameError").html("Menu Name can't exceeds 100 Character");
+		 return;
+	} else{
+	$("#menuNameError").html("");
+   }
+	
 	/*var status = "true";
 	if ($("#status").length) {
 		status = $("#status").val();
@@ -970,7 +979,31 @@ function validateMenuCategory(operation) {
 	if(len == 0){
 		alert("Add atleast one Category");
 		return;
-	}
+	} 
+	
+	if(parseInt($("#category_name1").val().length)>100){
+		 $("#category_name1").focus();
+		 $("#Error").html("Category Name can't exceeds 100 Character");
+		 return;
+	} else{
+	$("#Error").html("");
+}
+	if(parseInt($("#category_desc1").val().length)>200){
+		 $("#category_desc1").focus();
+		 $("#Error").html("Category Description can't exceeds 200 Character");
+		 return;
+	} else{
+	$("#Error").html("");
+}
+
+	if(parseInt($("#remarks").val().length)>400){
+		 $("#remarks").focus();
+		 $("#Error").html("Remark can't exceeds 400 Character");
+		 return;
+	} else{
+	$("#Error").html("");
+   }
+	
 	var finalObj = {}, menu_category_details = [], menu_item_details = [];
 	/*if (operation != "new") {
 		finalObj.status = status;
@@ -1017,11 +1050,8 @@ function validateMenuCategory(operation) {
 			$("#category_name" + idAttr).css("border-color", "red");
 			return false;
 		}
-				
-
 		
 		categoryName[i] = $("#category_name" + idAttr).val().toLowerCase();
-	
 		var del=null;
 		if($("#category_icon1_refId" + idAttr).val()== ""){
 			del=false;

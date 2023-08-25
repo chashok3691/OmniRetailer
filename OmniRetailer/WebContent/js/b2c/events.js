@@ -171,6 +171,24 @@ function validateEventForm(operation){
 		focusDiv('eventTitleError');
 		return;
 	}
+	
+	if(parseInt($("#eventTitle").val().length)>100){
+		  $("#eventTitle").focus();
+		  $("#eventTitleError").html("Title can't exceeds 100 Characters");
+			return;
+	} else{
+	 $("#eventTitleError").html(" ");
+  }
+	
+	if(parseInt($("#approvedBy").val().length)>30){
+		  $("#approvedBy").focus();
+		  $("#approvedByError").html("Approved By can't exceeds 30 Characters");
+			return;
+	} else{
+	      $("#approvedByError").html(" ");
+    }
+	
+	
 	var re = /^[0-9/]+$/;
 	 if($("#startDate").val().trim() == ""){
 		 $("#startDate").focus();
@@ -197,6 +215,15 @@ function validateEventForm(operation){
 			 $("#endDateError").html("End Date can't be less than Start Date");
 			 return;
 		 }
+		 
+		 if(parseInt($("#description").val().length)>250){
+			  $("#description").focus();
+			  $("#eventdescriptionError").html("Description can't exceeds 250 Characters");
+				return;
+		} else{
+		      $("#eventdescriptionError").html(" ");
+	    }
+		 
 	
 	finalObj.eventId = $("#eventId").val();
 	finalObj.eventTitle = $("#eventTitle").val();

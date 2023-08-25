@@ -196,6 +196,7 @@ function isNumberKey(evt){
          <label><spring:message code="priceRangeMaster.priceRangeRef.label"/></label>
         
           <input type="text"  onblur="criteria(this)" class="form-control" id="priceRangeRef" value="${priceRangeResponse.priceRangeId}" readonly="readonly">
+           <span id="priceRangeRefError" style="color: red;;font-size: 2;font-weight: bold;"></span> 
       </div>
       
       <div class="col-lg-12 col-sm-8 col-xs-12 field_bottom">

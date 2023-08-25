@@ -681,6 +681,7 @@ if(num == "1"){
   <div class="col-lg-12">
   <label><spring:message code="complaint.details.label" /></label>
   <textarea class="form-control" id="complaintDetails" style="resize:none;" rows="4" placeholder="<spring:message code="enter.complaint.details.label" />" >${customerComplaints.complaintDetails}</textarea> 
+  <span id="complaintDetailsError" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
  </div>
   </div>
 <br>

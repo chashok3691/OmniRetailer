@@ -24,6 +24,23 @@ function appendSubDepartment() {
 		$("#subDeptName1Error").text("Please Enter Sub Department");
 		return;
 	}
+	
+	if(parseInt($("#subDeptName1").val().length)>25){
+		 $("#subDeptName1").focus();
+			$("#subDeptName1Error").html("Sub Department Name can't exceeds 25 Characters");
+			return;
+	}else{
+   	 $("#subDeptName1Error").html(" ");
+    }
+	
+	if(parseInt($("#subDeptDesc1").val().length)>150){
+        $("#subDeptDesc1").focus();
+        $("#subDeptDesc1Error").html("Sub Department description can't exceeds 150 Characters");
+          return;
+     }else{
+    	 $("#subDeptDesc1Error").html(" ");
+     }
+	
 	var id = 1;
 	if($(".subDepartmentTR:last").attr("id") != undefined){
 		id = parseInt($(".subDepartmentTR:last").attr("id").replace('subDepartmentTR',''))+1;
@@ -390,7 +407,7 @@ function getId(element,type){
 		 $("#deptName").focus();
 		 $("#deptNameError").html("Please Enter Department Name");
 		 return;
-	 }else if(parseInt($("#deptName").val().length)>=15){
+	 }else if(parseInt($("#deptName").val().length)>15){
 		 $("#deptName").focus();
 			$("#deptNameError").html("Department Name can't exceeds 15 Characters");
 			return;
@@ -399,10 +416,12 @@ function getId(element,type){
 	 var deptdescription = $("#deptDesc").val().trim();
 	 var subdeptdescription = $("#subDeptDesc1").val().trim();
 	 
-	 if(deptdescription.trim() != "" && parseInt($("#deptDesc").val().length)>=250){
+	 if(deptdescription.trim() != "" && parseInt($("#deptDesc").val().length)>250){
 			$("#deptDesc").focus();
 			$("#deptDescError").html("Department Description can't exceeds 250 Characters");
 			return false;
+		}else{
+			$("#deptDescError").html("");
 		}
 	  
 	 var maxRecords = 10;
@@ -420,7 +439,7 @@ function getId(element,type){
 		$("#subDeptName1Error").html("Add Atleast One Sub Department");
 		return false;
 	 }
-	 if(subdeptdescription.trim() != "" && parseInt($("#subDeptDesc1").val().length)>=250){
+	 if(subdeptdescription.trim() != "" && parseInt($("#subDeptDesc1").val().length)>250){
 			$("#subDeptDesc1").focus();
 			$("#subDeptDesc1Error").html("Sub-department Description can't exceeds 250 Characters");
 			return false;

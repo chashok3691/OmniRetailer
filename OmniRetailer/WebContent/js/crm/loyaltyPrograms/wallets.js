@@ -102,7 +102,6 @@
 	debugger;
  try{
 	var contextPath = $('#contextPath').val();
-       
 		var online = window.navigator.onLine;
 	  	if(!online){
 	  	alert("Check your internet connection,Please try agian after some time.");
@@ -121,7 +120,6 @@
 	     	var fileName=$("#fileName").val();
 	     	if(fileName != "" && fileName != undefined && fileName!= null)
 	     		importStatus='true';
-	     		
 	     	
 	     	var walletProgramId =$("#promoCode").val();
 
@@ -129,6 +127,14 @@
 	     		$("#errpromoCode").html("Enter Program Code");
 	     		return;
 	     	}
+	     	
+	     	if(parseInt($("#promoCode").val().length)>30){
+				 $("#promoCode").focus();
+					$("#errpromoCode").html("Program Code can't exceeds 30 Characters");
+					return;
+			}else{
+			 $("#errpromoCode").html(" ");
+		    }
 	  	
 	  	var walletProgramName=$("#walletprogramname").val();
 	  	
@@ -136,6 +142,15 @@
 	  		$("#errpromoName").html("Enter Program Name");
 	  		return;
 	  	}
+	  	
+	  	if(parseInt($("#walletprogramname").val().length)>50){
+			 $("#walletprogramname").focus();
+			 $("#errpromoName").html("Program Name can't exceeds 50 Characters");
+				return;
+		}else{
+		 $("#errpromoName").html(" ");
+	    }
+	  	
 	  	
 	  	var createdDate=$("#startdate").val();
 	  	var updatedDate=$("#expirydate").val();
@@ -150,8 +165,7 @@
 			return;
     	}
 		var noOfDays = daydiff(parseDate(createdDate), parseDate(updatedDate));
-		if(noOfDays>=0)
-			{
+		if(noOfDays>=0){
 			noOfDays=noOfDays+1;
 			}
 		
@@ -159,20 +173,15 @@
 	   		 $('#updatedOnError').html("expiry Date can't be less than Start Date");
 	   			return;
 	   		}
-	  	
-	  	
 	 	var autoAssigned=$("#assignedStatus").val();
-	 	
 	 	if(autoAssigned == "" || autoAssigned == undefined || autoAssigned== null){
 	 		autoAssigned = "false";
     	}
-	  	
 	  	
 	  	var walletType=$("#walletType").val();
 		if(walletType == "" || walletType == undefined || walletType== null){
 			walletType = "Bronze";
     	}
-	  	
 	  	
 	  	var minCashDeposit=($("#minbalance").val());
 	  	if(minCashDeposit == "" || minCashDeposit == undefined || minCashDeposit== null){
@@ -196,10 +205,23 @@
 	  		return;
 	  	}
 	  	
+	  	if(parseInt($("#validityperiod").val().length)>11){
+			 $("#validityperiod").focus();
+				$("#errvalidityPeriod").html("Validity period can't exceeds 11 Digits");
+				return;
+		}else{
+		 $("#errvalidityPeriod").html(" ");
+	    }
 	  	
+	  	if(parseInt($("#noOfwallets").val().length)>11){
+			 $("#noOfwallets").focus();
+				$("#noOfwalletsErrors").html("No Of wallets can't exceeds 11 Digits");
+				return;
+		}else{
+		 $("#noOfwalletsErrors").html(" ");
+	    }
 	  	
 		var status=$("#status").val();
-		
 		if(status == "" || status == undefined || status== null){
 			status = "Suspended";
     	}
@@ -389,6 +411,15 @@ function walletPopUp(operation,programCode,phone,walletName,status,index,type){
  	 else{
  		 $("#txnRefError").html("");
  	 }
+		 
+		 if(parseInt($("#txnRef").val().length)>12){
+			 $("#txnRef").focus();
+				$("#txnRefError").html("Tax Reference can't exceeds 12 Characters");
+				return;
+		}else{
+		 $("#txnRefError").html(" ");
+	    } 
+		 
  		 tenderMode = $("#tenderCode").val();
  		 phone = $("#mobile").val();
 		 transctionDate = $("#date").val();
@@ -957,89 +988,12 @@ function ExportDataxls(walletProgramId,saveFlag,operation){
  	 
   }
 	 
-/*function ExportTransactionsDataxls(operation,programCode,phone,index,saveflag){
+function ExportTransactionsDataxls(operation,programCode,phone,index,saveflag){
 	
 	 try{
 		 debugger;
 		 $("#error").html("");
 		 var walletId=$('#walletId').val();
-		 var contextPath = $('#contextPath').val();
-		 var rowCount = $("#example1 tr").length;
-		 if(rowCount == 1){
-			 $("#error").html("No, records found.");
-			 return
-		 }
-			 
-		// purpose:for checking internet conection
-			var online = window.navigator.onLine;
-		  	if(!online){
-		  	alert("Check your internet connection,Please try agian after some time.");
-		  	return;
-		  	}
-		  	
-		  	 var maxRecords = 10;
-			  if($("#maxRecords").length > 0)
-				  maxRecords = $("#maxRecords").val();
-			  
-			  
-		 var URL = contextPath + "/crm/getWalletLedger.do";
-		 $.ajax({
-			type : "GET",
-			url : URL,
-			data : {
-				id : programCode,
-				operation : operation,
-				phone:phone,
-				index:index,
-				maxRecords:maxRecords,
-				saveflag:saveflag,
-				walletId:walletId,
-			
-			},
-			beforeSend: function(xhr){                    
-		   			$("#loading").css("display","block");
-		   			$("#mainDiv").addClass("disabled");
-		   		  },
-			success : function(result){
-				$('#right-side').html(result);
-				//$('#generatedWallets').html(result);
-
-	   			  if(saveflag=="true"){
-	   				  var anchor = document.createElement('a');
-	   				  anchor.href = $("#downloadurl").val();
-//	   				  alert($("#stockdownloadurl").val())
-	   				  anchor.target = '_blank';
-	   				  anchor.download = '';
-	   				  if($("#downloadurl").val()!=null && $("#downloadurl").val()!='')
-	   					  anchor.click();
-
-	   			  }
-				activeMenu("Wallet");
-				$("#loading").css("display","none");
-				$("#mainDiv").removeClass('disabled');
-			},
-			error : function(jqXHR, textStatus, errorThrown) {
-				errorCode(jqXHR.status);
-				$("#loading").css("display","none");
-				$("#mainDiv").removeClass('disabled');
-			}
-		 });
-		 }catch(e)
-		{
-			errorCode(e);
-		}
-
-}
-*/	 
-
-function ExportTransactionsDataxls(operation,programCode,phone,index,saveflag,saveLedgerflag){
-	
-	 try{
-		 debugger;
-		 $("#error").html("");
-		 var walletId = ""
-			 if(saveLedgerflag == undefined || saveLedgerflag == null)
-				 walletId = $('#walletId').val();
 		 var contextPath = $('#contextPath').val();
 		 var rowCount = $("#example1 tr").length;
 		/* if(rowCount == 1){
@@ -1107,6 +1061,4 @@ function ExportTransactionsDataxls(operation,programCode,phone,index,saveflag,sa
 		}
 
 }
-
-
-
+	 

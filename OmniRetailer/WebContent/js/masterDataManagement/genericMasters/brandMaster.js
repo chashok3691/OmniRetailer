@@ -95,8 +95,7 @@ function searchSuppliers(name, searchCategory){
 	var contextPath = $("#contextPath").val();
 	 //purpose:for checking internet conection
 	var online = window.navigator.onLine;
-  	if(!online)
-  	{
+  	if(!online){
   	alert("check your internet connection,please try agian after some time");
   	return;
   	}
@@ -145,8 +144,6 @@ function getCode(element,type){
 	$(".services").hide();
 	$("."+type).html("");
 }
-
-
 
 $("#searchSupplier").keydown(function(e){
 	$("#supplierNameError").html("");
@@ -522,7 +519,7 @@ function validateBrandMasterForm(operation){
 		  $("#brand_name").focus();
 			$("#brandNameError").html("Enter Brand Name");
 			return;
-		}else if(parseInt($("#brand_name").val().length)>=50){
+		}else if(parseInt($("#brand_name").val().length)>50){
 			 $("#brand_name").focus();
 			 $("#brandNameError").html("Brand name can't exceeds 50 characters");
 			 return;
@@ -530,7 +527,7 @@ function validateBrandMasterForm(operation){
 		
 		var description1 = $("#description1").val().trim();
 		 var description2 = $("#description2").val().trim();
-		 if(description1.trim() != "" && parseInt($("#description1").val().length)>=150){
+		 if(description1.trim() != "" && parseInt($("#description1").val().length)>150){
 				$("#description1").focus();
 				$("#description1Error").html("Description can't exceeds 150 Characters");
 				return false;
@@ -538,7 +535,7 @@ function validateBrandMasterForm(operation){
 				$("#description1Error").html("");
 			}
 		
-		 if(description2.trim() != "" && parseInt($("#description2").val().length)>=50){
+		 if(description2.trim() != "" && parseInt($("#description2").val().length)>50){
 				$("#description2").focus();
 				$("#description2Error").html("Description can't exceeds 50 Characters");
 				return false;
@@ -555,7 +552,7 @@ function validateBrandMasterForm(operation){
 			 $("#manufacturer").focus();
 			$("#manufacturerError").html("Enter Manufacturer");
 			return;
-		}else if(parseInt($("#manufacturer").val().length)>=20){
+		}else if(parseInt($("#manufacturer").val().length)>20){
 			 $("#manufacturer").focus();
 			$("#manufacturerError").html("Manufacturer name can't exceeds 20 characters");
 			return;
@@ -574,9 +571,9 @@ function validateBrandMasterForm(operation){
 			$("#brandCategory").focus();
 			$("#brandCategoryError").html("Enter Brand Category");
 			return;
-		}else if(parseInt($("#brandCategory").val().length)>=20){
+		}else if(parseInt($("#brandCategory").val().length)>30){
 		 $("#brandCategory").focus();
-		 $("#brandCategoryError").html("Brand Category can't exceeds 20 characters");
+		 $("#brandCategoryError").html("Brand Category can't exceeds 30 characters");
 		 return;
 		}
 		var len = parseInt($("#productsList tr").length);
@@ -589,7 +586,7 @@ function validateBrandMasterForm(operation){
 			$("#startPrice").focus();
 			$("#startPriceError").html("Enter Start price");
 			return;
-		}else if(parseFloat($("#startPrice").val().length) >= 15){
+		}else if(parseFloat($("#startPrice").val().length) >15){
 			$("#startPrice").focus();
 			$("#startPriceError").html("Start price can't exceeds 15 characters");
 		}
@@ -598,7 +595,7 @@ function validateBrandMasterForm(operation){
 			$("#endPrice").focus();
 			$("#endPriceError").html("Enter End price");
 			return;
-		}else if(parseFloat($("#endPrice").val().length) >= 15){
+		}else if(parseFloat($("#endPrice").val().length) >15){
 			$("#endPrice").focus();
 			$("#endPriceError").html("End price can't exceeds 15 characters");
 			return;
