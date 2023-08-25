@@ -4,18 +4,22 @@ function validateEventManagement(operation,update){
 	debugger;
 	 try{
  		   var online = window.navigator.onLine;
- 		   	if(!online){
+ 		   	if(!online)
+ 		           {
  		   	 alert("Check your internet connection,Please try agian after some time.");
  		     	 return;
- 		}
+ 		          }
 
  		   $("#Error").html("");
  		   $("#Success").html("");
- 		   $("#ErrorInventoryClosure").html("");
+ 		  $("#ErrorInventoryClosure").html("");
 		   $("#ErrorEquipmentClosure").html("");
 		   $("#SuccessEquipmentClosure").html("");
  		   $("#SuccessInventoryClosure").html("");
+ 		   
+ 		   	
  	   debugger;
+ 	   
  	   if(update == "" || update == undefined || update == null){
  		  update = "";
  	   }
@@ -24,7 +28,9 @@ function validateEventManagement(operation,update){
 			 $("#Error").html("Select  DPID");
 			 $("#dpid").focus();
 			 return;
-	}
+		 }
+ 	   
+ 	  
  	  
  	  var dateTime = getCurrentDate();
    	  var date = dateTime.split(' ');
@@ -34,6 +40,10 @@ function validateEventManagement(operation,update){
  	  if(operation == "Closed"){
  		 var eventinvCount = parseInt($("#lengthofInv").val());
  		 var eventequCount =  parseInt($("#lengthofEqu").val());
+ 		  
+
+
+
  		 var noOfDaysstarts = daydiff(parseDate($('#Eventstart').val()), parseDate(formatedDate));
 		 
     	 if(noOfDaysstarts < 0){
@@ -62,6 +72,10 @@ function validateEventManagement(operation,update){
  			eventinvCloseCount = 0;
  		}
  		
+ 		
+ 		
+ 		
+ 		
  		if(eventinvCloseCount != eventinvCount  ){
  			 $("#ErrorInventoryClosure").html("Update Event Inventory Closure to Close Event");
  			$("#tab_6_Inventory_Closure").trigger('click');
@@ -72,18 +86,25 @@ function validateEventManagement(operation,update){
 				$("#tab_7_Eqipment_Closure").trigger('click');
 			 return false;
 		}
+ 		  
  	  }
+ 	  
  	   
 		 var contextPath = $("#contextPath").val();
+		 
 		 var formData={};
 		 var eventPaymentTransactions = [];
 		 
+		
+	
+	
+	
+		
 		 if($("#eventName").val() == ""){
 			 $("#Error").html("Enter Event Name");
 			 $("#eventName").focus();
 			 return;
 		 }
-		 
 		 
 		
 		 if($("#Eventstart").val() == ""){
@@ -99,6 +120,9 @@ function validateEventManagement(operation,update){
 			 return;
 		 }
 		
+		 
+	
+		
    	
     if(operation == "new" || operation =="draft" || operation =="Approved"){
 	
@@ -112,7 +136,10 @@ function validateEventManagement(operation,update){
    		  $("#Error").html("For Start Date, Past Dates Not allowed"); 
    		 return false;
    	  }
-   	}
+   	  
+   	  
+   	
+    }
 		 
 		 var noOfDays = daydiff(parseDate($('#Eventstart').val()), parseDate($('#EventEnd').val()));
 			 if(noOfDays < 0){
@@ -121,16 +148,23 @@ function validateEventManagement(operation,update){
 				 return;
 			 }
 		
+		
+		
 		 if(operation !="draft"){
 		 
 		 var plotOdc = $("#plotNoODC").val();
 			if(plotOdc!=""){
 	    		if(plotOdc.length > 30){
+
 	    			$("#Error").html("ODC plot number can't have morethan 30 characters");
 	    			 $("#plotNoODC").focus();
 	    			return false;
 	    			}
+	    		
 	    	}
+		 
+		
+		 
 		 
 		 if($("#plotNoODC").val() == ""  ){
 			 $("#Error").html("Enter ODC Plot Number"); 
@@ -201,6 +235,7 @@ function validateEventManagement(operation,update){
 		 if (parseInt($("#pincode").val().length) != 6) {
 			  $("#Error").html("Please Check Customer PIN code.");
 	  			return false;
+
  		}
 		 
 		 if($("#contactPerson").val() == "" ){
@@ -251,11 +286,15 @@ function validateEventManagement(operation,update){
 			 $("#Error").html("Please Upload Agreement Document"); 
 			 return;
 		 }
+		 
+		 
+		 
 		 if($("#signatureFile").val() == ""){
 			 $("#Error").html("Please Upload Agreement Document"); 
 			 $("#signatureFile").focus();
 			 return;
 		 }
+		 
 		 if($("#eventType").val() == ""){
 			 $("#Error").html("Please Select Event Type"); 
 			 $("#eventType").focus();
@@ -267,19 +306,26 @@ function validateEventManagement(operation,update){
 			 return;
 		 }
 		 
+		 
 		 if($("#DiscountType").val() == "Fixed Rental"){
+		 
+			 
 			 if($("#discountValue1").val() == ""){
 				 $("#Error").html("Enter Discount value"); 
 				 $("#discountValue1").focus();
 				 return;
 			 }
 		
+		
+				 
+				 
+		
 			var paymentModeDiscount =  $("#paymentModeDiscount").val();
 			paymentModeDiscount = paymentModeDiscount.split("-");
 			var amountDiscount = parseFloat($("#discountValue1").val());
 			 
 			 if(paymentModeDiscount[1] == "Cheque" || paymentModeDiscount[1] == "cheque"){
-		     if($("#discontreferncebank").val() == ""){
+		 if($("#discontreferncebank").val() == ""){
 			 $("#Error").html("Please Enter Bank Name"); 
 			 $("#discontreferncebank").focus();
 			 return;
@@ -303,6 +349,8 @@ function validateEventManagement(operation,update){
 							$("#discountValue1").focus();
 							}  
 				 }
+		
+		 
 		 
 		formData.paymentMode = paymentModeDiscount[0];
 		 
@@ -325,6 +373,7 @@ function validateEventManagement(operation,update){
 		 }
 		 formData.discountAmount =$("#discountValue").val(); 
 		 }
+		 
 		 
 		 if($("#saleType").val() == ""){
 			 $("#Error").html("Please Select Sale Type"); 
@@ -370,6 +419,9 @@ function validateEventManagement(operation,update){
             	 $("#Bankrefernceref"+idAttr).val() == "";
 			  }
 			  
+			  
+			  
+			  
 			  if(paymentModeLimit == "Cash"){
 					if(amountLimit > 8000){
 					
@@ -395,7 +447,11 @@ function validateEventManagement(operation,update){
 			 $("#paymentMode").focus();
 			 return;
 		 }
+		 
+		 
 		 }else{
+			 
+			 
 			  if($("#Eventdue").val() == ""){
 				  $("#Error").html("Please  Select Credit Due Date"); 
 				  $("#Eventdue").focus();
@@ -412,12 +468,18 @@ function validateEventManagement(operation,update){
 				 return;
 			 }
 			 }
+		 
+		 
+		 
 		 if($("#salespersonID").val() == ""){
 			 $("#Error").html("Please Select Sales Employee"); 
 			 $("#salespersonID").focus();
 			 return;
 		 }
 	}
+		 
+		
+		 
 		 if($("#Date").val() == ""){
 			 $("#Error").html("Enter Event Created Date"); 
 			 $("#Date").focus();
@@ -433,7 +495,12 @@ function validateEventManagement(operation,update){
 		   	  }	 
 			 }
 		 }
+		 
+		 
+		 
 		 if(operation !="draft" ){
+		 
+	   	  
 		
 		 if($("#taxpersentage").val() == ""){
 			 $("#Error").html("Select Tax  Percentage"); 
@@ -447,6 +514,9 @@ function validateEventManagement(operation,update){
 			 return;
 		 }
 		 
+		 
+		 
+		
 		 
 		 if($("#expectedsales").val() == ""){
 			 $("#Error").html("Enter Expected sale"); 
@@ -465,6 +535,8 @@ function validateEventManagement(operation,update){
 			 $("#signature2File").focus();
 			 return;
 		 }
+		 
+		
 		  }
 		 
 		 if(limitcashamount > 0){
@@ -477,9 +549,11 @@ function validateEventManagement(operation,update){
       		 $("#Error").html("Profit can't be morethan Saless");
       		return false;
       	 }
+       
+		 
 	
 		  formData.eventName = $("#eventName").val();
-		  formData.eventDescription = $("#eventDescription").val();
+		 formData.eventDescription = $("#eventDescription").val();
 		  var eventStatus = true;
 		 
 		 formData.eventStatus = eventStatus;
@@ -507,6 +581,8 @@ function validateEventManagement(operation,update){
 		 var bankName = $("#discontreferncebank").val();
 		 var paymentbankRef = $("#discontrefernceref").val();
 		 
+		
+		 
 		 if(bankName == "" || bankName == undefined || bankName == null ){
 			 bankName = "";
 		 }
@@ -519,11 +595,16 @@ function validateEventManagement(operation,update){
 			 return;
 		 }
 	
+	
+	
 	      if(operation == "Rejected"  && $("#remarks").val() == ""){
 			 $("#Error").html("Please Enter Reason For Rejection."); 
 		     $("#remarks").focus();
 			 return;
 		 }
+	
+	
+	
 	
 	expectedsales
 		
@@ -533,6 +614,8 @@ function validateEventManagement(operation,update){
 		 formData.leadChannel = $("#leadChannel").val();
 	
 		 formData.taxPercentage = $("#taxpersentage").val();
+		
+		 
 		 formData.countersRequired = $("#countersRequired").val();
 		 formData.manPower = $("#manpower").val();
 		 formData.expectedSales = $("#expectedsales").val();
@@ -559,6 +642,7 @@ function validateEventManagement(operation,update){
 			 formData.workflowStatus =operation;
 		 }
 		
+			 
 		/*if(operation =="Approved"){
 			 var approvedBy = $("#eventApprovedBy").val();
 			 if(approvedBy == ""){
@@ -568,8 +652,15 @@ function validateEventManagement(operation,update){
 		}*/
 			 
 		 formData.leadChannel = $("#leadChannel").val();
+		
+		
+		 
+		 
+	
 		 formData.operation = operation;
 		 formData.eventPaymentTransactions = eventPaymentTransactions;
+		 
+		
 		  formData = JSON.stringify(formData);
 		 console.log(formData);
 		 

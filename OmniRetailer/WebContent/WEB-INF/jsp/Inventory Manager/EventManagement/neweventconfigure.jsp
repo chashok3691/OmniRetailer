@@ -255,19 +255,20 @@ $(document).ready(function(){
   
                        <div class="col-lg-12 " style="padding-left:0px;padding-right: 0px;">
                         <label style="font-family: Calibri;color: gray;"><spring:message code="event.name.label"/> <span style="color:red; font-size:2">*</span></label>
-                       <input   type="text" class="form-control" id="eventName" value="${eventMasterData.eventName}" style="width:70%" onkeypress="return (event.charCode > 47 && event.charCode < 58) || (event.charCode > 64 && 
+                       <input   type="text" class="form-control"   id="eventName" value="${eventMasterData.eventName}" style="width:70%" onkeypress="return (event.charCode > 47 && event.charCode < 58) || (event.charCode > 64 && 
 	event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || (event.charCode == 32 )"  autocomplete="off" onblur="validatetext('eventName');criteria(this);"/>
-                           <span id="eventNameError" style="text-align:right;color:red;font-weight:bold;"></span>
+                          
                          </div>
                          </div>
                          
-                      <div class=" col-lg-12">
+                          <div class=" col-lg-12">
+  
                        <div class="col-lg-12" style="padding-left:0px;padding-right: 0px;">
                         <label style="font-family: Calibri;color: gray;"><spring:message code="event.description.label"/></label>
                        <input   type="text" class="form-control"  id="eventDescription" value="${eventMasterData.eventDescription}" autocomplete="off" onblur="validatetext('eventDescription')"/>
-                         <span id="eventDescriptionError" style="text-align:right;color:red;font-weight:bold;"></span> 
+                          
                          </div>
-                     </div>
+                         </div>
                          
                           <div class=" col-lg-12">
                           <label style="font-family: Calibri;color: gray;">Event Dates <span style="color:red; font-size:2">*</span></label>
@@ -283,7 +284,7 @@ $(document).ready(function(){
 											onfocus="callCalender('Eventstart')"
 											onclick="callCalender('Eventstart')" placeholder="DD/MM/YYYY" />
 								
-						</div>
+									</div>
                           
                          </div>
                           <div class="col-lg-1" style="padding-left:0px;padding-right: 0px;">
@@ -292,7 +293,7 @@ $(document).ready(function(){
                          <div class="col-lg-5" style="padding-left:0px;padding-right: 0px;width:45.666667%">
                       
 										
-										<input class="form-control" 
+										<input   class="form-control" 
 											style="background-color: white;cursor: pointer;" name="EventEnd"
 											id="EventEnd" size="20" type="text"
 											value="${eventMasterData.endDateStr}"
@@ -309,14 +310,14 @@ $(document).ready(function(){
   
                        <div class="col-lg-12" style="padding-left:0px;padding-right: 0px;">
                         <label style="font-family: Calibri;color: gray;">ODC Venue Address<span style="color:red; font-size:2">*</span></label>
-                       <input type="text" class="form-control"  id="plotNoODC" onblur="validatetext('plotNoODC')" value="${eventMasterData.odcPlotNumber}" style="width:70%" placeholder="Plot No/Building *" autocomplete="off"/>
+                       <input   type="text" class="form-control"  id="plotNoODC" onblur="validatetext('plotNoODC')" value="${eventMasterData.odcPlotNumber}" style="width:70%" placeholder="Plot No/Building *" autocomplete="off"/>
                           
                          </div>
                          </div>
                                                    <div class=" col-lg-12">
   
                        <div class="col-lg-12 input-group" style="padding-left:0px;padding-right: 0px;">
-                       <input type="text" class="form-control"  id="locationODC" onblur="validatetext('locationODC')" value="${eventMasterData.outDoorCateringLocation}" placeholder="Location/Area *"  autocomplete="off"/>
+                       <input   type="text" class="form-control"  id="locationODC" onblur="validatetext('locationODC')" value="${eventMasterData.outDoorCateringLocation}" placeholder="Location/Area *"  autocomplete="off"/>
                           
                          </div>
                          </div>
@@ -325,11 +326,11 @@ $(document).ready(function(){
                           <div class=" col-lg-12">
   
                       <div class="col-lg-6" style="padding-left:0px">
-                       <input type="text" class="form-control" id="cityODC" onblur="validatetext('cityODC')"  value="${eventMasterData.odcCity}" placeholder="City *"  autocomplete="off"/>
+                       <input   type="text" class="form-control" id="cityODC" onblur="validatetext('cityODC')"  value="${eventMasterData.odcCity}" placeholder="City *"  autocomplete="off"/>
                           
                          </div>
                          <div class="col-lg-6" style="padding-left:0px;padding-right: 0px;">
-                       <input type="number" class="form-control"  id="pinCodeODC" onblur="validatetext('pinCodeODC')" value="${eventMasterData.odcPinCode}"  placeholder="Pin Code * " onblur="validatePINcode1()"  autocomplete="off"/>
+                       <input   type="number" class="form-control"  id="pinCodeODC" onblur="validatetext('pinCodeODC')" value="${eventMasterData.odcPinCode}"  placeholder="Pin Code * " onblur="validatePINcode1()"  autocomplete="off"/>
                           
                          </div>
                          </div>
@@ -337,11 +338,11 @@ $(document).ready(function(){
                           <div class=" col-lg-12">
   
                       <div class="col-lg-6" style="padding-left:0px;">
-                       <input type="number" class="form-control"  id="phoneODC" value="${eventMasterData.odcContactPersoneMobileNumber}" onblur="validatePersonalMobileNumber()"  placeholder="Phone Number *"  autocomplete="off"/>
+                       <input   type="number" class="form-control"  id="phoneODC" value="${eventMasterData.odcContactPersoneMobileNumber}" onblur="validatePersonalMobileNumber()"  placeholder="Phone Number *"  autocomplete="off"/>
                           
                          </div>
                          <div class="col-lg-6" style="padding-left:0px;padding-right: 0px;">
-                       <input type="text" class="form-control"  id="emailODC" value="${eventMasterData.odcContactPersoneEmail}"  placeholder="Email "  autocomplete="off"/>
+                       <input   type="text" class="form-control"  id="emailODC" value="${eventMasterData.odcContactPersoneEmail}"  placeholder="Email "  autocomplete="off"/>
                           
                          </div>
                          </div>

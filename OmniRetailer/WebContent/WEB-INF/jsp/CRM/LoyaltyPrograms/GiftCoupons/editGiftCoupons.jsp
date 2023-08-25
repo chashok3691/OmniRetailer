@@ -699,12 +699,10 @@
 											</c:if> --%>
 										   <c:choose>
                                            <c:when test="${giftCoupon.perUserClaims == 0 || giftCoupon.perUserClaims eq 0}">
-                                          		<input type="text" style="width: 73%;" class="form-control" id="perUserClaims" name="perUserClaims" value="" oninput="this.value = this.value.replace(/[^0-9]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" placeholder="Enter user claims"/>
-                                                <span style="color:red; font-size:2;font-weight: bold;" id="errperUserClaims"></span>
+                                          		<input type="text" style="width: 73%;" class="form-control" id="perUserClaims" name="perUserClaims" value="" placeholder="Enter user claims"/>
                                            </c:when>
                                            <c:otherwise>
-                                           		<input type="text" style="width: 73%;" class="form-control" id="perUserClaims" name="perUserClaims" oninput="this.value = this.value.replace(/[^0-9]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" value="${giftCoupon.perUserClaims}" placeholder="Enter user claims"/>
-                                                <span style="color:red; font-size:2;font-weight: bold;" id="errperUserClaims"></span>
+                                           		<input type="text" style="width: 73%;" class="form-control" id="perUserClaims" name="perUserClaims" value="${giftCoupon.perUserClaims}" placeholder="Enter user claims"/>
                                            </c:otherwise>
                                            </c:choose>
 										</div>
@@ -714,7 +712,6 @@
 								<div class="form-group col-lg-12">
 								 <label style="font-family: Calibri;color: gray;">Split Period</label>
 	 								<input type="text" style="width: 73%;" class="form-control" id="splitPeriod" name="splitPeriod" value="${giftCoupon.splitPeriod}" placeholder="Enter split claims"/>
-								    <span style="color:red; font-size:2;font-weight: bold;" id="errsplitPeriod"></span>
 								</div>
 								</div>
 							<div class="form-group col-lg-2" style="margin-top: -10px;margin-bottom: 0px;">

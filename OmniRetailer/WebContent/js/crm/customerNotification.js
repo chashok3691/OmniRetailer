@@ -74,78 +74,6 @@ function saveGreetingsNotification(notify) {
 			$("#greetingBatchError").html("Package Name is Required");
 			return;
 		}
-	
-	if(parseInt($("#birthdayMailSub").val().length)>50){
-		 $("#birthdayMailSub").focus();
-			$("#birthdayMailSubError").html("Birthday Mail Subject can't exceeds 50 Characters");
-			return;
-	}else{
-	 $("#birthdayMailSubError").html(" ");
-   } 
-	
-	if(parseInt($("#birthdayMailMsg").val().length)>200){
-		 $("#birthdayMailMsg").focus();
-			$("#birthdayMailMsgError").html("Birthday Mail Message can't exceeds 200 Characters");
-			return;
-	 }else{
-	 $("#birthdayMailMsgError").html(" ");
-    } 
-	
-	if(parseInt($("#marriagedayMailSub").val().length)>50){
-		 $("#marriagedayMailSub").focus();
-			$("#marriagedayMailSubError").html("Marriage Subject can't exceeds 50 Characters");
-			return;
-	}else{
-	 $("#marriagedayMailSubError").html(" ");
-  } 
-	
-	if(parseInt($("#marriagedayMailMsg").val().length)>200){
-		 $("#marriagedayMailMsg").focus();
-			$("#marriagedayMailMsgError").html("Marriage Mail Message can't exceeds 200 Characters");
-			return;
-	 }else{
-	 $("#marriagedayMailMsgError").html(" ");
-   } 
-	
-	if(parseInt($("#festivalMailSub").val().length)>50){
-		 $("#festivalMailSub").focus();
-			$("#festivalMailSubError").html("Festival Subject can't exceeds 50 Characters");
-			return;
-	  }else{
-	 $("#festivalMailSubError").html(" ");
-    } 
-	
-	if(parseInt($("#festivalMailMsg").val().length)>200){
-		 $("#festivalMailMsg").focus();
-			$("#festivalMailMsgError").html("Festival Mail Message can't exceeds 200 Characters");
-			return;
-	 }else{
-	 $("#festivalMailMsgError").html(" ");
-   } 
-	if(parseInt($("#birthdayMsg").val().length)>200){
-		 $("#birthdayMsg").focus();
-			$("#birthdayMsgError").html("Birthday Message can't exceeds 200 Characters");
-			return;
-	 }else{
-	 $("#birthdayMsgError").html(" ");
-    } 
-	if(parseInt($("#marriagedayMsg").val().length)>200){
-		 $("#marriagedayMsg").focus();
-			$("#marriagedayMsgError").html("Marriage Message can't exceeds 200 Characters");
-			return;
-	 }else{
-	 $("#marriagedayMsgError").html(" ");
-  } 
-	
-	if(parseInt($("#festivalMsg").val().length)>200){
-		 $("#festivalMsg").focus();
-			$("#festivalMsgError").html("Festival Message can't exceeds 200 Characters");
-			return;
-	 }else{
-	 $("#festivalMsgError").html(" ");
-  } 
-	
-	
 	var option = $("input[type='radio'][name='greetingsOption']:checked").val();
 	var finalObj = getFormData();
 	finalObj.notificationType = option;
@@ -246,32 +174,6 @@ function saveNewArrival(notify) {
 		$("#arrivalBatchError").html("Package Name is Required");
 		return;
 	}
-	
-	if(parseInt($("#arrivalMailSub").val().length)>50){
-		 $("#arrivalMailSub").focus();
-			$("#arrivalMailSubError").html("Arrival Subject can't exceeds 50 Characters");
-			return;
-	}else{
-	 $("#arrivalMailSubError").html(" ");
- } 
-	
-	if(parseInt($("#arrivalMailMsg").val().length)>200){
-		 $("#arrivalMailMsg").focus();
-			$("#arrivalMailMsgError").html("Arrival Message can't exceeds 200 Characters");
-			return;
-	}else{
-	 $("#arrivalMailMsgError").html(" ");
-   } 
-	
-	debugger;
-	if(parseInt($("#arrivalMsg").val().length)>200){
-		 $("#arrivalMsg").focus();
-			$("#arrivalMsgError").html("SMS Arrival Message can't exceeds 200 Characters");
-			return;
-	}else{
-	 $("#arrivalMsgError").html(" ");
-  } 
-	
 	var option = $("input[type='radio'][name='arrivalOption']:checked").val();
 	var finalObj = getFormData();
 	finalObj.notificationType = option;
@@ -352,32 +254,6 @@ function saveOutlet(notify) {
 		$("#outletBatchError").html("Package Name is Required");
 		return;
 	}
-	
-	if(parseInt($("#outletMailSub").val().length)>50){
-		 $("#outletMailSub").focus();
-			$("#outletMailSubError").html("Outlet Subject can't exceeds 50 Characters");
-			return;
-	}else{
-	 $("#outletMailSubError").html(" ");
-} 
-	
-	if(parseInt($("#outletMailMsg").val().length)>200){
-		 $("#outletMailMsg").focus();
-			$("#outletMailMsgError").html("Outlet Message can't exceeds 200 Characters");
-			return;
-	}else{
-	 $("#outletMailMsgError").html(" ");
-  } 
-	
-	debugger;
-	if(parseInt($("#outletMsg").val().length)>200){
-		 $("#outletMsg").focus();
-			$("#outletMsgError").html("SMS Outlet Message can't exceeds 200 Characters");
-			return;
-	}else{
-	 $("#outletMsgError").html(" ");
- } 
-	
 	var option = $("input[type='radio'][name='outletOption']:checked").val();
 	var finalObj = getFormData();
 	finalObj.notificationType = option;
@@ -909,101 +785,6 @@ function saveCampaignNotification(notify) {
 		$("#campaignBatchError").html("Package Name is Required");
 		return;
 	}
-	
-	var noOfDays = daydiff(parseDate($('#dealsStartDate').val()), parseDate($('#dealsEndDate').val()));
-	if(noOfDays < 0){
-		$("#dealsEndDateError").html("End Date can't be less than Start Date");
-		return;
-	}
-	
-	if(parseInt($("#dealsMailSub").val().length)>50){
-		 $("#dealsMailSub").focus();
-			$("#dealsMailSubError").html("Campaign Subject can't exceeds 50 Characters");
-			return;
-	}else{
-	 $("#dealsMailSubError").html(" ");
-    } 
-	
-	if(parseInt($("#dealsMailMsg").val().length)>200){
-		 $("#dealsMailMsg").focus();
-			$("#dealsMailMsgError").html("Campaign Message can't exceeds 200 Characters");
-			return;
-	}else{
-	 $("#dealsMailMsgError").html(" ");
-   } 
-	
-	if(parseInt($("#dealsMsg").val().length)>200){
-		 $("#dealsMsg").focus();
-			$("#dealsMsgError").html("SMS Message can't exceeds 200 Characters");
-			return;
-	}else{
-	 $("#dealsMsgError").html(" ");
-  } 
-	
-	
-	var noOfDays = daydiff(parseDate($('#offersStartDate').val()), parseDate($('#offersEndDate').val()));
-	if(noOfDays < 0){
-		$("#offersEndDateError").html("Offer End Date can't be less than Start Date");
-		return;
-	}
-	
-	if(parseInt($("#offersMailSub").val().length)>50){
-		 $("#offersMailSub").focus();
-			$("#offersMailSubError").html("Offer Subject can't exceeds 50 Characters");
-			return;
-	}else{
-	 $("#offersMailSubError").html(" ");
-    } 
-	
-	if(parseInt($("#offersMailMsg").val().length)>200){
-		 $("#offersMailMsg").focus();
-			$("#offersMailMsgError").html("Offer Message can't exceeds 200 Characters");
-			return;
-	}else{
-	 $("#offersMailMsgError").html(" ");
-   } 
-	
-	if(parseInt($("#offersMsg").val().length)>200){
-		 $("#offersMsg").focus();
-			$("#offersMsgError").html("SMS Offer Message can't exceeds 200 Characters");
-			return;
-	}else{
-	 $("#offersMsgError").html(" ");
-  } 
-	
-	var noOfDays = daydiff(parseDate($('#periodicStartDate').val()), parseDate($('#periodicEndDate').val()));
-	if(noOfDays < 0){
-		$("#periodicEndDateError").html("Offer End Date can't be less than Start Date");
-		return;
-	}
-	
-	if(parseInt($("#periodicMailSub").val().length)>50){
-		 $("#periodicMailSub").focus();
-		 $("#periodicMailSubError").html("Periodic Subject can't exceeds 50 Characters");
-			return;
-	}else{
-	 $("#periodicMailSubError").html(" ");
-    } 
-	
-	if(parseInt($("#periodicMailMsg").val().length)>200){
-		 $("#periodicMailMsg").focus();
-			$("#periodicMailMsgError").html("Periodic Message can't exceeds 200 Characters");
-			return;
-	}else{
-	 $("#periodicMailMsgError").html(" ");
-   } 
-	
-	if(parseInt($("#periodicMsg").val().length)>200){
-		 $("#periodicMsg").focus();
-			$("#periodicMsgError").html("SMS Periodic Message can't exceeds 200 Characters");
-			return;
-	}else{
-	 $("#periodicMsgError").html(" ");
-  } 
-	
-	
-	
-	
 	var option = $("input[type='radio'][name='campaignOption']:checked").val();
 	var finalObj = getFormData();
 	finalObj.notificationType = option;

@@ -253,9 +253,7 @@ img.thumbnail {
 											  <ul class="matchedStringUl productNameSku" style=""></ul>
 										    </div>
 									    </div> -->
-									    
-									    <span id="productNameError" style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
-									<!-- <span id="productQuckNameError" style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span> -->
+									<span id="productQuckNameError" style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
 									<input type="hidden" class="allField" id="productId" value="${sku.skuId}">
 								</div>
 								</div>
@@ -553,7 +551,7 @@ img.thumbnail {
 											onkeydown="clearError(this);" onblur="calcMarkUp(this);"
 												value="${sku.section}" id="sectionQuick"
 											placeholder="<spring:message code="section.label" />" />
-								<span id="sectionQuickError" style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span> 
+								
 								</div>
 					       <!-- added by: vasudev
 								created on: 22-08-2019 -->
@@ -639,7 +637,7 @@ img.thumbnail {
 									<input type="text" onblur="criteria(this)" id="businessSubcategoryQuick" 
 										class="form-control allField"  value="${plu.businessSubCategory}"
 										placeholder="<spring:message code="enter.businessSubcategory.label" />">
-									<span id="businessSubcategoryQuickError"
+									<span id="productSideEffectsError"
 										style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
                                        </c:if>
                                        </c:forEach>
@@ -669,8 +667,7 @@ img.thumbnail {
 										name="productUsageQuick" style="resize: none;"
 										class="form-control allField"  value="${sku.product_usage}"
 										placeholder="<spring:message code="productUsage.label" />">
-									<span id="productUsageQuickError"
-										style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
+									
 								</div> 
 								
 							
@@ -682,9 +679,8 @@ img.thumbnail {
 										name="productHanding" style="resize: none;"
 										class="form-control allField"  value="${sku.product_handing}"
 										placeholder="<spring:message code="enter.product.handing.label" />">
-									<span id="productHandingQuickError"
-										style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
-						</div> 
+									
+								</div> 
 							
 							
 								
@@ -701,8 +697,7 @@ img.thumbnail {
 										name="productUsageQuick" style=""
 										class="form-control allField"  value="${sku.product_consumption_interaction}"
 										placeholder="<spring:message code="enterproductInTake.label" />">
-									<span id="productIntakeQuickError"
-										style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
+									
 								</div> 
 						
 						
@@ -713,8 +708,7 @@ img.thumbnail {
 									<input type="text" id="uom1Quick" onblur="criteria(this)"
 										class="form-control allField"  value="${sku.uom1}"
 										placeholder="<spring:message code="enteruom1.label" />">
-									<span id="uom1QuickError"
-										style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
+									
 								</div> 
 								
 								
@@ -725,8 +719,7 @@ img.thumbnail {
 									<input type="text" id="uom2Quick" onblur="criteria(this)"
 										class="form-control allField"  value="${sku.uom2}"
 										placeholder="<spring:message code="enteruom2.label" />">
-									<span id="uom2QuickError"
-										style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
+									
 								</div> 
 						
 						
@@ -779,6 +772,10 @@ img.thumbnail {
 										style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
 							
 								</div>
+								
+								
+								
+								
 								
 								
 								

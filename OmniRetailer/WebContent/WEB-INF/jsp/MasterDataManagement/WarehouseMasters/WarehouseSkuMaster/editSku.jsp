@@ -248,15 +248,14 @@ $(document).ready(function(){
 										<div class="form-group col-lg-2">
                                         	<label><spring:message code="product.name.label" /> <span style="color:red; font-size:2">*</span></label>
 	                                        <input type="text" onblur="criteria(this)"value="${sku.productName}" class="form-control allField " id="searchItems"  placeholder="<spring:message code="search.product.label" />" style="height:30PX;" />
-						                    	<input type="hidden" class="allField" id="productId" value="${sku.productId}">
+						           	<input type="hidden" class="allField" id="productId" value="${sku.productId}">
 											
 											<!-- <div class="services">
 									    		<div class="items">
 									     			<ul class="matchedStringUl productNameSku" style=""></ul>
 									   			</div>
 											</div> -->
-											<span id="productNameDetailError" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
-										</div>
+											</div>
 										<div class="form-group col-lg-2">
                                     		<label><spring:message code="category.name.label" /></label>
 <%--                                             <input type="text" onblur="criteria(this)" class="form-control allField" readonly="readonly" id="categoryName" name="categoryName" value="${sku.category}" required placeholder="<spring:message code="category.name.label" />" />
@@ -289,7 +288,7 @@ $(document).ready(function(){
                                     	<div class="form-group col-lg-2">
                                     		<label><spring:message code="ean.label" /></label>
                                             <input type="text" onblur="criteria(this)" class="form-control allField"  id="ean" name="ean" value="${sku.ean}" required placeholder="<spring:message code="enter.ean.label" />" />
-                                            <span id="eanwarehouseError" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
+                                            <span id="eanError" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
                                         </div>
                                          <div class="form-group col-lg-2">
 											<label><spring:message code="supplier.name.label" /> <span style="color:red; font-size:2">*</span></label>
@@ -338,13 +337,13 @@ $(document).ready(function(){
                                           <div class="form-group col-lg-9 col-sm-12">
                                             <label><spring:message code="uom.label.label" /></label>
                                             <input type="text" onblur="criteria(this)" class="form-control allField"  name="uomLabel" id="uomLabel" value="${sku.uomLabel}"  placeholder="<spring:message code="enter.uom.label.label" />" />
-                                        	<span id="weightwarehouseError" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
+                                        	<span id="weightError" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
                                         </div></div>
                                        <div class=" col-lg-2" style="padding-left:0px">
                                           <div class="form-group col-lg-8 col-sm-12">
                                             <label><spring:message code="pack.size.label" /></label>
                                             <input type="text" onblur="criteria(this)" class="form-control allField"  name="packSize" id="packSize" value="${sku.packSize}" required placeholder="<spring:message code="enter.pack.size.label" />" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" />
-                                            <span id="packSizewarehouseError" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
+                                            <span id="packSizeError" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
 										</div>
                                     
                                       </div>
@@ -370,7 +369,6 @@ $(document).ready(function(){
                                           <div class="form-group col-lg-9 col-sm-12">
                                     		<label><spring:message code="retail.units.label" /></label>
                                           	<input class="form-control" onblur="criteria(this)" type="text" name ="retailunits" value="${sku.retailUnits}" id="retailunits"/>
-                                           <span id="retailunitsError" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
                                         </div></div>
                                       
                                       
@@ -389,7 +387,7 @@ $(document).ready(function(){
                                           <div class="form-group col-lg-9 col-sm-12">
                                             <label><spring:message code="model.label" /></label>
                                             <input type="text" onblur="criteria(this)" class="form-control allField" name="model" id="model" value="${sku.model}" required  placeholder="<spring:message code="enter.model.label" />"  />
-                                        	<span id="modelwarehouseError" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
+                                        	<span id="modelError" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
 										</div> </div>
                                         
                                         
@@ -399,23 +397,13 @@ $(document).ready(function(){
                                             <input type="text" onblur="criteria(this)" class="form-control allField" name="color" id="color" value="${sku.color}" placeholder="<spring:message code="enter.color.label" />" />
                                         	<span id="colorError" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
                                           </div></div>
-                                        
-                                        <%--  <div class=" col-lg-2 shademedia" style="padding-left:0px;">
+                                         <div class=" col-lg-2 shademedia" style="padding-left:0px;">
                                          <div class="form-group col-lg-10 col-sm-12">
                                          <label><spring:message code="Shade.label" /> <span style="color:red; font-size:2">*</span></label>
                                             <input type="text" onblur="criteria(this)" style="width:150px;" class="form-control allField"  id="minSaleQty" name="minSaleQty" value="" required placeholder="<spring:message code="enter.shade.label" />" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" />
                                             <span id="minSaleQtyError" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
                                          </div>
-                                         </div> --%>
-                                         
-                                         <div class=" col-lg-2 a" style="padding-left:0px;;padding-right:0px;">
-                                         <div class="form-group col-lg-9 col-sm-12">
-                                         <label><spring:message code="Shade.label" /> </label>
-                                            <input type="text"   onblur="criteria(this)" class="form-control allField"  id="shade" readonly name="minSaleQty" value="" required placeholder="<spring:message code="enter.shade.label" />" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" />
-                                            <span id="ShadeError" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
                                          </div>
-                                         </div>
-                                         
                                               <div class=" col-lg-2" style="padding-left:0px;;padding-right:0px;white-space:nowrap;">
                                           <div class="form-group col-lg-9 col-sm-12">
                                        <label><spring:message code="hsnCode.label" /> <span
@@ -490,7 +478,6 @@ $(document).ready(function(){
                                           <div class="form-group col-lg-9 col-sm-12">
                                         	<label><spring:message code="fr.tax.code.label" /></label>
                                              <input type="text" onblur="criteria(this)" class="form-control allField"  name="frTaxCode" id="frTaxCode" value="${sku.frTaxCode}" required placeholder="<spring:message code="enter.fr.tax.code.label" />" /> 
-                                             <span id="frTaxCodewarehouseError" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
                                          </div></div>
                                            <div class=" col-lg-2" style="padding-left:0px">
                                           <div class="form-group col-lg-7 col-sm-12">
@@ -501,7 +488,6 @@ $(document).ready(function(){
                                           <div class="form-group col-lg-8 col-sm-12">
                                             <label><spring:message code="mark.down.label" /></label>
                                             <input type="text" onblur="criteria(this)" class="form-control allField"  name="markDown" id="markDown" value="${sku.markDown}" required  placeholder="<spring:message code="enter.mark.down.label" />"  />
-										 <span id="markDownError" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
 										</div></div>
                                       <div class=" col-lg-2" style="padding-left:0px">
                                       <div class="form-group col-lg-10 col-sm-12">
@@ -644,7 +630,7 @@ $(document).ready(function(){
 											
 												<input type="text" id="skutheme"  placeholder="Theme" class="form-control allField" value="${sku.theme}"/>
 											
-											<span id="skuThemewarehouseError"
+											<span id="skuThemeError"
 												style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
 										</div>
 									</div>
@@ -657,7 +643,7 @@ $(document).ready(function(){
 											
 												<input type="text" id="skuSubtheme"  placeholder="Sub Theme" class="form-control allField" value="${sku.subTheme}"/>
 											
-											<span id="skuSubthemewarehouseError"
+											<span id="skuSubthemeError"
 												style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
 										</div>
 									</div>
@@ -674,8 +660,6 @@ $(document).ready(function(){
 										type="text" onblur="criteria(this)" class="form-control allField" name="alternate_sku"
 										id="alternate_sku" value=""
 										placeholder="<spring:message code="alternate.sku.description.label" />" />
-								<span id="alternate_skuwarehouseError"
-												style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
 								</div>
 
 								<div class="form-group col-lg-2">
@@ -683,9 +667,6 @@ $(document).ready(function(){
 										type="text" onblur="criteria(this)" class="form-control allField" name="season_code"
 										id="season_code" value=""
 										placeholder="<spring:message code="season.code.description.label" />" />
-								
-								<span id="season_codeError"
-												style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
 								</div>
 
 								<div class="form-group col-lg-2">
@@ -693,8 +674,6 @@ $(document).ready(function(){
 										type="text" onblur="criteria(this)" class="form-control allField" name="alias_name"
 										id="alias_name" value="${sku.aliasName}"
 										placeholder="<spring:message code="alias.name.description.label" />" />
-								<span id="alias_namewarehouseError"
-												style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
 								</div>
 
 								<div class="form-group col-lg-2">
@@ -702,9 +681,6 @@ $(document).ready(function(){
 										type="text" onblur="criteria(this)" class="form-control allField" name="item_type"
 										id="item_type" value="${sku.itemType}"
 										placeholder="<spring:message code="item.type.description.label" />" />
-								<span id="item_typeWarehouseError"
-												style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
-								
 								</div>
 
 								<div class="form-group col-lg-2">
@@ -712,8 +688,6 @@ $(document).ready(function(){
 										type="text" onblur="criteria(this)" class="form-control allField" name="item_design"
 										id="item_design" value="${sku.itemDesign}"
 										placeholder="<spring:message code="item.design.description.label" />" />
-								<span id="item_designWarehouseError"
-												style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
 								</div>
 								
 								
@@ -755,7 +729,7 @@ $(document).ready(function(){
 										placeholder="" />
 										<span id="expirytoleranceError"
 												style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
-							</div>
+								</div>
 
 								<div class="form-group col-lg-2">
 										<label><spring:message code="product.handing.label" />
@@ -764,11 +738,11 @@ $(document).ready(function(){
 										name="productHanding" style="resize: none;"
 										class="form-control allField"  value="${sku.productHandlng}"
 										placeholder="<spring:message code="enter.product.handing.label" />">
-								<span id="productHandingDetailwarehouseError"
-												style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
-								
 								</div>
 
+							
+						
+								
 
 							</div>             
                                        
@@ -866,7 +840,15 @@ $(document).ready(function(){
 										</c:if>
 									</div>
 								</div>
-                                  
+                                         
+                                         
+                                         
+                                         
+                                         
+                                         
+                                         
+                                         
+                                         
                                          
                                        <div class=" col-lg-2">
                                         	<div class="checkbox" style="padding-left: 20px;margin-top: 0px;">
@@ -1081,7 +1063,6 @@ $(document).ready(function(){
                                        <div class="form-group span2">
                                        		<label><spring:message code="ean.label" /></label>
                                             <input type="text" onblur="criteria(this)" class="form-control allField"  id="ean${selectedLocationId}${priceListCount}" value="${plu.ean}" placeholder="<spring:message code="enter.ean.label" />" />
-										    <span id="ean${selectedLocationId}${priceListCount}Error" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
 										</div> 
                                        <div class="form-group span2">
                                             <label><spring:message code="created.date.label" /></label>
@@ -1150,14 +1131,16 @@ $(document).ready(function(){
                                          
                                          <div class="row-fluid-5">
                                          <div class="form-group span2">
+                                           
                                             <label>Material Type</label>
                                             <input type="text"  onblur="criteria(this)"  class="form-control allField" onkeydown="clearError(this);" id="pluMaterialtype${selectedLocationId}${priceListCount}" placeholder="Material Type" value="${plu.materialType}"/>
-                                        	<!-- <span id="pluMaterialtypeAllLocation1Error" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span> -->
-                                           <span id="pluMaterialtype${selectedLocationId}${priceListCount}Error" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
-                                         </div>
+                                        	<span id="pluMaterialtypeAllLocation1Error" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
+                                        
+                                           
+                                           </div>
                                            
                                            
-                               <div class="form-group span2">
+                                           <div class="form-group span2">
 									<label>Zero Stock Billing</label>
 									<div class="col-lg-10" style="padding-left: 0px">
 										<select class="form-control" name="zeroStockbilling${selectedLocationId}${priceListCount}" id="zeroStockbilling${selectedLocationId}${priceListCount}">
@@ -1168,7 +1151,7 @@ $(document).ready(function(){
 										</select>
 									</div>
 								</div>
-                               <div class="form-group span2">
+                                         <div class="form-group span2">
 									<label><spring:message code="status.label" /></label>
 									<div class="col-lg-10" style="padding-left: 0px">
 										<select class="form-control" name="skuStatus${selectedLocationId}${priceListCount}" id="skuStatus${selectedLocationId}${priceListCount}">
@@ -1177,7 +1160,7 @@ $(document).ready(function(){
 										</select>
 									</div>
 								</div>    
-                        </div> 
+                                       </div> 
                                          
                                          
                                          
@@ -1232,8 +1215,6 @@ $(document).ready(function(){
                                        <div class="form-group span2">
                                        		<label><spring:message code="ean.label" /></label>
                                             <input type="text" onblur="criteria(this)" class="form-control allField"  id="eanAllLocation0" value="" placeholder="<spring:message code="enter.ean.label" />" />
-										    <span id="ean${selectedLocationId}${priceListCount}Error" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
-										
 										</div> 
                                        <div class="form-group span2">
                                             <label><spring:message code="created.date.label" /></label>

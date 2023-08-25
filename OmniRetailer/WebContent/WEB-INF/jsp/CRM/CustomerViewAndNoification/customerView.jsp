@@ -53,7 +53,7 @@
 	margin-top:1%;
 }
 a.button, .list a.button {
-    position:relative;
+position:relative;
 	text-decoration: none;
 	color: black;
 	display: inline-block;
@@ -222,7 +222,6 @@ $(document).ready(function(){
 						<!--  <select id ="city" class="form-control" >
 							<option >Select State</option>
 						</select> -->
-        	 	<span style="color:red; font-size:2;font-weight: bold" id="errcity"></span>
         	 	</div>
         	 	
         	 	
@@ -238,9 +237,13 @@ $(document).ready(function(){
 	                   	 </select>
 							</div>
 							<div class="col-lg-6 col-md-6" style="padding: 0px;">
-							<a onclick="" style="padding: 4px 8px;margin-bottom: 15px;width: 100%;margin-top: 18px;background-color: #999 !important;" class="btn bg-olive btn-inline">Upload customer group..</a>
+								                  <a onclick="" style="padding: 4px 8px;     margin-bottom: 15px;   width: 100%;margin-top: 18px;background-color: #999 !important;" class="btn bg-olive btn-inline">Upload customer group..</a>
+
 							</div>
+
+
 						</div>
+        	 	
         	 </div>
            </div>
 		   <div class="form-group col-lg-5" style="border-left-color: green;border-left-width: 1px;border-left-style: solid;">

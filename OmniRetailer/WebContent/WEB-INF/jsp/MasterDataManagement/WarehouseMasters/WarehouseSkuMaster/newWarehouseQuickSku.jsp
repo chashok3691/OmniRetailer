@@ -514,7 +514,7 @@ border-color: transparent transparent gray transparent;
 											onkeydown="clearError(this);" onblur="calcMarkUp(this);"
 											value="" id="sectionWarehouseQuick"
 											placeholder="<spring:message code="section.label" />" />
-											<span id="sectionWarehouseQuickError" style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span> 
+								
 								</div>
 								
 								<div class="form-group col-lg-3" style=""> 
@@ -621,8 +621,7 @@ border-color: transparent transparent gray transparent;
 										name="productHanding" style="resize: none;"
 										class="form-control allField"  value="${sku.productHandlng}"
 										placeholder="<spring:message code="enter.product.handing.label" />">
-									<span id="productHandleingWarehouseQuickError"
-										style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
+									
 								</div> 
 							
 							<div class="form-group col-lg-2"  style="">
@@ -633,7 +632,7 @@ border-color: transparent transparent gray transparent;
 										name="productUsageQuick" style="resize: none;"
 										class="form-control allField"  value="${sku.product_usage}"
 										placeholder="<spring:message code="enterproductUsage.label" />">
-									<span id="productUsageWarehouseQuickError" style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
+									
 								</div> 
 								
 								
@@ -653,7 +652,7 @@ border-color: transparent transparent gray transparent;
 										name="productUsageQuick" style="" onblur="criteria(this)"  
 										class="form-control allField"  value="${sku.product_consumption_interaction}"
 										placeholder="<spring:message code="enterproductInTake.label" />">
-									<span id="productIntakeWarehouseQuickError" style="text-align: right;color: red;font-size: 2;font-weight: bold;"></span>
+									
 								</div> 
 						
 						
@@ -665,7 +664,7 @@ border-color: transparent transparent gray transparent;
 										name="productUsageQuick" style=""
 										class="form-control allField"  value="${sku.uom1}"
 										placeholder="<spring:message code="enteruom1.label" />">
-									<span id="uom1WarehouseQuickError" style="text-align: right;color: red;font-size: 2;font-weight: bold;"></span>		
+									
 								</div> 
 								
 								
@@ -677,7 +676,7 @@ border-color: transparent transparent gray transparent;
 										name="productUsageQuick" style=""
 										class="form-control allField"  value="${sku.uom2}"
 										placeholder="<spring:message code="enteruom2.label" />">
-									<span id="uom2WarehouseQuickError" style="text-align: right;color: red;font-size: 2;font-weight: bold;"></span>	
+									
 								</div> 
 								
 								<div class="form-group col-lg-6">
@@ -705,7 +704,7 @@ border-color: transparent transparent gray transparent;
 										name="productPrecautions" style="resize: none;"
 										class="form-control allField"
 										placeholder="<spring:message code="enter.product.precautions.label" />">${sku.product_precaution}</textarea>
-									<span id="productPrecautionsWarehouseQuickError"
+									<span id="productPrecautionsQuickError"
 										style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
 								</div>
 								

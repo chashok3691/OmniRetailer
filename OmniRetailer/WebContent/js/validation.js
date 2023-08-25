@@ -105,6 +105,7 @@ $('td[contenteditable]').keypress(function() {
         		return '';
         	 } 
         	 ));
+        	
         }
         
           

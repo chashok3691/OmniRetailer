@@ -9,7 +9,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Welcome | Omni Retailer</title>
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
-</head>
+       
+    </head>
 <body>
                             <br>
                           <c:if test="${sessionScope.role == 'super admin'}">
@@ -29,6 +30,8 @@
                           		</div>
                           	</div>
                           	
+                          	
+                          
                           	<div class="col-lg-2 form-group" style="text-align: left;"></div>
                        </div>
                        <div class="row">
@@ -89,5 +92,7 @@
                         </c:forEach>
                           	</div>     
                         </c:if>  
+                    
+                          
 </body>
 </html>

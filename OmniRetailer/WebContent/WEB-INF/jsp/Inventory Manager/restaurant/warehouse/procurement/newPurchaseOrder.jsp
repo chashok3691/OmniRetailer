@@ -183,12 +183,10 @@
 								<div class="form-group col-lg-6">
 									<label><spring:message code="credit.terms.label" /></label>
 									<textarea class="form-control" name="credit_terms" style="resize: none;" id="credit_terms" required></textarea>
-								     <span id="credit_termsError" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
 								</div>
 								<div class="form-group col-lg-6">
 									<label><spring:message code="payment.terms.label" /></label>
 									<textarea class="form-control" style="resize: none;" name="payment_terms"></textarea>
-								     <span id="payment_termsError" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
 								</div>
 								
 							</div>
@@ -197,12 +195,10 @@
 								<div class="form-group col-lg-6">
 									<label><spring:message code="shipping.terms.label" /></label>
 									<textarea  class="form-control" name="shipping_terms" style="resize: none;" ></textarea>
-								    <span id="shipping_termsError" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
 								</div>
 								<div class="form-group col-lg-6">
 									<label><spring:message code="remarks.label" /></label>
 									<textarea  class="form-control" name="remarks" style="resize: none;" ></textarea>
-									<span id="remarksError" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
 								</div>
 							</div>
 							

@@ -148,8 +148,6 @@ $('#StockPosting').click(function(){
   <div class="col-lg-12" style="padding-left:0px;padding-right: 0px;">
 	                   <label style="font-family: Calibri;color: gray;"><spring:message code="offer_end_date.label"/></label>
 	                 	<input class="form-control calendar_icon form-group" readonly="readonly" value="${endDate}" style="background-color: white;" id="to" size="20" type="text" onfocus="callCalender('to')" onclick="callCalender('to')" placeholder="DD/MM/YYYY" />
-		           <span id="EndDateError" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
-		           
 		           </div>
 
 </div>

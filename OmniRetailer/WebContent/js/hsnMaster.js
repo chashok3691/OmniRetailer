@@ -134,11 +134,14 @@
 
 function validateHSNmaster(id,operation){
    		try{
+   			
    			var online = window.navigator.onLine;
    		  	if(!online){
    		  	alert("Check your internet connection,Please try agian after some time.");
    		  	return;
    		  	}
+   		
+   	
    		debugger;
          $("#hsncodeError").html("");
    		 $("#chapterError").html("");
@@ -151,15 +154,18 @@ function validateHSNmaster(id,operation){
    		 $("#Error").html("");
    		 $("#Success").html("");
    		var formData={};
-   	
+   		
+   		
+
+   		
    		 var hsncode = $("#hsncode").val();
  	    	 if(hsncode == ""){
  	    		$("#hsncode").focus();
  	    		 $("#hsncodeError").html("Please Enter HSN Code");
  	    		 return;
- 	    	 }else if(parseInt($("#hsncode").val().length)>12){
+ 	    	 }else if(parseInt($("#hsncode").val().length)>=20){
  				 $("#hsncode").focus();
- 				$("#hsncodeError").html("HSN Code can't exceeds 12 characters");
+ 				$("#hsncodeError").html("HSN Code can't exceeds 20 characters");
  				return;
  			}
  	    	 var chapter = $("#chapter").val();
@@ -167,7 +173,7 @@ function validateHSNmaster(id,operation){
   	    		$("#chapter").focus();
   	    		 $("#chapterError").html("Please Enter Chapter Name");
   	    		 return;
-  	    	 }else if(parseInt($("#chapter").val().length)>20){
+  	    	 }else if(parseInt($("#chapter").val().length)>=20){
  				 $("#chapter").focus();
   				$("#chapterError").html("Chapter can't exceeds 20 characters");
   				return;
@@ -177,27 +183,30 @@ function validateHSNmaster(id,operation){
   	    		 $("#heading").focus();
   	    		 $("#headingError").html("Please Enter Heading");
   	    		 return;
-  	    	 }else if(parseInt($("#heading").val().length)>20){
+  	    	 }else if(parseInt($("#heading").val().length)>=20){
  				 $("#heading").focus();
    				$("#headingError").html("Heading can't exceeds 20 characters");
    				return;
    			}
+  	    	 
   	    	 var taxrate = $("#taxrate").val();
   	    	 if(taxrate == ""){
   	    		 $("#taxrate").focus();
   	    		 $("#taxrateError").html("Please Enter Tax Rate");
   	    		 return;
-  	    	 }else if(parseInt($("#taxrate").val().length)>20){
+  	    	 }else if(parseInt($("#taxrate").val().length)>=20){
   	    		 	$("#taxrate").focus();
     				$("#taxrateError").html("Tax rate can't exceeds 20 characters");
     				return;
     			}
+  	    	
+  	    	 
   	    	 var Description = $("#Description").val();
  	    	 if(Description == ""){
  	    		 $("#Description").focus();
  	    		 $("#DescriptionError").html("Please Enter Description");
  	    		 return;
- 	    	 }else if(parseInt($("#Description").val().length)>250){
+ 	    	 }else if(parseInt($("#Description").val().length)>=250){
   	    		 	$("#Description").focus();
     				$("#DescriptionError").html("Description can't exceeds 250 characters");
     				return;
@@ -207,7 +216,7 @@ function validateHSNmaster(id,operation){
   	    		 $("#section").focus();
   	    		 $("#sectionError").html("Please Enter Section");
   	    		 return;
-  	    	 }else if(parseInt($("#section").val().length)>20){
+  	    	 }else if(parseInt($("#section").val().length)>=20){
   	    		 	$("#section").focus();
     				$("#sectionError").html("Section can't exceeds 20 characters");
     				return;
@@ -223,7 +232,7 @@ function validateHSNmaster(id,operation){
   	    		 $("#subheading").focus();
   	    		 $("#subheadingError").html("Please Enter Sub Heading");
   	    		 return;
-  	    	 }else if(parseInt($("#subheading").val().length)>20){
+  	    	 }else if(parseInt($("#subheading").val().length)>=20){
   	    		 	$("#subheading").focus();
     				$("#subheadingError").html("Sub Heading can't exceeds 20 characters");
     				return;
@@ -234,7 +243,7 @@ function validateHSNmaster(id,operation){
   	    		 $("#taxcode").focus();
   	    		 $("#taxcodeError").html("Please Enter Tax Code");
   	    		 return;
-  	    	 }else if(parseInt($("#taxcode").val().length)>20){
+  	    	 }else if(parseInt($("#taxcode").val().length)>=20){
   	    		 	$("#taxcode").focus();
     				$("#taxcodeError").html("Tax Code can't exceeds 20 characters");
     				return;
@@ -316,7 +325,7 @@ function validateHSNmaster(id,operation){
   		$("#chapter").val(chaptername);
   		$("#heading").val(headingname);
   		$("#createHSN").css("display","none");
-  		$("#updateHSN").css("display","block");
+  		 $("#updateHSN").css("display","block");
   		$("#updatebtn").val("update");
   		
 		}
@@ -414,4 +423,6 @@ function validateHSNmaster(id,operation){
               return;
        		}
        }
-    
+       
+       
+	

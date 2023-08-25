@@ -451,15 +451,14 @@ $(document).ready(function(){
                       </div>
                       <div class="col-lg1-2 col-lg-2">
 	               <div class="col-lg-12" style="padding-left:0px;padding-right: 0px;">
-	                    <label><spring:message code="offer_end_date.label"/></label>
+	                   <label><spring:message code="offer_end_date.label"/></label>
 	                 	<input class="form-control calendar_icon form-group" readonly="readonly" value="${enddate}" style="background-color: white;" id="to" size="20" type="text" onfocus="callCalender('to')" onclick="callCalender('to')" placeholder="DD/MM/YYYY" />
-		                <span id="endDateError" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
 		           </div>
 		          </div>
+                    </div>
                   </div>
-                  </div>
-                  <div class="col-lg-1" style="width: 12%;background: #ccc;">
-                  <div class="col-lg-12" style="border-top:1px solid #ccc; border-bottom: 1px solid #ccc;">
+                  <div class="col-lg-1" style="    width: 12%;    background: #ccc;">
+                  <div class="col-lg-12" style="    border-top: 1px solid #ccc; border-bottom: 1px solid #ccc;">
                   <div class="row">
                   <a onclick="viewOutletStocks('outletStocks','${stockType}','0');" class="button"><spring:message code="searchbutton.label"/></a>
                   </div>
@@ -472,12 +471,15 @@ $(document).ready(function(){
                  <%--    <label><spring:message code="startprice.label"/></label> --%>
                     
                       </div>
-                      <div class="col-lg-3">
+                     
+                       
+                        
+                       <div class="col-lg-3">
                      
                       </div>
                      <div class="col-lg-3">
-                      <span id="priceError" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
-                     </div>
+                      
+                      </div>
                     
                     </div>
                     <br>
@@ -494,16 +496,17 @@ $(document).ready(function(){
 				                      </div>
 				                      
 				                      
-				     <div class="col-lg-5 col-xs-8" style="padding-left:0px;padding-right:0px">
+				                       <div class="col-lg-5 col-xs-8" style="padding-left:0px;padding-right:0px">
+                      
                       <div class="wrapper">	 
-                      <input type="text" class="form-control" style="" value="${searchName}" id="searchStocks" placeholder="<spring:message code="search.stocks.label" />" />
+                      <input type="text"  class="form-control" style="" value="${searchName}" id="searchStocks" placeholder="<spring:message code="search.stocks.label" />" />
 							<button id="mySearch" class="searchbutton"></button>
 							<!-- <div class="services">
 				    			<div class="items">
 				     				<ul class="matchedStringUl searchStocks" style=""></ul>
 				   				</div>
 							</div> -->
-					</div>
+							</div>
 						<input type="hidden" id="stock" value="${searchName}">
                     </div>
 				                      

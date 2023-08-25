@@ -1747,24 +1747,6 @@ function validateStockRequest(viewoperatiob,operation,stockRequestId){
 			focusDiv("Error");
 			return;
 		}
-		
-		if(parseInt($("#requestedUserName").val().length)>100){
- 			 $("#requestedUserName").focus();
- 				$("#requestedByError").html("User Name can't exceeds 100 Characters");
- 				return;
- 		}else{
- 	   	 $("#requestedByError").html(" ");
- 	   }
-		
-		if(parseInt($("#remarks").val().length)>250){
-			 $("#remarks").focus();
-				$("#remarksError").html("Remark can't exceeds 250 Characters");
-				return;
-		}else{
-	   	 $("#remarksError").html(" ");
-	   }
-		
-		
 	}
 	
 	
@@ -1806,7 +1788,9 @@ function validateStockRequest(viewoperatiob,operation,stockRequestId){
 		   }	
 		  }
 // }
+
 		  }
+	
 	
  	var stockReqobj = {},stockRequestItems=[], skuId = [], Qty = [];
  	stockReqobj.toWareHouseId=$("#toWarehouse").val();
@@ -1900,6 +1884,7 @@ function validateStockRequest(viewoperatiob,operation,stockRequestId){
 // 				$("#outletZone").val(startDate);
  				$("#searchStock").val(searchName);
  				$("#flowUnder").val(flowUnder);
+ 				
  				$("#loading").css("display","none");
  				$("#mainDiv").removeClass('disabled');
  		},

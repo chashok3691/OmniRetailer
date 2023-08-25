@@ -2455,7 +2455,7 @@ return priceRangeResponse = gson.fromJson(resultStr, PriceRangeResponse.class);
 			RestfulServiceConnection restfulServiceConnectionObj = new RestfulServiceConnection();
 		//System.out.println("Request String::::::::::::"+gson.toJson(shipmentRateMasterObj));
 			resultStr = restfulServiceConnectionObj.getResponse(AppProperties.getRESTFulCloudServiceURL("get_bom_master"), gson.toJson(shipmentRateMasterObj),"GET");
-			//System.out.println("Response String:::::::::::"+resultStr);
+		//	System.out.println("Response String:::::::::::"+resultStr);
 			//////////reqQtyresultStr);
 			String responseCode = Response.getResponseCode(resultStr);
 			if(responseCode.equals(AppProperties.getAppMessageByProperty("RESPONSE_SUCCESS_CODE").trim())){

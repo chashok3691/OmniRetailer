@@ -144,10 +144,10 @@ public class FeaturedProductService {
 		String resultStr = null;
 		try {
 			featureobj.setRequestHeader(RequestHeaderUtil.getRequestHeader(sessionScope));
-	///		System.out.println("Request String::::::::::::"+gson.toJson(featureobj));
+			// log.info("Request String::::::::::::"+gson.toJson(featureobj));
 			RestfulServiceConnection restfulServiceConnectionObj = new RestfulServiceConnection(); 
 			resultStr = restfulServiceConnectionObj.getResponseFromPost(AppProperties.getRESTFulCloudServiceURL("create_feature_group"), gson.toJson(featureobj));
-	////		System.out.println("Response String:::::::::::"+resultStr);
+			// log.info("Response String:::::::::::"+resultStr);
 			String responseCode = Response.getResponseCode(resultStr);
 			if(responseCode.equals(AppProperties.getAppMessageByProperty("RESPONSE_SUCCESS_CODE").trim())){
 				resultStr = AppProperties.getAppMessageByProperty("FEATURED_GROUP_CREATE_SUCCESS").trim();
@@ -162,8 +162,7 @@ public class FeaturedProductService {
 			e.printStackTrace();
 		}
 		return resultStr;
-	}	
-	
+	}		
 	/**
 	 * @author chaithanya.v
 	 * 

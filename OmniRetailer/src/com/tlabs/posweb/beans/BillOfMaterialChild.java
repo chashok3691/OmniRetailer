@@ -47,8 +47,18 @@ public class BillOfMaterialChild {
 private float avlQty;
 	
 	private float inwardQty;
+	private boolean iszeroBilling;
 	
 	
+	
+
+	public boolean isIszeroBilling() {
+		return iszeroBilling;
+	}
+
+	public void setIszeroBilling(boolean iszeroBilling) {
+		this.iszeroBilling = iszeroBilling;
+	}
 
 	public float getAvlQty() {
 		return avlQty;

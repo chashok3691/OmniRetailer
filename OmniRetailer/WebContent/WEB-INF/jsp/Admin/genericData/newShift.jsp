@@ -548,7 +548,6 @@ $(document).ready(function(){
                                          <div class="form-group col-lg-11" style="width:95% !important">
                                            <label><spring:message code="remarks.label" /></label>
                                            <textarea class="form-control"  onblur="criteria(this)" name="remarks" id="shiftRemarks" style="resize: none;" rows="3" placeholder="<spring:message code="enter.remarks.label" />" ></textarea>
-                                         <span id="shiftRemarksError" style="text-align:right;color: red;font-size: 2;font-weight: bold;margin-left: 20px;white-space: nowrap;"></span>
                                          </div>
                                        </div>
                                          <input type="hidden" id="flowUnder" value="${flowUnder}">

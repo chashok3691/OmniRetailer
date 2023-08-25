@@ -734,11 +734,11 @@ function searchProducts(name, searchCategory){
 			$("#supplierNameError").html("Supplier Name doesn't exist");
 			return false;
 		}
-	 /* if($("#searchSupplier").val().trim() == ""){
+	  if($("#searchSupplier").val().trim() == ""){
 		  $("#supplierNameError").html("Enter Supplier Name");
 		  $("#searchSupplier").focus();
 		  return;
-	  }*/
+	  }
 	  if($("#supplier_Id").val() == ""){
 		  $("#supplierNameError").html("Supplier Name doesn't exist");
 		  $("#searchSupplier").focus();
@@ -749,16 +749,6 @@ function searchProducts(name, searchCategory){
 		 $("#shipmentRef").focus();
 		 return;
 	 }
-	
-	 if(parseInt($("#shipmentRef").val().length)>18){
-			 $("#shipmentRef").focus();
-			 $("#shipmentRefError").html("Shipment Ref can't exceeds 18 Characters");
-				return;
-		}else{
-	   	 $("#shipmentRefError").html(" ");
-	 }
-	 
-	 
 	 if($("#shippedFrom").val() == ""){
 		 $("#shippedFromError").html("Shipped From is Required");
 		 $("#shippedFrom").focus();
@@ -795,55 +785,6 @@ function searchProducts(name, searchCategory){
 		 focusDiv('arrivalDateError');
 		 return;
 	 }
-	 
-	 if(parseInt($("#transporterCode").val().length)>30){
-		 $("#transporterCode").focus();
-		 $("#transporterCodeError").html("Transporter Code can't exceeds 30 Characters");
-			return;
-	}else{
-   	 $("#transporterCodeError").html(" ");
- }
-	 
-	 if(parseInt($("#deliveryPerson").val().length)>40){
-		 $("#deliveryPerson").focus();
-		 $("#deliveryPersonError").html("Delivery Person can't exceeds 40 Characters");
-			return;
-	}else{
-   	 $("#deliveryPersonError").html(" ");
- }
-	 
-	 if(parseInt($("#transporterName").val().length)>100){
-		 $("#transporterName").focus();
-		 $("#transporterNameError").html("Transporter Name can't exceeds 100 Characters");
-			return;
-	}else{
-   	 $("#transporterNameError").html(" ");
- }
-	 
-	 if(parseInt($("#carrierNo").val().length)>30){
-		 $("#carrierNo").focus();
-		 $("#carrierNoError").html("Carrier No can't exceeds 30 Characters");
-			return;
-	}else{
-   	 $("#carrierNoError").html(" ");
- }
-	 
-	 if(parseInt($("#shipmentTerms").val().length)>250){
-		 $("#shipmentTerms").focus();
-		 $("#shipmentTermsError").html("Shipment Terms can't exceeds 250 Characters");
-			return;
-	}else{
-   	 $("#shipmentTermsError").html(" ");
- }
-	 
-	 if(parseInt($("#shipmentComments").val().length)>250){
-		 $("#shipmentComments").focus();
-		 $("#shipmentCommentsError").html("Shipment Terms can't exceeds 250 Characters");
-			return;
-	}else{
-   	 $("#shipmentCommentsError").html(" ");
- }
-	 
 	 
 	 var len = $("#productsList tr").length-1;
 	  var shipmentNoteItems = [];

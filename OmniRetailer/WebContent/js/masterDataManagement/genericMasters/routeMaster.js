@@ -69,7 +69,7 @@ function createRouteMaster(id,operation){
 	    if(routeName.trim() == ""){
 	    	$("#routeNameError").html("Route  Name Required");
 	    	return false;
-	    }else if(parseInt($("#routeName").val().length)>100){
+	    }else if(parseInt($("#routeName").val().length)>=100){
 			 $("#routeName").focus();
 				$("#routeNameError").html("Route name can't exceeds 100 Characters");
 				return;

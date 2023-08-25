@@ -210,18 +210,21 @@ $("#validityPeriod").keyup(function(){
                                      	</div>
                                     </div>
                                     
-                                     <div class="row">
+                                     <div class="row"  >
                                      
                                      <div class="form-group col-lg-2" >
                                     	<div class="col-lg-12 ">
                                             <label>No.Of Memberships<span style="color:red; font-size:2">*</span></label>
-                                            <input type="text" class="form-control" id="quantity" name="quantity" oninput="this.value = this.value.replace(/[^0-9]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" value="${giftCoupon.quantity}"/>
-                                            <span style="color:red; font-size:2;font-weight: bold" id="errQuantity"></span>
+                                            <input type="text" class="form-control" id="quantity" name="quantity" value="${giftCoupon.quantity}"/>
+                                             <span style="color:red; font-size:2;font-weight: bold" id="errQuantity"></span>
                                          </div>
                                      </div> 
                                      
                                      </div>
-                                     </div>
+                                    
+									
+								 	
+								 	</div>
 								<div class="row">
 									 <div class="form-group col-lg-2">
 										 <div class="row" style="margin-left: 1%">

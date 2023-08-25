@@ -363,15 +363,6 @@ function saveCounter(){
 		$("#paymentDevicePort").focus();
 		return;
 	}
-	
-	if(parseInt($("#counterRemarks").val().length)>250){
-		 $("#counterRemarks").focus();
-		 $("#counterRemarksError").html("Counter Remarks can't exceeds 250 Character");
-		 return;
-	} else{
-	$("#counterRemarksError").html("");
-}
-	
 	 var formData={};
 formData.quickBill = quickbill;
 formData.counterName =name;
@@ -390,6 +381,9 @@ formData.paymentDevicePort=paymentDevicePort;
 var taxCodeQuick = $("#taxCodeQuick").val();
 
 formData.taxCode=taxCodeQuick;
+
+
+
  var nformData = JSON.stringify(formData);
 	
 	 var contextPath = $("#contextPath").val();
@@ -415,6 +409,7 @@ formData.taxCode=taxCodeQuick;
 			$("#mainDiv").removeClass('disabled');
 			}
 		});
+
 }
 
 
@@ -710,15 +705,6 @@ function updateCounter(){
 		//focusDiv('counterName');
 		$("#paymentDevicePort").focus();
 		return;
-	}
-	
-	if($("#counterRemarks").val().length>250){
-		$("#counterRemarks").focus();
-		$("#counterRemarksError").html("Counter Ranks can't exceeds 250 Character");
-		
-		return false;
-	}else{
-		$("#counterRemarksError").html("");
 	}
 	
 	var finalObj = {};

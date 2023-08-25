@@ -1,6 +1,6 @@
 	function searchHomePageBanners(name,searchCategory,index){
 			var type = $("#type").val();
-			var contextPath = $("#contextPath").val();
+			 var contextPath = $("#contextPath").val();
 			 
 			 name=""
 		   		 if($("#homePageBannerMaster").length>0)
@@ -37,37 +37,17 @@
 	function validateHomePageBanner(operation){
 		debugger;
 		$("#bannerNameError").html("");
-			$("#startDateError").html("");
-			$("#Error").html("");
-			$("#descriptionError").html("");
+				$("#startDateError").html("");
+						 $("#Error").html("");
+								 $("#descriptionError").html("");
 		var type = $("#type").val();
 		var finalObj = {};
 		finalObj.bannerId = $("#bannerId").val();
-		
-		if(parseInt($("#bannerId").val().length)>25){
-			 $("#bannerId").focus();
-			 $("#bannerIdError").html("Banner Id can't exceeds 25 Characters");
-				return;
-		}else{
-		 $("#bannerIdError").html(" ");
-	    }
-		
 		if($("#bannerName").val().trim() == ""){
 			$("#bannerName").focus();
 			$("#bannerNameError").html("Banner Name is Required");
 			return;
 		}
-		
-		if(parseInt($("#bannerName").val().length)>50){
-			 $("#bannerName").focus();
-			 $("#bannerNameError").html("Banner Name can't exceeds 50 Characters");
-				return;
-		}else{
-		        $("#bannerNameError").html(" ");
-	    }
-		
-		
-		
 		finalObj.bannerName = $("#bannerName").val();
 		finalObj.bannerPriorityStr = $("#bannerPriority").val();
 		if($("#startDate").val() == ""){
@@ -83,7 +63,7 @@
 				 $("#Error").html("End Date can't be less than Start Date");
 				 return;
 			 }
-		finalObj.endDateStr = $("#endDate").val()+" 00:00:00";
+			finalObj.endDateStr = $("#endDate").val()+" 00:00:00";
 		}
 		finalObj.statusStr = $("#status").val();
 		if($("#description").val() == ""){
@@ -91,22 +71,6 @@
 			$("#descriptionError").html("Banner Description is Required");
 			return;
 		}
-		if(parseInt($("#description").val().length)>250){
-			 $("#description").focus();
-			 $("#descriptionError").html("Banner Description can't exceeds 250 Characters");
-				return;
-		}else{
-		     $("#descriptionError").html(" ");
-	    }
-		
-		if(parseInt($("#bannerImageText").val().length)>250){
-			 $("#bannerImageText").focus();
-			 $("#Error").html("Banner Image Text can't exceeds 250 Characters");
-				return;
-		}else{
-		        $("#Error").html(" ");
-	    }
-		
 		finalObj.bannerDescription = $("#description").val();
 		finalObj.productCategory = $("#productCategory").val();
 		finalObj.departmentCategory = $("#departmentcategory").val();
@@ -120,7 +84,7 @@
 		if($("#displayOffer").prop('checked') == true)
 			finalObj.offerDisplay = 1;
 		else
-		finalObj.offerDisplay = 0;
+			finalObj.offerDisplay = 0;
 		finalObj.bannerImageText = $("#bannerImageText").val();
 		finalObj.bannerImageTextFont  = $("#bannerImageTextFontHidden").val();
 		finalObj.bannerImageFontSize = $("#bannerImageFontSize").val();
@@ -174,6 +138,7 @@
     				 alert("something went wrong");
     				 $("#loading").css("display","none");
         			   $("#mainDiv").removeClass('disabled');
+
     			}
     		});
 	}

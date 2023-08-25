@@ -13,7 +13,9 @@
     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
     
-<!DOCTYPE html>
+     
+    
+    <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
@@ -171,7 +173,6 @@ $(document).ready(function(){
 		 	    <div class="col-lg-8" style="padding-left:0px;padding-right: 0px;">
                         <label><spring:message code="groupdescription.label"/></label>
                         <input type= "text" class="form-control form-group" value = "${customerGroup.group_description}" id="groupDescription"/>
-                         <span id="groupDescriptionError" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
                 </div>
 		 	
 		 	</div>
@@ -213,7 +214,6 @@ $(document).ready(function(){
 		 	  <div class="col-lg-6" style="padding-left:0px;padding-right: 0px;">
                  		<label><spring:message code="offer_end_date.label"/><span class="requiredField">*</span></label>
                 	 	<input class="form-control calendar_icon form-group" readonly="readonly" value="${customerGroup.endDate}" style="background-color: white;" id="endDate" size="20" type="text" onfocus="callCalender('endDate')" onclick="callCalender('endDate')" placeholder="DD/MM/YYYY" />
-	              <span id="endDateError" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
 	              </div>
 		 	</div>
 </div>

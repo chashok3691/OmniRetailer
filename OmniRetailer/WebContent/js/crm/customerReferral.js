@@ -139,44 +139,15 @@ function viewEditCustomerReferral(referralId,operation){
 
 
 function validateCustomerReferral(operation){
+	
 	debugger;
 	 //purpose:for checking internet conection
 	var online = window.navigator.onLine;
-  	if(!online){
+  	if(!online)
+  	{
   	alert("check your internet connection,please try agian after some time");
   	return;
   	}
-  	
-  	 if($("#programId").val() == ""){
-     	$("#programId").focus();
-     	$("#referralError").html("Program ID is Required");
-     	return false;
-     }
-     
-     if(parseInt($("#programId").val().length)>50){
- 		 $("#programId").focus();
- 			$("#referralError").html("Program ID can't exceeds 50 Characters");
- 			return;
- 	}else{
- 	 $("#referralError").html(" ");
-    } 
-     
-     if(parseInt($("#programDescription").val().length)>100){
- 		 $("#programDescription").focus();
- 			$("#programDescriptionError").html("Program Description can't exceeds 100 Characters");
- 			return;
- 	}else{
- 	 $("#programDescriptionError").html(" ");
-   } 
-     
-     if(parseInt($("#noOfReferral").val().length)>11){
- 		 $("#noOfReferral").focus();
- 			$("#noOfReferralError").html("No Of Referral can't exceeds 11 Digit");
- 			return;
- 	}else{
- 	 $("#noOfReferralError").html(" ");
-   } 
-  	
   	$("#minpurchaseError").html("");
 	$("#referralError").html("");
 	$("#couponError").html("");
@@ -191,6 +162,7 @@ function validateCustomerReferral(operation){
     var startDate = $("#from").val();
     var endDate = $("#to").val();
     //var couponRef = $("#couponRef").val();
+   
     var expiryDate = $("#expiry").val();
     var productGroup = $("#productGroup").val();
     var assignedStatus = $("#assignedStatus").val();
@@ -202,16 +174,10 @@ function validateCustomerReferral(operation){
     
     var noOfDays = daydiff(parseDate($('#from').val()), parseDate($('#to').val()));
 	if(noOfDays < 0){
-		$("#offer_end_dateError").html("End Date can't be less than Start Date");
+		$("#offer_end_dateError").html("Expiry Date can't be less than Date");
 		return;
 	}
     
-	var noOfDays = daydiff(parseDate($('#from').val()), parseDate($('#expiry').val()));
-	if(noOfDays < 0){
-		$("#offer_expiry_dateError").html("Expiry Date can't be less than Start Date");
-		return;
-	}
-	
     if ($('#otpRequired').is(':checked')) 
 			$("#otpRequired").val("0");
 		else
@@ -221,10 +187,12 @@ function validateCustomerReferral(operation){
 		$("#autoCoupons").val("0");
 	else
 		$("#autoCoupons").val("1");
+	
     
     var autoCoupons = $("#autoCoupons").val();
     var otpRequired = $("#otpRequired").val();
     var country = $("#country").val();
+    
     var zoneLocations = $("#location").val();
 	var locations = "";
 	var zone = "";
@@ -234,6 +202,7 @@ function validateCustomerReferral(operation){
 		$("#errStates").html("Select Zones");
 		return;
 	}
+	
 	var locations = $("#location").val();
 	if(locations == "" || locations == null){
 		$("#errLocation").html("Select Location");
@@ -246,7 +215,8 @@ function validateCustomerReferral(operation){
 		locations += zoneLocations[locItem] +","; 
 	}
 	
-	for(var zoneItem in zones ){
+	for(var zoneItem in zones )
+	{
 		zone += zones[zoneItem] +","; 
 	}
     var maxRecords = 10;
@@ -260,9 +230,14 @@ function validateCustomerReferral(operation){
     var priority="";
     if($("#categoryPriority").length>0)
     	priority = $("#categoryPriority").val();
-    
    
+ 
     
+    if($("#programId").val() == ""){
+    	$("#programId").focus();
+    	$("#referralError").html("Program ID is Required");
+    	return false;
+    }
    /* if($("#couponRef").val() == ""){
     	$("#couponRef").focus();
     	$("#couponError").html("Coupon  Batch ref is Required");
@@ -290,6 +265,7 @@ function validateCustomerReferral(operation){
 				$("#validityPeriodError").html("Enter no of days properly");
    			return;
 				}
+
 		 }
     if($("#from").val() == ""){
     	$("#from").focus();
@@ -359,12 +335,15 @@ function validateCustomerReferral(operation){
 
     finalObj.country=country;
     
+    
     if(status=="Active"){
     	finalObj.status=true;
-    }
+    	}
     else{
     	finalObj.status=false;
     }
+    
+
      var  formData=JSON.stringify(finalObj);
      console.log("formObj::"+formData);
 	$.ajax({
