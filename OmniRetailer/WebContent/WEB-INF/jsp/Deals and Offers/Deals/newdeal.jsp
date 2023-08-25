@@ -353,7 +353,6 @@ label {
 									        	 	<div class="form-group col-lg-4" style="">
 									        	 		 <label><spring:message code="city.label" /></label>
 									        	 		 <input type="text" id="city" class="form-control">
-									        	 		 <span id="cityError" style="text-align:right;color:red;font-weight:bold;"></span>
 									        	 	</div>
 									        	 	<div class="form-group col-lg-4">
 									        	 		<label><spring:message code="occupation.label" /></label>
@@ -434,7 +433,6 @@ label {
 									             	<div class="form-group col-lg-4">
 									        	 		<label><spring:message code="offer_end_date.label" /></label>
 									                	<input class="form-control calendar_icon" readonly="readonly" style="background-color: white;" id="endDate" onfocus="callCalender('endDate')" onclick="callCalender('endDate')" placeholder="DD/MM/YYYY"/>
-									        	 	     <span id="endDateError" style="text-align:right;color:red;font-weight:bold;"></span>
 									        	 	</div>
 									        	 	<div class="form-group col-lg-2">
 									        	 	</div>
@@ -634,7 +632,8 @@ label {
                                           <br>
 										 <label><spring:message code="deal_description_text.label" /></label>
                                          <textarea class="form-control" name="dealDesc" id="dealDesc" rows="1" style="resize: none;" placeholder="<spring:message code="deal_description_placeholder.label" />" ></textarea>
-										<span id="dealDescError" style="text-align:right;color:red;font-weight:bold;"></span>
+										
+										
 										
                                         </div>
                                     <!--  </div> -->
@@ -2002,7 +2001,6 @@ label {
                                     <div class="form-group col-lg-3" style="">
                                     	<label><spring:message code="display.tag.line.label" /></label>
                                     	<textarea class="form-control" name="dealImageText" id="dealImageText" rows="1" style="resize: none;" placeholder="<spring:message code="display.tag.line.label" />" ></textarea>
-                                   <span id="dealImageTextErr" style="text-align:right;color:red;font-weight:bold;"></span>
                                     </div>
                                     	<div class="form-group col-lg-3" style="">
                                     		<label><spring:message code="deal.image.text.font.label" /></label>
@@ -2041,8 +2039,6 @@ label {
                                     <div class="form-group col-lg-3" style="">
                                     	<label><spring:message code="display.sale.text.label" /></label>
                                     	<textarea class="form-control" name="saleText" id="saleText" rows="1" style="resize: none;" placeholder="<spring:message code="display.sale.text.label" />" ></textarea>
-                                        <span id="saleTextErr" style="text-align:right;color:red;font-weight:bold;"></span>
-                                    </div>
                                     </div>
                                     	<div class="form-group col-lg-3" style="">
                                     		<label><spring:message code="deal.image.text.font.label" /></label>
@@ -2081,12 +2077,11 @@ label {
                                     <div class="form-group col-lg-3" style="">
                                     	<label><spring:message code="display.deal.text.label" /></label>
                                     	<textarea class="form-control" name="dealText" id="dealText" rows="1" style="resize: none;" placeholder="<spring:message code="display.deal.text.label" />" ></textarea>
-                                        <span id="dealTextErr" style="text-align:right;color:red;font-weight:bold;"></span>
                                     </div>
                                     	<div class="form-group col-lg-3" style="">
-                                    		<label><spring:message code="deal.image.text.font.label" /></label><br>
-                                    		 <select class="form-control" id="dealTextFont">
-                                    		</select> 
+                                    		<label><spring:message code="deal.image.text.font.label" /></label>
+                                    		<select class="form-control" id="dealTextFont">
+                                    		</select>
                                     		<input type="hidden" id="dealTextFontHidden">
                                     	</div>
                                     	<div class="form-group col-lg-2" style="">

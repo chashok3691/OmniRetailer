@@ -369,8 +369,7 @@ $(document).ready(function(){
                       <div class="col-lg1-2 col-lg-2">
 	               <div class="col-lg-12" style="padding-left:0px;padding-right: 0px;">
 	                   <label><spring:message code="offer_end_date.label"/></label>
-	                   <input class="form-control calendar_icon form-group" readonly="readonly" value="${enddate}" style="background-color: white;" id="to" size="20" type="text" onfocus="callCalender('to')" onclick="callCalender('to')" placeholder="DD/MM/YYYY" />
-		               <span id="endDateError" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
+	                 	<input class="form-control calendar_icon form-group" readonly="readonly" value="${enddate}" style="background-color: white;" id="to" size="20" type="text" onfocus="callCalender('to')" onclick="callCalender('to')" placeholder="DD/MM/YYYY" />
 		           </div>
 		          </div>
                     </div>
@@ -387,14 +386,20 @@ $(document).ready(function(){
                     <div class="row">
                      <div class="col-lg-3" style="padding-left:15px;">
                  <%--    <label><spring:message code="startprice.label"/></label> --%>
+                    
                       </div>
+                     
                        <div class="col-lg-1">
+                      
                       </div>
+                        
                        <div class="col-lg-3">
+                     
                       </div>
                      <div class="col-lg-3">
-                           <span id="priceError" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
-                     </div>
+                      
+                      </div>
+                    
                     </div>
                     <br>
                     <br>
@@ -406,12 +411,14 @@ $(document).ready(function(){
 				                      		<option value="50" ${maxRecords == '50' ? 'selected' : ''}>50</option>
 				                     		<option value="100" ${maxRecords == '100' ? 'selected' : ''}>100</option>
 				                      	</select>
-				        </div>
+				                      </div>
 				                      
 				                      <!--added by manasa  -->
 				                      
-				   <div class="col-lg-5 col-xs-8" style="padding-left:0px;padding-right:0px">
+				                        <div class="col-lg-5 col-xs-8" style="padding-left:0px;padding-right:0px">
                       	 <input type="text"  class="form-control" style="" value="" id="searchStocks" placeholder="<spring:message code="search.stocks.label" />" />
+						
+						
 						<button id="mySearch" class="searchbutton"></button>
 							<!-- <div class="services">
 				    			<div class="items">

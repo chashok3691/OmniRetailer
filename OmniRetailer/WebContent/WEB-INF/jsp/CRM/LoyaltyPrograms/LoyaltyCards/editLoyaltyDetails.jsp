@@ -18,7 +18,7 @@
     	<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
     	<%@ taglib prefix="ln" uri="http://java.sun.com/jsp/jstl/functions" %>
     
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html>
 <head>
 
@@ -143,6 +143,10 @@ focusDiv("Error")
 		else
 			$("#conversion").css("visibility","visible");
 	}
+	
+	
+	
+	
 
 /* 	var statesList=[];
 	$("#states option").each(function()
@@ -192,7 +196,9 @@ focusDiv("Error")
 	});
 });
 
-
+	
+	
+	
 </script>
 </head>
 <body>
@@ -217,16 +223,15 @@ focusDiv("Error")
                                    <div id="success"  class="Error" style="text-align: center;color: blue;font-size: 2;font-weight: bold;">${success}</div>
                                    	<input type="hidden" value="${err}">
                                    	
-                                   	<div style="background: #efefef;padding: 4px 20px;">
+                                   	 <div style="background: #efefef;padding: 4px 20px;">
                                    	<div class="row">
                                    	
                                    	<div class="form-group col-lg-2">
                                             <label style="font-family: Calibri;color: gray;white-space: nowrap;"><spring:message code="loyalityPlanId.label" /></label>
-                                        <div class="col-lg-10" style="padding:0px;">
+                                            <div class="col-lg-10" style="padding:0px;">
                                             <input type="text" class="form-control"  name="" id="loyaltyPlanId" value="${loyaltyCard.loyaltyProgramNumber}"/>
-                                     	     <span id="loyaltyPlanIderr" style="color:red; font-size:2"></span>
                                      	</div>
-                                    </div>
+                                     	</div>
                                    	
                                    		<div class="form-group col-lg-2">
                                             <label style="font-family: Calibri;color: gray;white-space: nowrap;"><spring:message code="card.type.label" /></label><%-- "${loyaltyCard.loyaltyCardType" --%>
@@ -274,17 +279,19 @@ focusDiv("Error")
                                        		 </div>
                                            	<span style="color:red; font-size:2" id="validToError"></span>
                                          </div>
+                                        
+                                        
                                        
                                        <div class="form-group col-lg-2">
                                        <div class="col-lg-9" >
                                             <label style="font-family: Calibri;color: gray;white-space: nowrap;" style= "white-space: nowrap;"><spring:message code="validity.period.label" /> <span style="color:red; font-size:2">*</span></label>
-                                            <input type="text" class="form-control"  name="validityPeriod" id="validityPeriod" oninput="this.value = this.value.replace(/[^0-9]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" value="${loyaltyCard.validityPeriod}"/>
+                                            <input type="text" class="form-control"  name="validityPeriod" id="validityPeriod" value="${loyaltyCard.validityPeriod}"/>
                                             <span style="color:red; font-size:2" id="errValidityPeriod"></span>
                                      	</div>
-                                     </div>
+                                     	</div>
                                      	
                                      	
-                                    <div class="form-group col-lg-2" style="">
+                                     	<div class="form-group col-lg-2" style="">
                                     	<div class="col-lg-10" style="padding: 0px; margin-left: -14px;">
                                             <label style="font-family: Calibri;color: gray;white-space: nowrap;"><spring:message code="loyalty.status.label" /><!--  <span style="color:red; font-size:2">*</span> --></label>
                                              <select class="form-control" name="status" id="status">
@@ -297,7 +304,12 @@ focusDiv("Error")
                                      	
 									</div>
 									
-									<div class="row">
+									
+									
+									
+									
+									
+										<div class="row">
 										
 										 <div class="form-group col-lg-2">
                                             <label style="font-family: Calibri;color: gray;white-space: nowrap;"><spring:message code="loyalty.card.name.label" /> <span style="color:red; font-size:2">*</span></label>
@@ -319,13 +331,12 @@ focusDiv("Error")
                                             </div>
                                         </div> --%>
                                         
-                                    <div class="form-group col-lg-2">
+                                       <div class="form-group col-lg-2">
 									 <div class="col-lg-8" style="padding:0px;">
                                             <label style="font-family: Calibri;color: gray;white-space: nowrap;" style="white-space: nowrap;"><spring:message code="loyalty.rewards.life.time.label" /></label>
-                                            <input type="text" class="form-control" name="rewardLifeTime" id="rewardLifeTime" value="${loyaltyCard.rewardLifeTime}" oninput="this.value = this.value.replace(/[^0-9]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');"/>
-                                            <span id="rewardLifeTimeError" style="color:red; font-size:2;font-weight: bold"></span>
-                                    </div>
-                                    </div>
+                                            <input type="text" class="form-control"  name="rewardLifeTime" id="rewardLifeTime" value="${loyaltyCard.rewardLifeTime}" oninput="this.value = this.value.replace(/[^0-9]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');"/>
+                                     	</div>
+                                     	</div>
                                         
                                         
                                         

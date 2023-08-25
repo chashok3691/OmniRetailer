@@ -1234,44 +1234,12 @@ function validateQuickSkuMaster(operation){
 		$("#skuIdQuickError").html("Enter Sku Id");
 		focusDiv('skuIdQuickError');
 		return;
-	}else if(parseInt($("#skuIdQuick").val().length)>20){
+	}else if(parseInt($("#skuIdQuick").val().length)>=100){
 		 $("#skuIdQuick").focus();
-		 $("#skuIdQuickError").html("SKU Id can't exceeds 20 Characters");
+			$("#skuIdQuickError").html("skuid can't exceeds 100 Characters");
 			return;
 		}
-	if(parseInt($("#searchItems").val().length)>100){
-		 $("#searchItems").focus();
-		 $("#productNameError").html("Product Name can't exceeds 100 Characters");
-			return;
-	}
-	
-	if(parseInt($("#eanQuick").val().length)>20){
-		 $("#eanQuick").focus();
-			$("#eanError").html("EAN can't exceeds 20 Characters");
-			return;
-	}
-	else {
-		$("#eanError").html("");
-	}
-	
-	if(parseInt($("#modelQuick").val().length)>30){
-		 $("#modelQuick").focus();
-			$("#modelError").html("Model can't exceeds 30 Characters");
-			return;
-	}
-	else {
-		$("#modelError").html("");
-	}
-	
-	if($("#hsnCodeQuick").val().trim() == ""){
-		$("#hsnCodeQuickError").html("Enter HSN Code");
-		focusDiv('hsnCodeQuick');
-		return;
-	}else if(parseInt($("#hsnCodeQuick").val().length)>20){
-		 $("#hsnCodeQuick").focus();
-			$("#hsnCodeQuickError").html("Hsn code can't exceeds 20 Characters");
-			return;
-	}
+
 	
 	
 	if($("#uomQuickList").val().trim() == ""){
@@ -1285,35 +1253,11 @@ function validateQuickSkuMaster(operation){
 		$("#hsnCodeQuickError").html("Enter HSN Code");
 		focusDiv('hsnCodeQuick');
 		return;
-	}else if(parseInt($("#hsnCodeQuick").val().length)>20){
+	}else if(parseInt($("#hsnCodeQuick").val().length)>=50){
 		 $("#hsnCodeQuick").focus();
-			$("#hsnCodeQuickError").html("hsncode can't exceeds 20 Characters");
+			$("#hsnCodeQuickError").html("hsncode can't exceeds 50 Characters");
 			return;
 		}
-	
-	if($("#uomQuickList").val().trim() == ""){
-		$("#uomQuickListError").html("Enter UOM");
-		focusDiv('uomQuickListError');
-		return;
-	}
-	
-	if(parseInt($("#uomLabelQuick").val().length)>30){
-		 $("#uomLabelQuick").focus();
-			$("#weightError").html("UOM Label can't exceeds 30 Characters");
-			return;
-	}
-	else {
-		$("#weightError").html("");
-	}
-	
-	if(parseInt($("#packSizeQuick").val().length)>11){
-		 $("#packSizeQuick").focus();
-			$("#packSizeError").html("Pack Size can't exceeds 11 digit");
-			return;
-	}
-	else {
-		$("#packSizeError").html("");
-	}
 	
 	if($("#costPrice").val().trim() == ""){
 		$("#costPriceError").html("Enter Cost Price");
@@ -1333,118 +1277,7 @@ function validateQuickSkuMaster(operation){
 		return;
 	}
 	
-	if(parseInt($("#sectionQuick").val().length)>100) {
-		 $("#sectionQuick").focus();
-			$("#sectionQuickError").html("Section can't exceeds 100 Characters");
-			return;
-	}
-	else {
-		$("#sectionQuickError").html("");
-	}
 	
-	if(parseInt($("#businessCategoryQuick").val().length)>100) {
-		 $("#businessCategoryQuick").focus();
-			$("#businessCategoryQuickError").html("Business Category can't exceeds 100 Characters");
-			return;
-	}
-	else {
-		$("#businessCategoryQuickError").html("");
-	}
-	
-	if(parseInt($("#businessSubcategoryQuick").val().length)>100) {
-		 $("#businessSubcategoryQuick").focus();
-			$("#businessSubcategoryQuickError").html("Business Subcategory can't exceeds 100 Characters");
-			return;
-	}
-	else {
-		$("#businessSubcategoryQuickError").html("");
-	}
-	
-	if(parseInt($("#productHandingQuick").val().length)>50){
-		 $("#productHandingQuick").focus();
-			$("#productHandingQuickError").html("Product Handling can't exceeds 50 Characters");
-			return;
-	}
-	else {
-		$("#productHandingQuickError").html("");
-	}
-	
-	if(parseInt($("#productUsageQuick").val().length)>250){
-		 $("#productUsageQuick").focus();
-			$("#productUsageQuickError").html("Product usage can't exceeds 250 Characters");
-			return;
-	}
-	else {
-		$("#productUsageQuickError").html("");
-	}
-	
-	if(parseInt($("#productIntakeDetail").val().length)>50){
-		 $("#productIntakeDetail").focus();
-			$("#productIntakeQuickError").html("Product Intake can't exceeds 50 Characters");
-			return;
-	}
-	else {
-		$("#productIntakeQuickError").html("");
-	}
-	
-	
-	if(operation="edit"){
-		
-		if(parseInt($("#productIntakeQuick").val().length)>50){
-			 $("#productIntakeQuick").focus();
-				$("#productIntakeQuickError").html("Product Intake can't exceeds 50 Characters");
-				return;
-		}
-		else {
-			$("#productIntakeQuickError").html("");
-		}
-}	
-	
-	
-	if(parseInt($("#uom1Quick").val().length)>20) {
-		 $("#uom1Quick").focus();
-			$("#uom1QuickError").html("UOM1 length can't exceeds 20 Characters");
-			return;
-	}
-	else {
-		$("#uom1QuickError").html("");
-	}
-	
-	if(parseInt($("#uom2Quick").val().length)>20) {
-		 $("#uom2Quick").focus();
-			$("#uom2QuickError").html("UOM2 length can't exceeds 20 Characters");
-			return;
-	}
-	else {
-		$("#uom2QuickError").html("");
-	}
-	
-	if(parseInt($("#shortDescriptionQuick").val().length)>250) {
-		 $("#shortDescriptionQuick").focus();
-			$("#shortDescriptionQuickError").html("Product Precaution length can't exceeds 250 Characters");
-			return;
-	}
-	else {
-		$("#shortDescriptionQuickError").html("");
-	}
-	
-	if(parseInt($("#productPrecautionsQuick").val().length)>250) {
-		 $("#productPrecautionsQuick").focus();
-			$("#productPrecautionsQuickError").html("Product Precaution length can't exceeds 250 Characters");
-			return;
-	}
-	else {
-		$("#productPrecautionsQuickError").html("");
-	}
-	
-	if(parseInt($("#productSideEffectsQuick").val().length)>250) {
-		 $("#productSideEffectsQuick").focus();
-			$("#productSideEffectsError").html("Product Side effects can't exceeds 250 Characters");
-			return;
-	}
-	else {
-		$("#productSideEffectsError").html("");
-	}
 	
 	if($("#packSizeQuick").val().trim()=="")
 		finalObj.packSize=1;
@@ -1453,6 +1286,8 @@ function validateQuickSkuMaster(operation){
 	var date = dateTime.split(' ');
 	date = date[0].split('/');
 	var formatedDate = date[1]+"/"+date[0]+"/"+date[2];
+
+
 
 	//beolw are default values for additional values
 	finalObj.quantity = 0.0;
@@ -2611,9 +2446,9 @@ function validateSkuForm(operation){
 		$("#skuIdError").html("Enter Sku Id");
 		focusDiv('skuIdError');
 		return;
-	}else if(parseInt($("#skuId").val().length)>20){
+	}else if(parseInt($("#skuId").val().length)>=100){
 		 $("#skuId").focus();
-		 $("#skuIdError").html("SKU Id can't exceeds 20 Characters");
+		 $("#skuIdError").html("skuid can't exceeds 100 Characters");
 		 return;
 	} 
 	
@@ -2621,9 +2456,9 @@ function validateSkuForm(operation){
 		$("#shortDescriptionError").html("Enter Product Name");
 		focusDiv('shortDescriptionError');
 		return;
-	}else if(parseInt($("#shortDescription").val().length)>100){
+	}else if(parseInt($("#shortDescription").val().length)>=100){
 		 $("#shortDescription").focus();
-		 $("#shortDescriptionError").html("Product Name can't exceeds 100 Characters");
+		 $("#shortDescriptionError").html("productname can't exceeds 100 Characters");
 		 return;
 	}
 	/*if($("#minSaleQty").val().trim() == ""){
@@ -2631,33 +2466,16 @@ function validateSkuForm(operation){
 		focusDiv('minSaleQtyError');
 		return;
 	}*/
-	
-	if(parseInt($("#ean").val().length)>20) {
-		 $("#ean").focus();
-		 $("#eanerr").html("EAN can't exceeds 20 Characters");
-		 return false;
-	}else{
-		 $("#eanerr").html(" ");
-	}
-	
-	
-	if(parseInt($("#manufacturerCode").val().length)>100) {
-		 $("#manufacturerCode").focus();
-		 $("#manufacturerCodeError").html("Manufacturer Code can't exceeds 100 Characters");
-		 return;
-	}else {
-		 $("#manufacturerCodeError").html(" ");
-	}
-	
 	if($("#manufacturer").val().trim() == ""){
 		$("#manufacturerError").html("Enter Manufacturer");
 		focusDiv('manufacturerError');
 		return;
-	}else if(parseInt($("#manufacturer").val().length)>100){
+	}else if(parseInt($("#manufacturer").val().length)>=100){
 		 $("#manufacturer").focus();
 		 $("#manufacturerError").html("Manufacturer can't exceeds 100 Characters");
 		 return;
 	} 
+	
 	
 	if($("#uomList").val().trim() == ""){
 		$("#uomListError").html("Enter UOM");
@@ -2665,37 +2483,6 @@ function validateSkuForm(operation){
 		return;
 	}
 	
-	if(parseInt($("#uomLabel").val().length)>30) {
-		 $("#uomLabel").focus();
-		 $("#newWeightError").html("UOM Label can't exceeds 30 Characters");
-		 return;
-	}else {
-		 $("#newWeightError").html(" ");
-	}
-	
-	if(parseInt($("#packSize").val().length)>11) {
-		 $("#packSize").focus();
-		 $("#packSizedeatilError").html("Package Size can't exceeds 11 Digits");
-		 return;
-	}else {
-		 $("#packSizedeatilError").html(" ");
-	}
-	
-	if(parseInt($("#patternCode").val().length)>100) {
-		 $("#patternCode").focus();
-		 $("#patternCodeError").html("Pattern Code can't exceeds 100 Characters");
-		 return;
-	}else {
-		 $("#patternCodeError").html(" ");
-	}
-	
-	if(parseInt($("#leadTime").val().length)>15) {
-		 $("#leadTime").focus();
-		 $("#leadTimeError").html("Lead Time can't exceeds 15 digit");
-		 return;
-	} else {
-		 $("#leadTimeError").html(" ");
-	}
 	
 	stock
 	if($("#stock").val().trim() == ""){
@@ -2704,277 +2491,16 @@ function validateSkuForm(operation){
 		return;
 	}
 	
-	if(parseInt($("#frTaxCode").val().length)>11) {
-		 $("#frTaxCode").focus();
-		 $("#frTaxCodeError").html("Fr Tax Code can't exceeds 11 digit");
-		 return;
-	} else {
-		 $("#frTaxCodeError").html(" ");
-	} 
-	
-	
-	debugger
-	if(parseInt($("#markDown").val().length)>100) {
-		 $("#markDown").focus();
-		 $("#markDownError").html("MarkDown can't exceeds 100 Character");
-		 return;
-	} else {
-		 $("#markDownError").html("");
-	} 
-	
-	if(parseInt($("#runningPlu").val().length)>100) {
-		 $("#runningPlu").focus();
-		 $("#runningPluError").html("Running Plu can't exceeds 100 Character");
-		 return;
-	} else {
-		 $("#runningPluError").html("");
-	} 
-	
-	if(parseInt($("#model").val().length)>30) {
-		 $("#model").focus();
-		 $("#newmodelError").html("Model can't exceeds 30 Character");
-		 return;
-	} else {
-		 $("#newmodelError").html("");
-	} 
-	
-	
-	if(parseInt($("#color").val().length)>30) {
-		 $("#color").focus();
-		 $("#skucolorError").html("Color can't exceeds 30 Character");
-		 return;
-	} else {
-		 $("#skucolorError").html("");
-	} 
-	
-	if(parseInt($("#section").val().length)>100) {
-		 $("#section").focus();
-		 $("#skuSectionError").html("Section can't exceeds 100 Character");
-		 return;
-	} else {
-		 $("#skuSectionError").html("");
-	} 
-	
 	if($("#hsnCode").val().trim() == ""){
 		$("#hsnCodeError").html("Enter HSN Code");
 		focusDiv('hsnCodeError');
 		return;
-	}else if(parseInt($("#hsnCode").val().length)>50){
+	}else if(parseInt($("#hsnCode").val().length)>=50){
 		 $("#hsnCode").focus();
-		 $("#hsnCodeError").html("HSN Code can't exceeds 50 Characters");
+		 $("#hsnCodeError").html("hsncode can't exceeds 100 Characters");
 		 return;
-	} 
-	
-	if(parseInt($("#alternate_sku").val().length)>30) {
-		 $("#alternate_sku").focus();
-		 $("#alternate_skuerr").html("Alternate SKU can't exceeds 30 Character");
-		 return;
-	} else {
-		 $("#alternate_skuerr").html("");
-	} 
-	
-	if(parseInt($("#season_code").val().length)>25) {
-		 $("#season_code").focus();
-		 $("#seasonCodeErr").html("SeasonCode can't exceeds 25 Character");
-		 return;
-	} else {
-		 $("#seasonCodeErr").html("");
 	} 
 
-	if(parseInt($("#alias_name").val().length)> 200) {
-		 $("#alias_name").focus();
-		 $("#aliasNameErr").html("Alias Name can't exceeds 200 Character");
-		 return;
-	} else {
-		 $("#aliasNameErr").html("");
-	} 
-	
-	
-	
-	if(parseInt($("#item_type").val().length)> 50) {
-		 $("#item_type").focus();
-		 $("#skuItemTypeErr").html("Item Type can't exceeds 50 Character");
-		 return;
-	} else {
-		 $("#skuItemTypeErr").html("");
-	} 
-	
-	if(parseInt($("#item_design").val().length)> 50) {
-		 $("#item_design").focus();
-		 $("#skuItemDesignErr").html("Item Design can't exceeds 50 Character");
-		 return;
-	} else {
-		 $("#skuItemDesignErr").html("");
-	} 
-	
-	if(parseInt($("#productHandingDetail").val().length)> 50) {
-		 $("#productHandingDetail").focus();
-		 $("#ProductHandingDetailErr").html("Product Handing can't exceeds 50 Character");
-		 return;
-	} else {
-		 $("#ProductHandingDetailErr").html("");
-	} 
-	
-	if(parseInt($("#productUsageDetail").val().length)>250) {
-		 $("#productUsageDetail").focus();
-		 $("#productUsageDetailErr").html("Product Usage can't exceeds 250 Character");
-		 return;
-	} else {
-		 $("#productUsageDetailErr").html("");
-	} 
-	
-	debugger
-	/*if(parseInt($("#productIntakeDetail").val().length)>= 5) {
-		 $("#productIntakeDetail").focus();
-		 $("#productUsageDetailErr").html("Product Intake can't exceeds 50 Character");
-		 return;
-	} else {
-		 $("#productUsageDetailErr").html("");
-	} */
-	
-	if(parseInt($("#uom1Detail").val().length)> 20) {
-		 $("#uom1Detail").focus();
-		 $("#uom1DetailErr").html("UOM1 can't exceeds 20 Character");
-		 return;
-	} else {
-		 $("#uom1DetailErr").html("");
-	} 
-	
-	if(parseInt($("#uom2Detail").val().length)> 20) {
-		 $("#uom2Detail").focus();
-		 $("#uom2DetailErr").html("UOM2 can't exceeds 20 Character");
-		 return;
-	} else {
-		 $("#uom2DetailErr").html("");
-	} 
-	
-	if(parseInt($("#skutheme").val().length)> 100) {
-		 $("#skutheme").focus();
-		 $("#skuThemeError").html("Theme can't exceeds 100 Character");
-		 return;
-	} else {
-		 $("#skuThemeError").html("");
-	} 
-	
-	if(parseInt($("#skuSubtheme").val().length)> 100) {
-		 $("#skuSubtheme").focus();
-		 $("#skuSubthemeError").html("Sub Theme can't exceeds 100 Character");
-		 return;
-	} else {
-		 $("#skuSubthemeError").html("");
-	} 
-	
-	
-	if(parseInt($("#productPrecautions").val().length)> 250) {
-		 $("#productPrecautions").focus();
-		 $("#productPrecautionsDetailError").html("Product Precautions can't exceeds 250 Character");
-		 return;
-	} else {
-		 $("#productPrecautionsDetailError").html("");
-	} 
-	
-	if(parseInt($("#productSideEffects").val().length)> 250) {
-		 $("#productSideEffects").focus();
-		 $("#productSideEffectsDetailError").html("Product Side Effects can't exceeds 250 Character");
-		 return;
-	} else {
-		 $("#productSideEffectsDetailError").html("");
-	} 
-	
-	
-	if(parseInt($("#warrantyDetails").val().length)> 250) {
-		 $("#warrantyDetails").focus();
-		 $("#warrantyDetailsError").html("Warrenty can't exceeds 250 Character");
-		 return;
-	} else {
-		 $("#warrantyDetailsError").html("");
-	} 
-	
-	
-	
-	/*if(parseInt($("#pluColorShadeAllLocation1").val().length)>= 25) {
-		 $("#pluColorShadeAllLocation1").focus();
-		 $("#pluColorShadeAllLocation1Error").html("Color Shade can't exceeds 25 Character");
-		 return;
-	} else {
-		 $("#pluColorShadeAllLocation1Error").html("");
-	} */
-	
-	if(operation="new"){
-	if(parseInt($("#pluColorShadeAllLocation1").val().length)> 25) {
-		 $("#pluColorShadeAllLocation1").focus();
-		 $("#pluColorShadeAllLocation1Error").html("Color Shade can't exceeds 25 Character");
-		 return;
-	} else {
-		 $("#pluColorShadeAllLocation1Error").html("");
-	} 
-	}
-	
-	if(operation="edit"){
-		if(parseInt($("#pluColorShadeAllLocation0").val().length)> 25) {
-			 $("#pluColorShadeAllLocation0").focus();
-			 $("#pluColorShadeAllLocation0Error").html("Color Shade can't exceeds 25 Character");
-			 return;
-		} else {
-			 $("#pluColorShadeAllLocation0Error").html("");
-		} 
-		
-		if(parseInt($("#materailTypeAllLocation0").val().length)> 50) {
-			 $("#materailTypeAllLocation0").focus();
-			 $("#pluColorShadeAllLocation0Error").html("Material Type can't exceeds 50 Character");
-			 return;
-		} else {
-			 $("#pluColorShadeAllLocation0Error").html("");
-		} 
-		
-	}
-	
-	if(parseInt($("#pluMbqAllLocation1").val().length)> 100) {
-		 $("#pluMbqAllLocation1").focus();
-		 $("#pluMbqAllLocation1Error").html("MBQ can't exceeds 100 Character");
-		 return;
-	} else {
-		 $("#pluMbqAllLocation1Error").html("");
-	} 
-	
-	if(parseInt($("#pluAcpAllLocation1").val().length)> 100) {
-		 $("#pluAcpAllLocation1").focus();
-		 $("#pluAcpAllLocation1Error").html("ACP can't exceeds 100 Character");
-		 return;
-	} else {
-		 $("#pluAcpAllLocation1Error").html("");
-	} 
-	
-	
-	if(operation == "new"){
-	if(parseInt($("#materailTypeAllLocation1").val().length)> 50) {
-		 $("#materailTypeAllLocation1").focus();
-		 $("#materailTypeAllLocation1Error").html("Material Type can't exceeds 50 Character");
-		 return;
-	} else {
-		 $("#materailTypeAllLocation1Error").html("");
-	} 
-	
-	if(parseInt($("#eanAllLocation1").val().length)>20) {
-		 $("#eanAllLocation1").focus();
-		 $("#skueanAllLocationDetailError").html("EAN can't exceeds 20 Character");
-		 return;
-	} else {
-		 $("#skueanAllLocationDetailError").html("");
-	} 
-	
-	
-	}
-	
-	 var noOfDays = daydiff(parseDate($('#pluCreatedDateAllLocation1').val()), parseDate($('#pluExpiryDateAllLocation1').val()));
-	 if(noOfDays < 0){
-		 $("#pluExpiryDateAllLocation1Error").focus();
-		 $("#pluExpiryDateAllLocation1Error").html("Expiry Date can't be less than Created Date");
-		 return;
-	 }
-	
-	
-	
 	/*if($("#searchItems").val().trim() == ""){
 	  $("#productNameError").html("Enter Product Name");
 	  $("#searchItems").focus();
@@ -3391,75 +2917,6 @@ function validateSkuForm(operation){
 						return false;
 				 }
 			 }
-			 
-			 if($("#pluCostPrice"+locationId+id).val() == ""){
-				 debugger;
-				 $("#pluCostPrice"+locationId+id+"Error").html("Enter Cost Price");
-				 $(".pricelist").each(function(){
-					 $(this).css("display","none");
-				 });
-				 $(this).css("display","block");
-				 $(".priceList").css("display","block");
-				 $(".priceListLocationDiv").each(function(){
-					 $(this).css("display","none");
-				});
-				 $("."+locationId).css("display","block");
-				 $("div ."+locationId+" .priceList").css("display","block");
-				 displayCurrentPageNo();
-				 flag = false;
-//				 alert("pluCostPrice"+locationId+id+"Error");
-				 if(storeLocation != "")
-					 $("#selectedLocation").val(storeLocation);
-				 	 $("#pluCostPrice"+locationId+id).focus();
-				 return false;
-			 }
-
-			/* if(parseInt($("#ean"+locationId+id).val().length)>=30){
-				 $("#ean"+locationId+id).focus();
-				 $("#skuean"+locationId+id+"Error").html("EAN can't exceeds 30 Character");
-				 $(".pricelist").each(function(){
-					 $(this).css("display","none");
-				 });
-				 $(this).css("display","block");
-				 $(".priceList").css("display","block");
-				 $(".priceListLocationDiv").each(function(){
-					 $(this).css("display","none");
-				});
-				 $("."+locationId).css("display","block");
-				 $("div ."+locationId+" .priceList").css("display","block");
-				 displayCurrentPageNo();
-				 flag = false;
-				 if(storeLocation != "")
-					 $("#selectedLocation").val(storeLocation);
-				 $("#ean"+locationId+id).focus();
-				 return false;
-			 }else{
-			$("#ean"+locationId+id+"Error").html("");
-		  }*/
-			 debugger
-			 if(parseInt($("#materailType"+locationId+id).val().length)>30){
-				 $("#materailType"+locationId+id).focus();
-				 $("#materailType"+locationId+id+"Error").html("Material type can't exceeds 30 Character");
-				 $(".pricelist").each(function(){
-					 $(this).css("display","none");
-				 });
-				 $(this).css("display","block");
-				 $(".priceList").css("display","block");
-				 $(".priceListLocationDiv").each(function(){
-					 $(this).css("display","none");
-				});
-				 $("."+locationId).css("display","block");
-				 $("div ."+locationId+" .priceList").css("display","block");
-				 displayCurrentPageNo();
-				 flag = false;
-				 if(storeLocation != "")
-					 $("#selectedLocation").val(storeLocation);
-				 $("#materailType"+locationId+id).focus();
-				 return false;
-			 }else{
-			$("#materailType"+locationId+id+"Error").html("");
-		  }
-			 
 			 if($("#pluDesc"+locationId+id).val() == ""){
 				 $("#pluDesc"+locationId+id+"Error").html("Enter Description");
 				 $(".pricelist").each(function(){
@@ -3527,6 +2984,7 @@ function validateSkuForm(operation){
 				     materialType : $("#materailType"+locationId+id).val(),
 				     zeroStockBilling : $("#zeroStockbilling"+locationId+id).val(),
 				     stockStatus:$("#skuStockStatus"+locationId+id).val(),
+				     salePrice1:$("#salePriceOne"+locationId+id).val(),
 				     //styleRange : $("#styleRangeDropDown").val()
 				     
 			 };
@@ -4497,42 +3955,19 @@ function validateWarehouseSkuForm(operation){
 		focusDiv('skuIdError');
 		return;
 	}
-	if(parseInt($("#skuId").val().length)>100) {
-		 $("#skuId").focus();
-		 $("#skuIdError").html("Sku Id can't exceeds 100 characters");
-		 return;
-	}else {
-	$("#skuIdError").html("");
-  }
-	
-	
-	/*if($("#productNameDetailError").text() != ""){
-		$("#productNameDetailError").html("Product Name doesn't exist");
-		focusDiv('productNameDetailError');
+	if($("#productNameError").text() != ""){
+		$("#productNameError").html("Product Name doesn't exist");
+		focusDiv('productNameError');
 		return false;
-	}*/
+	}
 	
 	if($("#searchItems").val().trim() == ""){
-	  $("#productNameDetailError").html("Enter Product Name");
+	  $("#productNameError").html("Enter Product Name");
 	  $("#searchItems").focus();
 	  return;
 	}
 	
-	if(parseInt($("#searchItems").val().length)>100) {
-		 $("#searchItems").focus();
-		 $("#productNameDetailError").html("Product Name can't exceeds 100 characters");
-		 return;
-	}else {
-	$("#productNameDetailError").html("");
-   }
 	
-	if(parseInt($("#ean").val().length)>25) {
-		 $("#ean").focus();
-		 $("#eanwarehouseError").html("EAN length can't exceeds 25 characters");
-		 return;
-	}else {
-	$("#eanwarehouseError").html("");
-}
 	
 	/*if($("#productId").val() == ""){
 	  $("#productNameError").html("Product Name doesn't exist");
@@ -4545,208 +3980,20 @@ function validateWarehouseSkuForm(operation){
 		$("#searchSupplier").focus();
 		return;
 	}
- }
-	
 	if($("#manufacturer").val().trim() == ""){
 		$("#manufacturerError").html("Enter Manufacturer Name");
 		focusDiv('manufacturerError');
 		return;
 	}
 	
-	if(parseInt($("#manufacturerCode").val().length)>100) {
-		 $("#manufacturerCode").focus();
-		 $("#manufacturerCodeError").html("Manufacturer Code can't exceeds 100 characters");
-		 return;
-	}else {
-	$("#manufacturerCodeError").html("");
- }
 	
-	if(parseInt($("#manufacturer").val().length)>100) {
-		 $("#manufacturer").focus();
-		 $("#manufacturerError").html("Manufacturer Name can't exceeds 100 characters");
-		 return;
-	}else {
-	$("#manufacturerError").html("");
-}
 	
-	if(parseInt($("#uomLabel").val().length)>50) {
-		 $("#uomLabel").focus();
-		 $("#weightwarehouseError").html("UOM Label can't exceeds 50 characters");
-		 return;
-	}else {
-	$("#weightwarehouseError").html("");
- }
-	if(parseInt($("#packSize").val().length)>11) {
-		 $("#packSize").focus();
-		 $("#packSizewarehouseError").html("Pack Size can't exceeds 11 digits");
-		 return;
-	} else{
-	$("#packSizewarehouseError").html("");
- }
-	if(parseInt($("#retailunits").val().length)>11) {
-		 $("#retailunits").focus();
-		 $("#retailunitsError").html("Retail Units can't exceeds 11 digits");
-		 return;
-	} else{
-	$("#retailunitsError").html("");
-}
-	
-	if(parseInt($("#model").val().length)>100) {
-		 $("#model").focus();
-		 $("#modelwarehouseError").html("Model can't exceeds 100 Characters");
-		 return;
-	} else{
-	$("#modelwarehouseError").html("");
- }
-	if(parseInt($("#color").val().length)>30) {
-		 $("#color").focus();
-		 $("#colorError").html("Color can't exceeds 30 Character");
-		 return;
-	} else{
-	$("#colorError").html("");
-}
-	
-	if($("#hsnCode").val().trim() == ""){
-		$("#hsnCodeError").html("Enter HSN code");
-		$("#hsnCode").focus();
-		return;
-	}
-	
-	if(parseInt($("#hsnCode").val().length)>50){
-		 $("#hsnCode").focus();
-		 $("#hsnCodeError").html("HSN Code can't exceeds 50 Character");
-		 return;
-	} else{
-	$("#hsnCodeError").html("");
-}
-	
-	if(parseInt($("#leadTime").val().length)>50){
-		 $("#leadTime").focus();
-		 $("#leadTimeError").html("Lead Time length can't exceeds 50 digits");
-		 return;
-	} else{
-	$("#leadTimeError").html("");
-}
-	if(parseInt($("#frTaxCode").val().length)>11){
-		 $("#frTaxCode").focus();
-		 $("#frTaxCodewarehouseError").html("Fr Tax Code length can't exceeds 11 digits");
-		 return;
-	} else{
-	$("#frTaxCodewarehouseError").html("");
-}
-	
-	/*if(parseInt($("#markUp").val().length)>11){
-		 $("#markUp").focus();
-		 $("#markUpError").html("MarkUp length can't exceeds 100 Character");
-		 return;
-	} else{
-	$("#markUpError").html("");
-}*/
-	
-	if(parseInt($("#markDown").val().length)>100){
-		 $("#markDown").focus();
-		 $("#markDownError").html("MarkDown length can't exceeds 100 Character");
-		 return;
-	} else {
-	$("#markDownError").html("");
-}
-	if(parseInt($("#runningPlu").val().length)>100){
-		 $("#runningPlu").focus();
-		 $("#runningPluError").html("Running PLU length can't exceeds 100 Character");
-		 return;
-	} else {
-	$("#runningPluError").html("");
-}
-	
-	if(parseInt($("#skutheme").val().length)>100){
-		 $("#skutheme").focus();
-		 $("#skuThemewarehouseError").html("Theme length can't exceeds 100 Character");
-		 return;
-	} else {
-	$("#skuThemewarehouseError").html("");
-}
-	
-	if(parseInt($("#skuSubtheme").val().length)>100){
-		 $("#skuSubtheme").focus();
-		 $("#skuSubthemewarehouseError").html("Sub Theme length can't exceeds 100 Character");
-		 return;
-	} else {
-	$("#skuSubthemewarehouseError").html("");
-}
-	
-	if(parseInt($("#alternate_sku").val().length)>100){
-		 $("#alternate_sku").focus();
-		 $("#alternate_skuwarehouseError").html("Alternate SKU length can't exceeds 100 Character");
-		 return;
-	} else {
-	$("#alternate_skuwarehouseError").html("");
-}
-	if(parseInt($("#season_code").val().length)>50){
-		 $("#season_code").focus();
-		 $("#season_codeError").html("Season Code length can't exceeds 50 Character");
-		 return;
-	} else {
-	$("#season_codeError").html("");
- }
-	if(parseInt($("#alias_name").val().length)>100){
-		 $("#alias_name").focus();
-		 $("#alias_namewarehouseError").html("Alias Name can't exceeds 100 Character");
-		 return;
-	} else {
-	$("#alias_namewarehouseError").html("");
-}
-	if(parseInt($("#item_type").val().length)>100){
-		 $("#item_type").focus();
-		 $("#item_typeWarehouseError").html("Item type can't exceeds 100 Character");
-		 return;
-	} else {
-	$("#item_typeWarehouseError").html("");
-}
-	if(parseInt($("#item_design").val().length)>100){
-		 $("#item_design").focus();
-		 $("#item_designWarehouseError").html("Item Design can't exceeds 100 Character");
-		 return;
-	}else{
-	$("#item_designWarehouseError").html("");
- }
-	
-	if(parseInt($("#productHandingDetail").val().length)>250){
-		 $("#productHandingDetail").focus();
-		 $("#productHandingDetailwarehouseError").html("Product Handling can't exceeds 250 Character");
-		 return;
-	}else{
-	$("#productHandingDetailwarehouseError").html("");
-}
-	
-	if(parseInt($("#shortDescription").val().length)>250){
-		 $("#shortDescription").focus();
-		 $("#shortDescriptionError").html("Short Description can't exceeds 250 Character");
-		 return;
-	}else{
-	$("#shortDescriptionError").html("");
- }
-	
-	if(parseInt($("#warrantyDetails").val().length)>250){
-		 $("#warrantyDetails").focus();
-		 $("#warrantyDetailsError").html("Warranty Details can't exceeds 250 Character");
-		 return;
-	}else{
-	$("#warrantyDetailsError").html("");
-}
-	
-	/*if($("#minSaleQty").val().trim() == ""){
+	if($("#minSaleQty").val().trim() == ""){
 		$("#minSaleQtyError").html("Enter Minimum Sale Qty");
 		focusDiv('minSaleQtyError');
 		return;
-	}*/
-	
-	if(operation == "new"){
-		if($("#minSaleQty").val().trim() == ""){
-			$("#minSaleQtyError").html("Enter Minimum Sale Qty");
-			focusDiv('minSaleQtyError');
-			return;
-	   }
-		}
+	}
+	}
 	
 	if(operation == "new"){
 /*		if($("#supplierNameError").text() != ""){
@@ -4789,12 +4036,16 @@ function validateWarehouseSkuForm(operation){
 		return;
 	}*/
 	
+	if($("#hsnCode").val().trim() == ""){
+		$("#hsnCodeError").html("Enter HSN code");
+		$("#hsnCode").focus();
+		return;
+	}
 	if($("#shortDescription").val().trim() == ""){
 		$("#shortDescriptionError").html("Enter Description");
 		focusDiv('shortDescriptionError');
 		return;
 	}
-	
 	//debugger;
 	finalObj.skuId = $("#skuId").val();
 	finalObj.productId = $("#productId").val();
@@ -5030,100 +4281,6 @@ if(locationId == "AllLocation" && $("#pluCostPrice"+locationId+id).val() == "" &
 				 $("#pluWsPrice"+locationId+id).focus();
 				 return false;
 			 }
-			 
-			 debugger
-			 if(parseInt($("#ean"+locationId+id).val().length)>30){
-				 $("#ean"+locationId+id).focus();
-				 $("#ean"+locationId+id+"Error").html("EAN can't exceeds 30 Character");
-				 $(".pricelist").each(function(){
-					 $(this).css("display","none");
-				 });
-				 $(this).css("display","block");
-				 $(".priceList").css("display","block");
-				 $(".priceListLocationDiv").each(function(){
-					 $(this).css("display","none");
-				});
-				 $("."+locationId).css("display","block");
-				 $("div ."+locationId+" .priceList").css("display","block");
-				 displayCurrentPageNo();
-				 flag = false;
-				 if(storeLocation != "")
-					 $("#selectedLocation").val(storeLocation);
-				 $("#ean"+locationId+id).focus();
-				 return false;
-			 }else{
-			$("#ean"+locationId+id+"Error").html("");
-		  }
-			 
-			 if(parseInt($("#pluColor"+locationId+id).val().length)>25){
-				 $("#pluColor"+locationId+id).focus();
-				 $("#pluColor"+locationId+id+"Error").html("Color can't exceeds 25 Character");
-				 $(".pricelist").each(function(){
-					 $(this).css("display","none");
-				 });
-				 $(this).css("display","block");
-				 $(".priceList").css("display","block");
-				 $(".priceListLocationDiv").each(function(){
-					 $(this).css("display","none");
-				});
-				 $("."+locationId).css("display","block");
-				 $("div ."+locationId+" .priceList").css("display","block");
-				 displayCurrentPageNo();
-				 flag = false;
-				 if(storeLocation != "")
-					 $("#selectedLocation").val(storeLocation);
-				 $("#pluColor"+locationId+id).focus();
-				 return false;
-			 }else{
-			$("#pluColor"+locationId+id+"Error").html("");
-		  }
-			 
-			 if(parseInt($("#pluColorShade"+locationId+id).val().length)>25){
-				 $("#pluColorShade"+locationId+id).focus();
-				 $("#pluColorShade"+locationId+id+"Error").html("Color Shade can't exceeds 25 Character");
-				 $(".pricelist").each(function(){
-					 $(this).css("display","none");
-				 });
-				 $(this).css("display","block");
-				 $(".priceList").css("display","block");
-				 $(".priceListLocationDiv").each(function(){
-					 $(this).css("display","none");
-				});
-				 $("."+locationId).css("display","block");
-				 $("div ."+locationId+" .priceList").css("display","block");
-				 displayCurrentPageNo();
-				 flag = false;
-				 if(storeLocation != "")
-					 $("#selectedLocation").val(storeLocation);
-				 $("#pluColorShade"+locationId+id).focus();
-				 return false;
-			 }else{
-			$("#pluColorShade"+locationId+id+"Error").html("");
-		  }
-			 
-			 if(parseInt($("#pluMbq"+locationId+id).val().length)>100){
-				 $("#pluMbq"+locationId+id).focus();
-				 $("#pluMbq"+locationId+id+"Error").html("MBQ can't exceeds 100 Character");
-				 $(".pricelist").each(function(){
-					 $(this).css("display","none");
-				 });
-				 $(this).css("display","block");
-				 $(".priceList").css("display","block");
-				 $(".priceListLocationDiv").each(function(){
-					 $(this).css("display","none");
-				});
-				 $("."+locationId).css("display","block");
-				 $("div ."+locationId+" .priceList").css("display","block");
-				 displayCurrentPageNo();
-				 flag = false;
-				 if(storeLocation != "")
-					 $("#selectedLocation").val(storeLocation);
-				 $("#pluMbq"+locationId+id).focus();
-				 return false;
-			 }else{
-			$("#pluMbq"+locationId+id+"Error").html("");
-		  }
-			 
 			 if($("#pluQuantity"+locationId+id).val() == ""){
 				 $("#pluQuantity"+locationId+id+"Error").html("Enter Quantity");
 				 $(".pricelist").each(function(){
@@ -5187,53 +4344,6 @@ if(locationId == "AllLocation" && $("#pluCostPrice"+locationId+id).val() == "" &
 						return false;
 				 }*/
 			 }
-			 
-			 if(parseInt($("#pluAcp"+locationId+id).val().length)>100){
-				 $("#pluAcp"+locationId+id).focus();
-				 $("#pluAcp"+locationId+id+"Error").html("ACP can't exceeds 100 Character");
-				 $(".pricelist").each(function(){
-					 $(this).css("display","none");
-				 });
-				 $(this).css("display","block");
-				 $(".priceList").css("display","block");
-				 $(".priceListLocationDiv").each(function(){
-					 $(this).css("display","none");
-				});
-				 $("."+locationId).css("display","block");
-				 $("div ."+locationId+" .priceList").css("display","block");
-				 displayCurrentPageNo();
-				 flag = false;
-				 if(storeLocation != "")
-					 $("#selectedLocation").val(storeLocation);
-				 $("#pluAcp"+locationId+id).focus();
-				 return false;
-			 }else{
-			$("#pluAcp"+locationId+id+"Error").html("");
-		  }
-			 
-			 if(parseInt($("#pluMaterialtype"+locationId+id).val().length)>50){
-				 $("#pluMaterialtype"+locationId+id).focus();
-				 $("#pluMaterialtype"+locationId+id+"Error").html("Material Type can't exceeds 50 Character");
-				 $(".pricelist").each(function(){
-					 $(this).css("display","none");
-				 });
-				 $(this).css("display","block");
-				 $(".priceList").css("display","block");
-				 $(".priceListLocationDiv").each(function(){
-					 $(this).css("display","none");
-				});
-				 $("."+locationId).css("display","block");
-				 $("div ."+locationId+" .priceList").css("display","block");
-				 displayCurrentPageNo();
-				 flag = false;
-				 if(storeLocation != "")
-					 $("#selectedLocation").val(storeLocation);
-				 $("#pluMaterialtype"+locationId+id).focus();
-				 return false;
-			 }else{
-			$("#pluMaterialtype"+locationId+id+"Error").html("");
-		  }
-			 
 			 if($("#pluDesc"+locationId+id).val() == ""){
 				 $("#pluDesc"+locationId+id+"Error").html("Enter Description");
 				 $(".pricelist").each(function(){
@@ -5253,30 +4363,6 @@ if(locationId == "AllLocation" && $("#pluCostPrice"+locationId+id).val() == "" &
 				 $("#pluDesc"+locationId+id).focus();
 				 return false;
 			 }
-			 
-			 if(parseInt($("#pluDesc"+locationId+id).val().length)>250){
-				 $("#pluDesc"+locationId+id).focus();
-				 $("#pluDesc"+locationId+id+"Error").html("Description can't exceeds 250 Character");
-				 $(".pricelist").each(function(){
-					 $(this).css("display","none");
-				 });
-				 $(this).css("display","block");
-				 $(".priceList").css("display","block");
-				 $(".priceListLocationDiv").each(function(){
-					 $(this).css("display","none");
-				});
-				 $("."+locationId).css("display","block");
-				 $("div ."+locationId+" .priceList").css("display","block");
-				 displayCurrentPageNo();
-				 flag = false;
-				 if(storeLocation != "")
-					 $("#selectedLocation").val(storeLocation);
-				 $("#pluDesc"+locationId+id).focus();
-				 return false;
-			 }else{
-			$("#pluDesc"+locationId+id+"Error").html("");
-		  }
-			 
 //			 quantityInPriceList = quantityInPriceList + parseInt($("#pluQuantity"+locationId+id).val());
 			 var price = $("#pluPrice"+locationId+id).val();
 			 // validating price there or not with the list
@@ -6415,76 +5501,18 @@ function validateWarehouseQuickSkuMaster(operation){
 		$("#skuIdWarehouseQuickError").html("Enter Sku Id");
 		focusDiv('skuIdWarehouseQuick');
 		return;
-	}else if(parseInt($("#skuIdWarehouseQuick").val().length)>20){
-		 $("#skuIdWarehouseQuick").focus();
-		 $("#skuIdWarehouseQuickError").html("SKU Id Length should be within 20 character");
-		 return;
 	}
 
-	if(parseInt($("#searchItemsQuick").val().length)>100){
-		 $("#searchItemsQuick").focus();
-		 $("#productNameError").html("Product Name can't exceeds 100 characters.");
-		 return;
-	}else{
-		 $("#productNameError").html(" ");
-	}
-	
-	if(parseInt($("#eanWarehouseQuick").val().length)>25){
-		 $("#eanWarehouseQuick").focus();
-		 $("#eanError").html("EAN can't exceeds 25 characters.");
-		 return;
-	}else {
-		 $("#eanError").html(" ");
-	}
-	
-	if(parseInt($("#modelWarehouseQuick").val().length)>100){
-		 $("#modelWarehouseQuick").focus();
-		 $("#modelError").html("Model can't exceeds 100 characters.");
-		 return;
-	}else {
-		 $("#modelError").html(" ");
-	}
-	if($("#hsnCodeWarehouseQuick").val().trim() == ""){
-		$("#hsnCodeWarehouseQuickError").html("Enter HSN Code");
-		focusDiv('hsnCodeWarehouseQuick');
-		return;
-	}
-	if(parseInt($("#hsnCodeWarehouseQuick").val().length)>50){
-		 $("#hsnCodeWarehouseQuick").focus();
-		 $("#hsnCodeWarehouseQuickError").html("HSN Code can't exceeds 50 characters.");
-		 return;
-	}else {
-		 $("#hsnCodeWarehouseQuickError").html(" ");
-	}
-	
 	if($("#uomWarehouseQuickList").val().trim() == ""){
 		$("#uomWarehouseQuickListError").html("Enter UOM");
 		focusDiv('uomWarehouseQuickList');
 		return;
 	}
 	
-	if(parseInt($("#uomLabelWarehouseQuick").val().length)>50){
-		 $("#uomLabelWarehouseQuick").focus();
-		 $("#weightError").html("UOM Label can't exceeds 50 characters.");
-		 return;
-	}else{
-		 $("#weightError").html(" ");
-	}
-	
-	if(parseInt($("#packSizeWarehouseQuick").val().length)>11){
-		 $("#packSizeWarehouseQuick").focus();
-		 $("#packSizeError").html("Pack Size can't exceeds 11 Digits.");
-		 return;
-	}else{
-		 $("#packSizeError").html(" ");
-	}
-	
-	if(parseInt($("#sectionWarehouseQuick").val().length)>60){
-		 $("#sectionWarehouseQuick").focus();
-		 $("#sectionWarehouseQuickError").html("Section can't exceeds 60 Characters");
-		 return;
-	}else{
-		 $("#sectionWarehouseQuickError").html(" ");
+	if($("#hsnCodeWarehouseQuick").val().trim() == ""){
+		$("#hsnCodeWarehouseQuickError").html("Enter HSN Code");
+		focusDiv('hsnCodeWarehouseQuick');
+		return;
 	}
 	
 	
@@ -6514,70 +5542,6 @@ function validateWarehouseQuickSkuMaster(operation){
 	else{
 	$("#salePriceErrorforWarehouseQuick").html("");
 	}
-	
-	if(parseInt($("#productHandingWarehouseQuick").val().length)>250){
-		$("#productHandingWarehouseQuick").focus();
-		$("#productHandleingWarehouseQuickError").html("Product Handling can't exceeds 250 Characters");
-		return;
-	}else {
-	       $("#productHandleingWarehouseQuickError").html("");
-    }
-	
-	 if(parseInt($("#productUsageWarehouseQuick").val().length)>250){
-		$("#productUsageWarehouseQuick").focus();
-		$("#productUsageWarehouseQuickError").html("Product Usage can't exceeds 250 Characters");
-		return;
-	}else {
-	       $("#productUsageWarehouseQuickError").html("");
-    }
-	
-	if(parseInt($("#productIntakeDetailforWarehouseQuick").val().length)>50){
-		$("#productIntakeDetailforWarehouseQuick").focus();
-		$("#productIntakeWarehouseQuickError").html("Product Intake can't exceeds 50 Characters");
-		return;
-	}else{
-	$("#productIntakeWarehouseQuickError").html("");
-  }
-	
-	if(parseInt($("#uom1WarehouseQuick").val().length)>20){
-		$("#uom1WarehouseQuick").focus();
-		$("#uom1WarehouseQuickError").html("UOM1 can't exceeds 20 Characters");
-		return;
-	}else{
-	$("#uom1WarehouseQuickError").html("");
-  }
-	
-	if(parseInt($("#uom2WarehouseQuick").val().length)>20){
-		$("#uom2WarehouseQuick").focus();
-		$("#uom2WarehouseQuickError").html("UOM2 can't exceeds 20 Characters");
-		return;
-	 }else {
-	       $("#uom2WarehouseQuickError").html("");
-   }
-	
-	if(parseInt($("#shortDescriptionWarehouseQuick").val().length)>250){
-		$("#shortDescriptionWarehouseQuick").focus();
-		$("#shortDescriptionQuickError").html("Detailed Description can't exceeds 250 Characters");
-		return;
-	}else{
-	       $("#shortDescriptionQuickError").html("");
-  }
-	
-	if(parseInt($("#productPrecautionsWarehouseQuick").val().length)>250){
-		$("#productPrecautionsWarehouseQuick").focus();
-		$("#productPrecautionsWarehouseQuickError").html("Product Precaution can't exceeds 250 Characters");
-		return;
-	}else{
-	       $("#productPrecautionsWarehouseQuickError").html("");
-  }
-	
-	if(parseInt($("#productSideEffectsWarehouseQuick").val().length)>250){
-		$("#productSideEffectsWarehouseQuick").focus();
-		$("#productSideEffectsError").html("Product Side Effects can't exceeds 250 Characters");
-		return;
-	}else{
-	       $("#productSideEffectsError").html("");
-  }
 	
 	
 	if($("#packSizeWarehouseQuick").val().trim()=="")

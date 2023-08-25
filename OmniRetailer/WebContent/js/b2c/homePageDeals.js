@@ -336,6 +336,12 @@ $("#shipmentCost").keydown(function(){
 
 
 
+
+
+
+
+
+
 function validateHotDealForm(id,operation){
 	debugger;
 	var hotdealRef =$("#hotdealRef").val();
@@ -347,37 +353,11 @@ function validateHotDealForm(id,operation){
 		$("#titleError").html("Enter Hot Deal  Name");
 		return;
 	}
-	
-	if(parseInt($("#title").val().length)>50){
-		 $("#title").focus();
-			$("#titleError").html("Title can't exceeds 50 Characters");
-			return;
-	}else{
-	 $("#titleError").html(" ");
-  }
-	
 	if($("#preparedBy").val().trim() == ""){
 		$("#preparedBy").focus();
 		$("#preparedByError").html("Prepared By Is Required");
 		return;
 	}
-	
-	if(parseInt($("#preparedBy").val().length)>100){
-		  $("#preparedBy").focus();
-		  $("#preparedByError").html("Prepared By can't exceeds 100 Characters");
-			return;
-	}else{
-	 $("#preparedByError").html(" ");
-    }
-	
-	if(parseInt($("#description").val().length)>250){
-		  $("#description").focus();
-		  $("#remarksError").html("Description can't exceeds 250 Characters");
-			return;
-	}else{
-	 $("#remarksError").html(" ");
-    }
-	
 	var re = /^[0-9/]+$/;
 	if($(".startDateHotdeal").val().trim() == ""){
 		$(".startDateHotdeal").focus();
@@ -464,10 +444,12 @@ function validateHotDealForm(id,operation){
  				$("#loading").css("display","none");
  				$("#mainDiv").removeClass('disabled');
  			},
- 			error : function(){
- 				alert("something went wrong");
+ 			error : function() {
+ 				 alert("something went wrong");
  				$("#loading").css("display","none");
  				$("#mainDiv").removeClass('disabled');
  			}
  		});
 }
+
+

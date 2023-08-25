@@ -114,15 +114,14 @@ $("#categoryDescription").keydown(function(){
                            <div class="form-group col-lg-6">
                             <label><spring:message code="category.name.label" /> <font color="red" size="2">*</font></label>
                             <input type="text"  onblur="criteria(this)" class="form-control" id="categoryName" placeholder="<spring:message code="enter.category.name" />" value="${categoryDetails.categoryName}" />
-                        
                          </div>
                           <div class="form-group col-lg-6">
                           
                           <div class="form-group col-lg-6">
                             <label><spring:message code="priority.label" /> <!-- <font color="red" size="2">*</font> --></label>
-                            <input type="text" class="form-control" style="width:100%;" id="categoryPriority" placeholder="<spring:message code="enter.priority.number" />" value="${categoryDetails.sortOrder}" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');"/>
+                            <input type="text" class="form-control" style="width:100%;" id="categoryPriority" placeholder="<spring:message code="enter.priority.number" />" value="${categoryDetails.sortOrder}" />
                             <span id="categorypriorityError" style="color: red;font-size: 2;font-weight: bold;"></span>
-                          </div>
+                            </div>
                             
                             <div class="form-group col-lg-6">
                             <label>B2C Visibility</label>
@@ -132,7 +131,9 @@ $("#categoryDescription").keydown(function(){
 											<option value="false"><spring:message
 													code="no.label" /></option>
 										</select>
+                            
                          </div>
+                         
                          </div>
                             <span id="categoryNameError" style="margin-left: 15px;color: red;font-size: 2;font-weight: bold;"></span>
                          

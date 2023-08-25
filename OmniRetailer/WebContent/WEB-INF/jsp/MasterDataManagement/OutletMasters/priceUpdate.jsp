@@ -312,7 +312,7 @@ $("#to").val(e[0]);
                                   <div class="col-lg-12" style="padding-left:0px;padding-right: 0px;">
                                     <label><spring:message code="location.label"/></label>
                                       <input type="hidden" id="tolocation" value="${selectedLocation }">
-							           <select class="form-control" id="outletLocation" onchange="searchCategorybasedonlocation('outletLocation','outletCategory','outletBrandId');"><!-- searchStockRequests('','','0'); -->
+							           <select class="form-control" id="outletLocation"><!--  onchange="searchCategorybasedonlocation('outletLocation','outletCategory','outletBrandId');"searchStockRequests('','','0'); -->
 								               <option value=""><spring:message code="ALL.label"/></option>
 									           <c:forEach var="outletlocationsList" items="${outletlocationsList}">
 										        <option value="${outletlocationsList}" ${outletlocationsList == selectedLocation ? 'selected' : ''} id="${outletlocationsList}" >${outletlocationsList}</option>

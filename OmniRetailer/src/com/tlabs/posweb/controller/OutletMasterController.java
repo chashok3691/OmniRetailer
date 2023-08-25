@@ -5234,6 +5234,10 @@ public ModelAndView updatePriceRangeMaster(
 			resultStr = (String)responseMapObj.get("result");
 			eventRef = (String)responseMapObj.get("eventRef");
 			
+			
+			
+			
+			
 			modelAndViewObj = new ModelAndView();
 			
 			locationsList = adminServiceObj.getOutletLocationsList(customerIdStr,emailIdStr,true);
@@ -5242,7 +5246,8 @@ public ModelAndView updatePriceRangeMaster(
 			modelAndViewObj.addObject("tenderDetails", tenderDetails);
 			modelAndViewObj.addObject("locationsList", locationsList);
 			
-			if(locationsList != null){
+			
+              if(locationsList != null){
 				
 				for (String string : locationsList) {
 					
@@ -5253,6 +5258,8 @@ public ModelAndView updatePriceRangeMaster(
 
 	         modelAndViewObj.addObject("employeeList", employeeList);
 
+			
+			
 			if(resultStr.contains(Constants.SUCCESS)){
 				
 				eventMasters = outletMasterServiceObj.getEventManagementDetails(customerIdStr, emailIdStr,"-1","10",eventRef,false,"","","","","","","","",false);
@@ -5294,11 +5301,14 @@ public ModelAndView updatePriceRangeMaster(
 				modelAndViewObj.addObject("eventMasterData", eventMaster);
 				modelAndViewObj.setViewName("Inventory Manager/EventManagement/newevent");	
 			}
+		
+		
 		}
 		catch(Exception exception)
 		{
 			exception.printStackTrace();
 		}
+		 
 		return modelAndViewObj;
 	}
 

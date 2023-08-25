@@ -19,6 +19,10 @@
 	   $("#Error").html("");
 });
 
+
+
+ 
+
 	
  /*
  $("#employeeCode").blur(function(){
@@ -51,7 +55,9 @@ else
 			 if(searchCategory == "searchDepartmentNames")
 					
 					searchDepartmentNames(searchName, searchCategory);
+			
 		 } 
+	    
 		});
 
 $(".searchItems").keydown(function(e) {
@@ -95,7 +101,11 @@ $(".searchItems").keydown(function(e) {
 	    }
 	});
  
-
+ 
+ 
+ 
+ 
+ 
  
  function getCode(element,type){
 	 debugger;
@@ -625,24 +635,6 @@ function searchSubDepartmentNames(name, searchCategory){
 	  		return false;
 	  	 }
 	 
- 	if(parseInt($("#middleName").val().length)>15){
-  		$("#middleName").focus(); 
-  		$("#middleNameError").html("Middle Name can't exceeds 15 Characters");
-  		return false;
-  	 }
-   	else{
-   		$("#middleNameError").html("");
-   	}
-   	 
- 	if(parseInt($("#designation").val().length)>100){
-  		$("#designation").focus(); 
-  		$("#designationError").html("Designation can't exceeds 100 Characters");
-  		return false;
-  	 }
-   	else{
-   		$("#designationError").html("");
-   	}
- 	
    	 if(lastName.trim() == ""){
          	$("#lastNameError").html("Last Name is required");
          	$("#lastName").focus();
@@ -651,18 +643,7 @@ function searchSubDepartmentNames(name, searchCategory){
 	  		$("#lastName").focus(); 
 	  		$("#lastNameError").html("Last Name can't exceeds 15 Characters");
 	  		return false;
-	  	 }else{
-	  		$("#lastNameError").html("");
 	  	 }
-   	 
- 	if(parseInt($("#highestQualification").val().length)>15){
-  		$("#highestQualification").focus(); 
-  		$("#highestQualificationError").html("Qualification can't exceeds 15 Characters");
-  		return false;
-  	 }else{
-	  		$("#highestQualificationError").html("");
-  	 }
-   	 
    	 	/*if(dob == ""){
          	$("#dobError").html("Date of Birth is required");
          	$("#dob").focus();
@@ -687,16 +668,14 @@ function searchSubDepartmentNames(name, searchCategory){
      		$("#locationError").html("Location is required");
      		  return false;
      	  }
-     	/*if($("#searchDepartmentNames").val().trim() != "" && $("#department").val().trim() == ""){
+     	if($("#searchDepartmentNames").val().trim() != "" && $("#department").val().trim() == ""){
      		$("#departmentError").html("Department doesn't exist");
      		  return false;
      	  }
      	if($("#department").val().trim() == ""){
      		$("#departmentError").html("Department is required");
      		  return false;
-     	  }*/
-     	
-     	
+     	  }
    	 
    	/*  if($("#highestQualification").val().trim() == ""){
        		$("#highestQualificationError").html("Qualification is required");
@@ -730,45 +709,9 @@ function searchSubDepartmentNames(name, searchCategory){
 	$("#phoneError").html("");
 }
    	 
-     	 if(parseInt($("#doorNum").val().length)>60){
-       		$("#doorNum").focus(); 
-       		$("#doorNumError").html("Door No can't exceeds 60 Characters");
-       		return false;
-       	 }else{
-     	  		$("#doorNumError").html("");
-       	 }
-     	
-     	 if(parseInt($("#streetName").val().length)>100){
-        		$("#streetName").focus(); 
-        		$("#doorNumError").html("Street Name can't exceeds 100 Characters");
-        		return false;
-        	 }else{
-      	  		$("#doorNumError").html("");
-        	 }
-     	 
-     	 if(parseInt($("#jobLocation").val().length)>100){
-     		$("#jobLocation").focus(); 
-     		$("#jobLocationError").html("Area Name can't exceeds 100 Characters");
-     		return false;
-     	 }else{
-   	  		$("#jobLocationError").html("");
-     	 }
-     	
-     	 if(parseInt($("#city").val().length)>30){
-     		$("#city").focus(); 
-     		$("#cityError").html("City Name can't exceeds 30 Characters");
-     		return false;
-     	 }else{
-   	  		$("#cityError").html("");
-     	 }
-     	 
-     	if(parseInt($("#zipCode").val().length)>10){
-     		$("#zipCode").focus(); 
-     		$("#zipCodeError").html("Zip Code can't exceeds 10 digits");
-     		return false;
-     	 }else{
-   	  		$("#zipCodeError").html("");
-     	 }
+
+
+
 
    	 
    	  var formData  = JSON.stringify($('form').serializeObject());

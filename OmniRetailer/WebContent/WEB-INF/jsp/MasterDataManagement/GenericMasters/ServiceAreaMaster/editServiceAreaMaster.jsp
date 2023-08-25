@@ -124,7 +124,18 @@ $(document).ready(function(){
 </div>
                        
                        
-
+                       
+                       
+                       
+                       
+                       
+                       
+                       
+                       
+                       
+                       
+                       
+                       
                       	<div id="Error" class="Error" style="text-align: center;color: red;font-size: 2;font-weight: bold;margin-bottom: 10px; margin-top: -20px">${err}</div>
                         <div id="Success" class="Error" style="text-align: center;color: blue;font-size: 2;font-weight: bold;margin-bottom: 10px; margin-top: -20px">${success}</div>
                       
@@ -152,7 +163,7 @@ $(document).ready(function(){
                          
                           <div class="form-group col-lg-3">
                            <label><spring:message code="priority.label"/></label>
-                          <input class="form-control" onblur="criteria(this)" type="text" id="priority" value="${serviceAreaMaster.priority}" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');">
+          <input class="form-control" onblur="criteria(this)" type="text" id="priority" value="${serviceAreaMaster.priority}">
                         </div>
                          
                          </div>
@@ -177,7 +188,6 @@ $(document).ready(function(){
                        <div class="form-group col-lg-3">
                            <label><spring:message code="reports_enddate.label"/></label>
           				<input class="form-control calendar_icon"  readonly="readonly"  name="endDate" id="endDate" value="${serviceAreaMaster.endDateStr}"  readOnly style="background-color: white;"  size="20" type="text" onfocus="callCalender('endDate')" onclick="callCalender('endDate')" placeholder="DD/MM/YYYY">
-                         <span id="endDateError" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
                         </div>
                         
                         
@@ -215,7 +225,7 @@ $(document).ready(function(){
                         
                          <div class="form-group col-lg-3">
                            <label><spring:message code="radius.label"/></label>
-                    		<input class="form-control" onblur="criteria(this)" id="radius" value="${serviceAreaMaster.radius}"oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');">                 
+                    		<input class="form-control" onblur="criteria(this)" id="radius" value="${serviceAreaMaster.radius}">                 
                         </div>
                          </div>
                        

@@ -543,7 +543,6 @@ font-weight: normal; }
 															<!--  <select id ="city" class="form-control" >
 																<option >Select State</option>
 															</select> -->
-									        	 	<span id="cityError" style="text-align:right;color:red;font-weight:bold;"></span>
 									        	 	</div>
 									        	 	
 									        	 	<div class="form-group col-lg-4">
@@ -710,7 +709,6 @@ font-weight: normal; }
 									             	<div class="form-group col-lg-4">
 									        	 		<label><spring:message code="offer_end_date.label" /></label>
 									                	<input class="form-control calendar_icon" readonly="readonly" value="${offerBean.customerFilter.end_date}" style="background-color: white;" id="endDate" onfocus="callCalender('endDate')" onclick="callCalender('endDate')" placeholder="DD/MM/YYYY"/>
-									        	       <span id="endDateErr" style="text-align:right;color:red;font-weight:bold;"></span>
 									        	 	</div>
 									        	 	
 									        	 	<div class="form-group col-lg-2"></div>
@@ -980,8 +978,6 @@ font-weight: normal; }
                                           <div class="col-lg-12" style="padding:0px;margin-top: 20px;">
 											 <label><spring:message code="offer_description.label" /></label>
                                             <textarea style="resize:none;" class="form-control" name="offerDescription" id="offerDesc" rows="1" placeholder="<spring:message code="offer_desc_enter.label" />">${offerBean.offerDescription }</textarea>
-                                             <span id="offerDescError"
-											style="text-align: right; color: red; font-weight: bold;"></span>
                                         </div>
                                         </div>
                                     <!--  </div> -->

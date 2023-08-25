@@ -242,7 +242,6 @@ position:relative;
                 	  <div class="form-group col-lg-11" style="padding-left:0px">
                         <label>Product Description</label>
 						<input type="text" class="form-control" name="programDescription" id="programDescription" value="${customerSignup.campaignDescription}" required />
-                       <span id="programDescriptionError" style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
                       </div> 
                      </div>
                      
@@ -256,7 +255,7 @@ position:relative;
 <!-- 					     			<ul class="matchedStringUl quoteRef" style="width: 89%!important;padding: 0px!important;"></ul> -->
 					   			<ul class="matchedStringUl offerRef" style="width: 89%!important;padding: 0px!important;"></ul>
 					   			</div>
-						</div>
+							</div>
 						<span id="offerError" style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
                     </div>
                    </div>

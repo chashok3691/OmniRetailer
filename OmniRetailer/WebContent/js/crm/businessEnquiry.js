@@ -63,14 +63,19 @@ $("#firstName").focus(function(e){
 });
 
 function validateBusinessEnquiry(operation){
+	
 	var finalObj = {};
 	var CurrentDate=getCurrentDate().split(" ");
+	 
 	var  finalstr=CurrentDate[0];
+
 	var noOfDays = daydiff(parseDateMMDDYYYY(finalstr), parseDate($('#enquiryDate').val()));
+	
 	if(noOfDays > 0){
 		 $("#enquiryDateError").html("EnquiryDate can't be Futuer Date");
 		return false;
 	}
+	
 	var countOfDays = daydiff(parseDateMMDDYYYY(finalstr), parseDate($('#contactDate').val()));
 	if(countOfDays < 0){
 		 $("#contactDateError").html("contactDate can't be Past Date");
@@ -81,23 +86,6 @@ function validateBusinessEnquiry(operation){
 		focusDiv('firstNameError');
 		return;
 	}
-	
-	if(parseInt($("#firstName").val().length)>30){
-		 $("#firstName").focus();
-			$("#firstNameError").html("First Name can't exceeds 30 Characters");
-			return;
-	}else{
-	 $("#firstNameError").html(" ");
- }
-	
-	if(parseInt($("#lastName").val().length)>30){
-		 $("#lastName").focus();
-			$("#lastNameError").html("Last Name can't exceeds 30 Characters");
-			return;
-	}else{
-	 $("#lastNameError").html(" ");
-   }
-	
 	var emailId = $("#emailId").val().trim();
 	if(emailId == ""){
 		$("#emailIdError").html("EmailId Required(Ex:abc@gmail.com)");
@@ -109,80 +97,10 @@ function validateBusinessEnquiry(operation){
 		focusDiv('emailIdError');
 	   	return false;
 	}
-	
-	if(parseInt($("#emailId").val().length)>100){
-		 $("#emailId").focus();
-			$("#emailIdError").html("EmailId can't exceeds 100 Characters");
-			return;
-	}else{
-	 $("#emailIdError").html(" ");
-  }
-	
 	if($("#phoneNumber").val().length!= 10){
 	$("#error").html("Invalid  Mobile Number");
 	return;
 }
-	
-	if(parseInt($("#houseNo").val().length)>20){
-		 $("#houseNo").focus();
-			$("#houseNoError").html("House Number can't exceeds 20 Character");
-			return;
-	}else{
-	 $("#houseNoError").html(" ");
- }
-	 if(parseInt($("#streetName").val().length)>100){
-		 $("#streetName").focus();
-			$("#streetNameError").html("Street Name can't exceeds 100 Character");
-			return;
-	}else{
-	 $("#streetNameError").html(" ");
-   }
-	 
-	 if(parseInt($("#location").val().length)>150){
-		 $("#location").focus();
-			$("#locationError").html("Locality can't exceeds 150 Character");
-			return;
-	}else{
-	 $("#locationError").html(" ");
-   }
-	 
-	 if(parseInt($("#city").val().length)>30){
-		 $("#city").focus();
-			$("#cityError").html("City can't exceeds 30 Characters");
-			return;
-	}else{
-	 $("#cityError").html(" ");
-   }
-	 if(parseInt($("#state").val().length)>25){
-		 $("#state").focus();
-			$("#stateError").html("State can't exceeds 25 Characters");
-			return;
-	}else{
-	 $("#stateError").html(" ");
-    }
-	 
-	 if(parseInt($("#zipCode").val().length)>6){
-		 $("#zipCode").focus();
-			$("#zipCodeError").html("Zip Code can't exceeds 6 Digits");
-			return;
-	}else{
-	 $("#zipCodeError").html(" ");
-   }
-	 if(parseInt($("#enquirySubject").val().length)>150){
-		 $("#enquirySubject").focus();
-		 $("#enquirySubjectError").html("Subject can't exceeds 150 Character");
-			return;
-	}else{
-	 $("#enquirySubjectError").html(" ");
-   }
-	 
-	 if(parseInt($("#enquiryDesc").val().length)>200){
-		 $("#enquiryDesc").focus();
-		 $("#enquiryDescError").html("Description can't exceeds 200 Character");
-			return;
-	}else{
-	 $("#enquiryDescError").html(" ");
-   }
 
     var defaultCountry = $("#defaultCountry").val().trim();
 	 var phoneNumber = $("#phoneNumber").val().trim();
@@ -212,8 +130,8 @@ function validateBusinessEnquiry(operation){
 				$("#contactDateError").html("Invalid Date");
 				return;
 		 }
-	var noOfDays = daydiff(parseDate($('#enquiryDate').val()), parseDate($('#contactDate').val()));
-	if(noOfDays < 0){
+		 var noOfDays = daydiff(parseDate($('#enquiryDate').val()), parseDate($('#contactDate').val()));
+		 if(noOfDays < 0){
 			 $("#contactDateError").html("Contact Date can't be less than Enquiry Date");
 			 return;
 		 }
@@ -223,19 +141,16 @@ function validateBusinessEnquiry(operation){
 		 return;
 	 }
 	 if($("#storeLocation").val()==""){
-		 $("#Error").html("Select Location");
-		 $("#storeLocation").focus();
+		 $("#locationError").html("Select Location");
 		 return;
-	 }else{
-		 $("#Error").html("");
 	 }
 	 
 	 /*var storeLocation=$("#storeLocation").val();
 	 
 	 alert(storeLocation);*/
 	 
-	finalObj.fromFirstName = $("#firstName").val().trim();
-	finalObj.fromLastName = $("#lastName").val();
+	 finalObj.fromFirstName = $("#firstName").val().trim();
+	 finalObj.fromLastName = $("#lastName").val();
 	finalObj.emailId = $("#emailId").val();
 	finalObj.enquiryDateStr = $("#enquiryDate").val();
 	finalObj.enquiryTimeStr= $("#enquiryTime").val();
@@ -254,15 +169,15 @@ function validateBusinessEnquiry(operation){
 	if($("#storeLocation").val() != "")
 		finalObj.storeLocation = $("#storeLocation").val();
 	finalObj.status = $("#statusType").val();
-    var contextPath = $("#contextPath").val();
-    if(operation=="new"){
+   var contextPath = $("#contextPath").val();
+   if(operation=="new"){
 	 URL = contextPath + "/crm/createBusinessEnquiry.do";
-    }
-    else if(operation=="edit"){
+   }
+   else if(operation=="edit"){
 	   finalObj.enquiryId = $("#enquiryId").val();
 	   URL = contextPath + "/crm/updateBusinessEnquiry.do";
-    }
-   	var formData = JSON.stringify(finalObj);
+   }
+   	 var formData = JSON.stringify(finalObj);
 //   	 console.log(formData);
 //   	 return;
    	  	 $.ajax({
@@ -285,7 +200,8 @@ function validateBusinessEnquiry(operation){
 				$("#mainDiv").removeClass('disabled');
 			}
 	});
-  }
+	
+}
 
 
 function viewEditBusinessEnquiry(enquiryId,operation){

@@ -687,46 +687,6 @@ function validateFleetMaster(operation){
 		}else{
 			$("#zipCodeError").html("");
 		}
-	 	 	
-	 	 	if($("#vehicleNo").val().length>10){
-	 	 		$("#vehicleNo").focus();
-				$("#vehicleNoError").html("Vehicle No can't exceeds 10 characters");
-				return false;
-		}else{
-				$("#vehicleNoError").html("");
-			}
-	 	
-	 	if($("#vehicleType").val().length>50){
- 	 		$("#vehicleType").focus();
-			$("#vehicleTypeError").html("Vehicle Type can't exceeds 50 characters");
-			return false;
-	}else{
-			$("#vehicleTypeError").html("");
-		}
-	 	
-	 	if($("#vehicleDesc").val().length>150){
- 	 		$("#vehicleDesc").focus();
-			$("#vehicleDescError").html("Vehicle description can't exceeds 150 characters");
-			return false;
-	    }else{
-			$("#vehicleDescError").html("");
-		}
-	 	
-	 	if($("#carryCapacity").val().length>11){
- 	 		$("#carryCapacity").focus();
-			$("#carryCapacityError").html("Carry Capacity can't exceeds 11 digits");
-			return false;
-	    }else{
-			$("#carryCapacityError").html("");
-		}
-	 	
-	 	if($("#vehicleOwner").val().length>50){
- 	 		$("#vehicleOwner").focus();
-			$("#vehicleOwnerError").html("Vehicle Owner can't exceeds 50 characters");
-			return false;
-	    }else{
-			$("#vehicleOwnerError").html("");
-		}
 	 		
 	 		var finalobjfleetmaster = {};
 	 		finalobjfleetmaster.tranporterId=transporterId;

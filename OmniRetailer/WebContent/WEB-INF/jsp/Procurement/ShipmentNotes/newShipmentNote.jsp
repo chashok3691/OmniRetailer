@@ -498,13 +498,11 @@ if($('#edit').val() != "edit"){
 			<div class="form-group col-lg-6">
 				<label><spring:message code="shipment.terms.label" /></label>
 				<textarea  class="form-control clearError" placeholder="<spring:message code="enter.shipment.terms.label" />" name="shipmentTerms" id="shipmentTerms" style="resize: none;" >${shipmentNoteObj.shipmentTerms}</textarea>
-			<span id="shipmentTermsError" style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
 			</div>
 		
 			<div class="form-group col-lg-6">
 				<label><spring:message code="shipment.comments.label" /></label>
 				<textarea  class="form-control clearError" placeholder="<spring:message code="enter.shipment.comments.label" />" name="shipmentComments" id="shipmentComments" style="resize: none;" >${shipmentNoteObj.shipmentComments}</textarea>
-			<span id="shipmentCommentsError" style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
 			</div>
 		</div>
 		<!-- COMPOSE MESSAGE MODAL -->

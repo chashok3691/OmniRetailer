@@ -137,22 +137,24 @@ margin-bottom:10px;
 	                                  	<option value="AU" ${'AU' == tenderDetails.countryCode ? 'selected' : ''}>AU-Australia</option>
 	              </select>
 	                <span id="tenderkeyError" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
+                     
                      </div>
-                     </div>
-                <div class="col-lg-12">
-                 <div class="col-lg-6">
+                                        
+                                         
+                                         </div>
+                     <div class="col-lg-12">
+                    <div class="col-lg-6">
                      <label style="font-family: Calibri;color: gray;">Mode of Payment<span style="color:red; font-size:2">*</span></label>
-	                <input class="form-control " style="width:65%" value=""  name="modeOfPayment" onblur="criteria(this)" id="modeOfPayment" type="text"/>
+	                <input class="form-control " style="width:65%" value=""  name="modeOfPayment" onblur="criteria(this)" id="modeOfPayment"  type="text"   />
 	                <span id="modeOfPaymentError" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
-                 </div>
+                     </div>
                                         
                      
-                <div class="col-lg-6">
+                     <div class="col-lg-6">
                      <label style="font-family: Calibri;color: gray;">Back End Code</label>
-					  <input class="form-control" style="width:65%" value=""name="backendCode" onblur="criteria(this)" id="backendCode" type="text"/>
-                      <span id="backendCodeError" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
-                </div>
-             </div>                    
+					<input class="form-control " style="width:65%" value=""  name="backendCode" onblur="criteria(this)" id="backendCode"  type="text"   />
+                     </div>
+                     </div>                    
                                          
                                          
                                          

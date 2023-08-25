@@ -243,7 +243,7 @@ img.thumbnail {
 											  <ul class="matchedStringUl productNameSku" style=""></ul>
 										    </div>
 									    </div> -->
-									<span id="productNameError" style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
+									<span id="productQuckNameError" style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
 									<input type="hidden" class="allField" id="productId" value="${sku.skuId}">
 								</div>
 								</div>
@@ -545,7 +545,7 @@ img.thumbnail {
 											onkeydown="clearError(this);" onblur="calcMarkUp(this);"
 												value="${plu.section}" id="sectionWarehouseQuick"
 											placeholder="<spring:message code="section.label" />" />
-								<span id="sectionWarehouseQuickError" style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span> 
+								
 								</div>
 					       <!-- added by: vasudev
 								created on: 22-08-2019 -->
@@ -631,7 +631,7 @@ img.thumbnail {
 									<input type="text" onblur="criteria(this)" id="businessSubcategoryWarehouseQuick" 
 										class="form-control allField"  value="${plu.business_sub_category}"
 										placeholder="<spring:message code="enter.businessSubcategory.label" />">
-									<span id="productSideEffectsErrorb"
+									<span id="productSideEffectsError"
 										style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
                                         </c:if> 
                                        </c:forEach>
@@ -661,7 +661,7 @@ img.thumbnail {
 										name="productUsageQuick" style="resize: none;"
 										class="form-control allField"  value="${sku.product_usage}"
 										placeholder="<spring:message code="productUsage.label" />">
-									<span id="productUsageWarehouseQuickError" style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
+									
 								</div> 
 								
 							
@@ -673,8 +673,7 @@ img.thumbnail {
 										name="productHanding" style="resize: none;"
 										class="form-control allField"  value="${sku.productHandlng}"
 										placeholder="<spring:message code="enter.product.handing.label" />">
-									<span id="productHandleingWarehouseQuickError"
-										style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
+									
 								</div> 
 							
 							
@@ -692,7 +691,7 @@ img.thumbnail {
 										name="productUsageQuick" style=""
 										class="form-control allField"  value="${sku.product_consumption_interaction}"
 										placeholder="<spring:message code="enterproductInTake.label" />">
-									<span id="productIntakeWarehouseQuickError" style="text-align: right;color: red;font-size: 2;font-weight: bold;"></span>
+									
 								</div> 
 						
 						
@@ -703,17 +702,18 @@ img.thumbnail {
 									<input type="text" id="uom1WarehouseQuick" onblur="criteria(this)"
 										class="form-control allField"  value="${sku.uom1}"
 										placeholder="<spring:message code="enteruom1.label" />">
-									<span id="uom1WarehouseQuickError" style="text-align: right;color: red;font-size: 2;font-weight: bold;"></span>		
+									
 								</div> 
 								
 								
 								<div class="form-group col-lg-2"  style="">
+                            
 									<label><spring:message code="uom2.label" />
 										</label>
 									<input type="text" id="uom2WarehouseQuick" onblur="criteria(this)"
 										class="form-control allField"  value="${sku.uom1}"
 										placeholder="<spring:message code="enteruom2.label" />">
-									<span id="uom2WarehouseQuickError" style="text-align: right;color: red;font-size: 2;font-weight: bold;"></span>	
+									
 								</div> 
 									
 								<div class="form-group col-lg-6">
@@ -737,11 +737,16 @@ img.thumbnail {
 									<textarea rows="2" id="productPrecautionsWarehouseQuick"   style="resize: none;"onblur="criteria(this)"
 										class="form-control allField"
 										placeholder="<spring:message code="enter.product.precautions.label" />">${sku.product_precaution}</textarea>
-									<span id="productPrecautionsWarehouseQuickError"
+									<span id="productPrecautionsQuickError"
 										style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
 								</div>
 								
+						
+								
+								
 								<div class="form-group col-lg-6" style="">
+								
+								
 									<label><spring:message code="product.sideEffects.label" />
 										</label>
 									<textarea rows="2" id="productSideEffectsWarehouseQuick"  style="resize: none;"onblur="criteria(this)"
@@ -751,6 +756,7 @@ img.thumbnail {
 										style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
 							
 								</div>
+								
 								</div>
 						
 						
@@ -809,7 +815,7 @@ img.thumbnail {
 									<textarea rows="2" id="technicalSpecWarehouseQuick"  style="resize: none;"onblur="criteria(this)"
 										class="form-control allField"
 										placeholder="<spring:message code="entertechnicalSpecification.label" />">${plu.technical_specification}</textarea>
-									<span id="productSideEffectsError1"
+									<span id="productSideEffectsError"
 										style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
 			                     </c:if> 
 			                    </c:forEach>

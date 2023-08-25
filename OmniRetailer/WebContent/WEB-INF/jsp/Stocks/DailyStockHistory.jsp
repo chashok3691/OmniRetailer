@@ -22,7 +22,7 @@
         	 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/omniretailer.css">
         <link href="${pageContext.request.contextPath}/css/datatables/dataTables.bootstrap.css" rel="stylesheet" type="text/css" />
         <script type="text/javascript" src="${pageContext.request.contextPath}/js/controller.js"></script>
-        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/jquery.calendars.picker.css">
+                 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/jquery.calendars.picker.css">
 		<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.calendars.js"></script>
 		<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.calendars.plus.js"></script>
 		<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.calendars.picker.js"></script>
@@ -37,28 +37,33 @@
 @media only screen and (max-width:1440px)  {
 
    .dataTable1 {
-        width: 100%; 
-        margin-bottom: 15px; 
+         width: 100%; 
+       
+         margin-bottom: 15px; 
         overflow-x: auto;
         overflow-y: hidden;
         -webkit-overflow-scrolling: touch;
         -ms-overflow-style: -ms-autohiding-scrollbar;
         border: 1px solid #DDD;
-        white-space: nowrap;
+    white-space: nowrap;
+    
   }
 
 } 
 @media only screen and (max-width:1180px)  {
 
    .dataTable2 {
-        width: 100%; 
-        margin-bottom: 15px; 
+         width: 100%; 
+       
+         margin-bottom: 15px; 
         overflow-x: auto;
         overflow-y: hidden;
         -webkit-overflow-scrolling: touch;
         -ms-overflow-style: -ms-autohiding-scrollbar;
         border: 1px solid #DDD;
-        white-space: nowrap;
+       
+    white-space: nowrap;
+    
   }
 
 } 
@@ -114,7 +119,7 @@ a.button{
 .form-control {
   /*   height: 24px; */
     padding: 0px 6px;
- }
+    }
     
     .calendar_icon {
     background-position: 3px 3px;
@@ -275,9 +280,6 @@ $(document).ready(function(){
 		</div><!-- /.box-header -->
              <div class="box-body table-responsive">
               <div class="col-lg-11" style=" background: #f4f4f4;    padding: 10px 20px;    width: 88%;">
-                  <!-- <div class="row">
-                  <span id="Error" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
-                  </div> -->
                   <div class="row">
                          <div class="col-lg1-2 col-lg-2">
                        <div class="col-lg-12" style="padding-left:0px;padding-right: 0px;">
@@ -412,7 +414,6 @@ $(document).ready(function(){
 	               <div class="col-lg-12" style="padding-left:0px;padding-right: 0px;">
 	                   <label><spring:message code="offer_end_date.label"/></label>
 	                 	<input class="form-control calendar_icon form-group" readonly="readonly" value="${enddate}" style="background-color: white;" id="to" size="20" type="text" onfocus="callCalender('to')" onclick="callCalender('to')" placeholder="DD/MM/YYYY" />
-		           <span id="endDateError" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
 		           </div>
 		          </div>
                     </div>
@@ -438,7 +439,7 @@ $(document).ready(function(){
                      
                       </div>
                      <div class="col-lg-3">
-                      <span id="priceError" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
+                      
                       </div>
                     
                     </div>

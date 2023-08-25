@@ -13,7 +13,8 @@ function searchSupplierMaster(name, searchCategory,index){
 	 //purpose:for checking internet conection
 	console.log(name)
 	var online = window.navigator.onLine;
-  	if(!online){
+  	if(!online)
+  	{
   	alert("check your internet connection,please try agian after some time");
   	return;
   	}
@@ -22,10 +23,14 @@ function searchSupplierMaster(name, searchCategory,index){
 	  if($("#maxRecords").length>0)
 		  maxRecords = $("#maxRecords").val();
 
-	      name=""
-	   if($("#searchSupplier").length>0)
+	  name=""
+	   		 if($("#searchSupplier").length>0)
 	   			name = $("#searchSupplier").val().trim();
+	  
+	  
 	 URL = contextPath + "/outletMaster/searchSupplierMater.do";
+	 
+	 
 	 $.ajax({
 			type: "GET",
 			url : URL,
@@ -421,27 +426,19 @@ if(defaultCountry != "" && phoneNumber != ""){
    	$("#firmNameError").html("Firm Name is required");
    	$("#firmName").focus();
   		return false;
-  }else if(parseInt($("#firmName").val().length)>100){
+  }else if(parseInt($("#firmName").val().length)>=100){
 		 $("#firmName").focus();
 		 $("#firmNameError").html("Firm Name can't exceeds 100 Characters");
 		 return;
 	} 
    
-	 if(parseInt($("#emailId").val().length)>100){
-	 		 $("#emailId").focus();
-	 			$("#emailIdError").html("Email ID can't exceeds 100 Character");
-	 			return;
-	 	}else{
-	 	 $("#emailIdError").html(" ");
-	   }
-	 
 if(plotNo.trim() == ""){
    	$("#plotNoError").html("Plot No is required");
    	$("#plotNo").focus();
   		return false;
-  }else if(parseInt($("#plotNo").val().length)>50){
+  }else if(parseInt($("#plotNo").val().length)>=50){
 		 $("#plotNo").focus();
-		 $("#plotNoError").html("Plot No can't exceeds 50 Characters");
+		 $("#plotNoError").html("Plot No  can't exceeds 50 Characters");
 		 return;
 	} 
    
@@ -449,7 +446,7 @@ if(streetName.trim() == ""){
 		$("#streetNameError").html("Street Name is required");
 		$("#streetName").focus();
 		  return false;
-}else if(parseInt($("#streetName").val().length)>50){
+}else if(parseInt($("#streetName").val().length)>=50){
 	 $("#streetName").focus();
 	 $("#streetNameError").html("Street Name can't exceeds 50 Characters");
 	 return;
@@ -459,7 +456,7 @@ if(city.trim() == ""){
  		 $("#cityError").html("City is required");
  		 $("#city").focus();
  		  return false;
-}else if(parseInt($("#city").val().length)>30){
+}else if(parseInt($("#city").val().length)>=30){
 	 $("#city").focus();
 	 $("#cityError").html("City  can't exceeds 30 Characters");
 	 return;
@@ -476,16 +473,12 @@ if(city.trim() == ""){
 	$("#zipCodeError").html("Zip Code is required");
 	$("#zipCode").focus();
  	return false;
- }
+ }else if(parseInt($("#zipCode").val().length)>=10){
+	 $("#zipCode").focus();
+	 $("#zipCodeError").html("Zip Code can't exceeds 10 Characters");
+	 return;
+} 
 
-	if(parseInt($("#zipCode").val().length)>10){
-		 $("#zipCode").focus();
-		 $("#zipCodeError").html("Zip Code can't exceeds 10 Characters");
-		 return;
-	} else{
-		$("#zipCodeError").html("");
-	}
-	
 	 if(countryCode == "-1"){
 	$("#countryCodeError").html("Country Code is required");
 	$("#countryCode").focus();
@@ -530,7 +523,7 @@ if(minOrderCost.trim() == ""){
   		 $("#minOrderCostError").html("Min Order Cost is required");
   		 $("#minOrderCost").focus();
   		  return false;
-}else if(parseInt($("#minOrderCost").val().length)>20){
+}else if(parseInt($("#minOrderCost").val().length)>=20){
 	 $("#minOrderCost").focus();
 	 $("#minOrderCostError").html("Min Order Cost can't exceeds 20 Characters");
 	 return;
@@ -541,7 +534,7 @@ if(minQuantity.trim() == ""){
 		 $("#minQuantity").focus();
 		  return false;
 		  
-}else if(parseInt($("#minQuantity").val().length)>11){
+}else if(parseInt($("#minQuantity").val().length)>=11){
 	 $("#minQuantity").focus();
 	 $("#minQuantityError").html("Min Quantity can't exceeds 11 Characters");
 	 return;
@@ -552,7 +545,7 @@ if(minQuantity.trim() == ""){
     	$("#leadTimeError").html("Lead Time is required");
     	$("#leadTime").focus();
 	  		return false;
- 	}else if(parseInt($("#leadTime").val().length)>10){
+ 	}else if(parseInt($("#leadTime").val().length)>=10){
  		 $("#leadTime").focus();
  		 $("#leadTimeError").html("Lead Time can't exceeds 10 Characters");
  		 return;
@@ -572,49 +565,6 @@ if(minQuantity.trim() == ""){
         return false;
     }
 	}
- 
- if(parseInt($("#gstIn").val().length)>25){
-		 $("#gstIn").focus();
-		 $("#gstInError").html("GSTIN No can't exceeds 25 Characters");
-		 return;
-	} else{
-		$("#gstInError").html("");
-	}
- 
- if(parseInt($("#targetOrderValue").val().length)>45){
-	 $("#targetOrderValue").focus();
-	 $("#targetOrderValueError").html("Target Order Value can't exceeds 45 Characters");
-	 return;
-} else{
-	$("#targetOrderValueError").html("");
-}
- 
- if(parseInt($("#paymentTerms").val().length)>250){
-	 $("#paymentTerms").focus();
-	 $("#paymentTermsError").html("Payment Terms can't exceeds 250 Characters");
-	 return;
-} else{
-	$("#paymentTermsError").html("");
-}
- 
- if(parseInt($("#shipmentTerms").val().length)>250){
-	 $("#shipmentTerms").focus();
-	 $("#shipmentTermsError").html("Shipment Terms length can't exceeds 250 Characters");
-	 return;
-} else{
-	$("#shipmentTermsError").html("");
-}
- 
- if(parseInt($("#returnTerms").val().length)>250){
-	 $("#returnTerms").focus();
-	 $("#returnTermsError").html("Return Terms length can't exceeds 250 Characters");
-	 return;
-} else{
-	$("#returnTermsError").html("");
-}
- 
- 
- 
 	var returnTerms = $("#returnTerms").val();
  	var returnDays = $("#returnDays").val();
  	if($("#returnDays").val() == "" || $("#returnDays").val() == null)
@@ -1062,7 +1012,7 @@ function addAddresses(){
 		 		$("#addessType").html("Please Select Address Type");
 		    	$("#addessType").focus();
 			  	return false;
-		}
+		 	}
 		 
 		var slNo = 1; 
 			 $('.slnoAdd').each(function(){
@@ -1079,12 +1029,6 @@ function addAddresses(){
 			 		$("#buildingNoError").html("");
 			 	}
 			 
-			 if(parseInt($("#buildingNo").val().length) > 20){
-				 $("#buildingNo").focus();
-				 $("#buildingNoError").html("Building No can't exceeds 20 characters");
-				 return false;
-		}
-			 
 			 var streetName = $("#streetNameforAddress").val();
 				 if(streetName == "" || streetName == null || streetName == undefined){
 				 		$("#streetNameforAddressError").html("Enter Street Name");
@@ -1093,12 +1037,6 @@ function addAddresses(){
 				 	}else{
 				 		$("#streetNameforAddressError").html("");
 				 	}
-				 
-				 if(parseInt($("#streetNameforAddress").val().length) > 100) {
-					 $("#streetNameforAddress").focus();
-					 $("#streetNameforAddressError").html("street Name can't exceeds 100 characters");
-					 return false;
-			       }
 				 
 			 var phone = $("#phonenoforAddress").val();
 			 if(phone == "" || phone == null || phone == undefined){
@@ -1130,11 +1068,6 @@ function addAddresses(){
 			 	}else{
 			 		$("#locationforAddressError").html("");
 			 	}
-			 if(parseInt($("#locationforAddress").val().length) > 100) {
-				 $("#locationforAddress").focus();
-				 $("#locationforAddressError").html("Location can't exceeds 100 characters");
-				 return false;
-		       }
 			 
 			 var city = $("#cityforAddress").val();
 			 if(city == "" || city == null || city == undefined){
@@ -1144,12 +1077,6 @@ function addAddresses(){
 			 	}else{
 			 		$("#cityforAddressError").html("");
 			 	}
-			 
-			 if(parseInt($("#cityforAddress").val().length) > 50) {
-				 $("#cityforAddress").focus();
-				 $("#cityforAddressError").html("City can't exceeds 50 characters");
-				 return false;
-		       }
 			 
 			 var state = $("#stateforAddress").val();
 			 if(state == "" || state == null || state == undefined){
@@ -1177,12 +1104,6 @@ function addAddresses(){
 			 	}else{
 			 		$("#pincodeforAddressError").html("");
 			 	}
-			 
-			 if(parseInt($("#pincodeforAddress").val().length)!= 6){
-				 $("#pincodeforAddress").focus();
-				 $("#pincodeforAddressError").html("Pin should be in 6 digits");
-				 return;
-			}
 			 
 			 if(billingflag >0 && Atype == "Billing Address"){
 				 $("#flagError").html("Please change address type, Only one billing address is allowed");

@@ -185,7 +185,7 @@ position:relative;
                		<div class="form-group col-lg-2">
                         <label><spring:message code="referral.programId.label" /> <span style="color:red; font-size:2">*</span></label>
 						<input type="text" class="form-control"  id="programId" value="${customerReferralMaster.referralProgramId}" required />
-                     	<span id=referralError style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>    
+                     	<span id="orderDateError" style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>    
                     </div>
                     <div class="form-group col-lg-1"></div>
                  	<div class="form-group col-lg-2">
@@ -219,17 +219,15 @@ position:relative;
                 	  <div class="form-group col-lg-11" style="padding-left:0px">
                         <label><spring:message code="program.description.label" /></label>
 						<input type="text" class="form-control" name="programDescription" id="programDescription" value="${customerReferralMaster.programDescription}" required />
-                        <span id="programDescriptionError" style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
                       </div> 
                      </div>
                      
-                 <div class="form-group col-lg-2" style="padding-right: 0px;white-space:nowrap">
-					<div class="form-group col-lg-8" style="padding-left: 0px">
+                     <div class="form-group col-lg-2" style="padding-right: 0px;white-space:nowrap">
+						 <div class="form-group col-lg-8" style="padding-left: 0px">
 						<label><spring:message code="no.of.referrals.label" /> </label>
 						 <input type="text" class="form-control" name="noOfReferral" id="noOfReferral" value="${customerReferralMaster.noOfReferrals}" required oninput="this.value = this.value.replace(/[^0-9]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');"/>
-					      <span id="noOfReferralError" style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
 					</div>
-				</div>
+					</div>
 					 <div class="form-group col-lg-1"></div>
                   
                      <div class="form-group col-lg-2" style="padding-right: 0px">
@@ -239,8 +237,8 @@ position:relative;
 						<option value="yes"${customerReferralMaster.referralPriority == 'yes'?'selected':''}>Yes</option>
 						<option value="no"${customerReferralMaster.referralPriority == 'no'?'selected':''}>No</option>
 						</select>
-					   </div>	
-                   </div>
+					</div>	
+                     </div>
                      
                       <div class="form-group col-lg-1"></div>
                  
@@ -248,19 +246,19 @@ position:relative;
                         <label><spring:message code="supplier.contact.name.label" /> <span style="color:red; font-size:2">*</span></label>
                         <input type="text" class="form-control" name="supplier_contact_name" id="supplier_contact_name" value="${purchaseOrderBeanObj.supplier_contact_name}" required />
                      </div> --%>
-                   <div class="form-group col-lg-2">
-                     <label><spring:message code="offer_end_date.label"/></label>
-	                 <input class="form-control calendar_icon form-group" readonly="readonly" value="${customerReferralMaster.endDateStr}" style="background-color: white;" id="to" size="20" type="text" onfocus="callCalender('to')" onclick="callCalender('to')" placeholder="DD/MM/YYYY" />
-                     <span id="offer_end_dateError" style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
-                   </div>
+                     <div class="form-group col-lg-2">
+                     
+                     	  <label><spring:message code="offer_end_date.label"/></label>
+	                 	<input class="form-control calendar_icon form-group" readonly="readonly" value="${customerReferralMaster.endDateStr}" style="background-color: white;" id="to" size="20" type="text" onfocus="callCalender('to')" onclick="callCalender('to')" placeholder="DD/MM/YYYY" />
+                     </div>
                      <div class="form-group col-lg-1"></div>
-              	</div>
-              	<br>
+              	</div><br>
+              	
       			
       			<div class="row">
       			 <div class="col-lg-6" style="margin-top:-6px">
       			
-					<div id="example1_wrapper" class="dataTables_wrapper form-inline" role="grid" style="overflow-y:auto;width:100%;position: relative;border: 1px #cccc solid;height: 149px">
+						<div id="example1_wrapper" class="dataTables_wrapper form-inline" role="grid" style="overflow-y:auto;width:100%;position: relative;border: 1px #cccc solid;height: 149px">
                      <table id="rewardranges" class="table table-bordered table-striped" style="">
                          <thead style="background-color: #eeeeee !important;">
                                  <tr>
@@ -281,22 +279,27 @@ position:relative;
                          <td>${customerDetails.cummulativeAmount}</td>
                          </tr>
                         </c:forEach> 
-                       </tbody>
+                         </tbody>
                      </table>
                      </div>
-					</div>
+								  </div>
+      			
       			
       				 <div class="col-lg-6" style="margin-top:-6px;margin-top: 103px;">
       				 <input type="button"  style="width: 30%" class="btnCls" onclick="validateCustomerReferral('edit');" value="<spring:message code="submit.label" />" />
       				<input type="button" class="btnCls buttonMargin" style="width: 30%" onclick="viewCustomerReferrals('CustomerReferal','0','false');" value="<spring:message code="cancel.label" />" />
       				 </div>
+      			
       		</div>	
+		
+	   
 		<br/>
         <div class="box-footer"></div>
 <%--         </c:forEach> --%>
         </div>
      </form>
    </div>
+     
 </div>
 </div>
 </section><!-- /.content -->

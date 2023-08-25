@@ -343,7 +343,7 @@ $(document).ready(function(){
 									  <div class="form-group col-lg-5">
 									  <label><spring:message code="organisation.name.label" /></label>
 									   <input type="text"  value="${outletDetails.companyName}" class="form-control"  name="organizationName" id="organizationName" placeholder="<spring:message code="enter.organization.name" />" />
-                                       <span id="organizationNameError" style="text-align:right;color:red;font-weight:bold;"></span>
+
 									  </div>
 									  
 									  <div class="col-lg-4">
@@ -586,7 +586,6 @@ $(document).ready(function(){
                                         <div class="form-group col-lg-4 allignment">
                                             <label><spring:message code="gstin.lael" /></label>
                                             <input type="text"  onblur="criteriaSlashes(this)" name="gstIn" value="${outletDetails.gstIn}" id="gstIn" class="form-control" placeholder="<spring:message code="enter.gstin.no.label"/>" />
-                                            <span id="gstInError" style="text-align:right;color:red;font-weight:bold;white-space:nowrap"></span>
                                         </div>
                                         
                                         
@@ -670,15 +669,19 @@ $(document).ready(function(){
                                 <div class="form-group col-lg-2 allignment">
 									<label><spring:message code="suspend.Reason.label" /></label>
                                            <input class="form-control calendar_icon"  style="background-color: white;" name="suspendReason"  id="suspendReason" size="20" type="text"  />
-                                       <span id="suspendReasonError" style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span> 
+                                       
 								</div>
 								
 								<div class="form-group col-lg-2 allignment">
 									<label>FSSAI Number</label>
                                      <input class="form-control"  style="background-color: white;" name="fssaiNumber"  id="fssaiNumber" size="20" type="text"  />
-                                       <span id="fssaiNumberError" style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span> 
+                                       
 								</div>
+								
+								
                                 </div>
+                                
+                               
                                
                                </div>
                                <br>

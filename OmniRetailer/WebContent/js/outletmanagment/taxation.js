@@ -87,7 +87,12 @@ function validateStoreTaxation(type){
 	
     
 			finalObj.categoryTypeStr = categoryType;	
- //debugger
+	
+					
+			
+	 
+	 
+    //debugger
     var len = parseInt($("#taxranges tr").length);
 	for(var i=1;i<len;i++){
  		var idAttr = $("#taxranges tr:eq("+i+") td:last").attr("id").replace('Del','');
@@ -161,8 +166,8 @@ function validateStoreTaxation(type){
 		$("#taxName").focus();
   	return;
   }
-	else if($("#taxName").val().length>45){
-		$("#taxNameError").html("TAX Name should not be more than 45");
+	else if($("#taxName").val().length>50){
+		$("#taxNameError").html("TAX Name should not be more than 50");
 		$("#taxName").focus();
 		return false;
 	}else{

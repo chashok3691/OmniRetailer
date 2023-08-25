@@ -7,11 +7,12 @@
  * */ -->
 
 
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+    <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+    <!DOCTYPE html>
 <html>
 <head>
 
@@ -211,7 +212,6 @@ position:relative;
                 	  <div class="form-group col-lg-11" style="padding-left:0px">
                         <label><spring:message code="program.description.label" /></label>
 						<input type="text" class="form-control" name="programDescription" id="programDescription" value="${customerReferralMaster.programDescription}" required />
-                      <span id="programDescriptionError" style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
                       </div> 
                  </div>
                      

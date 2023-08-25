@@ -25,6 +25,7 @@ function searchSubCategories(id,subCategoryId){
 
 	try
 	{
+
 		var online = window.navigator.onLine;
 		if(!online){
 			alert("Check your internet connection,Please try agian after some time.");
@@ -5043,6 +5044,8 @@ function viewEmployeeMaster(id,index,location){
  				 try{
  	 			 var contextPath = $("#contextPath").val();
  	 			 
+ 	 			
+ 	 			 
  	 			// purpose:for checking internet conection
  	 			var online = window.navigator.onLine;
  	 		  	if(!online){
@@ -5063,11 +5066,13 @@ function viewEmployeeMaster(id,index,location){
  	 	    		return false;
  	 	    	}
  	 	    		
+ 	 	    		
  	 	    	 var storeName = $('#storename').val();
  	 	    	/*
  				 * if($("#error").text() != ""){ $("#phoneNumber").focus(); return
  				 * false; }
  				 */
+ 	 	    	 
  	 	    
  		  	 	 var street = "";
  	 			 var locality = "";
@@ -5112,14 +5117,6 @@ function viewEmployeeMaster(id,index,location){
  	 				b2cMaxValue ="0";
  	 			}
  	 		
- 	 	if(parseInt($("#organizationName").val().length)>150){
- 	 				 $("#organizationName").focus();
- 	 				 $("#organizationNameError").html("Orgnization Name can't exceeds 150 Character");
- 	 				 return;
- 	 			} else{
- 	 			$("#organizationNameError").html("");
- 	 		}
- 	 			
  	 	if($("#storename").val().trim() == ""){
  			$("#storeError").html("Store Name is required");
  			focusDiv('storename');
@@ -5127,39 +5124,47 @@ function viewEmployeeMaster(id,index,location){
  			return;
  		}
  		else if($("#storename").val().length>50){
- 			$("#storeError").html("Store Name can't exceeds 50 Characters");
+ 			$("#storeError").html("store name shouldn't be more than 50 characters");
  			$("#storename").focus();
  			return false;
  		}
- 	 		
- 	 	if($("#street").val().trim() == ""){
+ 	 		/*
+ 	 			 if(storeName.trim()==""){
+ 	 				$("#storename").focus();
+ 	 	    		 $('#storeError').html('Store Name is required');
+ 	 	    		 return false;
+ 	 	    	 }*/
+ 	 	    	 
+ 	 	    	 if($("#street").val().trim() == ""){
  			$("#streetError").html("Street is required");
  			focusDiv('street');
  			$("#street").focus();
  			return;
  		}
  		else if($("#street").val().length>200){
- 			$("#streetError").html("Street can't exceeds 200 Characters");
+ 			$("#streetError").html("store name shouldn't be more than 200 characters");
  			$("#street").focus();
  			return false;
  		}else{
  			$("#streetError").html("");
  		}
  	 	    	 
- 	 	 if($("#locality").val().trim() == ""){
+ 	 	    	 if($("#locality").val().trim() == ""){
  			$("#localityError").html("Locality is required");
  			focusDiv('locality');
  			$("#locality").focus();
  			return;
  		}
  		else if($("#locality").val().length>200){
- 			$("#localityError").html("Locality can't exceeds 200 Characters");
+ 			$("#localityError").html("Locality shouldn't be more than 200 characters");
  			$("#locality").focus();
  			return false;
  		} 
  		else{
  			$("#localityError").html("");
  		}
+ 	 	  
+ 		
  		
  		if($("#gpsLongitude").val().trim() == ""){
  			$("#gpsLongitudeError").html("GPS Longitude is required");
@@ -5192,30 +5197,16 @@ function viewEmployeeMaster(id,index,location){
  			$("#gpsLatitudeError").html("");
  		}
  	 	  
- 		if(parseInt($("#fax").val().length)>30){
-				 $("#fax").focus();
-				 $("#faxError").html("Fax can't exceeds 30 Character");
-				 return;
-			} else{
-			$("#faxError").html("");
-		}
  		
- 		if(parseInt($("#tollFreeNum").val().length)>30){
-			 $("#tollFreeNum").focus();
-			 $("#tollFreeNumError").html("Toll Free Number can't exceeds 30 Character");
-			 return;
-		} else{
-		$("#tollFreeNumError").html("");
-	}
- 		
- 		if($("#amount").val().trim() == ""){
+ 		 
+ 	 	    	if($("#amount").val().trim() == ""){
  			$("#amountError").html("Amount should be specified");
  			focusDiv('amount');
  			$("#amount").focus();
  			return;
  		}
  		else if($("#amount").val().length>45){
- 			$("#amountError").html("Amount should be less than 45 digits");
+ 			$("#amountError").html("Amount should be less than 45 characters");
  			$("#amount").focus();
  			return false;
  		}
@@ -5227,7 +5218,7 @@ function viewEmployeeMaster(id,index,location){
  		    	$("#emailIDinOutlet").focus();
  			   	$("#emailIDinOutletError").html("Please enter Email ID");
  			   	return false;
- 		 }
+ 			  }
  		else if(!emailValidation(email)){
  			$("#emailIDinOutlet").focus();
 		   	$("#emailIDinOutletError").html("Invalid EmailId (Ex:abc@gmail.com)");
@@ -5235,14 +5226,22 @@ function viewEmployeeMaster(id,index,location){
 		  } else {
  			$("#emailIDinOutletError").html("");
  		}
+ 	 	  
+ 	 	  
+ 	 	  
+ 	 	  
+ 	 			 /*else if(email.trim()==""){
+ 	  				$("#emailIDinOutlet").focus();
+ 					 $('#emailIDinOutletError').html('Email is required');
+ 				 }*/
  	 			 
  	 			if($("#phoneNumber").val() == ""){
  		 	   		 $("#phoneNumber").focus();
- 		 	   		$("#phoneNumberError").html("Phone number should not be empty"); 
+ 		 	   		$("#phoneNumberError").html("phone number should not be empty"); 
  		 	   		 return false;
  		 	   	 }else if($("#phoneNumber").val().length != 10){
 		 	   		 $("#phoneNumber").focus();
-		 	   		$("#phoneNumberError").html("Phone number must be in 10 Characters"); 
+		 	   		$("#phoneNumberError").html("phone number must be in 10 Characters"); 
 		 	   		 return false;
  		 	   	 }else{
  		 	   	$("#phoneNumberError").html(""); 
@@ -5257,47 +5256,16 @@ function viewEmployeeMaster(id,index,location){
  	 			
  	 			if($("#maximumCashLimit").val() == ""){
 		 	   		 $("#maximumCashLimit").focus();
-		 	   		 $("#Error").html("Max cash should not be empty"); 
+		 	   		$("#Error").html("Max cash should not be empty"); 
 		 	   		 return false;
 		 	   	 }
+ 	 			
  	 			
  	 			if($("#b2cMaxValue").val() == ""){
 		 	   		 $("#b2cMaxValue").focus();
 		 	   		$("#Error").html("Max Bill Amount should not be empty"); 
 		 	   		 return false;
 		 	   	 }
- 	 			
- 	 			if($("#gstIn").val().length>30){
- 	 				$("#gstIn").focus();
- 	 	 			$("#gstInError").html("GST In should be less than 30 character");
- 	 	 			return false;
- 	 	 		}
- 	 	 		else{
- 	 	 			$("#gstInError").html("");
- 	 	 		}
- 	 			
- 	 			if($("#suspendReason").val().length>250){
- 	 				$("#suspendReason").focus();
- 	 	 			$("#suspendReasonError").html("Suspend Reason should be less than 250 character");
- 	 	 			return false;
- 	 	 		}
- 	 	 		else{
- 	 	 			$("#suspendReasonError").html("");
- 	 	 		}
- 	 			
- 	 			
- 	 			if($("#fssaiNumber").val().length>250){
- 	 				$("#fssaiNumber").focus();
- 	 	 			$("#fssaiNumberError").html("FSSAI Number should be less than 250 character");
- 	 	 			return false;
- 	 	 		}
- 	 	 		else{
- 	 	 			$("#fssaiNumberError").html("");
- 	 	 		}
- 	 			
- 	 			
- 	 			
- 	 			
  	 			
  	 			
  		    	 var defaultCountry = $("#defaultCountry").val().trim();
@@ -5358,6 +5326,9 @@ function viewEmployeeMaster(id,index,location){
  	 				finalObj.billOtp=$('input:radio[name="billOtp"]:checked').val();
  	 				finalObj.minimumOrderValue=$("#minimumOrderValue").val();
  	 				finalObj.expectedDeliveryTime= expectedDeliveryTime;
+ 	 				
+ 	 				
+ 	 				
  	 				
  	 				finalObj.gstIn = $("#gstIn").val();
  	 				var zoneId=""
@@ -5421,7 +5392,7 @@ function viewEmployeeMaster(id,index,location){
  				   var creditnote =$("#expiryDays").val();
  	                if(creditnote = ""){
  		             creditnote = 0;
- 	               }
+ 	                  }
 
  				
  	 				finalObj.creditNoteExpiryDays=$("#expiryDays").val();
@@ -5455,6 +5426,7 @@ function viewEmployeeMaster(id,index,location){
  	 				finalObj.createdDatestr = $("#createddate").val().trim();
  	 				
  	 				finalObj.updatedDatestr = $("#updatedddate").val().trim();
+ 	 				
  	 				
  	 				// added by vinay
  	 				finalObj.timeOutStr = $("#timeOutStr").val();
@@ -7771,6 +7743,7 @@ function viewEmployeeMaster(id,index,location){
    	    		
    	    		try{
     	    		if($("#priceRangDescription").val().trim()==""){
+    	    			
     	    		}
     	    	// purpose:for checking internet conection
     	    		var online = window.navigator.onLine;
@@ -7797,23 +7770,13 @@ function viewEmployeeMaster(id,index,location){
     	    		/* var skuList1,productCategory1,startPrice1,endPrice1; */
 
     	    		contextPath = $('#contextPath').val();
-    	    		
-    	    		if(parseInt($("#priceRangeRef").val().length)>20){
-    	 				 $("#priceRangeRef").focus();
-    	 				 $("#priceRangeRefError").html("Price Range can't exceeds 20 characters");
-    	 				 return;
-    	 			} else {
-    					$("#priceRangeRefError").html("");
-    				}
-    	    		
-    	    		
     	    		if($("#priceRangDescription").val().trim()==''){
     	    			$("#priceDescError").html('Please Enter Price Range Description');
     	    			return false;
     	    			
-    	    		}else if(parseInt($("#priceRangDescription").val().length)>250){
+    	    		}else if(parseInt($("#priceRangDescription").val().length)>=250){
     				 $("#priceRangDescription").focus();
-    				 $("#priceDescError").html("Price Range Description should be within 250 character");
+    				 $("#priceDescError").html("Pricerangedesc Length should be within 250 character");
     				 return;
     			}
 
@@ -7914,7 +7877,11 @@ function viewEmployeeMaster(id,index,location){
     	    		priceRangeMaster.priceRangeId = $("#priceRangeRef").val().trim();
     	    		priceRangeMaster.maxRecords = maxRecords;
     	    		priceRangeMaster.searchCriteria = searchName;
+    	    		
+
     	    		var priceRangeMasterObj = JSON.stringify(priceRangeMaster);
+
+    	    		
     	    		$.ajax({
     	    			type : "POST",
     	    			url : URL,
@@ -8668,7 +8635,7 @@ function viewEmployeeMaster(id,index,location){
             		 $('#Error').html("");
             		 $('#Suceess').html("");
             		 
-            	var stockissueobj = {},stockReqobj = {},itemDetails=[], skuId = [], Qty = [],issuedqty = [];
+            	 var stockissueobj = {},stockReqobj = {},itemDetails=[], skuId = [], Qty = [],issuedqty = [];
             	stockissueobj.issue_total_qty = $('#totalQty').val().replace( /,/g, "" );;
             	stockissueobj.issue_total = $('#totalCost').val().replace( /,/g, "" );
             	stockissueobj.remarks = $('#remarks').val();
@@ -8704,6 +8671,7 @@ function viewEmployeeMaster(id,index,location){
             	var outletState="";
             	if(locationId!=null && locationId!=undefined && locationId!="")
             		{
+
             		locationId=locationId.replace(" ", "_");     
             		outletState=$('#'+locationId).val();
             		}
@@ -8711,6 +8679,7 @@ function viewEmployeeMaster(id,index,location){
             	var warehouseState="";
             	if(fromlocationId!=null && fromlocationId!=undefined && fromlocationId!="")
             		{
+
             		fromlocationId=fromlocationId.replace(" ", "_");     
             		warehouseState=$('#'+fromlocationId).val();
             		}
@@ -8727,7 +8696,7 @@ function viewEmployeeMaster(id,index,location){
     	    	 if($("#to").length>0)
     	    		 endDate = $("#to").val();
     	    	var searchName=""
-    	 	   	if($("#allIssuedStocks").length>0)
+    	 	   		 if($("#allIssuedStocks").length>0)
     	 	   			searchName = $("#allIssuedStocks").val().trim();
     	    	 
     	    	 
@@ -8775,12 +8744,16 @@ function viewEmployeeMaster(id,index,location){
             			 
             			 return false;
             		 }
+        			 
         		 }
         		 else{
         			 stockissueobj.status = status;
         		 }
         		 
-        		  if(operation == 'gridupdate'){
+        		 
+        		
+        		 
+        		     if(operation == 'gridupdate'){
         		    	 stockissueobj.status = ""; 
         			 var reqid = issue_ref_num
         		 		$('.'+reqid).each(function(){
@@ -8824,40 +8797,14 @@ function viewEmployeeMaster(id,index,location){
                      		 focusDiv("tolocation");
           	       	    		 return false;
           	       	    	 }
-                   	if(parseInt($("#transporter").val().length)>50){
-           			 $("#transporter").focus();
-           				$("#transporterError").html("Transporter can't exceeds 50 Characters");
-           				return;
-           		}else{
-           	   	 $("#transporterError").html(" ");
-           	    }
+                   	 
                    	  if($('#delivered').val().trim()==""){
        	         			$('#deliveredByError').html('Enter Delivered Name');
        	         		focusDiv("delivered");
        	       	    		 return false;
        	       	    	 }
 
-                   	
                    	  
-                   	if(parseInt($("#delivered").val().length)>50){
-             			 $("#delivered").focus();
-             				$("#deliveredByError").html("Delivered by can't exceeds 50 Characters");
-             				return;
-             		}else{
-             	   	 $("#deliveredByError").html(" ");
-             	 }
-                   	  debugger;
-                   	if(operation=="update"){
-                   	 	
-                   		if(parseInt($("#received").val().length)>40){
-                			 $("#received").focus();
-                				$("#receivedError").html("Received by can't exceeds 40 Characters");
-                				return;
-                		}else{
-                	   	 $("#receivedError").html(" ");
-                	 }
-                   	 	
-                   	}
                    
         			 var re = /^[0-9/]+$/;
             		 if($("#date").val() == ""){
@@ -8870,16 +8817,6 @@ function viewEmployeeMaster(id,index,location){
             				$("#date").focus();
             				return;
             		 }
-            		 
-            			if(parseInt($("#remarks").val().length)>250){
-                			 $("#remarks").focus();
-                				$("#remarksError").html("Remark can't exceeds 250 Characters");
-                				return;
-                		}else{
-                	   	 $("#remarksError").html(" ");
-                	 }
-            			
-            			
             	
             		debugger
             		 var itemScanCodes = [];
@@ -8966,7 +8903,9 @@ function viewEmployeeMaster(id,index,location){
         			  	  	  				igstValue:0,hsnCode:$("#itemHSNCode"+idAttr).text(),batchNumber:$("#productBatchNo"+idAttr).val()};
         			  	  		itemDetails.push(obj);	
         			  	  			}
-        			  	  	  	
+        			  	  	  		
+        			  	  	  		
+        			  	  		
         			  	  		}
         			  	  		else{
         			  	  		obj = {trackingRequired:$("#trackingRequired"+idAttr).val(),utility:$("#utility"+idAttr).val(),itemScanCode:$("#itemScanCode"+idAttr).text(),ean:$("#ean"+idAttr).val(),avlQty:$("#availableQty"+idAttr).text(),color:$("#color"+idAttr).val(),size:$("#size"+idAttr).val(),category:$("#category"+idAttr).val(),measurementRange:$("#measureRange"+idAttr).val(),productRange:$("#productRange"+idAttr).val(),brand:$("#brandCode"+idAttr).val(),skuId:$("#skuId"+idAttr).val(),pluCode:$("#pluCode"+idAttr).val(),item:$("#Name"+idAttr).text(),description:$("#Desc"+idAttr).text(),uOM:$("#UOM"+idAttr).text(),price:$("#Price"+idAttr).text(),cost:$("#Cost"+idAttr).text(),recieved:parseInt($("#Received"+idAttr).text()),issued:parseInt($("#Supplied"+idAttr).text()),quantity:$("#Pack"+idAttr).text(),hsnCode:$("#itemHSNCode"+idAttr).text()};
@@ -8974,7 +8913,10 @@ function viewEmployeeMaster(id,index,location){
         			  	  		}
         			  	  					
         			  	}
-        			
+        			  
+        			  	  	
+        			 
+        			 
         		 }
         		 stockissueobj.reciptDetails=itemDetails;
         		 stockissueobj.flowUnder = $("#flowUnder").val();
@@ -9410,7 +9352,9 @@ function viewEmployeeMaster(id,index,location){
    	    				alert("Check your internet connection,Please try agian after some time.");
    	    				return;
    	    			}
+
    	    			// debugger
+
    	    			var searchName=""
    	    				if($("#searchStocks").length>0)
    	    					searchName = $("#searchStocks").val();
@@ -9452,34 +9396,11 @@ function viewEmployeeMaster(id,index,location){
    	    			var endprice = "";
    	    			if($("#outletEndPrice").length > 0)
    	    				endprice = $("#outletEndPrice").val();
-   	    			
-   	    			if(startprice != "" && endprice != ""){
-   	   	    		   if (startprice > endprice){
-   	   	    		     $("#priceError").html("End price can't be less than Start price");
-   	   	    		           return;
-   	   	    		  }else{
-     	    	  	   	 $("#priceError").html(" ");
-     	    	  	  }
-   	    			}
-   	    			
    	    			var suppliername = "";
    	    			if($("#outletSupplierId").length > 0)
    	    				suppliername = $("#outletSupplierId").val();
    	    			if(stockType == "" && $("#stockType").length>0)
    	    				stockType = $("#stockType").val();
-   	    		if(startdate != "" && enddate != ""){
-   	    		 var noOfDays = daydiff(parseDate($('#from').val()), parseDate($('#to').val()));
-   	    		 if(noOfDays < 0){
-   	    			 $("#endDateError").html("End Date can't be less than Start Date");
-   	    			 return;
-   	    		 }else{
-   	    	  	   	 $("#endDateError").html(" ");
-   	    	  	 }
-   	    		}
-   	    		
-   	    		
-   	    		
-   	    			
    	    			var contextPath = $("#contextPath").val();
    	    			URL = contextPath + "/inventorymanager/viewOutletStocks.do";
    	    			$.ajax({
@@ -9736,7 +9657,7 @@ function viewOutletStocksHistory(id,stockType,index,flowUnder,menu){
     		 	 $("#Error").html("End Date can't be less than Start Date");
     		 	return;
     		 	   		}
-	    	 if(noOfDaysstart > 1){
+	    	 if(noOfDaysstart >= 1){
 	   		  $("#Error").html("End date can't select more than one day."); 
 	   		 return false;
 	    	 }
@@ -13089,28 +13010,23 @@ function viewOutletStocksHistory(id,stockType,index,flowUnder,menu){
     		     finalobj.verifiedDateStr=$("#startDateStr").val();
     			finalobj.updatedOnStr=$("#endDateStr").val();
     			finalobj.flowUnder = $("#flowUnder").val();
-    			finalobj.endTimeStr=$("#endTime").val();
+    			
+    			 finalobj.endTimeStr=$("#endTime").val();
     			 finalobj.verified_by=$("#verifiedBy").val();
     			// finalobj.zone=$("#zone").val();
     			 finalobj.verification_code=verificationCode;
     			 finalobj.masterVerificationCode=$("#masterVerificationCode").val();
     			
-    			 if(parseInt($("#verifiedBy").val().length)>25){
-    	 			 $("#verifiedBy").focus();
-    	 				$("#verifiedByError").html("VerifiedBy can't exceeds 25 Characters");
-    	 				return;
-    	 		}else{
-    	 	   	 $("#verifiedByError").html(" ");
-    	 	 }
-    			  if($('#nostatus').val()=='nostatus'){
-                       finalobj.status = "Submitted";
-                   }
-                   else if($('#statusissue').val() == ''){
-                        finalobj.status = $('#defaultstatus').val();
-                   }
-                   else{
-                        finalobj.status = $('#statusissue').val(); 
-                   }
+    			 
+	     			       if($('#nostatus').val()=='nostatus'){
+                                     finalobj.status = "Submitted";
+                              }
+                             else if($('#statusissue').val() == ''){
+                                         finalobj.status = $('#defaultstatus').val();
+                             }
+                              else{
+                                     finalobj.status = $('#statusissue').val(); 
+                              }
 	     		 
     			 
     			 var len1 = $("#verifiedStocks tr").length - 1;
@@ -13908,10 +13824,8 @@ if(eway == undefined){
 
     	     }
     	     
-    	    
     	     function viewMaterialConsumption(id,index,flowUnder,menu){
     	    	 try{
-    	    		 debugger;
     	    		 // purpose:for checking internet conection
     	    		 var online = window.navigator.onLine;
     	    		 if(!online){
@@ -13936,16 +13850,7 @@ if(eway == undefined){
     	    		 var enddate = "";
     	    		 if($("#to").length > 0)
     	    			 enddate = $("#to").val();
-    	    		 
-    	    		 var noOfDays = daydiff(parseDate($('#from').val()), parseDate($('#to').val()));
-       	    		 if(noOfDays < 0){
-       	    			 $("#endDateError").html("End Date can't be less than Start Date");
-       	    			 return;
-       	    		 }else{
-       	    	  	   	 $("#endDateError").html(" ");
-       	    	  	 }
-    	    		 
-    	    		 var category = "";
+    	    		 var category = "";validateStockIssue
     	    		 if($("#outletCategory").length > 0)
     	    			 category = $("#outletCategory").val();
     	    		 var subcategory = "";
@@ -14042,8 +13947,6 @@ if(eway == undefined){
     	    		 var enddate = formatedDate;
     	    		 if($("#to").length > 0)
     	    			 enddate = $("#to").val();
-    	    		 
-    	    		 
     	    		 var category = "";
     	    		 if($("#outletCategory").length > 0)
     	    			 category = $("#outletCategory").val();
@@ -14081,18 +13984,6 @@ if(eway == undefined){
     	    					 return false;
     	    				 }
     	    			 }
-    	    		 
-    	    		 debugger
-    	    		 if(startdate!=undefined || startdate!= "" && enddate!=undefined || enddate!= ""){
-    	    		 var noOfDays = daydiff(parseDate(startdate), parseDate(enddate));
-       	    		 if(noOfDays < 0){
-       	    			 $("#endDateError").html("End Date can't be less than Start Date");
-       	    			 return;
-       	    		 }else{
-       	    	  	   	 $("#endDateError").html(" ");
-       	    	  	 }
-    	    	 }
-    	    		 
     	    		 
     	    		 var contextPath = $("#contextPath").val();
     	    		 var URL = contextPath + "/inventorymanager/viewoutletstockMovement.do";
@@ -21463,16 +21354,6 @@ function viewShiftMaster(id,index,location,flowunder){
    				$("#Error").html("Select Atleast one day");
    				return;
    			}
-   			
-   			if($("#shiftRemarks").val().length>250){
-   				$("#shiftRemarksError").html("Shift Remark should be less than 250 characters");
-   				$("#shiftRemarks").focus();
-   				return false;
-   				}else{
-   				$("#shiftRemarksError").html("");
-   				}	
-   			
-   			
  			finaldata.storeLocation = storeLocationVal;
  			finaldata.shiftName =  shiftNameVal;
  			finaldata.remarks = remarksVal;
@@ -29780,18 +29661,6 @@ function validateApplicationLog(id,index,searchname){
 							var subdepartment = null;
 							if($("#outletSubDepartmentId").length > 0)
 								subdepartment = $("#outletSubDepartmentId").val();
-							
-							 debugger
-		    	    		 if(startdate!=undefined || startdate!= "" && enddate!=undefined || enddate!= ""){
-		    	    		 var noOfDays = daydiff(parseDate(startdate), parseDate(enddate));
-		       	    		 if(noOfDays < 0){
-		       	    			 $("#endDateError").html("End Date can't be less than Start Date");
-		       	    			 return;
-		       	    		 }else{
-		       	    	  	   	 $("#endDateError").html(" ");
-		       	    	  	 }
-		    	    	 }
-							
 							var contextPath = $("#contextPath").val();
 							var URL = contextPath + "/inventorymanager/viewoutletsuppliesReport.do";
 							$.ajax({
@@ -31334,28 +31203,31 @@ function validateApplicationLog(id,index,searchname){
 					}
 				}*/
 				
-                   function validatestockverificationform(operation){
+function validatestockverificationform(operation){
 					debugger
+
 					try{
 					var online = window.navigator.onLine;
 						if(!online)
 					        {
 						 alert("Check your internet connection,Please try agian after some time.");
 					  	 return;
-					  }
+					       }
 					var daynameslist=[];
-					var selected = "";
-					  if($("#outletLocation").val() == ""){
+					 var selected = "";
+					if($("#outletLocation").val() == ""){
 						$("#Error").html("Select Location")	
 						focusDiv("Error");
 						return;
-					  }
-					 if($("#from").val() == ""){
+					}
+					if($("#from").val() == ""){
 						$("#fromError").html("Select Start Date")
 						$("#from").focus();
-					// focusDiv("Error");
+							
+						
+						// focusDiv("Error");
 						return;
-					 }
+					}
 					if($("#to").val() == ""){
 						$("#to").focus();
 						$("#toError").html("Select End Date")	
@@ -31375,7 +31247,10 @@ function validateApplicationLog(id,index,searchname){
 					}else{
 					$("#approvedByError").html("");
 					}	
-				
+					
+					
+					
+					
 					var location = "";
 	    	    	if($("#outletLocation").length > 0)
 	    	    		location = $("#outletLocation").val();
@@ -31412,18 +31287,6 @@ function validateApplicationLog(id,index,searchname){
     				focusDiv("Error");
     				return;
     	    		}
-	    	    	
-	    	    debugger
-    	    	if(startdate!=undefined || startdate!= "" && enddate!=undefined || enddate!= ""){
-    	    		 var noOfDays = daydiff(parseDate($('#from').val()), parseDate($('#to').val()));
-      	    		 if(noOfDays < 0){
-      	    			 $("#toDateError").html("End Date can't be less than Start Date");
-      	    			 return;
-      	    		 }else{
-      	    	  	   	 $("#toDateError").html(" ");
-      	    	  	 } 
-    	    	 }
-	    	    	
 	    	    	var category = "";
 	    	    	if($("#outletCategory").length > 0)
 	    	    		category = $("#outletCategory").val();
@@ -31454,15 +31317,6 @@ function validateApplicationLog(id,index,searchname){
 	    	    	var verificationcode ="";
 	    	    	if($("#verification_code").length > 0)
 	    	    		verificationcode = $("#verification_code").val();
-	    	    	
-	    	    	if($("#description").val().length>250){
-	    	    		$("#description").focus();
-						$("#eventdescriptionError").html("Description should be less then 250 characters");
-						return false;
-						}else{
-						$("#eventdescriptionError").html("");
-						}	
-	    	    	
 	    	    	var finalobj = {};
 	    	    	var status = "";
 	    	    		if($("#searchType").length > 0)
@@ -31896,13 +31750,19 @@ function validateApplicationLog(id,index,searchname){
 					  	 return;
 					       }
 					var location = "";
-					var contextPath = $('#contextPath').val();
+						
+					 var contextPath = $('#contextPath').val();
+					
 					if($("#location").length>0 && $("#location").val() != "")
 			    		  location = $("#location").val();
-				    var maxRecords = "10";
+				
+			    	 var maxRecords = "10";
+			    	 
 			    	  if($("#maxRecords").length > 0)
 			    		  maxRecords = $("#maxRecords").val();
-			    	var salesChannel = $("#feedbackChannel").val();
+			    	  
+			    	  
+			    	  var salesChannel = $("#feedbackChannel").val();
 			    	  if(salesChannel==undefined)
 			    		  salesChannel="";
 			    	  
@@ -31922,16 +31782,6 @@ function validateApplicationLog(id,index,searchname){
 			    	  if(zone==undefined)
 			    		  zone="";
 			    	  
-			    	  var noOfDays ="";
-			    	  
-			    	if(startDate !="" && endDate !=""){
-			    		debugger
-			    	   noOfDays = daydiff (parseDate(startDate), parseDate(endDate));
-			 		   if(noOfDays < 0){
-			 			 alert("End Date can't be less than Start Date");
-			 		 }
-			 	}
-			    	  
 			    	  if(menu=="clear"){
 			    		  zone="";
 			    		  search="";
@@ -31941,6 +31791,7 @@ function validateApplicationLog(id,index,searchname){
 			    		  startDate="";
 			    		  endDate="";
 			    	  }
+			    	  
 			    	  
 					 var URL = contextPath + "/crm/viewCustomerFeedback.do";
 					 $.ajax({
@@ -32004,6 +31855,7 @@ function validateApplicationLog(id,index,searchname){
 						type : "GET",
 						url : URL,
 						data : {
+					
 						    startIndex: index,
 		  	    			maxRecords : maxRecords
 						},
@@ -32026,6 +31878,8 @@ function validateApplicationLog(id,index,searchname){
 							$("#mainDiv").removeClass('disabled');
 						}
 					 });
+					 
+					 
 					}
 					catch(e)
 						{
@@ -37507,14 +37361,6 @@ function validateApplicationLog(id,index,searchname){
 		         	    		if($("#saveCustomerGroup").val())
 		         	    			saveCustomerGroup = $("#saveCustomerGroup").val();
 
-		         	    		var noOfDays = daydiff(parseDate($('#from').val()), parseDate($('#to').val()));
-		         	    		 if(noOfDays < 0){
-		         	    			 $("#endDateError").html("End Date can't be less than Start Date");
-		         	    			 return;
-		         	    		 }else{
-		         	    	  	   	 $("#endDateError").html(" ");
-		         	    	  	 }
-		         	    		
 		         	    		var contextPath = $("#contextPath").val();
 		         	    		URL = contextPath+"/crm/viewCustomerGroup.do";
 
@@ -40920,8 +40766,8 @@ function validateApplicationLog(id,index,searchname){
  	   	alert("check your internet connection,please try agian after some time");
  	   	return;
  	   	}
- 	var maxRecords = 10;
-        if ($("#maxRecords").length > 0)
+ 		 var maxRecords = 10;
+   	if ($("#maxRecords").length > 0)
    		maxRecords = $("#maxRecords").val();
  		
    	var searchItems = $("#searchCart").val();
@@ -40936,12 +40782,6 @@ function validateApplicationLog(id,index,searchname){
  		if(endDate ==undefined)
  			endDate=''; 
 
- 		 var noOfDays = daydiff(parseDate($('#startDate').val()), parseDate($('#endDate').val()));
- 		 if(noOfDays < 0){
- 			 alert("End Date can't be less than Start Date");
- 			 return;
- 		 }
- 		
  		var	Status= $("#OrderStatus").val();
  		if(Status ==undefined)
  			Status=''; 
@@ -40990,6 +40830,8 @@ function validateApplicationLog(id,index,searchname){
  	 			if($("#stockdownloadurl").val()!=null && $("#stockdownloadurl").val()!='')
  	 			  anchor.click();
  	 		  }
+ 	 		
+ 			
  	 			
  	 			$('#right-side').html(result);
  	 			$("#loading").css("display","none");
@@ -41092,13 +40934,6 @@ function validateApplicationLog(id,index,searchname){
         	if(endDate == undefined){
         		endDate="";
         	}
-        	
-        	 var noOfDays = daydiff(parseDate($('#startDate').val()), parseDate($('#endDate').val()));
-        	 if(noOfDays < 0){
-        		 alert("End Date can't be less than Start Date");
-        		 return;
-        	 }
-        	
         	
         	if(searchname=="clear"){
         		zone="";
@@ -43216,7 +43051,7 @@ function validateApplicationLog(id,index,searchname){
 
    	           mywindow.print();
    	           mywindow.close();
-        }  
+}  
 
    		
    	 function viewStockVerificationUpload(id,index,flowUnder,menu,verificationCode,location){
@@ -44456,7 +44291,7 @@ function validateApplicationLog(id,index,searchname){
  	    		 $("#tendercode").focus();
  	    		 $("#tendercodeError").html("Please Enter Tender Code");
  	    		 return;
- 	    	 }else if(parseInt($("#tendercode").val().length)>50){
+ 	    	 }else if(parseInt($("#tendercode").val().length)>=50){
  				 $("#tendercode").focus();
  				$("#tendercodeError").html("Tender code can't exceeds 50 Characters");
  				return;
@@ -44466,7 +44301,7 @@ function validateApplicationLog(id,index,searchname){
   	    		 $("#tenderName").focus();
   	    		 $("#tenderNameError").html("Please Enter Tender Name");
   	    		 return;
-  	    	 }else if(parseInt($("#tenderName").val().length)>50){
+  	    	 }else if(parseInt($("#tenderName").val().length)>=50){
  				 $("#tenderName").focus();
   				$("#tenderNameError").html("Tender name can't exceeds 50 Characters");
   				return;
@@ -44476,7 +44311,7 @@ function validateApplicationLog(id,index,searchname){
   	    		 $("#tenderkey").focus();
   	    		 $("#tenderkeyError").html("Please Enter Tender Key");
   	    		 return;
-  	    	 }else if(parseInt($("#tenderkey").val().length)>11){
+  	    	 }else if(parseInt($("#tenderkey").val().length)>=11){
  				 $("#tenderkey").focus();
    				$("#tenderkeyError").html("Tender key can't exceeds 11 Characters");
    				return;
@@ -44487,19 +44322,11 @@ function validateApplicationLog(id,index,searchname){
   	    		 $("#modeOfPayment").focus();
   	    		 $("#modeOfPaymentError").html("Please Enter Mode of Payment");
   	    		 return;
-  	    	 }else if(parseInt($("#modeOfPayment").val().length)>50){
+  	    	 }else if(parseInt($("#modeOfPayment").val().length)>=50){
  				 $("#modeOfPayment").focus();
     				$("#modeOfPaymentError").html("Payment Mode can't exceeds 50 Characters");
     				return;
     			}
-  	    	 
-  	    	if(parseInt($("#backendCode").val().length)>30){
-  	 		 $("#backendCode").focus();
-  	 			$("#backendCodeError").html("Backend Code can't exceeds 30 Character");
-  	 			return;
-  	 	}else{
-  	 	 $("#backendCodeError").html(" ");
-  	  }
 
    		formData.tenderCode = $("#tendercode").val().trim();
   		formData.tenderName = $("#tenderName").val().trim();
@@ -45060,6 +44887,11 @@ function validateApplicationLog(id,index,searchname){
     	   	    			if($("#outletSupplierId").length > 0)
     	   	    				suppliername = $("#outletSupplierId").val();
     	   	    			
+    	   	    			var searchCriteria = "";
+    	   	    			if($("#searchPackage").length > 0)
+    	   	    				searchCriteria = $("#searchPackage").val();
+    	   	    		 
+
     	   	    			var contextPath = $("#contextPath").val();
     	   	    			URL = contextPath + "/inventorymanager/viewPackagingandProcessing.do";
     	   	    			$.ajax({
@@ -45078,7 +44910,8 @@ function validateApplicationLog(id,index,searchname){
     	   	    					startdate : startdate,
     	   	    					enddate : enddate,
     	   	    					stockdownload : stockdownload,
-    	   	    					suppliername : suppliername
+    	   	    					suppliername : suppliername,
+    	   	    					searchCriteria:searchCriteria
     	   	    				},
     	    			
     	    	    		beforeSend: function(xhr){                    
@@ -45354,6 +45187,9 @@ function viewDailyStockTracker(id,index,flowUnder,menu){
 			if($("#searchStocks").length>0)
 				searchName = $("#searchStocks").val();
 		
+		
+		
+		
 		if(flowUnder == undefined && $("#flowUnder").length > 0)
 			flowUnder = $("#flowUnder").val();
 		var maxRecords = 10;
@@ -45374,9 +45210,6 @@ function viewDailyStockTracker(id,index,flowUnder,menu){
 		var enddate = "";
 		if($("#to").length > 0)
 			enddate = $("#to").val();
-		
-		
-		
 		var category = "";
 		if($("#outletCategory").length > 0)
 			category = $("#outletCategory").val();
@@ -45396,15 +45229,6 @@ function viewDailyStockTracker(id,index,flowUnder,menu){
 		if($("#outletEndPrice").length > 0)
 			endprice = $("#outletEndPrice").val();
 		
-		if(startprice != "" || startprice != undefined && endprice != "" || endprice != undefined){
- 		   if (startprice > endprice){
- 		     $("#priceError").html("End price can't be less than Start price");
- 		           return;
- 		  }else{
- 	   	 $("#priceError").html(" ");
- 	  }
- }
-		
 		var stockType = "";
 		if(stockType == "" && $("#stockType").length>0)
 			stockType = $("#stockType").val();
@@ -45412,17 +45236,6 @@ function viewDailyStockTracker(id,index,flowUnder,menu){
 		var suppliername = "";
 		if($("#outletSupplierId").length > 0)
 			suppliername = $("#outletSupplierId").val();
-		
-		if(startdate != "" && enddate != ""){
-		 var noOfDays = daydiff(parseDate($('#from').val()), parseDate($('#to').val()));
-		 if(noOfDays < 0){
-			 $("#endDateError").html("End Date can't be less than Start Date");
-			 return;
-		 }else{
-	  	   	 $("#endDateError").html(" ");
-	  	 }
-		}
-		
 		var contextPath = $("#contextPath").val();
 		URL = contextPath + "/inventorymanager/viewStockHistory.do";
 		$.ajax({
@@ -48650,7 +48463,6 @@ function viewOutletStockUploading(id,index,flowUnder,menu,verificationCode,locat
 			if($("#outletSubDepartmentId").length > 0)
 				subdepartment = $("#outletSubDepartmentId").val();
 		
-	
 			
 			var contextPath = $("#contextPath").val();
 //alert(contextPath);
@@ -48673,6 +48485,7 @@ function viewOutletStockUploading(id,index,flowUnder,menu,verificationCode,locat
   				category : category,
   				subcategory : subcategory,
   				section	: section
+	    		
 	    		},
 	    		beforeSend: function(xhr){                    
  	   			$("#loading").css("display","block");
@@ -50447,15 +50260,6 @@ function viewEditWhatsAppSettings(id,operation){
 				searchName = $("#searchFeaturedRetailer").val();
 
 			
-			debugger
-   		 if(startDate!=undefined || startDate!= "" && endDate!=undefined || endDate!= ""){
-   		 var noOfDays = daydiff(parseDate(startDate), parseDate(endDate));
-	    		 if(noOfDays < 0){
-	    			 alert("End Date can't be less than Start Date");
-	    			 return;
-	    		 }
-   	      }
-			
 			var contextPath = $("#contextPath").val();
 			var URL=contextPath + "/b2c/viewFeaturedShops.do";
 			
@@ -50488,6 +50292,7 @@ function viewEditWhatsAppSettings(id,operation){
 					$("#mainDiv").removeClass('disabled');
 				}
 			});
+		
 		}
 		catch(e)
 		{
@@ -50499,9 +50304,11 @@ function viewEditWhatsAppSettings(id,operation){
  
  
 	 function newFeaturedShopsGroupMaster(id){
+
 			try{
 				var online = window.navigator.onLine;
-				if(!online) {
+				if(!online)
+				{
 					alert("Check your internet connection,Please try agian after some time.");
 					return;
 				}
@@ -50654,7 +50461,7 @@ function viewEditWhatsAppSettings(id,operation){
 		 
 	 }*/
 	// const delay = ms => new Promise(res => setTimeout(res, ms));
-	  function importEnableEffect(id){
+	 async  function importEnableEffect(id){
 		 debugger
 		 $("#"+id).val("");
 		 $("#"+id+"circleWait").css("display","block");

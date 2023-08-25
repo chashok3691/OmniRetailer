@@ -265,14 +265,14 @@ selectedState = $("#selectedStateList").val();
                <div style="padding: 4px 20px;">
                                    
                                    
-                         <div class="row backgroundgray">
-                                   	<div class="form-group col-lg-2">
+                                   	<div class="row backgroundgray">
+                                   		<div class="form-group col-lg-2">
                                             <label style="font-family: Calibri;color: gray;white-space: nowrap;"><spring:message code="loyalityPlanId.label" /> </label>
-                                         <div class="col-lg-10" style="padding:0px;">
+                                            <div class="col-lg-10" style="padding:0px;">
                                             <input type="text" class="form-control"  name="loyaltyProgramNumber" id="loyaltyPlanId" value="${loyaltyCards.loyaltyProgramNumber}"/>
-                                            <span id="loyaltyPlanIderr" style="color:red; font-size:2"></span>
-                                     	 </div>
-                                    </div>
+                                           <!--  <span style="color:red; font-size:2" id="errLoyaltyProgramName"></span> -->
+                                     	</div>
+                                     	</div>
                                      	<!-- <div class="form-group col-lg-1"></div> -->
                                    		<div class="form-group col-lg-2">
                                             <label style="font-family: Calibri;color: gray;white-space: nowrap;"><spring:message code="card.type.label" /></label>
@@ -338,7 +338,12 @@ selectedState = $("#selectedStateList").val();
                                     	</div> -->
                                     	
                                      </div>	
+                                     
+                                 
 									</div>
+									
+									
+									
 									
 									<div class="row backgroundgray">
                                    	  <div class="form-group col-lg-2">
@@ -362,8 +367,7 @@ selectedState = $("#selectedStateList").val();
                                       <div class="col-lg-8" style="">
                                             <label style="font-family: Calibri;color: gray;white-space: nowrap;" style="white-space: nowrap;"><spring:message code="loyalty.rewards.life.time.label" /></label>
                                             <input type="text" class="form-control"  name="rewardLifeTime" id="rewardLifeTime" value="${loyaltyCards.rewardLifeTime}" oninput="this.value = this.value.replace(/[^0-9]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');"/>
-                                     <span id="rewardLifeTimeError" style="color:red; font-size:2;font-weight: bold"></span>
-                                     </div>
+                                     	</div>
                                      	</div>
                                    	
 										

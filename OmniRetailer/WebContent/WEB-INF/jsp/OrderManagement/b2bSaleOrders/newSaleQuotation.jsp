@@ -14,15 +14,16 @@
 <html>
 <head>
 <!-- <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title> -->
+<title>Insert title here</title>
+ -->
 
 <meta charset="UTF-8">
 	<title>Home | Omni Retailer</title>
 	<meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
 
 	 <!-- DATA TABLES -->
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/omniretailer.css">
-    <link href="${pageContext.request.contextPath}/css/datatables/dataTables.bootstrap.css" rel="stylesheet" type="text/css" />
+       <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/omniretailer.css">
+        <link href="${pageContext.request.contextPath}/css/datatables/dataTables.bootstrap.css" rel="stylesheet" type="text/css" />
 	<script type="text/javascript" src="${pageContext.request.contextPath}/js/validation.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/js/controller.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/js/b2bSaleOrders.js"></script>
@@ -55,9 +56,10 @@
    min-height: 30px;
    margin-left: 1.875%;
    *margin-left: 1.875%;
+
    -webkit-box-sizing: border-box;
-   -moz-box-sizing: border-box;
-   box-sizing: border-box;
+      -moz-box-sizing: border-box;
+           box-sizing: border-box;
  }
 
  .row-fluid-5 .controls-row [class*="span"] + [class*="span"] {
@@ -582,47 +584,44 @@ callCalender('endDate');
      <input type="hidden" id="rfqSearch" value="${skuObj.searchCriteria}">
 		
 		 <div class="row" >
-	           <div class="col-lg-7 col-lg8-7"></div>
+	           <div class="col-lg-8 col-lg8-8"></div>
 	            <div class="col-lg-2 col-lg2-2">
 	                <label>Sub Total:</label>
 				</div>
-				<div class="col-lg-1 col-lg2-1"></div>
+				
 	       		<div class="col-lg-1 col-lg2-2" >
 	                <input type="text" id="sub_total" readonly="readonly" value="${skuObj.fromLocation}">
 				</div>
 	       		
           </div> 
-          <div class="row" style="margin-top: 5px;">
-	           <div class="col-lg-7 col-lg8-7"></div>
+          <div class="row" style="    margin-top: 5px;">
+	           <div class="col-lg-8 col-lg8-8"></div>
 	            <div class="col-lg-2 col-lg2-2">
 	                <label>Tax:</label>
 				</div>
 				
-				<div class="col-lg-1 col-lg2-1"></div>
-				
 	       		<div class="col-lg-1 col-lg2-2" >
 	                <input type="text" id="tax" readonly="readonly" value="${skuObj.fromLocation}">
 				</div>
-				
 	       		
           </div> 
-          <div class="row" style="margin-top: 5px;">
-	           <div class="col-lg-7 col-lg8-7"></div>
+          <div class="row" style="    margin-top: 5px;">
+	           <<div class="col-lg-8 col-lg8-8"></div>
 	            <div class="col-lg-2 col-lg2-2">
 	                <label>Discounts:</label>
 				</div>
-				<div class="col-lg-1 col-lg2-1"></div>
+				
 	       		<div class="col-lg-1 col-lg2-2" >
 	                <input type="text" id="discounts" readonly="readonly" value="${skuObj.fromLocation}">
 				</div>
 	       		
           </div> 
-		<div class="row" style="margin-top: 5px;" >
-	          <div class="col-lg-7 col-lg8-7"></div>
+		<div class="row" style="    margin-top: 5px;" >
+	          <div class="col-lg-8 col-lg8-8"></div>
 	            <div class="col-lg-2 col-lg2-2">
 	                <label>Net Quote Value:</label>
 				</div>
-				<div class="col-lg-1 col-lg2-1"></div>
+				
 	       		<div class="col-lg-1 col-lg2-2" >
 	                <input type="text" id="net_value" readonly="readonly" value="${skuObj.fromLocation}">
 				</div>

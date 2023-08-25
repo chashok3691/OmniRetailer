@@ -68,7 +68,9 @@
 			New-Package
 		</h3>
 		</div>
-             
+             <div id="ErrorDetail" class="Error" style="text-align: center; color: red; font-size: 2; font-weight: bold; margin-bottom: 20px;">${err}</div>
+			 <div id="SuccessDetail" class="Error" style="text-align: center; color: blue; font-size: 2; font-weight: bold; margin-bottom: 20px;">${success}</div>
+         
                <div class="box-body table-responsive">
                
                   <div class="row" style="margin-left: 0px;">
@@ -100,7 +102,7 @@
                        
                         <div class="form-group col-lg-3">
                         <label><spring:message code="supplier.name.label" /></label>
-                        <input type="text"  class="form-control searchItems" placeholder="Enter Supplier Name " name="supplier_name" id="searchSupplier" style="height:30PX;background:url(/OmniRetailer/images/search.png) no-repeat;background-position:right;" />
+                        <input type="text"  class="form-control searchItems" placeholder="Enter Supplier Name " name="supplier_name" id="searchSupplier" style="height:30PX;background:url(/OmniRetailer/images/search.png) no-repeat;background-position:right;" value="${packages.supplierName}" />
 						<!-- <datalist id="supplierList"></datalist> -->
 						<div class="services">
 				    		<div class="items">
@@ -111,22 +113,32 @@
                      </div>
                        
                        
-                         <div class="col-lg1-2 col-lg-2">
+                         <div class="col-lg1-3 col-lg-3">
                        <div class="col-lg-12" style="padding-left:0px;padding-right: 0px;">
                         <label>Packer</label>
-                            <input type="text" id="packedBy" class="form-control">
+                        	<select id="packedBy" class="form-control">
+                        		 <c:forEach var="user" items="${empInfo}">
+                        		              <c:set var="packerName" value="${user.firstName } ${user.lastName }"/>
+												<option value="${packerName }" ${packages.storageArea == packerName ? 'selected' : ''}>${packerName }</option>
+								  </c:forEach>
+                        	
+                        	</select>
+                        
+                       <!--  empInfo
+                            <input type="text" id="packedBy" class="form-control"> -->
                        </div>
                        </div>
-                         <div class="col-lg1-3 col-lg-3">
+                         <div class="col-lg1-2 col-lg-2">
                        <div class="col-lg-12" style="padding-left:0px;padding-right: 0px;">
                         <label>Storage Area</label>
                             <select id="storageArea" class="form-control">
                             <option value="Shelf" >Shelf</option>
-									<option value="Racks" >Racks</option>
-									<option value="Bins" >Bins</option>
-									<option value="Fridge" >Fridge</option>
-									<option value="Empty area" >Empty area</option>
-									<option value="Bin Array" >Bin Array</option>
+									<option value="Shelf" ${packages.storageArea == "Shelf" ? 'selected' : ''}>Shelf</option>
+									<option value="Racks" ${packages.storageArea == "Racks" ? 'selected' : ''}>Racks</option>
+									<option value="Bins" ${packages.storageArea == "Bins" ? 'selected' : ''}>Bins</option>
+									<option value="Fridge" ${packages.storageArea == "Fridge" ? 'selected' : ''}>Fridge</option>
+									<option value="Empty area" ${packages.storageArea == "Empty area" ? 'selected' : ''}>Empty area</option>
+									<option value="Bin Array" ${packages.storageArea == "Bin Array" ? 'selected' : ''} >Bin Array</option>
                             
                             </select>
                        </div>
@@ -135,7 +147,7 @@
                         <div class="col-lg1-2 col-lg-2">
                        <div class="col-lg-12" style="padding-left:0px;padding-right: 0px;">
                         <label>Packed By</label>
-                            <input type="text" id="packedbyadd"  class="form-control">
+                            <input type="text" id="packedbyadd"  class="form-control" value="${packages.packedBy}">
                        </div>
                        </div>
                        
@@ -186,19 +198,19 @@
                        
                        
                        
-                         <div class="col-lg1-2 col-lg-2">
+                         <div class="col-lg1-3 col-lg-3">
                        <div class="col-lg-12" style="padding-left:0px;padding-right: 0px;">
                         <label>Package Line/Area</label>
-                            <input type="text"  id="packagelinearea" class="form-control">
+                            <input type="text"  id="packagelinearea" class="form-control" value="${packages.packageLine}">
                        </div>
                        </div>
-                         <div class="col-lg1-3 col-lg-3">
+                         <div class="col-lg1-2 col-lg-2">
                        <div class="col-lg-12" style="padding-left:0px;padding-right: 0px;">
                         <label>Storage Level</label>
                             
                              <select id="storageLevel" class="form-control">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
+                             	<option value="1" ${packages.storageLevel == "1" ? 'selected' : ''} >1</option>
+                      		    <option value="2" ${packages.storageLevel == "2" ? 'selected' : ''} >2</option>
                             
                             </select>
                        </div>
@@ -207,7 +219,7 @@
                         <div class="col-lg1-2 col-lg-2">
                        <div class="col-lg-12" style="padding-left:0px;padding-right: 0px;">
                         <label>Verified By</label>
-                            <input type="text" id="verifiedby"  class="form-control">
+                            <input type="text" id="verifiedby"  class="form-control" value="${packages.verifiedBy}">
                        </div>
                        </div>
                        
@@ -275,15 +287,92 @@
                          <tbody style="text-align: center;">
                          
                          
+                         <c:if test="${packagesList ne  null and packagesList ne ''}">
+                         
+                          <c:set var = "parent" scope = "session" value = "1"/>
+                           <c:forEach var="SKUidsList" items="${SKUids}" varStatus="theCount">
+                          <c:set var = "single" scope = "session" value = "0"/>
+                              <c:forEach var="packagesDetails" items="${packagesList}" varStatus="totalPackages" >
+                            <c:if test="${SKUidsList == packagesDetails.childSkuId}">
+                            <c:set var = "single" scope = "session" value = "${single+1}"/>
+                             <c:if test="${single == 1}">
+                             <input type="hidden" id="ParentID${theCount.count}" value="${packagesDetails.parentSkuId }">
+                         	<input type="hidden" id="ParentDescription${theCount.count}" value="${packagesDetails.parentSkuIdDescription }">
+                             
+                         	 <tr class="dynamicdiv" id="dynamicdiv${theCount.count}">
+                         	    <td  class="sticky-col first-col"  style="background-color: #f9f9f9; !important;" ><input type="checkbox" name="selectall" class="selectableCheckbox" id="selectall" value="${theCount.count}" /></td>
+                         	    <td class="sticky-col second-col slnos" style="background-color: #f9f9f9; !important;" id="itemno${theCount.count}">${theCount.count}</td>
+                         	 	<td class="sticky-col third-col" style="background-color: #f9f9f9; !important;" id="skuID${theCount.count}">${packagesDetails.childSkuId}</td>
+                             	<td class="sticky-col fourth-col" style="background-color: #f9f9f9; !important;" id="Desc${theCount.count}">${packagesDetails.childSkuIdDescription }</td>
+                             	<td id="batchID${theCount.count}" contenteditable="true">${packagesDetails.ean }</td>
+                         	 	<td id="EAN${theCount.count}" contenteditable="true">${packagesDetails.batchId }</td>
+                             	 <td id="availQty${theCount.count}">${packagesDetails.childSkuAvailableQty }</td>
+                             	<td id="inwardQty${theCount.count}"></td>
+                             	<td id="procQty${theCount.count}"  contenteditable="true" class="Pack${theCount.count}" onBlur="">${packagesDetails.procQty }</td> 
+                             	<input type="hidden"  id="noofpacksold${theCount.count}" value="${packagesDetails.noOfPacks }"/>
+                             	<td id="noofpacks${theCount.count}" onBlur="changePack(this);setData()"  contenteditable="true" class="Pack${theCount.count}">${packagesDetails.noOfPacks }</td>
+								<td id="salePrice${theCount.count}">${packagesDetails.salePrice }</td>
+                                <td id="costPrice${theCount.count}">${packagesDetails.costPrice }</td>
+                                <td id="saleValue${theCount.count}">${packagesDetails.saleValue }</td>
+                                <td id="costValue${theCount.count}">${packagesDetails.costValue }</td>
+                                <td>
+                                  
+                                     <a  class="clickable" data-toggle="collapse" id="row${totalPackages.count}" data-target=".row${totalPackages.count}"> <span style="font-size: 17px" onclick="expandPackage(${totalPackages.count})" id="categoryExpand${totalPackages.count}"><i class="fa fa1 fa-sort-desc"></i></span></a>
+                                   
+                                 </td>
+                               
+ 								</tr>
+                             </c:if>
+                             
+                             </c:if>
+                             
+                             </c:forEach>
+                             
+                              <tr  class="collapse rowone${parent}" id="packagingList${parent}1">
+                              <th  style="padding:3px;"></th>
+                               <th  style="padding:3px;"><div style="white-space: nowrap;padding: 5px;background: #c1c1c1;"><spring:message code="sl.no.label" /></div></th>
+                             	<th   style="padding:3px;"><div style="white-space: nowrap;padding: 5px;background: #c1c1c1;"><spring:message code="sku.id.label" /></div></th>
+                             	<th  style="width:200px !important;padding:3px;"><div style="white-space: nowrap;padding: 5px;background: #c1c1c1;"><spring:message code="sku.description.label" /></div></th>
+                             	<th style="padding:3px;"><div style="white-space: nowrap;padding: 5px;background: #c1c1c1;">UOM</div></th>
+                             	<th style="padding:3px;"><div style="white-space: nowrap;padding: 5px;background: #c1c1c1;">Size/Weight</div></th>
+                             	 <th style="padding:3px;"><div style="white-space: nowrap;padding: 5px;background: #c1c1c1;">Cost Price</div></th>
+                             	<th style="padding:3px;"><div style="white-space: nowrap;padding: 5px;background: #c1c1c1;">MRP</div></th>
+                             	<th style="padding:3px;"><div style="white-space: nowrap;padding: 5px;background: #c1c1c1;">Avail Qty</div></th> 
+                             	
+                                 
+                             </tr>
+                             
+                             <c:forEach var="packData" items="${packagesList}" varStatus="totalpackData" >
+        				  <c:if test="${SKUidsList == packData.childSkuId}">
+        				   <tr  class="collapse rowone${parent}" id="packagingdetails${parent}" class="packagingdetails">
+        				 <td></td>
+                           <td>${totalpackData.count}</td>
+                            <td>${packData.parentSkuId }</td>
+                             <td>${packData.parentSkuIdDescription }</td>
+                              <td>${packData.uom}</td>
+                               <td></td>
+                                <td>${packData.costPrice }</td>
+                                 <td>${packData.salePrice }</td>
+                                  <td>${packData.avlQty }</td>
+        				 
+        				 </tr> 
+        				 </c:if>
+        				 </c:forEach>
+                           <c:set var = "parent" scope = "session" value = "${parent+1}"/>
+                             </c:forEach>
+                     
+        				    
+                             </c:if>
                          
                          </tbody>
+                         
                      </table>
                     </div>
                     
                     
                     <div class="row" style="text-align: left;margin-top: 20px;">
                     <div class="col-lg-6">
-							<input type="button" id="edit"  class="btn bg-olive btn-inline" onclick="createPackageAndProcessing('submit');" style="margin-left:3%;width: 16%;" value="<spring:message code="submit.label" />" />
+							<input type="button" id="edit"  class="btn bg-olive btn-inline submit" onclick="createPackageAndProcessing('submit');" style="margin-left:3%;width: 16%;" value="<spring:message code="submit.label" />" />
 							<input type="button" id="edit"  class="btn bg-olive btn-inline" style="margin-left:3%;width: 16%;" onclick="createPackageAndProcessing('draft');" value="<spring:message code="save.label" />" />
 							<input type="button" class="btn bg-olive btn-inline" style="margin-left:3%;margin-right: 1%;width: 16%;" onclick="viewPackagingandProcessing('warehouseProcessingAndpackaging','0','warehouse','menu','');" value="<spring:message code="cancel.label" />" />
 						</div>

@@ -400,8 +400,6 @@ font-weight: normal; }
 															<!--  <select id ="city" class="form-control" >
 																<option >Select State</option>
 															</select> -->
-															
-															<span id="cityError" style="text-align:right;color:red;font-weight:bold;"></span>
 									        	 	</div>
 									        	 	<div class="form-group col-lg-4">
 									        	 	<label><spring:message code="occupation.label" /></label>
@@ -696,7 +694,7 @@ font-weight: normal; }
                                        <br>
 										<label><spring:message code="deal_description_text.label" /></label>
 	                                    <textarea style="resize:none;" class="form-control" name="dealDesc" id="dealDesc" rows="1" style="resize: none;" placeholder="<spring:message code="deal_description_placeholder.label" />" >${dealBean.dealDescription }</textarea>
-                                          <span id="dealDescError" style="text-align:right;color:red;font-weight:bold;"></span>
+
                                         </div>
                                     <!-- </div> -->
 									  <div class="form-group span2">
@@ -3066,7 +3064,6 @@ font-weight: normal; }
                                     <div class="form-group col-lg-3" style="">
                                     	<label><spring:message code="display.tag.line.label" /></label>
                                     	<textarea class="form-control"  name="dealImageText" id="dealImageText" rows="1" style="resize: none;" placeholder="<spring:message code="display.tag.line.label" />" >${dealBean.dealImageText}</textarea>
-                                        <span id="dealImageTextErr" style="text-align:right;color:red;font-weight:bold;"></span>
                                     </div>
                                     	<div class="form-group col-lg-3" style="">
                                     		<label><spring:message code="deal.image.text.font.label" /></label>
@@ -3120,7 +3117,6 @@ font-weight: normal; }
                                     <div class="form-group col-lg-3" style="">
                                     	<label><spring:message code="display.sale.text.label" /></label>
                                     	<textarea class="form-control"  name="saleText" id="saleText" rows="1" style="resize: none;" placeholder="<spring:message code="display.sale.text.label" />" >${dealBean.salePriceText}</textarea>
-                                         <span id="saleTextErr" style="text-align:right;color:red;font-weight:bold;"></span>
                                     </div>
                                     	<div class="form-group col-lg-3" style="">
                                     		<label><spring:message code="deal.image.text.font.label" /></label>
@@ -3174,7 +3170,6 @@ font-weight: normal; }
                                     <div class="form-group col-lg-3" style="">
                                     	<label><spring:message code="display.deal.text.label" /></label>
                                     	<textarea class="form-control"  name="dealText" id="dealText" rows="1" style="resize: none;" placeholder="<spring:message code="display.deal.text.label" />" >${dealBean.dealPriceText}</textarea>
-                                        <span id="dealTextErr" style="text-align:right;color:red;font-weight:bold;"></span>
                                     </div>
                                     	<div class="form-group col-lg-3" style="">
                                     		<label><spring:message code="deal.image.text.font.label" /></label>

@@ -382,8 +382,7 @@ $(document).ready(function(){
                       <div class="col-lg1-2 col-lg-2">
 	               <div class="col-lg-12" style="padding-left:0px;padding-right: 0px;">
 	                   <label><spring:message code="offer_end_date.label"/></label>
-	                   <input class="form-control calendar_icon form-group" readonly="readonly" value="${enddate}" style="background-color: white;" id="to" size="20" type="text" onfocus="callCalender('to')" onclick="callCalender('to')" placeholder="DD/MM/YYYY" />
-		               <span id="endDateError" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
+	                 	<input class="form-control calendar_icon form-group" readonly="readonly" value="${enddate}" style="background-color: white;" id="to" size="20" type="text" onfocus="callCalender('to')" onclick="callCalender('to')" placeholder="DD/MM/YYYY" />
 		           </div>
 		          </div>
                     </div>
@@ -411,7 +410,7 @@ $(document).ready(function(){
                      
                       </div>
                      <div class="col-lg-3">
-                      <span id="priceError" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
+                      
                       </div>
                     
                     </div>

@@ -145,7 +145,7 @@ function validateOrganizationDepartment(operation){
 		$("#orgdeptId").focus();
 		$("#orgdeptIDError").html("Enter Department ID");
 		return;
-	}else if(parseInt($("#orgdeptId").val().length)>10){
+	}else if(parseInt($("#orgdeptId").val().length)>=10){
 		 $("#orgdeptId").focus();
 			$("#orgdeptIDError").html("Department ID can't exceeds 10 Characters");
 			return;
@@ -154,24 +154,16 @@ function validateOrganizationDepartment(operation){
 		$("#orgdeptName").focus();
 		$("#orgdeptNameError").html("Enter Department Name");
 		return;
-	}else if(parseInt($("#orgdeptName").val().length)>20){
+	}else if(parseInt($("#orgdeptName").val().length)>=10){
 		 $("#orgdeptName").focus();
-			$("#orgdeptNameError").html("Department name can't exceeds 20 Characters");
+			$("#orgdeptNameError").html("Department name can't exceeds 10 Characters");
 			return;
 		}
-	if(parseInt($("#orgdeptParent").val().length)>50){
-		 $("#orgdeptParent").focus();
-			$("#orgdeptParentError").html("Parent Department can't exceeds 50 Characters");
-			return;
-		}else{
-			$("#orgdeptParentError").html("");
-		}
-	
 	if($("#orgdeptDescription").val().trim() == ""){
 		$("#orgdeptDescription").focus();
 		$("#orgdeptDescError").html("Enter Department description");
 		return;
-	}else if(parseInt($("#orgdeptDescription").val().length)>50){
+	}else if(parseInt($("#orgdeptDescription").val().length)>=50){
 		$("#orgdeptDescription").focus();
 		$("#orgdeptDescError").html("description can't exceeds 50 Characters");
 	}

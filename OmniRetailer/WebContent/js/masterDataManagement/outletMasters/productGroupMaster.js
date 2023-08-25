@@ -625,7 +625,7 @@ function validateProductGroupMasterForm(operation, index){
 	//	alertify.alert('Enter Group Id');
 		$("#groupId").focus();
 		return;
-	}else if(parseInt($("#groupId").val().length)>50){
+	}else if(parseInt($("#groupId").val().length)>=50){
 		 $("#groupId").focus();
 		 $("#groupIdError").html("Group Id can't exceed 50 characters");
 		 return;
@@ -649,7 +649,7 @@ function validateProductGroupMasterForm(operation, index){
 			$("#groupNameError").html("Enter Group Name");
 			$("#group_name").focus();
 			return;
-		}else if(parseInt($("#group_name").val().length)>50){
+		}else if(parseInt($("#group_name").val().length)>=50){
 			 $("#group_name").focus();
 			 $("#groupNameError").html("Group name can't exceed 50 characters");
 			 return;
@@ -657,7 +657,7 @@ function validateProductGroupMasterForm(operation, index){
 	
 	var comment = $("#comments").val().trim();
 	var commentslength = $("#comments").val().length;
-	if(comment.trim() != "" && parseInt($("#comments").val().length)>1000){
+	if(comment.trim() != "" && parseInt($("#comments").val().length)>=1000){
 		$("#comments").focus();
 		$("#commentsError").html("Comments can't exceeds 1000 Characters");
 		return false;

@@ -442,7 +442,7 @@ $("#unitCashValue").blur(function(){
                                     	<div class="form-group col-lg-2" style="">
                                             <label style="font-family: Calibri;color: gray;"><spring:message code="no.of.claims.label" /></label>
                                             <input type="text" class="form-control" style="width: 60%;" id="nofClaims" name="noOfCliams"  value="${giftCoupon.noOfCliams}" oninput="this.value = this.value.replace(/[^0-9]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');"/>
-                                             <span style="color:red; font-size:2" id="errnofClaims"></span> 
+                                           <!--  <span style="color:red; font-size:2" id="errnofClaims"></span> -->
                                     	</div>
                                     	
                                     
@@ -591,15 +591,16 @@ $("#unitCashValue").blur(function(){
 	                            			 <option value="${groupsid}" >${groupsid}</option>
 	                                        
 											</c:forEach>
-	                                        </select>
+	                                        
+	                                        
+	                                            </select>
 										</div> 
 										</div>
 									
 										<div class="form-group col-lg-2" style="margin-top: -10px;margin-bottom: 0px;padding-left:0px">
 										<div class="form-group col-lg-12">
 										   <label style="font-family: Calibri;color: gray;">Per User Claims</label>
-	 									   <input type="text" style="width: 73%;" class="form-control" id="perUserClaims" name="perUserClaims" oninput="this.value = this.value.replace(/[^0-9]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" value="${giftCoupon.perUserClaims}" placeholder="Enter user claims"/>
-									       <span style="color:red; font-size:2;font-weight: bold;" id="errperUserClaims"></span>
+	 									   <input type="text" style="width: 73%;" class="form-control" id="perUserClaims" name="perUserClaims" value="${giftCoupon.perUserClaims}" placeholder="Enter user claims"/>
 										</div>
 										</div>
 										
@@ -607,7 +608,6 @@ $("#unitCashValue").blur(function(){
 										<div class="form-group col-lg-12">
 										   <label style="font-family: Calibri;color: gray;">Split Period</label>
 	 									   <input type="text" style="width: 73%;" class="form-control" id="splitPeriod" name="splitPeriod" value="${giftCoupon.splitPeriod}" placeholder="Enter split claims"/>
-										   <span style="color:red; font-size:2;font-weight: bold;" id="errsplitPeriod"></span>
 										</div>
 										</div>
 											

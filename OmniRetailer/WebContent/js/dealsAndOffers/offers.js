@@ -2869,43 +2869,19 @@ function createOffer(){
 	debugger;
 	 var offerRanges={},offerSlabs=[],offerRangeDetails={},items=[],locItems=[];
 	$("#Error").html("");
-	
-	if(parseInt($("#city").val().length)>20){
-		 $("#city").focus();
-			$("#cityError").html("City Name can't exceeds 20 Characters");
-			return;
-	}else {
- 	 $("#cityError").html(" ");
- }
-	
-	var noOfDays = daydiff(parseDate($('#fromDate').val()), parseDate($('#endDate').val()));
-	if(noOfDays < 0){
-		 $("#endDateErr").html("End Date can't be less than Start Date");
-		 return;
-	 }else{
- 	   	 $("#endDateErr").html(" ");
- 	 }
-	
 	if($("#offerName").val() == null || $("#offerName").val() ==""){
 		$("#offerNameErr").html("Enter Offer Name");
 		$("#offerName").focus();
 		return;
 	}
-	
-	if(parseInt($("#offerName").val().length)>255){
-		 $("#offerName").focus();
-			$("#offerNameErr").html("Offer Name can't exceeds 255 Characters");
-			return;
-	}else {
-  	 $("#offerNameErr").html(" ");
-  }
-	
 	var location = $("#offerLocation").val();
 	/*if(location == null || location == "" || location == undefined){
 		$("#Error").html("Please Select atleast one location");
 		$("#offerLocation").focus();
 		return;
 	}*/
+	
+	
 	
 	if($("#offerStartDate").val() == ""){
 		$("#offerStartDateError").html("Start Date Required");
@@ -2918,12 +2894,11 @@ function createOffer(){
 //		$("#offerEndDate").focus();
 		return;
 	}
-	
 	 var dateTime = getCurrentDate();
-	 var date = dateTime.split(' ');
+	  var date = dateTime.split(' ');
 	  date = date[0].split('/');
-	 var formatedDate = date[2]+"/"+date[0]+"/"+date[1];
-	 var noOfDays = daydiff(parseDate(formatedDate),parseDate($('#offerStartDate').val()));
+	  var formatedDate = date[2]+"/"+date[0]+"/"+date[1];
+	  var noOfDays = daydiff(parseDate(formatedDate),parseDate($('#offerStartDate').val()));
 	 if(noOfDays < 0){
 		 $("#Error").html("Start Date should be Future Date");
 		 focusDiv('Error');
@@ -2936,28 +2911,11 @@ function createOffer(){
 		 return;
 	 }*/
 	noOfDays = daydiff(parseDate($('#offerStartDate').val()), parseDate($('#offerEndDate').val()));
-	if(noOfDays < 0){
-		 $("#offerEndDateError").html("End Date can't be less than Start Date");
+	 if(noOfDays < 0){
+		 $("#Error").html("End Date can't be less than Start Date");
+		 focusDiv('Error');
 		 return;
-	 }else{
-	   	 $("#offerEndDateError").html(" ");
 	 }
-	
-	if(parseInt($("#offerDesc").val().length)>250){
-		 $("#offerDesc").focus();
-			$("#offerDescError").html("Deal Description can't exceeds 250 Characters");
-			return;
-	}else{
-  	 $("#offerDescError").html(" ");
-  } 
-	
-	if(parseInt($("#closedReason").val().length)>250){
-		 $("#closedReason").focus();
-			$("#closedReasonError").html("Closed Reason can't exceeds 250 Characters");
-			return;
-	}else{
- 	 $("#closedReasonError").html(" ");
- } 
 	
 	 //written by manasa to send multiple locations
    var loclen=$("#offerLocation").length;
@@ -2997,11 +2955,11 @@ function createOffer(){
 	var maxPrice = $("#maxPrice").val();
 	if (maxPrice != "" && maxPrice!=undefined && maxPrice!=null) {
 			finalObj.maxPrice = parseInt(maxPrice);
-	}
+		}
 	var minPrice = $("#minPrice").val();
 	if (minPrice != "" && minPrice!=undefined && minPrice!=null) {
 			finalObj.minPrice = parseInt(minPrice);
-	}
+		}
 
 	
 	finalObj.offerCategory = $("#offercategory").val();
@@ -3025,7 +2983,9 @@ function createOffer(){
 	
 	  var createddate = dateFormat+' ' + time;
 	finalObj.createdOnStr = createddate;
+	
 	finalObj.offerStartDate = $("#offerStartDate").val();
+	
 	finalObj.offerEndDate = $("#offerEndDate").val();
 	finalObj.rewardType = $("#offerReward").val();
 	finalObj.offerStatus = $('input[name=offerStatus]:checked').val();
@@ -3075,6 +3035,7 @@ function createOffer(){
 	finalObj.offerPriceSize = $("#dealTextSize").val();
 	finalObj.offerPriceColor = $("#dealTextColor").val();
 	
+	
 	if($("#dealTextBold").prop('checked') == true)
 		finalObj.offerPriceBold = 1;
 	else
@@ -3109,6 +3070,7 @@ function createOffer(){
 	finalObj.repeat = $("#isRepeat").prop("checked");
 	finalObj.bannerImg = $("#banner").prop("checked");
 	finalObj.combo = $("#isCombo").prop("checked");
+	
 	//written by manasa
 	finalObj.allowReturns = $("#applyReturns").prop("checked");
 	finalObj.salePriceBased = $("#applysaleprice").prop("checked");
@@ -3121,9 +3083,10 @@ function createOffer(){
 	if($("#basedOnGroup").is(':checked')){
 		finalObj.productSpecificFlag="false"
 	}
-	else{
+	else
+		{
 		finalObj.productSpecificFlag="true"
-	}
+		}
 	
 	if($("#saleCategory").val() != undefined)
 		finalObj.productCategory = $("#saleCategory").val();
@@ -3136,6 +3099,7 @@ function createOffer(){
 				return;
 			}
 			
+			
 		if($("#saleCategory").val() != undefined)
 		finalObj.productCategory = $("#saleCategory").val();
 		if($("#sale_sub_category").val() != undefined)
@@ -3146,12 +3110,16 @@ function createOffer(){
 		finalObj.brand = $("#sale_brand").val();
 		if($("#sale_section").val().trim() != undefined)
 		finalObj.productSection = $("#sale_section").val();
-		finalObj.sellProducts = offerSellPRoducts.toString();
-		finalObj.sellSkuids = offerSellSkus.toString();
+			
+			
+			finalObj.sellProducts = offerSellPRoducts.toString();
+			finalObj.sellSkuids = offerSellSkus.toString();
 			var salePluCode = [];
 			$('.buyPluCode').each(function(){
 				salePluCode.push($(this).val());
 			});
+			
+
 			//written by manasa
 			if($("#itemDisountBased").is(':checked')){
 				var len = $("#offerSaleSkusProduct tr").length-1;
@@ -3182,13 +3150,17 @@ function createOffer(){
 								 "section" : $("#section"+idAttr).val(),
 								 "department" : $("#department"+idAttr).val(),
 								 "exclusionItem":false
+									
+								 
 						 };
 						items.push(obj);
+						
 					}
 				finalObj.offerProducts=items
 			}
 			
 		if($("#complexDisountBased").is(':checked')){		
+		
 			var saleCategory=$("#saleCategory").val();
 			var sale_department=$("#sale_department").val();
 			var sale_brand=$("#sale_brand").val();
@@ -3225,6 +3197,8 @@ function createOffer(){
 				{
 				 finalObj.priceBasedConfigurationFlag="false";
 				}
+			
+			
 				if(ApplyForAll=="category_turnover")
 					{
 					 finalObj.applyForAllItems=true;
@@ -3233,6 +3207,7 @@ function createOffer(){
 					{
 					 finalObj.applyForAllItems=false;
 					}
+				
 			var ItemPriceRange =$("#offerRewardCriteria").val();
 				if(ItemPriceRange=="item_price_range")
 					{
@@ -3246,9 +3221,12 @@ function createOffer(){
 			finalObj.allowMultipleDiscounts = $("#allownMulDiscProduct").prop("checked");
 			finalObj.repeat = $("#isRepeatProduct").prop("checked");	
 			var priceBasedProduct=finalObj.priceBasedConfigurationFlag;
+			
 			finalObj.rewardType = $("#offerRewardProduct").val();
+			
 			var len1 = $("#slabLis tr").length - 1;
 //			offerSlabs=[];
+			
 		    var bothOrPromotionFlag = false;
 		   for(var i=1;i<=len1;i++){
 			 var idAttr = $("#slabLis tr:eq("+i+")").attr("id").replace("productrange",'');
@@ -3285,6 +3263,7 @@ function createOffer(){
 					 $("#"+idAttr+"rewardvalueProduct").focus();
 					 return;
 				 }
+				 
 			 }
 			 
 		/* if(priceBasedProduct=="true" && $("#applyForAllItemsProduct").prop("checked")){
@@ -3298,11 +3277,13 @@ function createOffer(){
 			 }*/
 		 
 		 if(priceBasedProduct=="true" && ApplyForAll=="category_turnover"){
+			 
 			 if(rewardValue < 0 || rewardValue == 0){
 				 $("#Error").html("Reward Value should be > 0");
 				 $("#"+idAttr+"rewardvalueProduct").focus();
 				 return;
 			 }
+			
 		 }
 			 
 				 offerRangeDetails = {
@@ -3317,9 +3298,12 @@ function createOffer(){
 				 		 "pluCode" :  $("#pluCode"+idAttr+"itemId").val()
 				 };
 				offerSlabs.push(offerRangeDetails);
+				 
+				 
 		}
 		   //for excuding offer items (send flag exclutionItem false)
 		   var len = $("#offerSaleSkusProductExclude tr").length-1;
+			
 			if(len != 0){
 			for(var i=1;i<=len;i++){
 				var idAttr = $("#offerSaleSkusProductExclude tr:eq("+i+") td:last").attr("id");
@@ -3343,14 +3327,18 @@ function createOffer(){
 							 "section" : $("#section"+idAttr).val(),
 							 "department" : $("#department"+idAttr).val(),
 							 "exclusionItem":true
+								
+							 
 					 };
 					items.push(obj);
+					
 				}
 			finalObj.offerProducts=items
 			}
 			}	
 			
 		if (offerSlabs.length == 0) {
+			
 			 offerRangeDetails = {
 					 "minimumPurchaseQuantityString" : "1",
 					 "minimumPurchaseamountString" : "0",
@@ -3362,13 +3350,20 @@ function createOffer(){
 					 //"groupId" : $("#selected"+idAttr+"groupId").val(),
 					 "startPrice" : 0,
 					 "endPrice" : 0
+					
+			 		
 			 };
+		
 			 offerSlabs.push(offerRangeDetails);
 		}
+	
+		
 		offerRanges.offerSlabs = offerSlabs;
+		
 			console.log(finalObj);
 			//finalObj.sellPluCode = salePluCode.toString();
 		}
+		
 	}
 		if($("#basedOnGroup").prop("checked") == true){
 			//debugger
@@ -3707,6 +3702,8 @@ function createOffer(){
 			return;
 		 }*/
 		 
+		
+			 
 				 offerRangeDetails = {
 						 "range" : $("#"+idAttr+"rangename").text(),
 						 "minimumPurchaseQuantityString" : $("#"+idAttr+"minquantity").val(),
@@ -3725,8 +3722,13 @@ function createOffer(){
 				 offerRanges.offerSlabs.push(offerRangeDetails);
 				 
 		}	
+		
+		    
 		}
+			
+			
 			  if (offerRanges.offerSlabs.length == 0) {
+					
 					 offerRangeDetails = {
 							 "minimumPurchaseQuantityString" : "1",
 							 "minimumPurchaseamountString" : "0",
@@ -3738,10 +3740,16 @@ function createOffer(){
 							 //"groupId" : $("#selected"+idAttr+"groupId").val(),
 							 "startPrice" : 0,
 							 "endPrice" : 0
+							
+					 		
 					 };
+				
 					 offerRanges.offerSlabs.push(offerRangeDetails);
 				}
 	}
+	
+
+		
 	
 	finalObj.offerRanges = JSON.stringify(offerRanges);
 	finalObj.offerProducts = items;
@@ -3798,6 +3806,7 @@ function createOffer(){
 
 			}
 		});
+	
 }
 
 
@@ -5298,37 +5307,6 @@ function updateOffer(offerId) {
 	debugger;
 	var editofferRanges = {}, editofferSlabs = [], editofferRangeDetails = {},items=[];
 	$("#Error").html("");
-	
-	if(parseInt($("#city").val().length)>20){
-		 $("#city").focus();
-			$("#cityError").html("City Name can't exceeds 20 Characters");
-			return;
-	}else {
-	 $("#cityError").html(" ");
-    }
-	
-	var noOfDays = daydiff(parseDate($('#fromDate').val()), parseDate($('#endDate').val()));
-	if(noOfDays < 0){
-		 $("#endDateErr").html("End Date can't be less than Start Date");
-		 return;
-	 }else{
-	   	 $("#endDateErr").html(" ");
-	 }
-	
-	if($("#offerName").val() == null || $("#offerName").val() ==""){
-		$("#offerNameErr").html("Enter Offer Name");
-		$("#offerName").focus();
-		return;
-	}
-	
-	if(parseInt($("#offerName").val().length)>255){
-		 $("#offerName").focus();
-			$("#offerNameErr").html("Offer Name can't exceeds 255 Characters");
-			return;
-	}else{
- 	 $("#offerNameErr").html(" ");
-    }
-	
 	if ($("#offerName").val() == null || $("#offerName").val() == "") {
 		$("#offerNameErr").html("Enter Offer Name");
 		activateHeader('dealConfiguration');
@@ -5346,22 +5324,6 @@ function updateOffer(offerId) {
 	/*if (location.indexOf(",")) {
 		location = $("#offerLocation").val().toString();
 	}*/
-	
-	if(parseInt($("#offerDesc").val().length)>250){
-		 $("#offerDesc").focus();
-			$("#offerDescError").html("Deal Description can't exceeds 250 Characters");
-			return;
-	}else{
- 	 $("#offerDescError").html(" ");
-    } 
-	
-	if(parseInt($("#closedReason").val().length)>250){
-		 $("#closedReason").focus();
-			$("#closedReasonError").html("Closed Reason can't exceeds 250 Characters");
-			return;
-	}else{
-	 $("#closedReasonError").html(" ");
-   } 
 	
 	var offerStatusValue = "";
 	  if($("#offerStatusValue").length>0)
@@ -5407,13 +5369,18 @@ function updateOffer(offerId) {
 		return;
 	}
 
+	
 	var finalObj = {};
 	
+	 
 	finalObj.createdOnStr = $("#createdDate").val();
 	finalObj.couponProgramId = $("#CouponCodeforOffer").val();
 	
 	var fromDate = $("#from").val();
 	var toDate = $("#to").val();
+	
+	
+	
 	
 	var locDetails=[];
 	if($("#offerLocation").val() != null){
@@ -5429,8 +5396,8 @@ function updateOffer(offerId) {
 	   	if ($("#maxRecords").length > 0)
 	   		maxRecords = $("#maxRecords").val();
 	
-	finalObj.maxRecords=maxRecords;
-	finalObj.offerLocation= $("#outletLocation").val();
+	  finalObj.maxRecords=maxRecords;
+	  finalObj.offerLocation= $("#outletLocation").val();
 	finalObj.offerLocationsList=locDetails;
 	finalObj.offerID = offerId;
 	finalObj.allowReturns = $("#applyReturns").prop("checked");

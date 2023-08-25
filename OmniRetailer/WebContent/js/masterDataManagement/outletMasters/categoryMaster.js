@@ -156,6 +156,8 @@ function saveCategory(operation){
    var banner=$("#categorybannerFile").val() ;
    var businessActivity=$("#businessActivity").val() ;
 
+     
+   
    var maxRecords = 10;
 	  if($("#maxRecords").length>0)
 		  maxRecords = $("#maxRecords").val();
@@ -171,7 +173,7 @@ function saveCategory(operation){
    	 $("#categoryName").focus();
    	$("#categoryNameError").html("Category Name is Required");
    	return false;
-   }else if(parseInt($("#categoryName").val().length)>100){
+   }else if(parseInt($("#categoryName").val().length)>=100){
    	 $("#categoryName").focus();
    	 $("#categoryNameError").html("Category Name can't exceeds 100 Characters");
     	return false;
@@ -180,7 +182,7 @@ function saveCategory(operation){
    	$("#categoryDescription").focus();
    	$("#categoryDescriptionError").html("Category Description is Required");
    	return false;
-   }else if(parseInt($("#categoryDescription").val().length)>250){
+   }else if(parseInt($("#categoryDescription").val().length)>=250){
   	 $("#categoryDescription").focus();
 	 $("#categoryDescriptionError").html("Description can't exceeds 250 Characters");
 	return false;

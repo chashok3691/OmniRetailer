@@ -331,7 +331,6 @@ $(document).ready(function(){
 	               <div class="col-lg-12" style="padding-left:0px;padding-right: 0px;">
 	                   <label><spring:message code="offer_end_date.label"/></label>
 	                 	<input class="form-control calendar_icon form-group" readonly="readonly" value="${enddate}" style="background-color: white;" id="to" size="20" type="text" onfocus="callCalender('to')" onclick="callCalender('to')" placeholder="DD/MM/YYYY" />
-		                <span id="endDateError" style="text-align:right;color:red;font-weight:bold;"></span>
 		           </div>
 		          </div>
                     </div>
@@ -374,7 +373,11 @@ $(document).ready(function(){
 				                     		<option value="100" ${maxRecords == '100' ? 'selected' : ''}>100</option>
 				                      	</select>
 				                      </div>
+                       
                     </div>
+                     
+                
+                       
                     </div>
                     <div class="row" style="padding-left:25px;padding-right:25px;">
                     
@@ -406,19 +409,19 @@ $(document).ready(function(){
                                  <a  class="clickable" data-toggle="collapse" id="row${thecount.count}" data-target=".row${thecount.count}"> <span style="float:right" onclick="expand(${thecount.count})" id="categoryExpand${thecount.count}"><i class="fa fa1 fa-sort-desc"></i></span></a>
                                 </td>
                              </tr>
-                                             <tr class="collapse rowone${thecount.count}">
+                                <tr  class="collapse rowone${thecount.count}">
                                              
                                             	<%-- <td style="padding:3px;"><div style="white-space: nowrap;padding: 5px;background: #c1c1c1;"><spring:message code="sl.no.label" /></div></td> --%>
                                             	<td style="padding:3px;"><div style="white-space: nowrap;padding: 5px;background: #c1c1c1;"><spring:message code="itemcode.label" /></div></td>
                                             	<td style="padding:3px;"><div style="white-space: nowrap;padding: 5px;background: #c1c1c1;"><spring:message code="itemdesc.label" /></div></td>
                                                 <td style="padding:3px;"><div style="white-space: nowrap;padding: 5px;background: #c1c1c1;"><spring:message code="uom.label" /></div></td>
-                                                <td style="padding:3px;"><div style="white-space: nowrap;padding: 5px;background: #c1c1c1;"><spring:message code="qty.unit.label" /></div></td>
+                                                 <td style="padding:3px;"><div style="white-space: nowrap;padding: 5px;background: #c1c1c1;"><spring:message code="qty.unit.label" /></div></td>
                                                 <td style="padding:3px;"><div style="white-space: nowrap;padding: 5px;background: #c1c1c1;"><spring:message code="openstock.label" /></div></td>
-                                                <td style="padding:3px;"><div style="white-space: nowrap;padding: 5px;background: #c1c1c1;"><spring:message code="closestock.label" /></div></td>
+                                               <td style="padding:3px;"><div style="white-space: nowrap;padding: 5px;background: #c1c1c1;"><spring:message code="closestock.label" /></div></td>
                                                 <td style="padding:3px;"><div style="white-space: nowrap;padding: 5px;background: #c1c1c1;"><spring:message code="usedstock.label" /></div></td>
-                                                <td style="padding:3px;"><div style="white-space: nowrap;padding: 5px;background: #c1c1c1;"><spring:message code="cost.label" /></div></td>
+                                            <td style="padding:3px;"><div style="white-space: nowrap;padding: 5px;background: #c1c1c1;"><spring:message code="cost.label" /></div></td>
                                               
-                                             </tr>
+                                                </tr>
                                               <c:forEach var="itemDetails" items="${stockDetails.bomChilds}" varStatus="theCount1">
                                               <tr  class="collapse rowone${thecount.count}" >
                                             
@@ -432,7 +435,9 @@ $(document).ready(function(){
                                                 <td>${itemDetails.usedStock}</td>
 												<td>${itemDetails.cost}</td>
         							</tr></c:forEach>
-                             </c:forEach>
+                             
+                             
+                            </c:forEach>
                          </tbody>
                      </table>
                      </div>
@@ -465,6 +470,10 @@ $(document).ready(function(){
               	</div> 
               	</c:if>
              
+              
+              
+              
+              
               
                <!--added by manasa  -->
 

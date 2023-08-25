@@ -200,7 +200,7 @@ function validateDenomination(id){
 		$("#denominationName").focus();
 		$("#denominationNameError").html("Enter Denomination Name");
 		return;
-	}else if(parseInt($("#denominationName").val().length)>50){
+	}else if(parseInt($("#denominationName").val().length)>=50){
 		 $("#denominationName").focus();
 		 $("#denominationNameError").html("Denomination name can't exceeds 50 characters");
 		 return;
@@ -209,7 +209,7 @@ function validateDenomination(id){
 		$("#denominationValue").focus();
 		$("#denominationValueError").html("Enter Denomination Value");
 		return;
-	}else if(parseFloat($("#denominationValue").val().length)>6){
+	}else if(parseFloat($("#denominationValue").val().length)>=6){
 		 $("#denominationValue").focus();
 		 $("#denominationValueError").html("Denomination value can't exceeds 6 Characters");
 		 return;
@@ -226,7 +226,7 @@ function validateDenomination(id){
 	}
 	
 	var denominationdesc = $("#denominationDescription").val().trim();
-	if(denominationdesc.trim() != "" && parseInt($("#denominationDescription").val().length)>250){
+	if(denominationdesc.trim() != "" && parseInt($("#denominationDescription").val().length)>=250){
 			$("#denominationDescription").focus();
 			$("#denominationDescriptionError").html("Description can't exceeds 250 Characters");
 			return false;
