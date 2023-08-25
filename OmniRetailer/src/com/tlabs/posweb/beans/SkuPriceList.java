@@ -88,18 +88,9 @@ public class SkuPriceList {
 		 private Float dealQty;
 		 
 		 private boolean stockStatus;
-		 private Float salePrice1;
-		 
-		 
 		 
 		 
 	
-	public Float getSalePrice1() {
-			return salePrice1;
-		}
-		public void setSalePrice1(Float salePrice1) {
-			this.salePrice1 = salePrice1;
-		}
 	public boolean isStockStatus() {
 			return stockStatus;
 		}

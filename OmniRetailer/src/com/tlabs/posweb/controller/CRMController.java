@@ -409,9 +409,6 @@ public class CRMController {
 			*/
 			
 			List<CustomerGroupMaster> groupsList = customerServiceObj.getCustomerGroupDetails("",customerIdStr, emailIdStr,"-1","",true, false,"","","","");
-			
-			
-			
 			/*
 			 * if(outletlocationStr.equals("") || outletlocationStr.equals("all")){
 			 * if(locationsList != null){ for(int i=0;i<locationsList.size();i++){
@@ -2307,7 +2304,6 @@ public ModelAndView searchLoyaltyCards(
                       String customerId = (String)request.getSession().getAttribute("customerId");
                       String emailId = (String)request.getSession().getAttribute("emailId");
                       
-                      
                       JSONArray jsonResponseArray = new JSONArray(loyaltyCardMaster.getItems());
                       List<LoyaltyPurchaseRanges> itemDetails = new ArrayList<LoyaltyPurchaseRanges>();
                       for (int i=0; i<jsonResponseArray.length(); i++) {
@@ -2315,8 +2311,6 @@ public ModelAndView searchLoyaltyCards(
                               itemDetails.add(items);
                       }
                       loyaltyCardMaster.setLoyaltyPurcahseRanges(itemDetails);
-                      
-                      
                       
                       JSONArray jsonResponseArray3 = new JSONArray(loyaltyCardMaster.getLoyaltyCardsdetails());
                       List<LoyaltyCards> itemDetails3 = new ArrayList<LoyaltyCards>();
@@ -2340,8 +2334,6 @@ public ModelAndView searchLoyaltyCards(
                               itemDetails4.add(items4);
                       }
                       loyaltyCardMaster.setLoyaltyZones(itemDetails4);
-              
-                      
                       
                       /*List<String> deletedDetails = new ArrayList<String>();
                       deletedDetails.add(loyaltyCardMaster.getDeletePlusItem());*/
@@ -2362,9 +2354,6 @@ public ModelAndView searchLoyaltyCards(
                       loyaltyCardMaster.setCustomerLoyaltyCardsitems("");
                       loyaltyCardMaster.setLoyaltyCardsdetails("");
                       loyaltyCardMaster.setLoyaltyZonesdetails("");
-                      
-                      
-                      
                       
                       result = loyaltyCardServiceObj.updateLayoutCards(loyaltyCardMaster,customerId,emailId);
                       
@@ -2390,12 +2379,9 @@ public ModelAndView searchLoyaltyCards(
                               request.getSession().setAttribute("zoneList", zoneList);
                       }
                       
-                      
-                      
                       List<String> zones  = new ArrayList<String>();
                       List<String> states  = new ArrayList<String>();
                       List<String> countries  = new ArrayList<String>();
-                      
 
                       for (LoyaltyZones loyalityZone : list_loyaltyCardMaster.get(0).getLoyaltyZones()) 
                       {
@@ -2407,32 +2393,21 @@ public ModelAndView searchLoyaltyCards(
                       java.util.Set<String> zoneSelectedList = new java.util.LinkedHashSet<String>(zones);  
                       java.util.Set<String> countrySelectedList = new java.util.LinkedHashSet<String>(countries);
                       java.util.Set<String> statesSelectedList = new java.util.LinkedHashSet<String>(states);
-
                       
                       //////////////System.out.println(statesSelectedList.size());
                       modelAndViewObj.addObject("zones",zoneSelectedList);
                       modelAndViewObj.addObject("countries",countrySelectedList);
                       modelAndViewObj.addObject("statesList",statesSelectedList);
                       modelAndViewObj.addObject("startdateloyaltycard", list_loyaltyCardMaster.get(0).getStartDateStr());
-          			modelAndViewObj.addObject("enddateloyaltyCard", list_loyaltyCardMaster.get(0).getEndDateStr());
-
-                      
-                      
-                              modelAndViewObj.addObject("loyaltyCard", list_loyaltyCardMaster.get(0));
-                              modelAndViewObj.setViewName("CRM/LoyaltyPrograms/LoyaltyCards/editLoyaltyDetails");
-                      
-              
-                      
-                      
-              }
-              catch(Exception e)
-              {
+          			  modelAndViewObj.addObject("enddateloyaltyCard", list_loyaltyCardMaster.get(0).getEndDateStr());
+                      modelAndViewObj.addObject("loyaltyCard", list_loyaltyCardMaster.get(0));
+                      modelAndViewObj.setViewName("CRM/LoyaltyPrograms/LoyaltyCards/editLoyaltyDetails");
+                  }
+              catch(Exception e){
                               e.printStackTrace();
                               ///throw new Exception(result);
               }
-              
               return modelAndViewObj;
-              
       }
 
 
@@ -5599,7 +5574,7 @@ public ModelAndView createCustCoupon(@RequestBody GiftCouponsMaster giftCouponsM
 			@RequestMapping(value="/getWalletLedger")
 			public ModelAndView getWalletLedger(@RequestParam("id")String id ,@RequestParam("operation") String operation ,@RequestParam("phone") String phone,@RequestParam("index") String index,@RequestParam("maxRecords") String maxRecords, @RequestParam("saveflag") boolean saveFlag,@RequestParam("walletId") String walletId, HttpServletRequest request,HttpServletResponse response) {
 				CustomerLedger filterInputObj = new CustomerLedger();
-				try{/*
+				try{
 					
 					String customerIdStr = (String)request.getSession().getAttribute("customerId");
 					String emailIdStr = (String)request.getSession().getAttribute("emailId");
@@ -5637,61 +5612,6 @@ public ModelAndView createCustCoupon(@RequestBody GiftCouponsMaster giftCouponsM
 					
 		        modelAndViewObj.addObject("maxRecords",Integer.parseInt(maxRecords));
 				modelAndViewObj.setViewName("CRM/LoyaltyPrograms/Wallets/walletLedgers");
-				*/
-					
-
-					
-					String customerIdStr = (String)request.getSession().getAttribute("customerId");
-					String emailIdStr = (String)request.getSession().getAttribute("emailId");
-					List<CustomerLedger> walletList = customerServiceObj.getCustomerWalletLedger(customerIdStr, emailIdStr,"","","","" ,"","",id,index,maxRecords,phone,saveFlag,walletId);
-					
-					modelAndViewObj = new ModelAndView();
-					
-					if(walletId != null && walletId !=""){
-						
-						modelAndViewObj.addObject("walletList",walletList);
-						modelAndViewObj.addObject("operation",operation);
-						modelAndViewObj.addObject("programCode",id);
-						modelAndViewObj.addObject("phone",phone);
-
-						int start = 1,end = Integer.parseInt(maxRecords);
-
-						if(walletList== null ){
-							modelAndViewObj.addObject("totalRecords","0");
-							modelAndViewObj.addObject("index", "0");
-							modelAndViewObj.addObject("totalValue", "0");
-						}else{
-							if(walletList.size()<Integer.parseInt(maxRecords)){
-								end = (walletList.size())+(Integer.parseInt(index));
-							}else{
-								end = (Integer.parseInt(index)+end);
-							}
-							modelAndViewObj.addObject("totalRecords", walletList.get(0).getTotalRecords());
-							modelAndViewObj.addObject("index", (Integer.parseInt(index)+start));
-							modelAndViewObj.addObject("totalValue", end);
-							if(walletList == null)
-								 modelAndViewObj.addObject("err","There is no previous transactions.");
-							if(saveFlag == true && walletList != null)
-					    	    modelAndViewObj.addObject("downloadurl", walletList.get(0).getFilePath());
-							 modelAndViewObj.addObject("maxRecords",Integer.parseInt(maxRecords));
-							 modelAndViewObj.setViewName("CRM/LoyaltyPrograms/Wallets/walletLedgers");
-						}
-					}else{
-						modelAndViewObj=viewEditWallet(id,operation,"0","10","","","",request,response);
-						if(saveFlag == true && walletList != null)
-				    	    modelAndViewObj.addObject("downloadurl", walletList.get(0).getFilePath());
-					}
-					
-					
-					//modelAndViewObj.addObject("downloadurl", "http://101.53.158.27/Configurations/CID8995448/Exports/CustomerGiftCoupons.csv");
-					
-					
-		       
-				
-				
-				
-				
-				
 				}catch(Exception exception){
 					exception.printStackTrace();
 				}

@@ -373,10 +373,29 @@ function addDynamicDiv(tax){
 		  $("#buildingNameError").html("Please Enter Building Name");
 		  return;
 	  }
+	  if($("#buildingName").val().length>100){
+			$("#buildingName").focus();
+ 			$("#buildingNameError").html("Building Name should be less than 100 character");
+ 			return false;
+ 		}
+ 		else{
+ 			$("#buildingNameError").html("");
+ 		}
+		
+		if($("#noOfLevels").val().length>11){
+			$("#noOfLevels").focus();
+ 			$("#noOfLevelsError").html("Level can't exceeds 11 digits");
+ 			return false;
+ 		}
+ 		else{
+ 			$("#noOfLevelsError").html("");
+ 		}
 	  if($("#noOfLevels").val().trim() == ""){
 		  $("#noOfLevelsError").html("Please Enter No Of Levels");
 		  return;
 	  }
+	  
+	  
 		  
 	  var contextPath = $("#contextPath").val();
 		 var len = parseInt($("#buildingtable tr").length);

@@ -279,12 +279,12 @@ white-space: nowrap;
                                         </div>
                                         
                                         
-                                         <div class="form-group col-lg-2"  style="margin-bottom:0px">
+                               <div class="form-group col-lg-2"  style="margin-bottom:0px">
                                         <label><spring:message code="shiper_id.label" /></label>
-                             <input class="form-control"  value="" style="background-color: white;" name="transporter" id="transporter"  type="text" />
+                                         <input class="form-control"  value="" style="background-color: white;" name="transporter" id="transporter"  type="text" />
+                                        <span id="transporterError" style="text-align:right;color:red;font-weight:bold;"></span>
                                         
-                                        
-                                        </div>
+                              </div>
                                         
                                        
                                           <div class="form-group col-lg-1"  style="margin-bottom:0px" ></div>
@@ -378,11 +378,7 @@ white-space: nowrap;
                                     <label><spring:message code="delivered.by.label" /> <span class="requiredField">*</span></label>
                                             <input type="text" onblur="criteria(this)"   class="form-control" name="delivered_by" value="${stockissue.delivered_by}" id="delivered" placeholder='<spring:message code="enter.name.label"/>'/>
                                             <span id="deliveredByError" style="text-align:right;color:red;font-weight:bold;"></span>
-                                           
-                                       
-                                         
-                                       
-                                        </div>
+                                      </div>
                                         
                                       
                                      
@@ -399,19 +395,7 @@ white-space: nowrap;
                                      
                                      </div>
                                      
-                                     
-                                     
-                                     
-                                     
-                                     
-                                     
-                                     
-                                     
-                                     
-                                     
-                                     
-                                     
-                                        <div class="row">
+                                      <div class="row">
                                          
                                         <div class="form-group col-lg-7" style="text-align:center;margin-bottom: 0.0%;margin-top: 2%;">
                                          <input type="hidden" id="desc"/>
@@ -558,12 +542,7 @@ white-space: nowrap;
 													</tr>
 
 												</c:forEach>
-
-
-
-
-
-											</tbody>
+</tbody>
 										</table>
 
 									</c:when>
@@ -671,19 +650,9 @@ white-space: nowrap;
 							</div>
 							<!--  </div> -->
                                     <br/> <br/>
-                                    
-                                     
-                                        
-                                      
-                                        <br/>
+                                    <br/>
 							<div class="row">
-							
-							
-							
-							
 							<div class="form-group  col-lg-4" >
-							
-							
 							<div class="row" style="text-align: center;">
 						 <input type="button" class="btnCls " style="margin-top: 27px;" onclick="validateStockIssue('Submitted','new','','');" value="Submit" />
 					<c:if test="${sessionScope.role == 'super admin'}">
@@ -710,19 +679,11 @@ white-space: nowrap;
 				
 						</div>
 						</div>	
-							
-							
-							
-							
-							
-							
-							
-							
-							
+						
 								 <div class="form-group  col-lg-4">
-                                         	
-                                            <textarea class="form-control" onblur="criteria(this)"   name="remarks" id="remarks" style="resize: none;" rows="4" placeholder="<spring:message code="enter.remarks.label" />" >${stockissue.remarks}</textarea>
- 										 </div>
+                                       <textarea class="form-control" onblur="criteria(this)" name="remarks" id="remarks" style="resize: none;" rows="4" placeholder="<spring:message code="enter.remarks.label" />" >${stockissue.remarks}</textarea>
+ 								     <span id="remarksError" style="text-align:right;color:red;font-weight:bold;"></span>
+ 								</div>
  										 
  									<div class="form-group col-lg-4" style="border:1px solid #ccc"> 
  										<div class="form-group col-lg-12" style="margin-bottom: 0px; margin-top: 1%;"> 

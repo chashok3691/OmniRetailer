@@ -344,7 +344,7 @@ img.thumbnail {
 										type="text" class="form-control allField" id="ean" name="ean"
 										value="${sku.ean}" required
 										placeholder="<spring:message code="enter.ean.label" />" /> <span
-										id="eanError"
+										id="eanerr"
 										style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
 								</div>
 								<div class="form-group col-lg-2">
@@ -467,7 +467,7 @@ img.thumbnail {
 										<input type="text" onblur="criteria(this)"  class="form-control allField"
 											name="uomLabel" id="uomLabel" value="${sku.uomLabel}"
 											placeholder="<spring:message code="enter.uom.label.label" />" />
-										<span id="weightError"
+										<span id="newWeightError"
 											style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
 									</div>
 								</div>
@@ -479,7 +479,7 @@ img.thumbnail {
 											required
 											placeholder="<spring:message code="enter.pack.size.label" />"
 											oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" />
-										<span id="packSizeError"
+										<span id="packSizedeatilError"
 											style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
 									</div>
 								</div>
@@ -697,6 +697,9 @@ img.thumbnail {
 											oninput="this.value = this.value.replace(/[^0-9]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');"
 											required
 											placeholder="<spring:message code="enter.fr.tax.code.label" />" />
+											
+											<span id="frTaxCodeError"
+											style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
 									</div>
 								</div>
 								<div class="form-group col-lg-2">
@@ -715,6 +718,9 @@ img.thumbnail {
 											name="markDown" id="markDown" value="${sku.markDown}"
 											required
 											placeholder="<spring:message code="enter.mark.down.label" />" />
+									
+									<span id="markDownError"
+											style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
 									</div>
 								</div>
 								<div class="form-group col-lg-2">
@@ -740,7 +746,7 @@ img.thumbnail {
 										<input type="text" onblur="criteria(this)" class="form-control allField" name="model"
 											id="model" value="${sku.model}" required
 											placeholder="<spring:message code="enter.model.label" />" />
-										<span id="modelError"
+										<span id="newmodelError"
 											style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
 									</div>
 								</div>
@@ -797,7 +803,7 @@ img.thumbnail {
 										<input type="text" onblur="criteria(this)" class="form-control allField" name="color"
 											id="color" value="${sku.color}"
 											placeholder="<spring:message code="enter.color.label" />" />
-										<span id="colorError"
+										<span id="skucolorError"
 											style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
 									</div>
 								</div>
@@ -862,6 +868,9 @@ img.thumbnail {
 										class="form-control allField searchItems "onblur="criteria(this)" 
 										id="section" value="${sku.section}"
 										placeholder="<spring:message code="section.label" />" style="" />
+										
+										<span id="skuSectionError"
+										style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
 								</div>
 									<div class="form-group col-lg-2">
 									<label><spring:message code="tax.exclusive.label" /></label>
@@ -930,6 +939,7 @@ img.thumbnail {
 										type="text" onblur="criteria(this)"  class="form-control allField" name="alternate_sku"
 										id="alternate_sku" value="${sku.alternateSkuId}"
 										placeholder="<spring:message code="alternate.sku.description.label" />" />
+										<span id="alternate_skuerr" style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
 								</div>
 
 								<div class="form-group col-lg-2">
@@ -937,6 +947,7 @@ img.thumbnail {
 										type="text" onblur="criteria(this)" class="form-control allField" name="season_code"
 										id="season_code" value="${sku.seasonCode}"
 										placeholder="<spring:message code="season.code.description.label" />" />
+									<span id="seasonCodeErr" style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
 								</div>
 
 								<div class="form-group col-lg-2">
@@ -944,14 +955,16 @@ img.thumbnail {
 										type="text" onblur="criteria(this)" class="form-control allField" name="alias_name"
 										id="alias_name" value="${sku.aliasName}"
 										placeholder="<spring:message code="alias.name.description.label" />" />
+								  <span id="aliasNameErr" style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
 								</div>
 
-								<div class="form-group col-lg-2">
+							<div class="form-group col-lg-2">
 									<label><spring:message code="item.type.label" /></label> <input
 										type="text" onblur="criteria(this)" class="form-control allField" name="item_type"
 										id="item_type" value="${sku.itemType}" style="margin-left:-8px"
 										placeholder="<spring:message code="item.type.description.label" />" />
-								</div>
+								   <span id="skuItemTypeErr" style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
+							</div>
 
 								
 							</div>
@@ -968,7 +981,7 @@ img.thumbnail {
 										type="text" onblur="criteria(this)" class="form-control allField" name="item_design"
 										id="item_design" value="${sku.itemDesign}"
 										placeholder="<spring:message code="item.design.description.label" />" />
-
+                               <span id="skuItemDesignErr" style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
 										</div>
 									</div>
 									<div class="row" style="padding-top: 20px;">
@@ -1004,7 +1017,7 @@ img.thumbnail {
 										name="productHanding" style="resize: none;"
 										class="form-control allField"  value="${sku.product_handing}"
 										placeholder="<spring:message code="enter.product.handing.label" />">
-									
+									<span id="ProductHandingDetailErr" style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
 								</div> 
 							
 							
@@ -1016,7 +1029,7 @@ img.thumbnail {
 										name="productUsageQuick" onblur="criteria(this)" style="resize: none;"
 										class="form-control allField"  value="${sku.product_usage}"
 										placeholder="<spring:message code="enter.product.handing.label" />">
-									
+									<span id="productUsageDetailErr" style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
 								</div> 
 							
 								
@@ -1027,7 +1040,7 @@ img.thumbnail {
 									<input type="text" id="productIntakeDetail"   onblur="criteria(this)" 
 										class="form-control allField"  value="${sku.product_consumption_interaction}"
 										placeholder="<spring:message code="enter.product.handing.label" />">
-									
+									<span id="productIntakeDetailErro" style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
 								</div> 
 								
 								
@@ -1037,14 +1050,14 @@ img.thumbnail {
 									<input type="text" id="uom1Detail" onblur="criteria(this)"
 										class="form-control allField"  value="${sku.uom1}"  style="margin-left:-8px"
 										placeholder="<spring:message code="enteruom1.label"/>">
-									
+									<span id="uom1DetailErr" style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
 								</div>	
 								<div class="form-group col-lg-6"  style="padding-right: 10px;padding-left: 0;">	
 								<label><spring:message code="uom2.label" /></label>
 									<input type="text" id="uom2Detail" onblur="criteria(this)"
 										class="form-control allField"  value="${sku.uom2}"
 										placeholder="<spring:message code="enteruom2.label" />">
-								
+								<span id="uom2DetailErr" style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
 								</div>
 								
 								</div> 	
@@ -1349,7 +1362,7 @@ img.thumbnail {
 										name="productPrecautions" style=""
 										class="form-control allField"
 										placeholder="<spring:message code="enter.product.precautions.label" />">${sku.product_precautions}</textarea>
-									<span id="productPrecautionsQuickError"
+									<span id="productPrecautionsDetailError"
 										style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
 								</div>
 								
@@ -1364,7 +1377,7 @@ img.thumbnail {
 										name="productSideEffects" style=""
 										class="form-control allField"
 										placeholder="<spring:message code="enter.product.sideEffects.label" />">${sku.product_precautions}</textarea>
-									<span id="productSideEffectsError"
+									<span id="productSideEffectsDetailError"
 										style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
 							
 								</div>
@@ -1662,866 +1675,9 @@ img.thumbnail {
 								
 								<br>
 								
-								<div class="row" style="">
-								<div class="col-md-12 priceListForLocation">
-									<div class="AllLocation priceListLocationDiv"></div>
-									<c:forEach var="selectedLocationId"
-										items="${sku.selectedLocationsIdList}"
-										varStatus="locationCount">
-										<div class="${selectedLocationId} priceListLocationDiv">
-											<c:set var="priceListCount" value="1"></c:set>
-											<c:forEach var="plu" items="${sku.skuPriceLists}"
-												varStatus="theCount">
-												<c:if test="${plu.storeLocationId == selectedLocationId}">
-													<div class="col-md-12 pricelist"
-														id="pricelist${selectedLocationId}${priceListCount}"
-														style="padding: 0px;">
-														<div class="col-md-10" style="padding: 0px;">
-
-															<div class="row-fluid-5">
-																<div class="form-group col-lg-2"
-																	style="padding-left: 0px;">
-																	<input type="hidden"
-																		id="productRange${selectedLocationId}${priceListCount}"
-																		value="${plu.productRange}"> <input
-																		type="hidden"
-																		id="measurementRange${selectedLocationId}${priceListCount}"
-																		value="${plu.measureRange}"> <input
-																		type="hidden"
-																		id="utilityRange${selectedLocationId}${priceListCount}"
-																		value="${plu.utility}"> <input type="hidden"
-																		id="colourRange${selectedLocationId}${priceListCount}"
-																		value="${plu.color}"> <input type="hidden"
-																		id="sizeRange${selectedLocationId}${priceListCount}"
-																		value="${plu.size}"> <input type="hidden"
-																		id="batchRange${selectedLocationId}${priceListCount}"
-																		value="${plu.productBatchNo}"> <input
-																		type="hidden"
-																		id="styleRange${selectedLocationId}${priceListCount}"
-																		value="${plu.styleRange}"> <input
-																		type="hidden"
-																		id="blockedQty${selectedLocationId}${priceListCount}"
-																		value="${plu.blockedQuantity}"> <input
-																		type="hidden"
-																		id="scrapedQty${selectedLocationId}${priceListCount}"
-																		value="${plu.scrapedQuantity}"> <label><spring:message
-																			code="cost.price.label" /> <span
-																		style="color: red; font-size: 2">*</span></label> <input
-																		type="hidden" class="form-control allField req"
-																		id="pluStoreLocation${selectedLocationId}${priceListCount}"
-																		value="${plu.storeLocation}" /> <input type="text"
-																		class="form-control allField req pluCost"
-																		onkeydown="clearError(this);"
-																		onblur="calcMarkUp(this);"
-																		id="pluCostPrice${selectedLocationId}${priceListCount}"
-																		value="${plu.costPrice}"
-																		oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');"
-																		placeholder="<spring:message code="enter.cost.price.label" />"
-																		style="" /> <span
-																		id="pluCostPrice${selectedLocationId}${priceListCount}Error"
-																		style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
-																</div>
-																<div class="form-group col-lg-2 "
-																	style="margin-left: 14px;">
-																	<label><spring:message code="mrpprice.label" />
-																		<span style="color: red; font-size: 2">*</span></label> 
-																		<input
-																		type="text" class="form-control allField req"
-																		onkeydown="clearError(this);"
-																		id="pluPrice${selectedLocationId}${priceListCount}"
-																		value="${plu.price}"
-																		oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');"
-																		placeholder="<spring:message code="enter.price.label" />"
-																		style="" /> <span
-																		id="pluPrice${selectedLocationId}${priceListCount}Error"
-																		style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
-																</div>
-																<div class="form-group col-lg-2 "
-																	style="margin-left: 1px;">
-																	<label><spring:message code="sale.price.label" />
-																		<span style="color: red; font-size: 2">*</span></label> <input
-																		type="text" class="form-control allField req pluSale"
-																		onkeydown="clearError(this);"
-																		onblur="calcMarkUp(this);"
-																		id="pluSalePrice${selectedLocationId}${priceListCount}"
-																		value="${plu.salePrice}"
-																		oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');"
-																		placeholder="<spring:message code="enter.sale.price.label" />"
-																		style="" /> <span
-																		id="pluSalePrice${selectedLocationId}${priceListCount}Error"
-																		style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
-																</div>
-
-																<div class="form-group col-lg-2"
-																	style="white-space: nowrap; margin-left: 24px;">
-																	<label><spring:message code="ws.price.label" />
-																		<span style="color: red; font-size: 2">*</span></label> <input
-																		type="text" class="form-control allField req "
-																		onkeydown="clearError(this);"
-																		id="pluWsPrice${selectedLocationId}${priceListCount}"
-																		value="${plu.wholesalePrice}"
-																		oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');"
-																		placeholder="<spring:message code="enter.ws.price.label" />"
-																		style="" /> <span
-																		id="pluWsPrice${selectedLocationId}${priceListCount}Error"
-																		style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
-																</div>
-
-																<%-- <input type="hidden" id="ean${selectedLocationId}${priceListCount}" value="${plu.ean}"> --%>
-																<input type="hidden"
-																	id="eanduplicate${selectedLocationId}${priceListCount}">
-																<div class="form-group col-lg-2"
-																	style="padding-right: 0px">
-
-
-																	<label><spring:message
-																			code="sale.price.one.label" /> </label> <input
-																		type="text" id="salePriceOne${selectedLocationId}${priceListCount}"
-																		name="salePriceOne" style="resize: none; "
-																		class="form-control allField"
-																		value="${plu.salePrice1}"
-																		placeholder="Enter Sale Price 1"> <span
-																		id="businessCategoryQuickError"
-																		style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
-																		 <%-- <label><spring:message
-																			code="businessCategory.label" /> </label> <input
-																		type="text" onblur="criteria(this)"
-																		id="businessCategoryDetail${selectedLocationId}${priceListCount}"
-																		name="productPrecautions"
-																		style="resize: none; width: 80%"
-																		class="form-control allField"
-																		value="${plu.businessCategory}"
-																		placeholder="<spring:message code="enterbusinescategory.label" />"> <span id="businessCategoryQuickError"
-																		style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span> --%>
-																</div>
-
-
-																<%-- <div class="form-group span2">
-																	<label><spring:message code="extra.price.label" /></label>
-																	<input type="text" class="form-control allField"
-																		onkeydown="clearError(this);"
-																		id="pluExtraPrice${selectedLocationId}${priceListCount}"
-																		value="${plu.extraPrice}"
-																		oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');"
-																		placeholder="<spring:message code="enter.extra.price.label" />" />
-																	<span
-																		id="pluExtraPrice${selectedLocationId}${priceListCount}Error"
-																		style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
-																</div> --%>
-															</div>
-
-															<div class="row-fluid-5">
-																<%-- <div class="form-group span2">
-																	<label><spring:message code="color.label" /></label> <input
-																		type="text" class="form-control allField"
-																		onkeydown="clearError(this);"
-																		id="pluColor${selectedLocationId}${priceListCount}"
-																		value="${plu.color}"
-																		placeholder="<spring:message code="enter.color.label" />" />
-																	<span
-																		id="pluColor${selectedLocationId}${priceListCount}Error"
-																		style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
-																</div> --%>
-																<div class="form-group col-lg-2"
-																	style="padding-left: 0px">
-																	<label><spring:message code="color.shade.label" /></label>
-																	<input type="text" class="form-control allField"
-																		onkeydown="clearError(this);"
-																		id="pluColorShade${selectedLocationId}${priceListCount}"
-																		value="${plu.colorShade}"
-																		placeholder="<spring:message code="enter.color.shade.label" />" />
-																	<span
-																		id="pluColorShade${selectedLocationId}${priceListCount}Error"
-																		style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
-																</div>
-																<div class="form-group col-lg-2"
-																	style="margin-left: 14px;">
-																	<label><spring:message code="mbq.label" /></label> <input
-																		type="text" class="form-control allField"
-																		onkeydown="clearError(this);"
-																		id="pluMbq${selectedLocationId}${priceListCount}"
-																		value="${plu.mbq}"
-																		placeholder="<spring:message code="enter.mbq.label" />"
-																		style="" /> <span
-																		id="pluMbq${selectedLocationId}${priceListCount}Error"
-																		style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
-																</div>
-
-																<div class="form-group col-lg-2"
-																	style="white-space: nowrap; margin-left: 1px;">
-																	<label><spring:message
-																			code="quantity.in.hand.label" /> <span
-																		style="color: red; font-size: 2">*</span></label> <input
-																		type="text" onblur="criteria(this)"
-																		class="form-control allField req"
-																		onkeydown="clearError(this);"
-																		id="pluQuantity${selectedLocationId}${priceListCount}"
-																		value="${plu.quantityInHand}"
-																		oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');"
-																		placeholder="<spring:message code="enter.quantity.in.hand.label" />"
-																		style="" /> <span
-																		id="pluQuantity${selectedLocationId}${priceListCount}Error"
-																		style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
-																</div>
-																<div class="form-group col-lg-2"
-																	style="margin-left: 24px;">
-																	<label><spring:message code="acp.label" /></label> <input
-																		type="text" onblur="criteria(this)"
-																		class="form-control allField"
-																		onkeydown="clearError(this);"
-																		id="pluAcp${selectedLocationId}${priceListCount}"
-																		value="${plu.acp}"
-																		placeholder="<spring:message code="enter.acp.label" />"
-																		style="" /> <input type="hidden"
-																		class="form-control allField"
-																		id="pluCode${selectedLocationId}${priceListCount}"
-																		value="${plu.pluCode}" />
-																	<%--  <input type="hidden" class="form-control allField"
-																		id="skuStatus${selectedLocationId}${priceListCount}"
-																		value="${plu.skuStatus}" />  --%>
-																	<span
-																		id="pluAcp${selectedLocationId}${priceListCount}Error"
-																		style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
-																</div>
-
-
-
-																<div class="form-group col-lg-2 "
-																	style="padding-right: 0px;">
-																	
-																	<label><spring:message
-																			code="businessCategory.label" /> </label> <input
-																		type="text" onblur="criteria(this)"
-																		id="businessCategoryDetail${selectedLocationId}${priceListCount}"
-																		name="productPrecautions"
-																		style="resize: none; "
-																		class="form-control allField"
-																		value="${plu.businessCategory}"
-																		placeholder="<spring:message code="enterbusinescategory.label" />"> <span id="businessCategoryQuickError"
-																		style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
-																	
-																	
-																	<%-- <label><spring:message
-																			code="businessSubcategory.label" /> </label> <input
-																		type="text" onblur="criteria(this)"
-																		id="businessSubcategoryDetail${selectedLocationId}${priceListCount}"
-																		style="resize: none; width: 80%"
-																		class="form-control allField"
-																		value="${plu.businessSubCategory}"
-																		placeholder="<spring:message code="enter.businessSubcategory.label" />">
-
-																</div> --%>
-															</div>
-															<div class="row-fluid-5">
-																<div class="form-group col-lg-2 "
-																	style="margin-left: 1px; padding-left: 0px">
-																	<label><spring:message
-																			code="created.date.label" /></label>
-																	<div class="input-group">
-																		<div class="input-group-addon">
-																			<i class="fa fa-calendar"></i>
-																		</div>
-																		<input type="text"
-																			id="pluCreatedDate${selectedLocationId}${priceListCount}"
-																			value="${plu.created_date}" readonly="readonly"
-																			class="form-control dat"
-																			data-inputmask="alias: dd/mm/yyyy" data-mask
-																			style="" />
-																	</div>
-																	<span
-																		id="pluCreatedDate${selectedLocationId}${priceListCount}Error"
-																		style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
-																</div>
-
-
-
-
-																<div class="form-group col-lg-2 span2"
-																	style="margin-left: 26px; padding-right: 0px">
-																	<label><spring:message code="expiry.date.label" /></label>
-																	<div class="input-group">
-																		<div class="input-group-addon">
-																			<i class="fa fa-calendar"></i>
-																		</div>
-																		<input class="form-control allField req dat"
-																			onchange="test()" readonly="readonly"
-																			style="background-color: white; width: 80%"
-																			id="pluExpiryDate${selectedLocationId}${priceListCount}"
-																			value="${plu.expiry_date}" size="20" type="text"
-																			onfocus="callCalender('pluExpiryDate${selectedLocationId}${priceListCount}')"
-																			onclick="callCalender('pluExpiryDate${selectedLocationId}${priceListCount}')"
-																			placeholder="DD/MM/YYYY" />
-																	</div>
-																	<span
-																		id="pluExpiryDate${selectedLocationId}${priceListCount}Error"
-																		style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
-																</div>
-
-
-																<div class="form-group col-lg-2 span2"
-																	style="margin-left: 15px">
-																	<label><spring:message
-																			code="min.sales.quantity.label" /><span
-																		style="color: red; font-size: 2">*</span></label></label> <input
-																		type="text" class="form-control allField"
-																		id="priceMinSaleQty${selectedLocationId}${priceListCount}"
-																		value="${plu.min_sale_qty}"
-																		placeholder="<spring:message code="min.sales.quantity.label" />"
-																		style="width:90%;" /> <span id="priceminSaleQtyError"
-																		style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
-																</div>
-
-
-																<div class="form-group col-lg-2 "
-																	style="white-space: nowrap; margin-left: 20px">
-																	<label><spring:message
-																			code="newarrival.product.status" /> </label> <select
-																		class="form-control allField req" name="status"
-																		id="skuStatus${selectedLocationId}${priceListCount}"
-																		style="">
-																		<option value="true"
-																			${'true' == plu.skuStatus ? 'selected' : ''}>Active</option>
-																		<option value="false"
-																			${'false' == plu.skuStatus ? 'selected' : ''}>In-Active</option>
-
-																	</select>
-																</div>
-
-																<div class="form-group col-lg-3" style="">
-																
-																<label><spring:message
-																			code="businessSubcategory.label" /> </label> <input
-																		type="text" onblur="criteria(this)"
-																		id="businessSubcategoryDetail${selectedLocationId}${priceListCount}"
-																		style="resize: none;width: 70%;"
-																		class="form-control allField"
-																		value="${plu.businessSubCategory}"
-																		placeholder="<spring:message code="enter.businessSubcategory.label" />">
-
-																</div>
-																	<%-- <label>Material Type</label> <input type="text"
-																		class="form-control allField"
-																		id="materailType${selectedLocationId}${priceListCount}"
-																		value="${plu.materialType}"
-																		placeholder="Material Type" style="width: 70%" /> --%>
-																</div>
-
-
-
-
-																<%-- <div class="form-group span2">
-																	<label><spring:message code="size.label" /></label> <input
-																		type="text" class="form-control allField"
-																		onkeydown="clearError(this);"
-																		id="pluSize${selectedLocationId}${priceListCount}"
-																		value="${plu.size}"
-																		placeholder="<spring:message code="enter.size.label" />" />
-																	<span
-																		id="pluSize${selectedLocationId}${priceListCount}Error"
-																		style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
-																</div> --%>
-															</div>
-
-
-
-
-															<div class="row">
-
-
-
-																<div class="form-group col-lg-2 "
-																	style="padding-right: 0px">
-																	<label><spring:message
-																			code="updated.date.label" /></label>
-																	<div class="input-group">
-																		<div class="input-group-addon">
-																			<i class="fa fa-calendar"></i>
-																		</div>
-																		<input type="text"
-																			id="pluUpdatedDate${selectedLocationId}${priceListCount}"
-																			value="${plu.updated_date}" readonly="readonly"
-																			class="form-control dat"
-																			data-inputmask="alias: dd/mm/yyyy" data-mask
-																			style="" />
-																	</div>
-																	<span
-																		id="pluUpdatedDate${selectedLocationId}${priceListCount}Error"
-																		style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
-																</div>
-
-																<div class="form-group col-lg-2 span2"
-																	style="margin-left: 20px; padding-right: 0px">
-																	<label><spring:message
-																			code="packaged.date.label" /></label>
-																	<div class="input-group">
-																		<div class="input-group-addon">
-																			<i class="fa fa-calendar"></i>
-																		</div>
-																		<input class="form-control allField req dat"
-																			onchange="test()" readonly="readonly"
-																			style="background-color: white; width: 80%"
-																			id="pluPackagedDate${selectedLocationId}${priceListCount}"
-																			value="${plu.packagingDate}" size="20" type="text"
-																			onfocus="callCalender('pluPackagedDate${selectedLocationId}${priceListCount}')"
-																			onclick="callCalender('pluPackagedDate${selectedLocationId}${priceListCount}')"
-																			placeholder="DD/MM/YYYY" />
-																	</div>
-																	<span
-																		id="pluPackagedDate${selectedLocationId}${priceListCount}Error"
-																		style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
-																</div>
-
-
-																<div class="form-group col-lg-2 span2" style="">
-																	<label><spring:message code="pack.size.label" /></label>
-																	<input type="text" onblur="criteria(this)"
-																		class="form-control allField"
-																		id="pricePackSize${selectedLocationId}${priceListCount}"
-																		value="${plu.pack_size}"
-																		placeholder="<spring:message code="enter.pack.size.label" />"
-																		style="" />
-																</div>
-
-
-
-
-
-																<div class="form-group col-lg-2 "
-																	style="padding-right: 0px; margin-left: 20px">
-																	<label><spring:message
-																			code="stock.factory.label" /> </label> <input type="text"
-																		onblur="criteria(this)" id="stockfactor"
-																		style="resize: none; width:90%;"
-																		class="form-control allField"
-																		value="${plu.stockFactor}"
-																		placeholder="enter stock factor" style="width:60%">
-
-																</div>
-
-																<div class="form-group col-lg-2" style=" padding-right: 7px; padding-left: 10px;">
-																
-																<label>Material Type</label> <input type="text"
-																		class="form-control allField"
-																		id="materailType${selectedLocationId}${priceListCount}"
-																		value="${plu.materialType}"
-																		placeholder="Material Type" style="" />
-																	<%-- <label>Zero Stock Billing</label>
-																	<div class="col-lg-10" style="padding-left: 0px">
-																		<select class="form-control"
-																			name="zeroStockbilling${selectedLocationId}${priceListCount}"
-																			id="zeroStockbilling${selectedLocationId}${priceListCount}">
-																			<option value="true"
-																				${plu.zeroStockBilling == true ? 'selected' : ''}><spring:message
-																					code="yes.label" /></option>
-																			<option value="false"
-																				${plu.zeroStockBilling == false ? 'selected' : ''}><spring:message
-																					code="no.label" /></option>
-																		</select>
-																	</div> --%>
-																</div>
-
-															</div>
-
-
-															<div class="row-fluid-5">
-															<div class="form-group col-lg-2 " style="padding-left: 16px;padding: 0px;">
-															  <label>Zero Stock Billing</label>
-																	<div class="col-lg-10" style="padding-left: 0px">
-																		<select class="form-control"
-																			name="zeroStockbilling${selectedLocationId}${priceListCount}"
-																			id="zeroStockbilling${selectedLocationId}${priceListCount}">
-																			<option value="true"
-																				${plu.zeroStockBilling == true ? 'selected' : ''}><spring:message
-																					code="yes.label" /></option>
-																			<option value="false"
-																				${plu.zeroStockBilling == false ? 'selected' : ''}><spring:message
-																					code="no.label" /></option>
-																		</select>
-																	</div></div>
-																<div class="form-group col-lg-2 " style="padding-left: 25px;padding-right: 6px;">
-																	<label>EAN</label>
-																	<div class="col-lg-12" style="padding: 0px;">
-																		<input type="text" onblur="criteria(this)"
-																			id="ean${selectedLocationId}${priceListCount}"
-																			style="" class="form-control" value="${plu.ean}"
-																			placeholder="Enter EAN number">
-																		<!-- <span id="eanError" style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span> -->
-																	</div>
-																</div>
-
-																<div class="form-group col-lg-2 "
-																	style=" padding-left: 30px;">
-																	<label>Stock Status</label> <select
-																		class="form-control allField req" style="width: 118%;"
-																		id="skuStockStatus${selectedLocationId}${priceListCount}">
-																		<option value="true"
-																			${'true' == plu.stockStatus ? 'selected' : ''}>Active</option>
-																		<%--  --%>
-																		<option value="false"
-																			${'false' == plu.stockStatus ? 'selected' : ''}>In-Active</option>
-																		<%-- --%>
-
-																	</select>
-																</div>
-
-																
-
-																<div class="form-group col-lg-2 "></div>
-
-																<div class="form-group col-lg-2"></div>
-															</div>
-
-
-															<div class="row-fluid-5">
-																<%-- <div class="form-group span2">
-														<label><spring:message code="discounttype.label" /></label> 
-														<select class="form-control" id="pludiscounttype${selectedLocationId}${priceListCount}">
-														<option value="flat_rate" ${plu.discountType == 'flat_rate' ? 'selected' : ''} >Cash Flat</option>
-                                            			<option value="percentage" ${plu.discountType == 'percentage' ? 'selected' : ''} >Cash Discount</option>
-														</select>
-													</div>
-													<div class="form-group span2">
-														<label><spring:message
-																code="discount.label" /> </label> <input
-															type="text" class="form-control allField req"
-															onkeydown="clearError(this);"
-															value="${plu.discount}" id="pludiscount${selectedLocationId}${priceListCount}"
-															oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');"
-															placeholder="<spring:message code="discount.label" />" />
-														
-													</div>
-													
-													<div class="form-group span2">
-														<label><spring:message
-																code="cash.discpunt.label" /> </label> <input
-															type="text" class="form-control allField req"
-															onkeydown="clearError(this);"
-															value="${plu.cashDiscount}" id="pluCashdiscount${selectedLocationId}${priceListCount}"
-															oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');"
-															placeholder="<spring:message code="discount.label" />" />
-														
-													</div>
-													
-													
-													
-												<div class="form-group span2">
-														<label><spring:message
-																code="productBatchno.label" /> </label> <input
-															type="text" class="form-control allField req"  
-															onkeydown="clearError(this);"
-															value="${plu.productBatchNo}" id="pluProductBatch${selectedLocationId}${priceListCount}"
-															oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');"
-															placeholder="<spring:message code="productBatchno.label" />" />
-														
-													</div>
-												
-												
-													<div class="form-group span2">
-														<label><spring:message
-																code="productserialno.label" /> </label> <input
-															type="text" class="form-control allField req" 
-															onkeydown="clearError(this);"
-															value="${plu.productSerNo}" id="pludProductSerialNo${selectedLocationId}${priceListCount}"
-															oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');"
-															placeholder="<spring:message code="productserialno.label" />" />
-														
-													</div> --%>
-
-
-
-
-
-																<%-- 	<div class="row-fluid-5">
-												
-												
-												<div class="form-group span2">
-																	<label><spring:message code="bestBeforeDate.label" /></label>
-																	<div class="input-group">
-																		<div class="input-group-addon">
-																			<i class="fa fa-calendar"></i>
-																		</div>
-																		<input class="form-control allField req dat"
-																			onchange="test()" 
-																			style="background-color: white;" 
-																			id=""
-																			value="" size="20" type="text"
-																			onfocus=""
-																			onclick=""
-																			placeholder="DD/MM/YYYY" />
-																	</div>
-																	<span
-																		id=""
-																		style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
-																</div>
-																<div class="form-group span2">
-																	<label><spring:message
-																			code="effectivefromDate.label" /></label>
-																	<div class="input-group">
-																		<div class="input-group-addon">
-																			<i class="fa fa-calendar"></i>
-																		</div>
-																		<input class="form-control allField req dat"
-																		style="background-color: white;" 
-																		onchange="test()"	id=""
-																			value="${plu.effectiveFromDateStr}"
-																			onfocus=""
-																			onclick=""
-																			placeholder="DD/MM/YYYY" data-mask />
-																	</div>
-																	<span
-																		id=""
-																		style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
-																</div>
-												
-												
-												
-												<div class="form-group span2">
-																	<label><spring:message code="manufacturedDate.label" /></label>
-																	<div class="input-group">
-																		<div class="input-group-addon">
-																			<i class="fa fa-calendar"></i>
-																		</div>
-																		<input class="form-control allField req dat"
-																			onchange="test()" 
-																			style="background-color: white;" 
-																			id=""
-																			value="${plu.expiry_date}" size="20" type="text"
-																			onfocus=""
-																			onclick=""
-																			placeholder="DD/MM/YYYY" />
-																	</div>
-																	<span
-																		id=""
-																		style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
-																</div>
-												
-												
-												<div class="form-group span2">
-																	<label><spring:message code="warrantyperiad.label" /></label>
-																	<input type="text" class="form-control allField"
-																		onkeydown="clearError(this);" 
-																		id="pluWarrantyPeriod${selectedLocationId}${priceListCount}"
-																	    value="${plu.warrantyPeriod}"
-																		placeholder="<spring:message code="enterwarrantyperiad.label" />" />
-																	
-																	<div class="input-group">
-																		<div class="input-group-addon">
-																			<i class="fa fa-calendar"></i>
-																		</div>
-																		<input class="form-control allField req dat"
-																			readonly="readonly" style="background-color: white;"
-																			id=""
-																			 size="20" type="text" value=""
-																			onfocus=""
-																			onclick=""
-																			placeholder="DD/MM/YYYY" />
-																	</div>
-																	
-																	<span
-																		id="pluWarrantyPeriod${selectedLocationId}${priceListCount}Error"
-																		style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
-																</div>
-												
-												
-												
-												
-												<div class="form-group span2">
-									<label><spring:message code="reorder.point.label" /></label>
-									
-										<input type="text" class="form-control allField"
-											 name="reorderPoint" id="plureorderPoint${selectedLocationId}${priceListCount}"
-											 value="" required
-											oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');"
-											placeholder="<spring:message code="enter.reorder.point.label" />" />
-										<span id="plureorderPoint${selectedLocationId}${priceListCount}Error"
-					style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
-									
-								</div>
-										</div> --%>
-
-																<%-- 
-											
-											<div class="row-fluid-5">
-												<div class="form-group span2" style="padding-left:0px">
-																	<label><spring:message code="blockdeQty.label" />
-																		</label> <input
-																		type="text" class="form-control allField req "
-																		onkeydown="clearError(this);"
-																		id="pluBlockedQty${selectedLocationId}${priceListCount}"
-																	    value="${plu.blockedQuantity}"
-																		oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');"
-																		placeholder="<spring:message code="enterblockdeQty.label" />" />
-																	<span
-																		id="pluBlockedQty${selectedLocationId}${priceListCount}Error"
-																		style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
-																</div>
-																
-																
-													<div class="form-group  span2" style="padding-left:0px">
-																	<label><spring:message code="scrapedQty.label" />
-																		</label> <input
-																		type="text" class="form-control allField req "
-																		 onkeydown="clearError(this);"
-																		id="pluScrapedQty${selectedLocationId}${priceListCount}"
-																		value="${plu.scrapedQuantity}"
-																		oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');"
-																		placeholder="<spring:message code="enterscrapedQty.label" />" />
-																	<span
-																		id="pluScrapedQty${selectedLocationId}${priceListCount}Error"
-																		style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
-																</div>			
-															
-															
-															
-													<div class="form-group span2">
-																	<label><spring:message code="styleRange.label" /></label>
-																	<input type="text" class="form-control allField"
-																		onkeydown="clearError(this);" 
-																		id="pluStyleRange${selectedLocationId}${priceListCount}"
-																		value="${plu.styleRange}"
-																		placeholder="<spring:message code="enterstyleRange.label" />" />
-																	<span
-																		id="pluStyleRange${selectedLocationId}${priceListCount}Error"
-																		style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
-																</div>				
-															
-															
-															
-														<div class="form-group span2">
-																	<label><spring:message code="packageId.label" /></label>
-																	<input type="text" class="form-control allField"
-																		onkeydown="clearError(this);"
-																		id="pluPackageId${selectedLocationId}${priceListCount}"
-																		value="${plu.packageId}"
-																		placeholder="<spring:message code="enter.packageId.label" />" />
-																	<span
-																		id="pluPackageId${selectedLocationId}${priceListCount}Error"
-																		style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
-																</div>	
-																
-												
-												
-												<div class="form-group span2">
-																	<label><spring:message code="utility.label" /></label>
-																	<input type="text" class="form-control allField"
-																		onkeydown="clearError(this);"
-																		id="pluUtility${selectedLocationId}${priceListCount}" 
-																		value=""
-																		placeholder="<spring:message code="enter.utility.label" />" />
-																	<span
-																		id="pluUtility${selectedLocationId}${priceListCount}"
-																		style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
-																</div>
-												
-												
-												
-											</div>
-												 --%>
-															</div>
-															<div class="row">
-
-																<div class="form-group col-lg-4"
-																	style="padding-right: 0px">
-
-																	<label><spring:message
-																			code="technicalSpecification.label" /> </label>
-																	<textarea rows="2" onblur="criteria(this)"
-																		id="technicalSpecDetail${selectedLocationId}${priceListCount}"
-																		style="height: 75px;resize: none" class="form-control allField"
-																		placeholder="<spring:message code="entertechnicalSpecification.label" />">${plu.technical_specification}</textarea>
-																	<span id="productSideEffectsError"
-																		style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
-
-																</div>
-
-
-
-																<div class="form-group col-lg-4"
-																	style="margin-left: 18px;padding-right: 0px">
-																	<label><spring:message code="description.label" />
-																		<span style="color: red; font-size: 2">*</span></label>
-																	<textarea rows="2" onblur="criteria(this)"
-																		class="form-control allField"
-																		onkeydown="clearError(this);"
-																		id="pluDesc${selectedLocationId}${priceListCount}"
-																		style="height: 75px;resize: none" required
-																		placeholder="<spring:message code="enter.description.label" />">${plu.description}</textarea>
-																	<span
-																		id="pluDesc${selectedLocationId}${priceListCount}Error"
-																		style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
-																</div>
-															</div>
-
-														</div>
-														<div class="col-md-2 table-responsive"
-															style="border: 1px solid #ccc; padding: 0px; margin-left: -6.5%; width: 22%;">
-															<c:if test="${priceListCount == 1}">
-																<table
-																	id="SKUMasterEAN${selectedLocationId}${priceListCount}${priceListCount}"
-																	class="table table-bordered table-hover"
-																	style="margin-bottom: 0px">
-																	<thead
-																		style="background-color: #ccc !important; color: #ffff">
-																		<tr>
-																			<th>EAN</th>
-																			<th>Action</th>
-																		</tr>
-																	</thead>
-																	<tbody>
-																		<c:forEach var="skuean"
-																			items="${multipleEanPriceList}" varStatus="theCount">
-
-																			<c:if
-																				test="${skuean.storeLocation == selectedLocationId}">
-																				<tr
-																					id="dynamicdiv${selectedLocationId}1${theCount.count}">
-
-																					<td
-																						id="tableean${selectedLocationId}${theCount.count}"
-																						style="width: 57%"><input type="number"
-																						style="width: 100%" readonly="readonly"
-																						required="required"
-																						id="eantable${selectedLocationId}1${theCount.count}"
-																						value="${skuean.ean}"></td>
-																					<td style="width: 35%; white-space: nowrap;"
-																						id="action${selectedLocationId}1${theCount.count}">
-
-																						<a
-																						style="border-bottom: 1px solid blue; color: blue; cursor: pointer;"
-																						onclick="appendSKUEAN('${selectedLocationId}','1${theCount.count}');"><font
-																							size="2px">add</font></a>&nbsp&nbsp&nbsp&nbsp <a
-																						style="border-bottom: 1px solid blue; color: blue; cursor: pointer;"
-																						id="delete${selectedLocationId}1${theCount.count}"
-																						onclick="deleteSKUEAN('${selectedLocationId}','1${theCount.count}');"><font
-																							size="2px">delete</font></a>
-
-																					</td>
-																					<%-- <input type="hidden" id="ean${selectedLocationId}${priceListCount}"  value="${plu.ean}"> --%>
-																					<input type="hidden"
-																						id="eanduplicate${selectedLocationId}${priceListCount}">
-																				</tr>
-																			</c:if>
-																		</c:forEach>
-
-																	</tbody>
-																</table>
-															</c:if>
-
-
-														</div>
-													</div>
-
-													<c:set var="priceListCount" value="${priceListCount + 1}" />
-
-												</c:if>
-											</c:forEach>
-										</div>
-									</c:forEach>
-								</div>
-
-							</div>
+								
 					
-								<%-- <div class="row" style="">
+								<div class="row" style="">
 									<div class="col-md-12 priceListForLocation">
 										<div class="AllLocation priceListLocationDiv"></div>
 										<c:forEach var="selectedLocationId"
@@ -2624,7 +1780,7 @@ img.thumbnail {
 																		style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
 																</div>
 																
-										<input type="hidden" id="ean${selectedLocationId}${priceListCount}" value="${plu.ean}">
+										<%-- <input type="hidden" id="ean${selectedLocationId}${priceListCount}" value="${plu.ean}"> --%>
 										<input type="hidden" id="eanduplicate${selectedLocationId}${priceListCount}">
 									<div class="form-group col-lg-2" style="padding-right:0px">
                             
@@ -2640,7 +1796,7 @@ img.thumbnail {
 								</div>
 																
 																
-																<div class="form-group span2">
+																<%-- <div class="form-group span2">
 																	<label><spring:message code="extra.price.label" /></label>
 																	<input type="text" class="form-control allField"
 																		onkeydown="clearError(this);"
@@ -2651,11 +1807,11 @@ img.thumbnail {
 																	<span
 																		id="pluExtraPrice${selectedLocationId}${priceListCount}Error"
 																		style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
-																</div>
+																</div> --%>
 															</div>
 
 															<div class="row-fluid-5">
-																<div class="form-group span2">
+																<%-- <div class="form-group span2">
 																	<label><spring:message code="color.label" /></label> <input
 																		type="text" class="form-control allField"
 																		onkeydown="clearError(this);"
@@ -2665,7 +1821,7 @@ img.thumbnail {
 																	<span
 																		id="pluColor${selectedLocationId}${priceListCount}Error"
 																		style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
-																</div>
+																</div> --%>
 																<div class="form-group col-lg-2" style="padding-left:0px">
 																	<label><spring:message code="color.shade.label" /></label>
 																	<input type="text" class="form-control allField"
@@ -2713,9 +1869,9 @@ img.thumbnail {
 																			 <input type="hidden" class="form-control allField"
 																		id="pluCode${selectedLocationId}${priceListCount}"
 																		value="${plu.pluCode}" /> 
-																		 <input type="hidden" class="form-control allField"
+																		<%--  <input type="hidden" class="form-control allField"
 																		id="skuStatus${selectedLocationId}${priceListCount}"
-																		value="${plu.skuStatus}" /> 
+																		value="${plu.skuStatus}" />  --%>
 																	<span
 																		id="pluAcp${selectedLocationId}${priceListCount}Error"
 																		style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
@@ -2801,12 +1957,15 @@ img.thumbnail {
 													type="text"   class="form-control allField"
 													id="materailType${selectedLocationId}${priceListCount}" value="${plu.materialType}"
 													placeholder="Material Type" style="width:70%" />
+													
+													<span id="materailTypeAllLocation1Error"
+															style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
                                          </div>
 																
 																
 																
 																
-																<div class="form-group span2">
+																<%-- <div class="form-group span2">
 																	<label><spring:message code="size.label" /></label> <input
 																		type="text" class="form-control allField"
 																		onkeydown="clearError(this);"
@@ -2816,7 +1975,7 @@ img.thumbnail {
 																	<span
 																		id="pluSize${selectedLocationId}${priceListCount}Error"
 																		style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
-																</div>
+																</div> --%>
 															</div>
 															
 															
@@ -2914,8 +2073,8 @@ img.thumbnail {
 								<div class="form-group col-lg-2 " style="margin-left: 20px;padding-right:0px">
 														<label>Stock Status</label>
 										<select class="form-control allField req"  style="width:80%" id="skuStockStatus${selectedLocationId}${priceListCount}">
-									         <option value="true" ${'true' == plu.stockStatus ? 'selected' : ''}>Active</option> 
-		                                  	 <option value="false" ${'false' == plu.stockStatus ? 'selected' : ''} >In-Active</option>
+									         <option value="true" ${'true' == plu.stockStatus ? 'selected' : ''}>Active</option> <%--  --%>
+		                                  	 <option value="false" ${'false' == plu.stockStatus ? 'selected' : ''} >In-Active</option><%-- --%>
 											
 										</select>	
 								</div>													
@@ -2935,7 +2094,7 @@ img.thumbnail {
 															
 															
 																<div class="row-fluid-5">
-													<div class="form-group span2">
+													<%-- <div class="form-group span2">
 														<label><spring:message code="discounttype.label" /></label> 
 														<select class="form-control" id="pludiscounttype${selectedLocationId}${priceListCount}">
 														<option value="flat_rate" ${plu.discountType == 'flat_rate' ? 'selected' : ''} >Cash Flat</option>
@@ -2987,13 +2146,13 @@ img.thumbnail {
 															oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');"
 															placeholder="<spring:message code="productserialno.label" />" />
 														
-													</div>
+													</div> --%>
 												
 												
 										
 												
 												
-												<div class="row-fluid-5">
+											<%-- 	<div class="row-fluid-5">
 												
 												
 												<div class="form-group span2">
@@ -3099,9 +2258,9 @@ img.thumbnail {
 					style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
 									
 								</div>
-										</div>
+										</div> --%>
 												
-											
+											<%-- 
 											
 											<div class="row-fluid-5">
 												<div class="form-group span2" style="padding-left:0px">
@@ -3178,7 +2337,7 @@ img.thumbnail {
 												
 												
 											</div>
-												
+												 --%>
 												</div>
 															<div class="row">
 															
@@ -3234,7 +2393,7 @@ img.thumbnail {
 							       <a  style="border-bottom: 1px solid blue;color: blue;cursor: pointer;" id="delete${selectedLocationId}1${theCount.count}" onclick="deleteSKUEAN('${selectedLocationId}','1${theCount.count}');"><font size="2px">delete</font></a>
 								
 								</td>
-								<input type="hidden" id="ean${selectedLocationId}${priceListCount}"  value="${plu.ean}">
+								<%-- <input type="hidden" id="ean${selectedLocationId}${priceListCount}"  value="${plu.ean}"> --%>
 								<input type="hidden" id="eanduplicate${selectedLocationId}${priceListCount}">
 								</tr>
 								</c:if>
@@ -3256,112 +2415,91 @@ img.thumbnail {
 										</c:forEach>
 									</div>
 									
-									</div> --%>
+									</div>
 								
 									
 									
 									</div>
-									
-									
-									
-										<div class="pricelist" id="pricelistAllLocation0"
-							style="display: none; padding: 0px;">
-							<div class="col-md-10" style="padding: 0px;">
-								<div class="row-fluid-5">
-									<div class="form-group col-lg-2 " style="padding-left: 0px">
-										<input type="hidden" id="productRangeAllLocation0"> <input
-											type="hidden" id="measurementRangeAllLocation0"> <input
-											type="hidden" id="utilityRangeAllLocation0"> <input
-											type="hidden" id="colourRangeAllLocation0"> <input
-											type="hidden" id="sizeRangeAllLocation0"> <input
-											type="hidden" id="batchRangeAllLocation0"> <input
-											type="hidden" id="styleRangeAllLocation0"> <label><spring:message
-												code="cost.price.label" /> <span
-											style="color: red; font-size: 2">*</span></label> <input type="text"
-											class="form-control allField req pluCost"
-											onkeydown="clearError(this);" onblur="calcMarkUp(this);"
-											value="" id="pluCostPriceAllLocation0" style=""
-											oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');"
-											placeholder="<spring:message code="enter.cost.price.label" />" />
-										<span id="pluCostPriceAllLocation0Error"
-											style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
-									</div>
-									<div class="form-group col-lg-2 " style="margin-left: 14px;">
-										<label><spring:message code="price.label" /> <span
-											style="color: red; font-size: 2">*</span></label> <input type="text"
-											class="form-control allField req"
-											onkeydown="clearError(this);" value=""
-											id="pluPriceAllLocation0" style=""
-											oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');"
-											placeholder="<spring:message code="enter.price.label" />" />
-										<span id="pluPriceAllLocation0Error"
-											style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
-									</div>
-									<div class="form-group col-lg-2 " style="margin-left: 6px;">
-										<label><spring:message code="sale.price.label" /> <span
-											style="color: red; font-size: 2">*</span></label> <input type="text"
-											class="form-control allField req pluSale"
-											onkeydown="clearError(this);" onblur="calcMarkUp(this);"
-											value="" id="pluSalePriceAllLocation0" style=""
-											oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');"
-											placeholder="<spring:message code="enter.sale.price.label" />" />
-										<span id="pluSalePriceAllLocation0Error"
-											style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
-									</div>
+							<div class="pricelist" id="pricelistAllLocation0"
+										style="display: none;padding: 0px; ">
+							<div class="col-md-10" style="padding: 0px; ">
+										<div class="row-fluid-5">
+											<div class="form-group col-lg-2 " style="padding-left: 0px">
+												<input type="hidden" id="productRangeAllLocation0">
+												<input type="hidden" id="measurementRangeAllLocation0">
+												<input type="hidden" id="utilityRangeAllLocation0">
+												<input type="hidden" id="colourRangeAllLocation0">
+												<input type="hidden" id="sizeRangeAllLocation0">
+												<input type="hidden" id="batchRangeAllLocation0">
+													<input type="hidden" id="styleRangeAllLocation0">
+												<label><spring:message code="cost.price.label" /> <span
+													style="color: red; font-size: 2">*</span></label> <input
+													type="text" class="form-control allField req pluCost"
+													onkeydown="clearError(this);" onblur="calcMarkUp(this);"
+													value="" id="pluCostPriceAllLocation0" style="width:60%"
+													oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');"
+													placeholder="<spring:message code="enter.cost.price.label" />" />
+												<span id="pluCostPriceAllLocation0Error"
+													style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
+											</div>
+											<div class="form-group col-lg-2 " style="margin-left: 14px;">
+												<label><spring:message code="price.label" /> <span
+													style="color: red; font-size: 2">*</span></label> <input
+													type="text" class="form-control allField req"
+													onkeydown="clearError(this);" value=""
+													id="pluPriceAllLocation0" style="width:60%"
+													oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');"
+													placeholder="<spring:message code="enter.price.label" />" />
+												<span id="pluPriceAllLocation0Error"
+													style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
+											</div>
+											<div class="form-group col-lg-2 " style="margin-left: 6px;">
+												<label><spring:message code="sale.price.label" /> <span
+													style="color: red; font-size: 2">*</span></label> <input
+													type="text" class="form-control allField req pluSale"
+													onkeydown="clearError(this);" onblur="calcMarkUp(this);"
+													value="" id="pluSalePriceAllLocation0" style="width:60%"
+													oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');"
+													placeholder="<spring:message code="enter.sale.price.label" />" />
+												<span id="pluSalePriceAllLocation0Error"
+													style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
+											</div>
 
-									<div class="form-group col-lg-2"
-										style="white-space: nowrap; margin-left: 21px">
-										<label><spring:message code="ws.price.label" /> <span
-											style="color: red; font-size: 2">*</span></label> <input type="text"
-											onblur="criteria(this)" class="form-control allField req"
-											value="" onkeydown="clearError(this);"
-											id="pluWsPriceAllLocation0" style=""
-											oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');"
-											placeholder="<spring:message code="enter.ws.price.label" />" />
-										<span id="pluWsPriceAllLocation0Error"
-											style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
-									</div>
-
+											<div class="form-group col-lg-2" style="white-space:nowrap;margin-left:21px">
+												<label><spring:message code="ws.price.label" /> <span
+													style="color: red; font-size: 2">*</span></label> <input
+													type="text" onblur="criteria(this)"class="form-control allField req" value=""
+													onkeydown="clearError(this);" id="pluWsPriceAllLocation0" style="width:60%"
+													oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');"
+													placeholder="<spring:message code="enter.ws.price.label" />" />
+												<span id="pluWsPriceAllLocation0Error"
+													style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
+											</div>
+											
 									<!-- 	<input type="hidden" id="eanAllLocation0"> -->
-									<input type="hidden" id="eanduplicateAllLocation0">
-
-									<div class="form-group col-lg-2" style="padding-right: 0px">
-									
-									
-									<label><spring:message code="sale.price.one.label" /> </label> 
-									                  <input type="text"
-															id="salePriceOneAllLocation0"
-															name="salePriceOne"
-															style="resize: none; width: 100%"
-															class="form-control allField"
-															value="${plu.salePrice1}"
-															placeholder="Enter Sale Price 1">
-														<span id="salePriceOneError"
-															style="text-align: right; color: red; font-size: 2; font-weight: bold;">
-														</span>
-									
-									
-									
-										<%-- <label><spring:message code="businessCategory.label" />
-										</label> <input type="text" onblur="criteria(this)"
-											id="businessCategoryDetailAllLocation0"
-											name="productPrecautions" style="resize: none; width: 80%"
-											class="form-control allField"
-											value="${sku.product_precautions}"
-											placeholder="<spring:message code="enterbusinescategory.label" />">
-										<span id="businessCategoryQuickError"
-											style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span> --%>
-									</div>
-
-
-									<%-- <div class="form-group col-lg-2" style="margin-left: 1px;">
+										<input type="hidden" id="eanduplicateAllLocation0">
+										
+											<div class="form-group col-lg-2" style="padding-right:0px">
+                            
+									<label><spring:message code="businessCategory.label" />
+										</label>
+									<input type="text" onblur="criteria(this)" id="businessCategoryDetailAllLocation0" 
+										name="productPrecautions" style="resize: none;width:80%"
+										class="form-control allField" value="${sku.product_precautions}"
+										placeholder="<spring:message code="enterbusinescategory.label" />">
+									<span id="businessCategoryQuickError"
+										style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
+								</div>
+											
+											
+											<%-- <div class="form-group col-lg-2" style="margin-left: 1px;">
 												<label><spring:message code="ean.label" /></label> <input
 													type="text" class="form-control allField"
 													id="eanAllLocation0" value=""
 													placeholder="<spring:message code="enter.ean.label" />" />
 											</div> --%>
-
-									<%-- <div class="form-group span2">
+											
+											<%-- <div class="form-group span2">
 												<label><spring:message code="extra.price.label" /></label>
 												<input type="text" class="form-control allField" value=""
 													onkeydown="clearError(this);"
@@ -3371,10 +2509,10 @@ img.thumbnail {
 												<span id="pluExtraPriceAllLocation0Error"
 													style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
 											</div> --%>
-								</div>
-
-								<div class="row-fluid-5">
-									<%-- <div class="form-group span2">
+										</div>
+										
+										<div class="row-fluid-5">
+											<%-- <div class="form-group span2">
 												<label><spring:message code="color.label" /></label> <input
 													type="text" class="form-control allField"
 													onkeydown="clearError(this);" id="pluColorAllLocation0"
@@ -3382,80 +2520,59 @@ img.thumbnail {
 												<span id="pluColorAllLocation0Error"
 													style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
 											</div> --%>
-									<div class="form-group col-lg-2" style="padding-left: 0px">
-										<label><spring:message code="color.shade.label" /></label> <input
-											type="text" onblur="criteria(this)"
-											class="form-control allField" onkeydown="clearError(this);"
-											id="pluColorShadeAllLocation0"
-											placeholder="<spring:message code="enter.color.shade.label" />" />
-										<span id="pluColorShadeAllLocation0Error"
-											style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
-									</div>
-									<div class="form-group col-lg-2" style="margin-left: 14px;">
-										<label><spring:message code="mbq.label" /></label> <input
-											type="text" onblur="criteria(this)"
-											class="form-control allField" onkeydown="clearError(this);"
-											id="pluMbqAllLocation0" style=""
-											placeholder="<spring:message code="enter.mbq.label" />" /> <span
-											id="pluMbqAllLocation0Error"
-											style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
-									</div>
+											<div class="form-group col-lg-2" style="padding-left:0px">
+												<label><spring:message code="color.shade.label" /></label>
+												<input type="text" onblur="criteria(this)" class="form-control allField"
+													onkeydown="clearError(this);" 
+													id="pluColorShadeAllLocation0"
+													placeholder="<spring:message code="enter.color.shade.label" />" />
+												<span id="pluColorShadeAllLocation0Error"
+													style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
+											</div>
+										<div class="form-group col-lg-2" style="margin-left: 14px;">
+												<label><spring:message code="mbq.label" /></label> <input
+													type="text" onblur="criteria(this)" class="form-control allField"
+													onkeydown="clearError(this);" id="pluMbqAllLocation0" style="width:60%"
+													placeholder="<spring:message code="enter.mbq.label" />" />
+												<span id="pluMbqAllLocation0Error"
+													style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
+											</div>
 
-									<div class="form-group col-lg-2"
-										style="white-space: nowrap; margin-left: 7px;">
-										<label><spring:message code="quantity.in.hand.label" />
-											<span style="color: red; font-size: 2">*</span></label> <input
-											type="text" onblur="criteria(this)"
-											class="form-control allField req" onblur="calculateStock();"
-											onkeydown="clearError(this);" value=""
-											id="pluQuantityAllLocation0" style=""
-											oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');"
-											placeholder="<spring:message code="enter.quantity.in.hand.label" />" />
-										<span id="pluQuantityAllLocation0Error"
-											style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
-									</div>
-									<div class="form-group col-lg-2" style="margin-left: 21px;">
-										<label><spring:message code="acp.label" /></label> <input
-											type="text" onblur="criteria(this)"
-											class="form-control allField" onkeydown="clearError(this);"
-											id="pluAcpAllLocation0"
-											placeholder="<spring:message code="enter.acp.label" />"
-											style="" /> <span id="pluAcpAllLocation0Error"
-											style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
-									</div>
+											<div class="form-group col-lg-2" style="white-space:nowrap;margin-left: 7px;">
+												<label><spring:message code="quantity.in.hand.label" />
+													<span style="color: red; font-size: 2">*</span></label> <input
+													type="text" onblur="criteria(this)" class="form-control allField req"
+													onblur="calculateStock();" onkeydown="clearError(this);"
+													value="" id="pluQuantityAllLocation0" style="width:80%"
+													oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');"
+													placeholder="<spring:message code="enter.quantity.in.hand.label" />" />
+												<span id="pluQuantityAllLocation0Error"
+													style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
+											</div>
+										<div class="form-group col-lg-2" style="margin-left:21px;">
+												<label><spring:message code="acp.label" /></label> <input
+													type="text" onblur="criteria(this)" class="form-control allField"
+													onkeydown="clearError(this);" id="pluAcpAllLocation0"
+													placeholder="<spring:message code="enter.acp.label" />" style="width:80%"/>
+												<span id="pluAcpAllLocation0Error"
+													style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
+											</div>
+											
+											
+											<div class="form-group col-lg-2 " style="padding-right: 0px;margin-left:0px"> 
+									<label><spring:message code="businessSubcategory.label" />
+										</label>
+									<input type="text"onblur="criteria(this)" id="businessSubcategoryDetailAllLocation0" 
+										name="productHanding" style="resize: none;width:80%" id="businessSubcategoryQuick"
+										class="form-control allField"  value="${plu.businessSubCategory}" 
+										placeholder="<spring:message code="enter.businessSubcategory.label" />">
+									<span id="productSideEffectsError"
+										style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
 
-
-									<div class="form-group col-lg-2 "
-										style="padding-right: 0px; margin-left: 0px">
-										
-										
-										<label><spring:message code="businessCategory.label" />
-										</label> <input type="text" onblur="criteria(this)"
-											id="businessCategoryDetailAllLocation0"
-											name="productPrecautions" style="resize: none;"
-											class="form-control allField"
-											value="${sku.product_precautions}"
-											placeholder="<spring:message code="enterbusinescategory.label" />">
-										<span id="businessCategoryQuickError"
-											style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
-										
-										
-										
-										<%-- <label><spring:message
-												code="businessSubcategory.label" /> </label> <input type="text"
-											onblur="criteria(this)"
-											id="businessSubcategoryDetailAllLocation0"
-											name="productHanding" style="resize: none; "
-											id="businessSubcategoryQuick" class="form-control allField"
-											value="${plu.businessSubCategory}"
-											placeholder="<spring:message code="enter.businessSubcategory.label" />">
-										<span id="productSideEffectsError"
-											style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span> --%>
-
-									</div>
-
-
-									<%-- <div class="form-group col-lg-2 " style="margin-left: 1px;padding-right:0px">
+								</div>		
+											
+	
+	<%-- <div class="form-group col-lg-2 " style="margin-left: 1px;padding-right:0px">
 												<label><spring:message code="created.date.label" /></label>
 												<div class="input-group">
 													<div class="input-group-addon">
@@ -3468,32 +2585,30 @@ img.thumbnail {
 												<span id="pluCreatedDateAllLocation0Error"
 													style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
 											</div> --%>
-
-								</div>
-
-
-
-
-								<div class="row-fluid-5">
-
-
-									<div class="form-group col-lg-2 "
-										style="margin-left: 1px; padding-left: 0px">
-										<label><spring:message code="created.date.label" /></label>
-										<div class="input-group">
-											<div class="input-group-addon">
-												<i class="fa fa-calendar"></i>
-											</div>
-											<input type="text" id="pluCreatedDateAllLocation0"
-												readonly="readonly" class="form-control dat"
-												style="width: 80%" data-inputmask="alias: dd/mm/yyyy"
-												data-mask />
+	
 										</div>
-										<span id="pluCreatedDateAllLocation0Error"
-											style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
-									</div>
-
-									<%-- <div class="form-group col-lg-2 " style="padding-left: 0px;padding-right:0px">
+										
+										
+										
+										
+										<div class="row-fluid-5">
+											
+											
+											<div class="form-group col-lg-2 " style="margin-left: 1px;padding-left:0px">
+												<label><spring:message code="created.date.label" /></label>
+												<div class="input-group">
+													<div class="input-group-addon">
+														<i class="fa fa-calendar"></i>
+													</div>
+													<input type="text" id="pluCreatedDateAllLocation0"
+														readonly="readonly" class="form-control dat" style="width:80%"
+														data-inputmask="alias: dd/mm/yyyy" data-mask />
+												</div>
+												<span id="pluCreatedDateAllLocation0Error"
+													style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
+											</div>
+											
+											<%-- <div class="form-group col-lg-2 " style="padding-left: 0px;padding-right:0px">
 												<label><spring:message code="updated.date.label" /></label>
 												<div class="input-group">
 													<div class="input-group-addon">
@@ -3506,26 +2621,24 @@ img.thumbnail {
 												<span id="pluUpdatedDateAllLocation0Error"
 													style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
 											</div> --%>
-									<div class="form-group col-lg-2 span2"
-										style="margin-left: 27px; padding-right: 0px">
-										<label><spring:message code="expiry.date.label" /></label>
-										<div class="input-group">
-											<div class="input-group-addon">
-												<i class="fa fa-calendar"></i>
+											<div class="form-group col-lg-2 span2" style="margin-left:27px;padding-right:0px">
+												<label><spring:message code="expiry.date.label" /></label>
+												<div class="input-group">
+													<div class="input-group-addon">
+														<i class="fa fa-calendar"></i>
+													</div>
+													<input class="form-control allField req dat"
+														readonly="readonly" style="background-color: white;width:80%"
+														id="pluExpiryDateAllLocation0" size="20" type="text"
+														onfocus="callCalender('pluExpiryDateAllLocation0')"
+														onclick="callCalender('pluExpiryDateAllLocation0')"
+														placeholder="DD/MM/YYYY"  />
+													<!-- <input type="text" id="pluExpiryDate1" class="form-control allField req dat" data-inputmask="alias: dd/mm/yyyy" data-mask/> -->
+												</div>
+												<span id="pluExpiryDateAllLocation0Error"
+													style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
 											</div>
-											<input class="form-control allField req dat"
-												readonly="readonly"
-												style="background-color: white; width: 80%"
-												id="pluExpiryDateAllLocation0" size="20" type="text"
-												onfocus="callCalender('pluExpiryDateAllLocation0')"
-												onclick="callCalender('pluExpiryDateAllLocation0')"
-												placeholder="DD/MM/YYYY" />
-											<!-- <input type="text" id="pluExpiryDate1" class="form-control allField req dat" data-inputmask="alias: dd/mm/yyyy" data-mask/> -->
-										</div>
-										<span id="pluExpiryDateAllLocation0Error"
-											style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
-									</div>
-									<%-- <div class="form-group span2">
+											<%-- <div class="form-group span2">
 												<label><spring:message code="size.label" /></label> <input
 													type="text" class="form-control allField"
 													onkeydown="clearError(this);" id="pluSizeAllLocation0"
@@ -3533,50 +2646,39 @@ img.thumbnail {
 												<span id="pluSizeAllLocation0Error"
 													style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
 											</div> --%>
-
-									<div class="form-group col-lg-2 span2" style="">
-										<label><spring:message code="min.sales.quantity.label" /></label>
-										<input type="text" class="form-control allField"
-											id="priceMinSaleQtyAllLocation0" value="" style="width: 89%;"
-											placeholder="<spring:message code="min.sales.quantity.label" />" />
-									</div>
-
-									<div class="form-group col-lg-2 "
-										style="white-space: nowrap; margin-left: 17px">
-										<label><spring:message
-												code="newarrival.product.status" /> </label> <select
-											class="form-control allField req" style=""
-											name="status" id="skuStatusAllLocation0">
-											<option value="true"
-												${'true' == plu.skuStatus ? 'selected' : ''}>Active</option>
-											<option value="false"
-												${'false' == plu.skuStatus ? 'selected' : ''}>In-Active</option>
-
-										</select>
-									</div>
-
-
-									<div class="form-group col-lg-2" style="">
-									
-									<label><spring:message
-												code="businessSubcategory.label" /> </label> <input type="text"
-											onblur="criteria(this)"
-											id="businessSubcategoryDetailAllLocation0"
-											name="productHanding" style="resize: none; width:112%;"
-											id="businessSubcategoryQuick" class="form-control allField"
-											value="${plu.businessSubCategory}"
-											placeholder="<spring:message code="enter.businessSubcategory.label" />">
-										<span id="productSideEffectsError"
-											style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
-									
-										<%-- <label>Material Type</label> <input type="text"
-											class="form-control allField" id="materailTypeAllLocation0"
-											value="${plu.materialType}" placeholder="Material Type"
-											style="" /> --%>
-									</div>
-
-
-									<%-- <div class="form-group col-lg-2" style="padding-right:0px">
+											
+											  <div class="form-group col-lg-2 span2" style="">
+                                           	<label><spring:message code="min.sales.quantity.label" /></label> <input
+													type="text" class="form-control allField"
+													id="priceMinSaleQtyAllLocation0" value="" style="width:70%"
+													placeholder="<spring:message code="min.sales.quantity.label" />" />
+                                         </div>
+											
+											<div class="form-group col-lg-2 " style="white-space:nowrap;margin-left:17px">
+																	<label><spring:message
+																			code="newarrival.product.status" /> </label>
+																			<select class="form-control allField req" style="width:80%" name="status" id="skuStatusAllLocation0">
+										                                      	<option value="true" ${'true' == plu.skuStatus ? 'selected' : ''} >Active</option>
+		                                  		                                <option value="false" ${'false' == plu.skuStatus ? 'selected' : ''} >In-Active</option>
+											
+										                                    </select> 
+																</div>
+																
+																
+																 <div class="form-group col-lg-2" style="">
+                                           	<label>Material Type</label> <input
+													type="text"   class="form-control allField"
+													id="materailTypeAllLocation0" value="${plu.materialType}"
+													placeholder="Material Type" style="width:70%" />
+											
+											<span id="materailTypeAllLocation0Error"
+													style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>		
+													
+													
+                                         </div>
+																
+																
+																<%-- <div class="form-group col-lg-2" style="padding-right:0px">
                             
 									<label><spring:message code="businessCategory.label" />
 										</label>
@@ -3588,105 +2690,91 @@ img.thumbnail {
 										style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
 								</div>
  --%>
-
-
-
-
-
-
-								</div>
-
-								<div class="row-fluid-5">
-
+																
+																
+																
+																
+																
+											
+										</div>
+								
+<div class="row-fluid-5">
+									
 									<div class="form-group col-lg-2 " style="padding-left: 0px">
-										<label><spring:message code="updated.date.label" /></label>
-										<div class="input-group">
-											<div class="input-group-addon">
-												<i class="fa fa-calendar"></i>
+												<label><spring:message code="updated.date.label" /></label>
+												<div class="input-group">
+													<div class="input-group-addon">
+														<i class="fa fa-calendar"></i>
+													</div>
+													<input type="text" id="pluUpdatedDateAllLocation0"
+														readonly="readonly" class="form-control dat" style="width:80%"
+														data-inputmask="alias: dd/mm/yyyy" data-mask />
+												</div>
+												<span id="pluUpdatedDateAllLocation0Error"
+													style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
 											</div>
-											<input type="text" id="pluUpdatedDateAllLocation0"
-												readonly="readonly" class="form-control dat"
-												style="width: 80%" data-inputmask="alias: dd/mm/yyyy"
-												data-mask />
-										</div>
-										<span id="pluUpdatedDateAllLocation0Error"
-											style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
-									</div>
-
-									<div class="form-group col-lg-2 span2"
-										style="margin-left: 27px; padding-right: 0px">
-										<label><spring:message code="packaged.date.label" /></label>
-										<div class="input-group">
-											<div class="input-group-addon">
-												<i class="fa fa-calendar"></i>
-											</div>
-											<input class="form-control allField req dat"
-												readonly="readonly"
-												style="background-color: white; width: 80%"
-												id="pluPackagedDateAllLocation0"
-												value="${plu.packagingDate}" size="20" type="text"
-												onfocus="callCalender('pluPackagedDateAllLocation0')"
-												onclick="callCalender('pluPackagedDateAllLocation0')"
-												placeholder="DD/MM/YYYY" />
-										</div>
-										<span
-											id="pluPackagedDate${selectedLocationId}${priceListCount}Error"
-											style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
-									</div>
-
-
-									<div class="form-group col-lg-2" style="margin-left: 5px">
-										<label><spring:message code="pack.size.label" /></label> <input
-											type="text" class="form-control allField"
-											id="pricePackSizeAllLocation0" value="${plu.packSize}"
-											placeholder="<spring:message code="enter.pack.size.label" />"
-											style="" />
-									</div>
-
-									<div class="form-group col-lg-2 "
-										style="padding-right: 0px; margin-left: 20px">
-										<label><spring:message code="stock.factory.label" />
-										</label> <input type="text" onblur="criteria(this)"
-											id="stockfactorAllLocation0" style="resize: none; width: 90%"
-											class="form-control allField" value="${plu.stockFactor}"
-											placeholder="enter stock factor" style="">
-
-									</div>
-
-
-									<div class="form-group col-lg-2">
+											
+											<div class="form-group col-lg-2 span2" style="margin-left: 27px;padding-right:0px">
+																	<label><spring:message code="packaged.date.label" /></label>
+																	<div class="input-group">
+																		<div class="input-group-addon">
+																			<i class="fa fa-calendar"></i>
+																		</div>
+																		<input class="form-control allField req dat"
+																			 readonly="readonly"
+																			style="background-color: white;width:80%"
+																			id="pluPackagedDateAllLocation0"
+																			value="${plu.packagingDate}" size="20" type="text"
+																			onfocus="callCalender('pluPackagedDateAllLocation0')"
+																			onclick="callCalender('pluPackagedDateAllLocation0')"
+																			placeholder="DD/MM/YYYY" />
+																	</div>
+																	<span
+																		id="pluPackagedDate${selectedLocationId}${priceListCount}Error"
+																		style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
+																</div>		
+												
+																
+					<div class="form-group col-lg-2" style="margin-left:5px" >
+                                           	<label><spring:message code="pack.size.label" /></label> <input
+													type="text" class="form-control allField"
+													id="pricePackSizeAllLocation0" value="${plu.packSize}"
+													placeholder="<spring:message code="enter.pack.size.label" />" style="width:60%"/>
+                                        </div>
+                                        
+                                        <div class="form-group col-lg-2 " style="padding-right: 0px;margin-left:20px"> 
+									<label><spring:message code="stock.factory.label" />
+										</label>
+									<input type="text" onblur="criteria(this)" id="stockfactorAllLocation0" 
+										style="resize: none;width:60%" 
+										class="form-control allField"  value="${plu.stockFactor}"
+										placeholder="enter stock factor"style="width:60%">
 									
-									<label>Material Type</label> <input type="text"
-											class="form-control allField" id="materailTypeAllLocation0"
-											value="${plu.materialType}" placeholder="Material Type"
-											style="width:112%;" />
-									
-									
-										<%-- <label>Zero Stock Billing</label>
-										<div class="col-lg-10" style="padding-left: 0px">
-											<select class="form-control"
-												name="zeroStockbillingAllLocation0"
-												id="zeroStockbillingAllLocation0">
-												<option value="true"
-													${plu.zeroStockBilling == true ? 'selected' : ''}><spring:message
-														code="yes.label" /></option>
-												<option value="false"
-													${plu.zeroStockBilling == false ? 'selected' : ''}><spring:message
-														code="no.label" /></option>
-											</select>
-										</div> --%>
+								</div>		
+                                
+                                
+                                <div class="form-group col-lg-2">
+									<label>Zero Stock Billing</label>
+									<div class="col-lg-10" style="padding-left: 0px">
+										<select class="form-control" name="zeroStockbillingAllLocation0" id="zeroStockbillingAllLocation0">
+											<option value="true" ${plu.zeroStockBilling == true ? 'selected' : ''}><spring:message
+													code="yes.label" /></option>
+							 				<option value="false" ${plu.zeroStockBilling == false ? 'selected' : ''}><spring:message
+													code="no.label" /></option>
+										</select>
 									</div>
-
-
-									<%--   <div class="form-group col-lg-2 span2" style="">
+								</div>
+                                
+                                        
+                                           <%--   <div class="form-group col-lg-2 span2" style="">
                                            	<label><spring:message code="min.sales.quantity.label" /></label> <input
 													type="text" class="form-control allField"
 													id="priceMinSaleQtyAllLocation0" value=""
 													placeholder="<spring:message code="min.sales.quantity.label" />" />
                                          </div> --%>
-
-
-									<%-- 	<div class="form-group col-lg-8" style="padding-right:0px">
+                                        				
+									
+								<%-- 	<div class="form-group col-lg-8" style="padding-right:0px">
 								
 									<label><spring:message code="technicalSpecification.label" />
 										</label>
@@ -3697,9 +2785,9 @@ img.thumbnail {
 										style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
 							
 								</div> --%>
-
-
-									<%-- <div class="form-group col-lg-2 " style="padding-right: 0px;margin-left:17px"> 
+								
+								
+								<%-- <div class="form-group col-lg-2 " style="padding-right: 0px;margin-left:17px"> 
 									<label><spring:message code="businessSubcategory.label" />
 										</label>
 									<input type="text"onblur="criteria(this)" id="businessSubcategoryDetailAllLocation0" 
@@ -3710,15 +2798,15 @@ img.thumbnail {
 										style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
 
 								</div>		 --%>
-
-								</div>
-
-
-
-
-
-								<!-- 										<div class="row-fluid-5"> -->
-								<%-- <div class="form-group span2">
+												
+												</div>
+										
+										
+										
+										
+										
+<!-- 										<div class="row-fluid-5"> -->
+													<%-- <div class="form-group span2">
 														<label><spring:message code="discounttype.label" /></label> 
 														<select class="form-control" id="pludiscounttypeAllLocation0">
 														<option value="flat_rate">Cash Flat</option>
@@ -3772,10 +2860,10 @@ img.thumbnail {
 															placeholder="<spring:message code="productserialno.label" />" />
 														
 													</div> --%>
-
-
-
-								<%-- 		
+												
+												
+										
+										<%-- 		
 												
 												<div class="row-fluid-5">
 												
@@ -3961,760 +3049,6 @@ img.thumbnail {
 												
 											</div>
 												--%>
-								<!-- 												</div> -->
-
-
-								<div class="row-fluid-5">
-								<div class="form-group col-lg-2 " style="padding: 0px;">
-								
-								<label>Zero Stock Billing</label>
-										<div class="col-lg-10" style="padding-left: 0px">
-											<select class="form-control"
-												name="zeroStockbillingAllLocation0"
-												id="zeroStockbillingAllLocation0">
-												<option value="true"
-													${plu.zeroStockBilling == true ? 'selected' : ''}><spring:message
-														code="yes.label" /></option>
-												<option value="false"
-													${plu.zeroStockBilling == false ? 'selected' : ''}><spring:message
-														code="no.label" /></option>
-											</select>
-										</div>
-										</div>
-
-
-
-
-
-									<div class="form-group col-lg-2 "
-										style="margin-left: 12px;padding-right: 0px">
-										<label>EAN</label>
-										<div class="col-lg-12" style="padding-left: 0px;">
-											<input type="text" onblur="criteria(this)"
-												id="eanAllLocation0" style="" class="form-control"
-												value="${plu.ean}" placeholder="Enter EAN number">
-											<!-- <span id="eanError" style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span> -->
-										</div>
-									</div>
-
-									<div class="form-group col-lg-2" style="padding-left: 24px;">
-										<label>Stock Status</label> <select
-											class="form-control allField req" style="width:106%;"
-											id="skuStockStatus${selectedLocationId}${priceListCount}">
-											<option value="true"
-												${'true' == plu.stockStatus ? 'selected' : ''}>Active</option>
-											<option value="false"
-												${'false' == plu.stockStatus ? 'selected' : ''}>In-Active</option>
-
-										</select>
-									</div>
-
-									<div class="form-group col-lg-2"></div>
-
-									<div class="form-group col-lg-2 "></div>
-
-									<div class="form-group col-lg-2"></div>
-								</div>
-
-
-
-								<div class="row-fluid-5">
-
-									<div class="form-group col-lg-4" style="padding: 0px">
-
-										<label><spring:message
-												code="technicalSpecification.label" /> </label>
-										<textarea rows="2" onblur="criteria(this)"
-											id="technicalSpecDetailAllLocation0" style="resize: none;height: 75px;"
-											class="form-control allField"
-											placeholder="<spring:message code="entertechnicalSpecification.label" />">${plu.technical_specification}</textarea>
-										<span id="productSideEffectsError"
-											style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
-
-									</div>
-
-									<div class="form-group col-lg-4" style="padding-left: 37px;padding-right: 0px">
-										<label><spring:message code="description.label" /> <span
-											style="color: red; font-size: 2">*</span></label>
-										<textarea rows="2" onblur="criteria(this)"
-											class="form-control allField" onkeydown="clearError(this);"
-											id="pluDescAllLocation0" style="width: 110%;height: 75px;resize: none;" required
-											placeholder="<spring:message code="enter.description.label" />"></textarea>
-										<span id="pluDescAllLocation0Error"
-											style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
-									</div>
-								</div>
-
-
-
-
-							</div>
-
-							<div class="col-md-2 table-responsive"
-								style="border: 1px solid #ccc; padding: 0px; margin-left: -6.5%; width: 22%;">
-								<table id="SKUMasterEANAllLocatio0"
-									class="table table-bordered table-hover mulEANtable"
-									style="margin-bottom: 0px">
-									<thead style="background-color: #ccc !important; color: #ffff">
-										<tr>
-											<th>EAN</th>
-											<th>Action</th>
-										</tr>
-									</thead>
-									<tbody>
-
-										<tr id="dynamicdivAllLocatio0">
-											<td id="tableeanAllLocation0" style="width: 57%"><input
-												type="number" style="width: 100%" required="required"
-												id="eantableAllLocation0" value="${plu.ean}"></td>
-											<td style="width: 35%; white-space: nowrap;"
-												id="actionAllLocation0">
-												<!-- ;  -->
-												<a onclick="appendSKUEAN('AllLoc00','AllLocat000')"
-												style="border-bottom: 1px solid blue; color: blue; cursor: pointer;"><font
-													size="2px">add</font></a>&nbsp&nbsp&nbsp&nbsp <!--   --> <a
-												onclick="deleteSKUEAN('AllLoc00','AllLocat000');"
-												style="border-bottom: 1px solid blue; color: blue; cursor: pointer;"
-												id="deleteAllLocation0"><font size="2px">delete</font></a>
-											</td>
-										</tr>
-
-									</tbody>
-								</table>
-							</div>
-
-
-						</div>
-									
-									
-									
-									
-									
-									
-							<%-- <div class="pricelist" id="pricelistAllLocation0"
-										style="display: none;padding: 0px; ">
-							<div class="col-md-10" style="padding: 0px; ">
-										<div class="row-fluid-5">
-											<div class="form-group col-lg-2 " style="padding-left: 0px">
-												<input type="hidden" id="productRangeAllLocation0">
-												<input type="hidden" id="measurementRangeAllLocation0">
-												<input type="hidden" id="utilityRangeAllLocation0">
-												<input type="hidden" id="colourRangeAllLocation0">
-												<input type="hidden" id="sizeRangeAllLocation0">
-												<input type="hidden" id="batchRangeAllLocation0">
-													<input type="hidden" id="styleRangeAllLocation0">
-												<label><spring:message code="cost.price.label" /> <span
-													style="color: red; font-size: 2">*</span></label> <input
-													type="text" class="form-control allField req pluCost"
-													onkeydown="clearError(this);" onblur="calcMarkUp(this);"
-													value="" id="pluCostPriceAllLocation0" style="width:60%"
-													oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');"
-													placeholder="<spring:message code="enter.cost.price.label" />" />
-												<span id="pluCostPriceAllLocation0Error"
-													style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
-											</div>
-											<div class="form-group col-lg-2 " style="margin-left: 14px;">
-												<label><spring:message code="price.label" /> <span
-													style="color: red; font-size: 2">*</span></label> <input
-													type="text" class="form-control allField req"
-													onkeydown="clearError(this);" value=""
-													id="pluPriceAllLocation0" style="width:60%"
-													oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');"
-													placeholder="<spring:message code="enter.price.label" />" />
-												<span id="pluPriceAllLocation0Error"
-													style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
-											</div>
-											<div class="form-group col-lg-2 " style="margin-left: 6px;">
-												<label><spring:message code="sale.price.label" /> <span
-													style="color: red; font-size: 2">*</span></label> <input
-													type="text" class="form-control allField req pluSale"
-													onkeydown="clearError(this);" onblur="calcMarkUp(this);"
-													value="" id="pluSalePriceAllLocation0" style="width:60%"
-													oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');"
-													placeholder="<spring:message code="enter.sale.price.label" />" />
-												<span id="pluSalePriceAllLocation0Error"
-													style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
-											</div>
-
-											<div class="form-group col-lg-2" style="white-space:nowrap;margin-left:21px">
-												<label><spring:message code="ws.price.label" /> <span
-													style="color: red; font-size: 2">*</span></label> <input
-													type="text" onblur="criteria(this)"class="form-control allField req" value=""
-													onkeydown="clearError(this);" id="pluWsPriceAllLocation0" style="width:60%"
-													oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');"
-													placeholder="<spring:message code="enter.ws.price.label" />" />
-												<span id="pluWsPriceAllLocation0Error"
-													style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
-											</div>
-											
-									<!-- 	<input type="hidden" id="eanAllLocation0"> -->
-										<input type="hidden" id="eanduplicateAllLocation0">
-										
-											<div class="form-group col-lg-2" style="padding-right:0px">
-                            
-									<label><spring:message code="businessCategory.label" />
-										</label>
-									<input type="text" onblur="criteria(this)" id="businessCategoryDetailAllLocation0" 
-										name="productPrecautions" style="resize: none;width:80%"
-										class="form-control allField" value="${sku.product_precautions}"
-										placeholder="<spring:message code="enterbusinescategory.label" />">
-									<span id="businessCategoryQuickError"
-										style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
-								</div>
-											
-											
-											<div class="form-group col-lg-2" style="margin-left: 1px;">
-												<label><spring:message code="ean.label" /></label> <input
-													type="text" class="form-control allField"
-													id="eanAllLocation0" value=""
-													placeholder="<spring:message code="enter.ean.label" />" />
-											</div>
-											
-											<div class="form-group span2">
-												<label><spring:message code="extra.price.label" /></label>
-												<input type="text" class="form-control allField" value=""
-													onkeydown="clearError(this);"
-													id="pluExtraPriceAllLocation0"
-													oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');"
-													placeholder="<spring:message code="enter.extra.price.label" />" />
-												<span id="pluExtraPriceAllLocation0Error"
-													style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
-											</div>
-										</div>
-										
-										<div class="row-fluid-5">
-											<div class="form-group span2">
-												<label><spring:message code="color.label" /></label> <input
-													type="text" class="form-control allField"
-													onkeydown="clearError(this);" id="pluColorAllLocation0"
-													placeholder="<spring:message code="enter.color.label" />" />
-												<span id="pluColorAllLocation0Error"
-													style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
-											</div>
-											<div class="form-group col-lg-2" style="padding-left:0px">
-												<label><spring:message code="color.shade.label" /></label>
-												<input type="text" onblur="criteria(this)" class="form-control allField"
-													onkeydown="clearError(this);" 
-													id="pluColorShadeAllLocation0"
-													placeholder="<spring:message code="enter.color.shade.label" />" />
-												<span id="pluColorShadeAllLocation0Error"
-													style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
-											</div>
-										<div class="form-group col-lg-2" style="margin-left: 14px;">
-												<label><spring:message code="mbq.label" /></label> <input
-													type="text" onblur="criteria(this)" class="form-control allField"
-													onkeydown="clearError(this);" id="pluMbqAllLocation0" style="width:60%"
-													placeholder="<spring:message code="enter.mbq.label" />" />
-												<span id="pluMbqAllLocation0Error"
-													style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
-											</div>
-
-											<div class="form-group col-lg-2" style="white-space:nowrap;margin-left: 7px;">
-												<label><spring:message code="quantity.in.hand.label" />
-													<span style="color: red; font-size: 2">*</span></label> <input
-													type="text" onblur="criteria(this)" class="form-control allField req"
-													onblur="calculateStock();" onkeydown="clearError(this);"
-													value="" id="pluQuantityAllLocation0" style="width:80%"
-													oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');"
-													placeholder="<spring:message code="enter.quantity.in.hand.label" />" />
-												<span id="pluQuantityAllLocation0Error"
-													style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
-											</div>
-										<div class="form-group col-lg-2" style="margin-left:21px;">
-												<label><spring:message code="acp.label" /></label> <input
-													type="text" onblur="criteria(this)" class="form-control allField"
-													onkeydown="clearError(this);" id="pluAcpAllLocation0"
-													placeholder="<spring:message code="enter.acp.label" />" style="width:80%"/>
-												<span id="pluAcpAllLocation0Error"
-													style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
-											</div>
-											
-											
-											<div class="form-group col-lg-2 " style="padding-right: 0px;margin-left:0px"> 
-									<label><spring:message code="businessSubcategory.label" />
-										</label>
-									<input type="text"onblur="criteria(this)" id="businessSubcategoryDetailAllLocation0" 
-										name="productHanding" style="resize: none;width:80%" id="businessSubcategoryQuick"
-										class="form-control allField"  value="${plu.businessSubCategory}" 
-										placeholder="<spring:message code="enter.businessSubcategory.label" />">
-									<span id="productSideEffectsError"
-										style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
-
-								</div>		
-											
-	
-	<div class="form-group col-lg-2 " style="margin-left: 1px;padding-right:0px">
-												<label><spring:message code="created.date.label" /></label>
-												<div class="input-group">
-													<div class="input-group-addon">
-														<i class="fa fa-calendar"></i>
-													</div>
-													<input type="text" id="pluCreatedDateAllLocation0"
-														readonly="readonly" class="form-control dat"
-														data-inputmask="alias: dd/mm/yyyy" data-mask />
-												</div>
-												<span id="pluCreatedDateAllLocation0Error"
-													style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
-											</div>
-	
-										</div>
-										
-										
-										
-										
-										<div class="row-fluid-5">
-											
-											
-											<div class="form-group col-lg-2 " style="margin-left: 1px;padding-left:0px">
-												<label><spring:message code="created.date.label" /></label>
-												<div class="input-group">
-													<div class="input-group-addon">
-														<i class="fa fa-calendar"></i>
-													</div>
-													<input type="text" id="pluCreatedDateAllLocation0"
-														readonly="readonly" class="form-control dat" style="width:80%"
-														data-inputmask="alias: dd/mm/yyyy" data-mask />
-												</div>
-												<span id="pluCreatedDateAllLocation0Error"
-													style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
-											</div>
-											
-											<div class="form-group col-lg-2 " style="padding-left: 0px;padding-right:0px">
-												<label><spring:message code="updated.date.label" /></label>
-												<div class="input-group">
-													<div class="input-group-addon">
-														<i class="fa fa-calendar"></i>
-													</div>
-													<input type="text" id="pluUpdatedDateAllLocation0"
-														readonly="readonly" class="form-control dat"
-														data-inputmask="alias: dd/mm/yyyy" data-mask />
-												</div>
-												<span id="pluUpdatedDateAllLocation0Error"
-													style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
-											</div>
-											<div class="form-group col-lg-2 span2" style="margin-left:27px;padding-right:0px">
-												<label><spring:message code="expiry.date.label" /></label>
-												<div class="input-group">
-													<div class="input-group-addon">
-														<i class="fa fa-calendar"></i>
-													</div>
-													<input class="form-control allField req dat"
-														readonly="readonly" style="background-color: white;width:80%"
-														id="pluExpiryDateAllLocation0" size="20" type="text"
-														onfocus="callCalender('pluExpiryDateAllLocation0')"
-														onclick="callCalender('pluExpiryDateAllLocation0')"
-														placeholder="DD/MM/YYYY"  />
-													<!-- <input type="text" id="pluExpiryDate1" class="form-control allField req dat" data-inputmask="alias: dd/mm/yyyy" data-mask/> -->
-												</div>
-												<span id="pluExpiryDateAllLocation0Error"
-													style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
-											</div>
-											<div class="form-group span2">
-												<label><spring:message code="size.label" /></label> <input
-													type="text" class="form-control allField"
-													onkeydown="clearError(this);" id="pluSizeAllLocation0"
-													placeholder="<spring:message code="enter.size.label" />" />
-												<span id="pluSizeAllLocation0Error"
-													style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
-											</div>
-											
-											  <div class="form-group col-lg-2 span2" style="">
-                                           	<label><spring:message code="min.sales.quantity.label" /></label> <input
-													type="text" class="form-control allField"
-													id="priceMinSaleQtyAllLocation0" value="" style="width:70%"
-													placeholder="<spring:message code="min.sales.quantity.label" />" />
-                                         </div>
-											
-											<div class="form-group col-lg-2 " style="white-space:nowrap;margin-left:17px">
-																	<label><spring:message
-																			code="newarrival.product.status" /> </label>
-																			<select class="form-control allField req" style="width:80%" name="status" id="skuStatusAllLocation0">
-										                                      	<option value="true" ${'true' == plu.skuStatus ? 'selected' : ''} >Active</option>
-		                                  		                                <option value="false" ${'false' == plu.skuStatus ? 'selected' : ''} >In-Active</option>
-											
-										                                    </select> 
-																</div>
-																
-																
-																 <div class="form-group col-lg-2" style="">
-                                           	<label>Material Type</label> <input
-													type="text"   class="form-control allField"
-													id="materailTypeAllLocation0" value="${plu.materialType}"
-													placeholder="Material Type" style="width:70%" />
-                                         </div>
-																
-																
-																<div class="form-group col-lg-2" style="padding-right:0px">
-                            
-									<label><spring:message code="businessCategory.label" />
-										</label>
-									<input type="text" onblur="criteria(this)" id="businessCategoryDetailAllLocation0" 
-										name="productPrecautions" style="resize: none;"
-										class="form-control allField" value="${sku.product_precautions}"
-										placeholder="<spring:message code="enterbusinescategory.label" />">
-									<span id="businessCategoryQuickError"
-										style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
-								</div>
-
-																
-																
-																
-																
-																
-											
-										</div>
-								
-<div class="row-fluid-5">
-									
-									<div class="form-group col-lg-2 " style="padding-left: 0px">
-												<label><spring:message code="updated.date.label" /></label>
-												<div class="input-group">
-													<div class="input-group-addon">
-														<i class="fa fa-calendar"></i>
-													</div>
-													<input type="text" id="pluUpdatedDateAllLocation0"
-														readonly="readonly" class="form-control dat" style="width:80%"
-														data-inputmask="alias: dd/mm/yyyy" data-mask />
-												</div>
-												<span id="pluUpdatedDateAllLocation0Error"
-													style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
-											</div>
-											
-											<div class="form-group col-lg-2 span2" style="margin-left: 27px;padding-right:0px">
-																	<label><spring:message code="packaged.date.label" /></label>
-																	<div class="input-group">
-																		<div class="input-group-addon">
-																			<i class="fa fa-calendar"></i>
-																		</div>
-																		<input class="form-control allField req dat"
-																			 readonly="readonly"
-																			style="background-color: white;width:80%"
-																			id="pluPackagedDateAllLocation0"
-																			value="${plu.packagingDate}" size="20" type="text"
-																			onfocus="callCalender('pluPackagedDateAllLocation0')"
-																			onclick="callCalender('pluPackagedDateAllLocation0')"
-																			placeholder="DD/MM/YYYY" />
-																	</div>
-																	<span
-																		id="pluPackagedDate${selectedLocationId}${priceListCount}Error"
-																		style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
-																</div>		
-												
-																
-					<div class="form-group col-lg-2" style="margin-left:5px" >
-                                           	<label><spring:message code="pack.size.label" /></label> <input
-													type="text" class="form-control allField"
-													id="pricePackSizeAllLocation0" value="${plu.packSize}"
-													placeholder="<spring:message code="enter.pack.size.label" />" style="width:60%"/>
-                                        </div>
-                                        
-                                        <div class="form-group col-lg-2 " style="padding-right: 0px;margin-left:20px"> 
-									<label><spring:message code="stock.factory.label" />
-										</label>
-									<input type="text" onblur="criteria(this)" id="stockfactorAllLocation0" 
-										style="resize: none;width:60%" 
-										class="form-control allField"  value="${plu.stockFactor}"
-										placeholder="enter stock factor"style="width:60%">
-									
-								</div>		
-                                
-                                
-                                <div class="form-group col-lg-2">
-									<label>Zero Stock Billing</label>
-									<div class="col-lg-10" style="padding-left: 0px">
-										<select class="form-control" name="zeroStockbillingAllLocation0" id="zeroStockbillingAllLocation0">
-											<option value="true" ${plu.zeroStockBilling == true ? 'selected' : ''}><spring:message
-													code="yes.label" /></option>
-							 				<option value="false" ${plu.zeroStockBilling == false ? 'selected' : ''}><spring:message
-													code="no.label" /></option>
-										</select>
-									</div>
-								</div>
-                                
-                                        
-                                             <div class="form-group col-lg-2 span2" style="">
-                                           	<label><spring:message code="min.sales.quantity.label" /></label> <input
-													type="text" class="form-control allField"
-													id="priceMinSaleQtyAllLocation0" value=""
-													placeholder="<spring:message code="min.sales.quantity.label" />" />
-                                         </div>
-                                        				
-									
-									<div class="form-group col-lg-8" style="padding-right:0px">
-								
-									<label><spring:message code="technicalSpecification.label" />
-										</label>
-									<textarea rows="1" id="technicalSpecDetailAllLocation0"  style="resize:none"
-										class="form-control allField"
-										placeholder="<spring:message code="entertechnicalSpecification.label" />">${plu.technical_specification}</textarea>
-									<span id="productSideEffectsError"
-										style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
-							
-								</div>
-								
-								
-								<div class="form-group col-lg-2 " style="padding-right: 0px;margin-left:17px"> 
-									<label><spring:message code="businessSubcategory.label" />
-										</label>
-									<input type="text"onblur="criteria(this)" id="businessSubcategoryDetailAllLocation0" 
-										name="productHanding" style="resize: none;" id="businessSubcategoryQuick"
-										class="form-control allField"  value="${plu.businessSubCategory}"
-										placeholder="<spring:message code="enter.businessSubcategory.label" />">
-									<span id="productSideEffectsError"
-										style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
-
-								</div>		
-												
-												</div>
-										
-										
-										
-										
-										
-<!-- 										<div class="row-fluid-5"> -->
-													<div class="form-group span2">
-														<label><spring:message code="discounttype.label" /></label> 
-														<select class="form-control" id="pludiscounttypeAllLocation0">
-														<option value="flat_rate">Cash Flat</option>
-                                            			<option value="percentage">Cash Discount</option>
-														</select>
-													</div>
-													<div class="form-group span2">
-														<label><spring:message
-																code="discount.label" /> </label> <input
-															type="text" class="form-control allField req"
-															onkeydown="clearError(this);"
-															value="" id="pludiscountAllLocation0"
-															oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');"
-															placeholder="<spring:message code="discount.label" />" />
-														
-													</div>
-												
-												
-													<div class="form-group span2">
-														<label><spring:message
-																code="cash.discpunt.label" /> </label> <input
-															type="text" class="form-control allField req"
-															onkeydown="clearError(this);"
-															 id="pluCashdiscountAllLocation0"
-															oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');"
-															placeholder="<spring:message code="discount.label" />" />
-														
-													</div>
-													
-													
-													
-												<div class="form-group span2">
-														<label><spring:message
-																code="productBatchno.label" /> </label> <input
-															type="text" class="form-control allField req"  
-															onkeydown="clearError(this);"
-															 id="pluProductBatchAllLocation0"
-															oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');"
-															placeholder="<spring:message code="productBatchno.label" />" />
-														
-													</div>
-												
-												
-													<div class="form-group span2">
-														<label><spring:message
-																code="productserialno.label" /> </label> <input
-															type="text" class="form-control allField req" 
-															onkeydown="clearError(this);"
-															 id="pludProductSerialNoAllLocation0"
-															oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');"
-															placeholder="<spring:message code="productserialno.label" />" />
-														
-													</div>
-												
-												
-										
-												
-												
-												<div class="row-fluid-5">
-												
-												
-												<div class="form-group span2">
-																	<label><spring:message code="bestBeforeDate.label" /></label>
-																	<div class="input-group">
-																		<div class="input-group-addon">
-																			<i class="fa fa-calendar"></i>
-																		</div>
-																		<input class="form-control allField req dat"
-																		readonly="readonly" style="background-color: white;"
-																			id="pluBestBeforeDateAllLocation0"
-																			value="" size="20" type="text"
-																			onfocus=""
-																			onclick=""
-																			placeholder="DD/MM/YYYY" />
-																	</div>
-																	<span
-																		id="pluBestBeforeDateAllLocation0Error"
-																		style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
-																</div>
-																<div class="form-group span2">
-																	<label><spring:message
-																			code="effectivefromDate.label" /></label>
-																	<div class="input-group">
-																		<div class="input-group-addon">
-																			<i class="fa fa-calendar"></i>
-																		</div>
-																		<input class="form-control allField req dat"
-																		readonly="readonly" style="background-color: white;"
-																			id="pluEffectivedDateAllLocation0"
-																			onfocus=""
-																			onclick=""
-																			placeholder="DD/MM/YYYY" data-mask />
-																	</div>
-																	<span
-																		id="pluEffectivedDateAllLocation0Error"
-																		style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
-																</div>
-												
-												
-												
-												<div class="form-group span2">
-																	<label><spring:message code="manufacturedDate.label" /></label>
-																	<div class="input-group">
-																		<div class="input-group-addon">
-																			<i class="fa fa-calendar"></i>
-																		</div>
-																		<input class="form-control allField req dat"
-																			readonly="readonly" style="background-color: white;"
-																			id="plumanufacturedDateAllLocation0" name="plumanufacturedDateAllLocation0"
-																			 size="20" type="text"
-																			onfocus=""
-																			onclick=""
-																			placeholder="DD/MM/YYYY" />
-																	</div>
-																	<span
-																		id="plumanufacturedDateAllLocation0Eror"
-																		style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
-																</div>
-												
-												
-												<div class="form-group span2">
-																	<label><spring:message code="warrantyperiad.label" /></label>
-																	<input type="text" class="form-control allField"
-																		onkeydown="clearError(this);" 
-																		id="pluWarrantyPeriodAllLocation0"
-																	   
-																		placeholder="<spring:message code="enterwarrantyperiad.label" />" />
-																	<div class="input-group">
-																		<div class="input-group-addon">
-																			<i class="fa fa-calendar"></i>
-																		</div>
-																		<input class="form-control allField req dat"
-																			readonly="readonly" style="background-color: white;"
-																			id="pluwarrantyDateAllLocation0"
-																			 size="20" type="text"
-																			onfocus=""
-																			onclick=""
-																			placeholder="DD/MM/YYYY" />
-																	</div>
-																	<span
-																		id="pluWarrantyPeriodAllLocation0Error"
-																		style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
-																</div>
-												
-												
-												
-												
-												<div class="form-group span2">
-									<label><spring:message code="reorder.point.label" /></label>
-									
-										<input type="text" class="form-control allField"
-											 name="reorderPoint" id="plureorderPointAllLocation0"
-											 value="" required
-											oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');"
-											placeholder="<spring:message code="enter.reorder.point.label" />" />
-										<span id="plureorderPointAllLocation0Error"
-					style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
-									
-								</div>
-										</div> 
-												
-											
-											
-											
-											
-											<div class="row-fluid-5">
-												<div class="form-group span2" style="padding-left:0px">
-																	<label><spring:message code="blockdeQty.label" />
-																		</label> <input
-																		type="text" class="form-control allField req "
-																		onkeydown="clearError(this);"
-																		id="pluBlockedQtyAllLocation0"
-																	   
-																		oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');"
-																		placeholder="<spring:message code="enterblockdeQty.label" />" />
-																	<span
-																		id="pluBlockedQtyAllLocation0Error"
-																		style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
-																</div>
-																
-																
-													<div class="form-group  span2" style="padding-left:0px">
-																	<label><spring:message code="scrapedQty.label" />
-																		</label> <input
-																		type="text" class="form-control allField req "
-																		 onkeydown="clearError(this);"
-																		id="pluScrapedQtyAllLocation0"
-																		
-																		oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');"
-																		placeholder="<spring:message code="enterscrapedQty.label" />" />
-																	<span
-																		id="pluScrapedQtyAllLocation0Error"
-																		style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
-																</div>			
-															
-															
-															
-													<div class="form-group span2">
-																	<label><spring:message code="styleRange.label" /></label>
-																	<input type="text" class="form-control allField"
-																		onkeydown="clearError(this);" 
-																		id="pluStyleRangeAllLocation0"
-																		
-																		placeholder="<spring:message code="enterstyleRange.label" />" />
-																	<span
-																		id="pluStyleRangeAllLocation0Error"
-																		style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
-																</div>				
-															
-															
-															
-														<div class="form-group span2">
-																	<label><spring:message code="packageId.label" /></label>
-																	<input type="text" class="form-control allField"
-																		onkeydown="clearError(this);"
-																		id="pluPackageIdAllLocation0" name="pluPackageId"
-																		value=""
-																		placeholder="<spring:message code="enter.packageId.label" />" />
-																	<span
-																		id="pluPackageIdAllLocation0Error"
-																		style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
-																</div>	
-													
-													
-													
-													
-														
-															<div class="form-group span2">
-																	<label><spring:message code="utility.label" /></label>
-																	<input type="text" class="form-control allField"
-																		onkeydown="clearError(this);"
-																		id="pluUtilityAllLocation0" name="pluUtility"
-																		value=""
-																		placeholder="<spring:message code="enter.utility.label" />" />
-																	<span
-																		id="pluPackageIdAllLocation0Error"
-																		style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
-																</div>	
-																
-												
-											</div>
-												
 <!-- 												</div> -->
 
 
@@ -4806,7 +3140,7 @@ img.thumbnail {
 								</div> 
 								
 									
-									</div> --%>
+									</div>
 									
 
 								</div>

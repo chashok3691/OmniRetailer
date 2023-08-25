@@ -342,9 +342,10 @@ $("#unitCashValue").blur(function(){
     										<span style="color:red; font-size:2;font-weight: bold" id="errLocation"></span>
                                     	</div>
                                     	
-                                    	<div class="form-group col-lg-2">
+                                      <div class="form-group col-lg-2">
                                     	 <label style="font-family: Calibri;color: gray;"><spring:message code="card.description.label" /></label>
-                                            <textarea style="resize:none;padding: 10px 10px;" class="form-control"  name="description" rows="3">${giftVoucher.description}</textarea>
+                                            <textarea style="resize:none;padding: 10px 10px;" class="form-control" id="description" name="description" rows="3">${giftVoucher.description}</textarea>
+                                            <span style="color:red; font-size:2;font-weight: bold" id="errdescription"></span>
                                       </div>
                                     	
                                       	<div class="form-group col-lg-6">

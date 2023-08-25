@@ -2374,15 +2374,9 @@ function validatePurchaseOrder(operation,type){
 	debugger;
 	
 	var countv = $("#countv").val();
-	
-	
 	if(countv == 0 ||countv == undefined || countv == null){
 		alert("google");
-		
 	}
-	
-	
-	
 	
 	
 	 if(operation == 'gridupdate'){}
@@ -2428,11 +2422,23 @@ function validatePurchaseOrder(operation,type){
 		  $("#searchSupplier").focus();
 		  return;
 	  }
+	  
 	  if($("#supplier_Id").val() == ""){
 		  $("#supplierNameError").html("Supplier Name doesn't exist");
 		  $("#searchSupplier").focus();
 		  return;
 	  }
+	  
+	  if(parseInt($("#supplier_Id").val().length)>20){
+			 $("#supplier_Id").focus();
+				$("#orderApprovedByError").html("Supplier Id can't exceeds 20 Characters");
+				return;
+		}else{
+	   	 $("#orderApprovedByError").html(" ");
+	   }
+	  
+	 
+	
 		 
 		  var len = $("#productsList tr").length-1;
 		  var itemDetails = [];
@@ -2503,7 +2509,7 @@ function validatePurchaseOrder(operation,type){
 			} 
 	 }
 	
-
+	 
 		 
 		
 		
@@ -2543,6 +2549,7 @@ function validatePurchaseOrder(operation,type){
 	     		 }
 				
 			}
+			
 			 if(operation == 'gridupdate'){
 		    	
 		    	 finalObj.poRef = type;

@@ -173,7 +173,7 @@ function saveSubCategory(operation){
    	 $("#subCategoryName").focus();
    	$("#subCategoryNameError").html("Sub Category Name Required");
    	return false;
-   }else if(parseInt($("#subCategoryName").val().length)>=100){
+   }else if(parseInt($("#subCategoryName").val().length)>100){
 		 $("#subCategoryName").focus();
 			$("#subCategoryNameError").html("subcategory can't exceeds 100 Characters");
 			return;
@@ -182,7 +182,7 @@ function saveSubCategory(operation){
    	$("#subCategoryDescription").focus();
    	$("#subCategoryDescriptionError").html("Sub Category Description Required");
    	return false;
-   }else if(parseInt($("#subCategoryDescription").val().length)>=250){
+   }else if(parseInt($("#subCategoryDescription").val().length)>250){
 		 $("#subCategoryDescription").focus();
 			$("#subCategoryDescriptionError").html("Subcategory can't exceeds 250 Characters");
 			return;

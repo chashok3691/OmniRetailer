@@ -217,7 +217,7 @@ function validateZone(operation){
 			$("#addressOneError").html("Enter Address1");
 			$("#addressOne").focus();
 			return false;
-		}else if(parseInt($("#addressOne").val().length)>=200){
+		}else if(parseInt($("#addressOne").val().length)>200){
 			$("#addressOne").focus();
 			$("#addressOneError").html("Address1 can't exceeds 200 Characters");
 			return;
@@ -226,7 +226,7 @@ function validateZone(operation){
 			$("#address2Error").html("Enter Address2");
 			$("#addressTwo").focus();
 			return false;
-		}else if(parseInt($("#addressTwo").val().length)>=200){
+		}else if(parseInt($("#addressTwo").val().length)>200){
 			$("#addressTwo").focus();
 			$("#address2Error").html("Address2 can't exceeds 200 Characters");
 		}
@@ -266,7 +266,7 @@ function validateZone(operation){
 			$("#zoneDescription").focus();
 			$("#DescError").html("Enter Description");
 			return false;
-		}else if(parseInt($("#zoneDescription").val().length)>=250){
+		}else if(parseInt($("#zoneDescription").val().length)>250){
 			$("#zoneDescription").focus();
 			$("#DescError").html("Description can't exceeds 250 characters");
 			return false;

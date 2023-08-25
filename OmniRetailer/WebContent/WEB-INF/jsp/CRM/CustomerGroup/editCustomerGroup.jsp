@@ -132,10 +132,10 @@ $(document).ready(function(){
 		 	<div class="col-lg-3" style="">
 		 	
 		 	 <div class="col-lg-7" style="padding-left:0px;padding-right: 0px;">
-		 	                         <label><spring:message code="groupcategory.label"/></label>
-		 	 
-            		<input  class="form-control  form-group" type= "text" value="${customerGroupObj.group_category}"  id="groupCategory"/>
-				</div>
+		 	      <label><spring:message code="groupcategory.label"/></label>
+            	   <input  class="form-control  form-group" type= "text" value="${customerGroupObj.group_category}"  id="groupCategory"/>
+				  <span id="groupCategoryError" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
+			</div>
 		 	
 		 	</div>
 		 	<div class="col-lg-3" style="">
@@ -157,18 +157,14 @@ $(document).ready(function(){
                 	 	<input class="form-control calendar_icon form-group"  value="${customerGroupObj.startDate}" style="background-color: white;" id="startDate" size="20" type="text" onfocus="callCalender('startDate')" onclick="callCalender('startDate')" placeholder="DD/MM/YYYY" />
 	              </div>
 		 	</div>
-		 	
-		 	
-		 	
 		 
 
-
-<div class="col-lg-3" style="">
+           <div class="col-lg-3" style="">
 		 	    <div class="col-lg-8" style="padding-left:0px;padding-right: 0px;">
                         <label><spring:message code="groupdescription.label"/></label>
-                         
-	                        <input type= "text" class="form-control form-group" value="${customerGroupObj.group_description}"  id="groupDescription"/>
-                         </div>
+                     <input type= "text" class="form-control form-group" value="${customerGroupObj.group_description}"  id="groupDescription"/>
+                  <span id="groupDescriptionError" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
+             </div>
 		 	
 		 	</div>
 		 	<div class="col-lg-3" style="">
@@ -199,7 +195,8 @@ $(document).ready(function(){
 		 	  <div class="col-lg-6" style="padding-left:0px;padding-right: 0px;">
                  		<label><spring:message code="offer_end_date.label"/><span class="requiredField">*</span></label>
                 	 	<input class="form-control calendar_icon form-group"  value="${customerGroupObj.endDate}" style="background-color: white;" id="endDate" size="20" type="text" onfocus="callCalender('endDate')" onclick="callCalender('endDate')" placeholder="DD/MM/YYYY"  />
-	              </div>
+	              <span id="endDateError" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
+	          </div>
 		 	</div>
 
         	

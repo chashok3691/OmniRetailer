@@ -9,7 +9,6 @@
       	    	 $.ajax({
       	    		type : "GET",
       	    		url : URL,
-      	    		
       	    		data : {
       	    			loyaltyProgramNumber : loyaltyProgramNumber,
       	    			maxRecords:maxRecords
@@ -32,8 +31,6 @@
       	    	 
       	     }
  
-
- 
 //added by koti bomminenni
 	//purpose : to edit LOyaltycards
 	
@@ -54,15 +51,9 @@
 			$("#assignedStatus"+count).removeAttr("disabled");
 
 			$("#statusofCard"+count).removeAttr("disabled");
-			
-			
 			editPlusLoyalty.push(CardNumber);
 			$("#Name"+count).addClass("edited");
-			
-			
-			
-			
-
+	
 	}
 
 	
@@ -76,8 +67,6 @@
 	 //
 	 loyaltyProgramNumber = $("#loyaltyPlanId").val();
 	 var searchCriteria = $("#searchItems").val();
-	 
-	 
 	 
 	 var URL =contextPath + "/crm/searchLoyaltyCards.do";
 	 $.ajax({
@@ -113,21 +102,21 @@
 			 $("#mainDiv").removeClass('disabled');
 		 }
 	 });
-
  }
-
- 
- 
 
  function validateLoyaltyCards(operation){
 	 //;
 	 debugger;
 		var re = /^[0-9/]+$/;
-		if($("#loyaltyProgramName").val().trim() == ""){
-			$("#loyaltyProgramName").focus();
-			$("#errLoyaltyProgramName").html("Enter a Plan Name");
-			return;
-		}
+		
+		if(parseInt($("#loyaltyPlanId").val().length)>20){
+			 $("#loyaltyPlanId").focus();
+				$("#loyaltyPlanIderr").html("Loyalty Plan Id can't exceeds 20 Characters");
+				return;
+		}else{
+		 $("#loyaltyPlanIderr").html(" ");
+	  } 
+		
 		if($("#validFrom").val().trim() == ""){
 			$("#validFrom").focus();
 //			$("#validFromError").html("Enter a Date");
@@ -152,42 +141,59 @@
 		if(daysToExpire < 0){
 			 $("#validToError").html("Valid To should be greater than today");
 			 return;
-		 }
+		}
 		 var noOfDays = daydiff(parseDate($('#validFrom').val()), parseDate($('#validTo').val()));
 		 if(noOfDays < 0){
 			 $("#validToError").html("Valid To can't be less than Valid From");
-			 
 			 return;
 		 }
-		// alert(noOfDays)
-		 
 		 
 		 if($("#validityPeriod").val().trim() == "" || parseInt($("#validityPeriod").val().trim())==0){
-   			$("#errValidityPeriod").html("Validity period should be atleast 1 day");
-   			return;
-   		}
-   		
-   		 var validityPeriod = parseInt($("#validityPeriod").val().trim());
-   			if(validityPeriod >noOfDays+1){
-   				
-   				if(noOfDays==0 && validityPeriod==1)
-   					{
-   					
-   					}
-   				else
-   					{
-   					$("#errValidityPeriod").html("Enter no of days properly");
-            			return;
-   					}
-   				
-        			
-   			 }
-			
+	   			$("#errValidityPeriod").html("Validity period should be atleast 1 day");
+	   			return;
+	   		}
+	   		
+	   		 var validityPeriod = parseInt($("#validityPeriod").val().trim());
+	   			if(validityPeriod >noOfDays+1){
+	   				if(noOfDays==0 && validityPeriod==1){
+	   				}
+	   				else{
+	   					$("#errValidityPeriod").html("Enter no of days properly");
+	            			return;
+	   					}
+	   		}
 		 
+		 if(parseInt($("#validityPeriod").val().length)>8){
+			 $("#validityPeriod").focus();
+				$("#errValidityPeriod").html("Validity Period can't exceeds 8 Digit");
+				return;
+		}else{
+		 $("#errValidityPeriod").html(" ");
+	    } 
 		 
+		// alert(noOfDays)
+		 if($("#loyaltyProgramName").val().trim() == ""){
+				$("#loyaltyProgramName").focus();
+				$("#errLoyaltyProgramName").html("Enter a Plan Name");
+				return;
+			}
 		 
-
+		 if(parseInt($("#loyaltyProgramName").val().length)>50){
+			 $("#loyaltyProgramName").focus();
+				$("#errLoyaltyProgramName").html("Loyalty Plan Name can't exceeds 50 Characters");
+				return;
+		}else{
+		 $("#errLoyaltyProgramName").html(" ");
+	    } 
 		 
+		 if(parseInt($("#rewardLifeTime").val().length)>8){
+			 $("#rewardLifeTime").focus();
+				$("#rewardLifeTimeError").html("Reward Life Span can't exceeds 8 Digit");
+				return;
+		}else{
+		 $("#rewardLifeTimeError").html(" ");
+	    } 
+		
 		 if($("#startDate").val().trim() == ""){
 			 $("#startDate").focus();
 //				$("#startDateError").html("Enter a Date");
@@ -229,6 +235,13 @@
 			return;
 		}
 		
+		 if(parseInt($("#noOfCards").val().length)>10){
+			 $("#noOfCards").focus();
+		       $("#errnoOfCards").html("No Of Cards can't exceeds 10 Digit");
+				return;
+		}else{
+		 $("#errnoOfCards").html(" ");
+	    } 
 		
 		if($("#rewardConversionRatio").val() == ""){
 			$("#rewardConversionRatio").focus();
@@ -258,8 +271,6 @@
 				return;
 			}
 			}
-		
-		
 		
 		if($("#zone").val() == "" || $("#zone").val() == null){
 			 $("#zone").focus();
@@ -298,11 +309,8 @@
 		*/
 		
 		var autoFlag = $("#autoIssue").val();
-	
-		
-		
-		  var loyaltyPurcahseRanges = [];
-		  var len = parseInt($("#rewardranges tr").length);
+	    var loyaltyPurcahseRanges = [];
+		var len = parseInt($("#rewardranges tr").length);
 		  
 //		  if(len == 0)
 //			  {
@@ -323,14 +331,9 @@
 			
 			if(operation=="edit")
 			{
-				
-				
-			
-				  var customerLoyaltyCards = [];
+			 var customerLoyaltyCards = [];
 				  var len2 = parseInt($("#cardDetails tr").length);
-				  
-
-				  $('.edited').each(function() {
+				   $('.edited').each(function() {
 					  debugger;
 					  var idAttr= $(this).attr("id").replace('Name','');
 						//var idAttr=parseInt($(this).text());
@@ -379,12 +382,7 @@
 					var items3 = JSON.stringify(loyaltyCards);
 					$("#loyaltyCardsdetails").val(items3);
 					console.log(items3);
-				
-					
-					
-					
-					
-					var loyaltyZones = [];
+				    var loyaltyZones = [];
 					var len4 = parseInt($("#lengthofzone").val());
 					
 					 var zoneLst=$("#zone").val();
@@ -402,11 +400,7 @@
 					$("#loyaltyZoneDetails").val(items4);
 					console.log(items4);
 				
-				
-				
-					
-				
-					$("#loyaltyCardsIds").val(editPlusLoyalty);	
+				    $("#loyaltyCardsIds").val(editPlusLoyalty);	
 					
 					var programids=$("#loyaltyPlanId").val()
 					
@@ -441,10 +435,6 @@
 		var deleteRangeItems="";
 		
 		var formData  = JSON.stringify(data);
-		
-		
-		
-		
 		 console.log(formData);
 		 var contextPath = $("#contextPath").val();
 	   	   if(operation=="new")

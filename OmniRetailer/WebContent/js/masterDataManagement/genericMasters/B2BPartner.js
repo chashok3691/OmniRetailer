@@ -502,6 +502,13 @@ function selectDepartment(id){
 			  	 }else{
 			  		$("#partnerIDError").html("");
 			  	 }
+			 if(parseFloat($("#partnerId").val().length) > 15) {
+					$("#partnerId").focus();
+					$("#partnerIDError").html("partnerID can't exceeds 15 characters");
+					return;
+			}else{
+		  		$("#partnerIDError").html("");
+		  	 }
 			 
 		   	if(firmName.trim() == "" || firmName.trim() == null || firmName.trim() == undefined){
 	        	$("#firmNameError").html("Firm name is required");
@@ -510,19 +517,64 @@ function selectDepartment(id){
 	 	  	 }else{
 		  		$("#firmNameError").html("");
 		  	 }
-		   	
-		   	if(personName.trim() == "" || personName.trim() == null || personName.trim() == undefined){
+			if(parseFloat($("#firmName").val().length) > 20) {
+				$("#firmName").focus();
+				$("#firmNameError").html("Firm Name can't exceeds 20 characters");
+				return;
+		   }else{
+	  		$("#firmNameError").html("");
+	  	 }
+		  	if(personName.trim() == "" || personName.trim() == null || personName.trim() == undefined){
 	        	$("#personNameError").html("Person name is required");
 	        	$("#personName").focus();
 	 	  		return false;
 	 	  	 }else{
 		  		$("#personNameError").html("");
 		  	 }
-		   	
+			if(parseFloat($("#personName").val().length) >20) {
+				$("#personName").focus();
+				$("#personNameError").html("Person Name can't exceeds 20 characters");
+				return;
+		}else {
+	  		$("#personNameError").html("");
+	  	 }
+			
+			if(parseFloat($("#bankAccountNo").val().length) > 18) {
+				$("#bankAccountNo").focus();
+				$("#bankAccountNoError").html("Bank Account No can't exceeds 18 digit");
+				return;
+		}else {
+	  		$("#bankAccountNoError").html("");
+	  	 }
+			
+			if(parseFloat($("#bankName").val().length) > 20) {
+				$("#bankName").focus();
+				$("#bankNameError").html("Bank Name can't exceeds 20 characters");
+				return;
+		}else {
+	  		$("#bankNameError").html("");
+	  	 }
+			
+			if(parseFloat($("#ifscCode").val().length) >11) {
+				$("#ifscCode").focus();
+				$("#ifscCodeError").html("IFSC Code can't exceeds 11 digit");
+				return;
+		}else {
+	  		$("#ifscCodeError").html("");
+	  	 }
+			 /*if(parseFloat($("#plotNo").val().length) >= 50) {
+					$("#plotNo").focus();
+					$("#plotNumError").html("Plot number can't exceeds 50 character");
+					return;
+			}else {
+		  		$("#plotNumError").html("");
+		  	 }*/
+			 
+			 
 		    	 if(plotNo=="" || plotNo==undefined || plotNo==null){ 
 		    		 $("#plotNumberError").html("Plot number required");
 		    		 $("#plotNo").focus();
-		    		 return false;
+		    		 return ;
 		    	  }else{
 		    		  $("#plotNumberError").html("");
 		    	  }
@@ -534,6 +586,13 @@ function selectDepartment(id){
 		    	  }else{
 		    		  $("#streetError").html("");
 		    	  }
+		    	 if(parseFloat($("#street").val().length) >20) {
+						$("#street").focus();
+						$("#streetError").html("Street can't exceeds 20 character");
+						return;
+				}else{
+			  		$("#streetError").html("");
+			  	 }
 		    	 
 		    	 if(Adrress=="" || Adrress==undefined || Adrress==null){ 
 		    		 $("#locationError").html("Location required");
@@ -542,6 +601,14 @@ function selectDepartment(id){
 		    	  }else{
 		    		  $("#locationError").html("");
 		    	  }
+		    	 if(parseFloat($("#location").val().length) >20) {
+						$("#location").focus();
+						$("#locationError").html("Location can't exceeds 20 character");
+						return;
+				}else{
+			  		$("#locationError").html("");
+			  	 }
+		    	 
 		    	 if(city=="" || city==undefined || city==null){ 
 		    		 $("#cityError").html("City required");
 		    		 $("#city").focus();
@@ -550,6 +617,14 @@ function selectDepartment(id){
 		    		  $("#cityError").html("");
 		    	  }
 		    	 
+		    	 if(parseFloat($("#city").val().length) >50) {
+						$("#city").focus();
+						$("#cityError").html("City can't exceeds 50 character");
+						return;
+				}else{
+			  		$("#cityError").html("");
+			  	 }
+		    	 
 		    	/* if($("#state").val()=="" || $("#state").val()==undefined || $("#state").val()==null){ 
 		    		 $("#stateError").html("please select state");
 		    		 $("#state").focus();
@@ -557,6 +632,14 @@ function selectDepartment(id){
 		    	  }else{
 		    		  $("#stateError").html("");
 		    	  }*/
+		    	 
+		    	 if(parseFloat($("#businessType").val().length) >30) {
+						$("#businessType").focus();
+						$("#businessTypeError").html("Business Type can't exceeds 30 character");
+						return;
+				}else{
+			  		$("#businessTypeError").html("");
+			  	 }
 		    	 
 		    	  if(phoneNumber=="" || phoneNumber==undefined || phoneNumber==null){
 		    		$("#b2bPhoneNumberError").html("Phone number required");
@@ -578,7 +661,13 @@ function selectDepartment(id){
 				  }else {
 		  	  			$("#emailError").html("");
 		 	  	 }
-		     	  
+		     	 if(parseFloat($("#gstNumber").val().length) > 15) {
+						$("#gstNumber").focus();
+						$("#gstNumberError").html("GST Number can't exceeds 15 digit");
+						return;
+				}else {
+			  		$("#gstNumberError").html("");
+			  	 }
 		     	 var txtPANCard = document.getElementById("panNumber");
 				 if(txtPANCard.value != ""){
 			        var regex = /([A-Z]){5}([0-9]){4}([A-Z]){1}$/;
@@ -589,6 +678,30 @@ function selectDepartment(id){
 			            return false;
 			        }
 				 }
+				 
+				 if(parseFloat($("#panNumber").val().length) > 10){
+						$("#panNumber").focus();
+						$("#panNumberError").html("PAN Number can't exceeds 10 digit");
+						return;
+				}else {
+			  		$("#panNumberError").html("");
+			  	 }
+				 
+				 if(parseFloat($("#panNumber").val().length) > 10){
+						$("#panNumber").focus();
+						$("#panNumberError").html("PAN Number can't exceeds 10 digit");
+						return;
+				}else {
+			  		$("#panNumberError").html("");
+			  	 }
+				 
+				 if(parseFloat($("#panNumber").val().length) > 10){
+						$("#panNumber").focus();
+						$("#panNumberError").html("PAN Number can't exceeds 10 digit");
+						return;
+				}else {
+			  		$("#panNumberError").html("");
+			  	 }
 				
 				var URLLink = "/NTMCart/home/registrationbyQR.do?partnerId="+partnerId+"";
 				var partnerQRURL = $("#partnerqrCodePdfUrl").val();

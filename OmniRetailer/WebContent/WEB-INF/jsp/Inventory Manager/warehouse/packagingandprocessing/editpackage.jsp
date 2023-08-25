@@ -108,40 +108,9 @@ margin-top: 5px !important;
 
 <script type="text/javascript">
 $(document).ready(function(){
-		debugger
-	setData();
-	var errorSku="";
-	var length=$(".dynamicdiv").length
-	var workFlow =  $("#workFlow").val();
-	
-if(workFlow == "Submitted"){
-	for (var i =1 ;i<=length ;i++){
-		var l =$(".rowone"+i).length - 1 ;
-		
-		for(var j=1;j<=l ;j++){
-			
-			var packagesListavlQty = $("#packagesListavlQty"+i+""+j).val();
-			var isZeroBillingFlag = $("#packagesListzeroflag"+i+""+j).val();
-			if(packagesListavlQty == "0.0" && isZeroBillingFlag == "false"){
-				if(i == i && j == 1){
-					errorSku += "We can't process your request, Due to " + $("#packagesListSkuId"+i+""+j).val();
-				}else{
-					if(errorSku != ""){
-						errorSku += ","+$("#packagesListSkuId"+i+""+j).val();
-					}else{
-						"We can't process your request, Due to " + $("#packagesListSkuId"+i+""+j).val();
-					}
-				}
-			}
-		}
-		//var packagesListavlQty = $("#packagesListavlQty"+i).val();
-	}
-}
-	if(errorSku != ""){
-		errorSku += " SKU(s) has insufficient quantity."
-		$(".submit").attr('disabled','disabled');
-		$("#ErrorDetail").html(errorSku);
-	}
+setData();
+
+
 	
 });
 
@@ -161,9 +130,7 @@ if(workFlow == "Submitted"){
 			Edit-Package
 		</h3>
 		</div>
-             <div id="ErrorDetail" class="Error" style="text-align: center; color: red; font-size: 2; font-weight: bold; margin-bottom: 20px;">${err}</div>
-			 <div id="SuccessDetail" class="Error" style="text-align: center; color: blue; font-size: 2; font-weight: bold; margin-bottom: 20px;">${success}</div>
-              <input type="hidden" id="Errorskus"value=""/>
+             
                <div class="box-body table-responsive">
                
                   <div class="row" style="margin-left: 0px;">
@@ -238,11 +205,12 @@ if(workFlow == "Submitted"){
                        
                        
                        </div>
-                         <div class="row" style="margin-left: 0px; margin-bottom: 20px;">
+                         <div class="row" style="margin-left: 0px;
+    margin-bottom: 35px;">
                          <div class="col-lg1-2 col-lg-2">
                        <div class="col-lg-12" style="padding-left:0px;padding-right: 0px;">
                            <label><spring:message code="location.label"/></label>
-                           <select class="form-control" id="warehouseLocation" disabled>
+                           <select class="form-control" id="warehouseLocation" >
                            		 <option value=""><spring:message code="ALL.label"/></option>
 	                            <c:forEach var="location" items="${locationsList}">
 	                          <%--   <c:choose>
@@ -313,95 +281,7 @@ if(workFlow == "Submitted"){
                        <input type="hidden" id="packageRef" value="${packages.packagingRefId}"/>
                        <input type="hidden" id="editPackageList" value='${packagesLists}'/>
                        
-                       <div class="row" style="margin-right: 0px;margin-left: 0px;margin-bottom: 20px;">
-									
-									 <c:if test="${not empty previousStates}"> 
-									   <div class="col-lg-12" style="min-height: 38px;/* width: 104%; */background-color: lightgray;padding:5px;" >
-									       
-      									<%-- <c:forEach var="previousWorkFlowList" items="${previousStates}">
-      									  
-      									<div class="col-lg-3" style="padding-right: 0px;padding-left: 0px;width: 150px;display:inline-block;margin-top: 12px;">
-                                             <span class=" border" style="padding-left: 0px;padding-top: 17px;font-size: 16px;"><img alt="" style="height:30px" src="/OmniRetailer/images/workflow_arrow.png">${previousWorkFlowList }
-      									
-      										</span>
-      									     </div>
-                                 	  </c:forEach> --%>
-                                 	  
-                                 	    <c:forEach var="previousWorkFlowList" items="${previousStates}">
-                                     	<c:choose>
-                                     	   <c:when test="${not empty nextWorkFlowStates}">
-                                     	      <div class="col-lg-3" style="padding-right: 0px;padding-left: 0px;width: 150px;display:inline-block;margin-top: 12px;">
-                                             <span class=" border" style="padding-left: 0px;padding-top: 17px;font-size: 16px;"><img alt="" style="height:30px" src="/OmniRetailer/images/workflow_arrow.png">${previousWorkFlowList }
-      									
-      										</span>
-      									     </div>
-                                     	   </c:when>
-                                     	   <c:otherwise>
-                                     	      <div class="col-lg-3" style="padding-right: 0px;padding-left: 0px;width: 150px;display:inline-block;margin-top: 12px;margin-bottom: 12px;">
-                                             <span class=" border" style="padding-left: 0px;padding-top: 17px;font-size: 16px;"><img alt="" style="height:30px" src="/OmniRetailer/images/workflow_arrow.png">${previousWorkFlowList }
-      									
-      										</span>
-      									     </div>
-                                     	   </c:otherwise>
-                                     	</c:choose>
-      									  
-                                 	  </c:forEach>
-      									
-      									     
-      									<div class="col-lg-4 " style="margin-bottom: 5px;margin-right: 5px;float: right;padding-right: 0px;padding-left: 0px;width: 150px;display:inline-block;/* margin-top: 4px; */">
-                                                 <!-- <label>Action Required</label>
-										        <select class="form-control">
-										            <option>Submitted</option>
-										        </select>  -->
-												<c:choose>
-													<c:when test="${not empty nextWorkFlowStates}">
-														<label style="font-family: Calibri;"><spring:message
-																code="actionrecquired.label" /></label>
-														<c:forEach var="previousWorkFlowList"
-															items="${previousStates}">
-															<c:set var="action" value="${previousWorkFlowList}" />
-															
-														</c:forEach>
-														<c:set var="Submitted" value="Submitted" />
-														<c:choose>
-																<c:when test="${action eq Submitted}">
-																	<input type="hidden" id="isUpdateQty" value="true"/>
-																</c:when>
-																<c:otherwise>
-																	<input type="hidden" id="isUpdateQty" value="false"/>
-																</c:otherwise>
-															</c:choose>
-														
-														<input type="hidden" id="workFlow" value="${action }"/>
-														
-														<!--  <select class="form-control" name="shipped_from" id="statusissue"> -->
-														<select class="form-control" name="status"
-															id="status">
-															<option value="${action }">Action Required</option>
-															<c:forEach var="activity" items="${nextWorkFlowStates}">
-																<option value="${activity}">${activity}</option>
-															</c:forEach>
-
-														</select>
-													</c:when>
-
-													<c:otherwise>
-														<c:forEach var="previousWorkFlowList"
-															items="${previousStates}">
-															<c:set var="action" value="${previousWorkFlowList}" />
-														</c:forEach>
-														<input type="hidden" class="form-control"
-															name="status" value="${action }" id="status">
-													</c:otherwise>
-												</c:choose>
-											</div>
-      									
-									   </div>
-									
-									 </c:if>
-									
-									
-								</div>
+                       
                        
                        <div class="row">
                        <div class="col-lg-1 col-xs-2">
@@ -440,7 +320,7 @@ if(workFlow == "Submitted"){
                 
                 	       <div style="overflow: auto;">         
                           <table id="packagingList"   class="table table-bordered table-striped" style="table-layout: fixed;">
-                              <thead style="background-color: #3c8dbc; color:#ffffff">
+                              <thead style="background-color: #3c8dbc; color: #ffffff">
                                <tr>
                              	<th  class="sticky-col first-col" style="width: 40px" align="center" ><input type='checkbox' name='selectall' onClick='selectAll(this)'></th>
                              	<th class="sticky-col second-col" style="background-color: #a1dbf1 !important;"><div ><spring:message code="sl.no.label" /></div></th>
@@ -487,7 +367,7 @@ if(workFlow == "Submitted"){
                                 <td id="costPrice${theCount.count}">${packagesDetails.costPrice }</td>
                                 <td id="saleValue${theCount.count}">${packagesDetails.saleValue }</td>
                                 <td id="costValue${theCount.count}">${packagesDetails.costValue }</td>
-                             <td>
+                                <td>
                                   
                                      <a  class="clickable" data-toggle="collapse" id="row${totalPackages.count}" data-target=".row${totalPackages.count}"> <span style="font-size: 17px" onclick="expandPackage(${totalPackages.count})" id="categoryExpand${totalPackages.count}"><i class="fa fa1 fa-sort-desc"></i></span></a>
                                    
@@ -513,21 +393,19 @@ if(workFlow == "Submitted"){
                              	
                                  
                              </tr>
-                             <input type="hidden" id="packagesList${theCount.count}" value="${packagesList}">
+                             
                              <c:forEach var="packData" items="${packagesList}" varStatus="totalpackData" >
         				  <c:if test="${SKUidsList == packData.childSkuId}">
-        				   <tr  class="collapse rowone${parent} Sku${parent}" id="packagingdetails${parent}" class="packagingdetails">
+        				   <tr  class="collapse rowone${parent}" id="packagingdetails${parent}" class="packagingdetails">
         				 <td></td>
                            <td>${totalpackData.count}</td>
-                            <td>${packData.parentSkuId }<input type="hidden" id="packagesListSkuId${theCount.count}${totalpackData.count}" value="${packData.parentSkuId}"></td>
+                            <td>${packData.parentSkuId }</td>
                              <td>${packData.parentSkuIdDescription }</td>
                               <td>${packData.uom}</td>
                                <td></td>
                                 <td>${packData.costPrice }</td>
                                  <td>${packData.salePrice }</td>
-                                  <td>${packData.avlQty }<input type="hidden" id="packagesListavlQty${theCount.count}${totalpackData.count}" value="${packData.avlQty}">
-                                  <input type="hidden" id="packagesListzeroflag${theCount.count}${totalpackData.count}" value="${packData.iszeroBilling}">
-                                  </td>
+                                  <td>${packData.avlQty }</td>
         				 
         				 </tr> 
         				 </c:if>
@@ -573,7 +451,7 @@ if(workFlow == "Submitted"){
                     
                    <div class="row" style="text-align: left;margin-top: 20px;">
                     <div class="col-lg-6">
-							<input type="button" id="edit"  class="btn bg-olive btn-inline submit" onclick="createPackageAndProcessing('update');" style="margin-left:3%;width: 16%;" value="Submit" />
+							<input type="button" id="edit"  class="btn bg-olive btn-inline" onclick="createPackageAndProcessing('update');" style="margin-left:3%;width: 16%;" value="Update" />
 							 <c:if test="${packages.status == 'draft' || packages.status == 'updraft'}">
 							<input type="button" id="edit"  class="btn bg-olive btn-inline" style="margin-left:3%;width: 16%;" onclick="createPackageAndProcessing('updraft');" value="<spring:message code="save.label" />" />
  							</c:if>

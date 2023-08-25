@@ -285,12 +285,13 @@ $("#description").on('input',function(){
                          </div>
                          <div class="form-group col-lg-4">
                             <label style="color:gray;">Distance<span style="color:red; font-size:2"></span></label>
-                            <input type="text" onblur="criteriaSlashes(this)" class="form-control" id="distance" name="distance" placeholder="Distance" value="${locationDetails.distance}" />
+                            <input type="text" onblur="criteriaSlashes(this)" class="form-control" id="distance" name="distance" placeholder="Distance" value="${locationDetails.distance}" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');"/>
                         	<span id="distanceError" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
                          </div>
                           <div class="form-group col-lg-4">
                            <label style="color:gray;">Franchise Code</label>
                            <input type="text" class="form-control" id="franchiseCode" name="franchiseCode" placeholder="franchise Code" value="${locationDetails.franchiseCode}" />
+                          <span id="franchiseCodeError" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
                           </div>
 
                          </div>

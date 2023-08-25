@@ -534,7 +534,7 @@ border-color: transparent transparent gray transparent;
 											onkeydown="clearError(this);" onblur="calcMarkUp(this);"
 											value="" id="sectionQuick"
 											placeholder="<spring:message code="section.label" />" />
-								
+								<span id="sectionQuickError" style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span> 
 								</div>
 								
 								<div class="form-group col-lg-3" style=""> 
@@ -616,7 +616,7 @@ border-color: transparent transparent gray transparent;
 										name="productHanding" style="resize: none;" id="businessSubcategoryQuick"
 										class="form-control allField"  value="${sku.product_side_effects}"
 										placeholder="<spring:message code="enter.businessSubcategory.label" />">
-									<span id="productSideEffectsQuickError"
+									<span id="businessSubcategoryQuickError"
 										style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
 
 								</div>
@@ -645,7 +645,8 @@ border-color: transparent transparent gray transparent;
 										name="productHanding" style="resize: none;"
 										class="form-control allField"  value="${sku.product_handing}"
 										placeholder="<spring:message code="enter.product.handing.label" />">
-									
+									<span id="productHandingQuickError"
+										style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
 								</div> 
 							
 							<div class="form-group col-lg-2"  style="">
@@ -656,7 +657,8 @@ border-color: transparent transparent gray transparent;
 										name="productUsageQuick" style="resize: none;"
 										class="form-control allField"  value="${sku.product_usage}"
 										placeholder="<spring:message code="enterproductUsage.label" />">
-									
+									<span id="productUsageQuickError"
+										style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
 								</div> 
 								
 								
@@ -676,7 +678,8 @@ border-color: transparent transparent gray transparent;
 										name="productUsageQuick" style="" onblur="criteria(this)"  
 										class="form-control allField"  value="${sku.product_consumption_interaction}"
 										placeholder="<spring:message code="enterproductInTake.label" />">
-									
+									<span id="productIntakeQuickError"
+										style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
 								</div> 
 						
 						
@@ -688,7 +691,8 @@ border-color: transparent transparent gray transparent;
 										name="productUsageQuick" style=""
 										class="form-control allField"  value="${sku.uom1}"
 										placeholder="<spring:message code="enteruom1.label" />">
-									
+									<span id="uom1QuickError"
+										style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
 								</div> 
 								
 								
@@ -700,7 +704,8 @@ border-color: transparent transparent gray transparent;
 										name="productUsageQuick" style=""
 										class="form-control allField"  value="${sku.uom2}"
 										placeholder="<spring:message code="enteruom2.label" />">
-									
+									<span id="uom2QuickError"
+										style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
 								</div> 
 								
 								<div class="form-group col-lg-6">
@@ -713,20 +718,11 @@ border-color: transparent transparent gray transparent;
 									<span id="shortDescriptionQuickError"
 										style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
 								</div>
-						
-						
-			
 						</div>
-						
-						
-						
-						
 						
 						
 							<div class="row">
 								<div class="form-group col-lg-6" style="">
-								
-							
 									<label><spring:message code="product.precautions.label" />
 										</label>
 									<textarea rows="2" id="productPrecautionsQuick" onblur="criteria(this)"
@@ -737,12 +733,8 @@ border-color: transparent transparent gray transparent;
 										style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
 								</div>
 								
-						
-								
 								
 								<div class="form-group col-lg-6" style="">
-								
-								
 									<label><spring:message code="product.sideEffects.label" />
 										</label>
 									<textarea rows="2" id="productSideEffectsQuick" onblur="criteria(this)"
@@ -753,11 +745,6 @@ border-color: transparent transparent gray transparent;
 										style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
 							
 								</div>
-								
-								
-								
-								
-								
 								
 								
 								</div>

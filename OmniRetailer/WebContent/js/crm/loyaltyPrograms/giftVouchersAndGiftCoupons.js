@@ -1,10 +1,8 @@
 var couponsFiles;
 
-function	viewGiftVoucherDetails(id,operation){
+function viewGiftVoucherDetails(id,operation){
         		 var contextPath = $("#contextPath").val();
-       		    
        			URL = contextPath + "/crm/viewGiftVoucherDetails.do";
-       	 		 
        	 		$.ajax({
        	 			type: "GET",
        	 			url : URL,
@@ -27,32 +25,41 @@ function	viewGiftVoucherDetails(id,operation){
        	 				$("#mainDiv").removeClass('disabled');
        	 			}
        	 		});
-        		
         	}
 		
 		
 		$('#promoCode').on('input', function() {
 			  $(this).val($(this).val().replace(/[^a-z0-9]/gi, ''));
 			});
-		
-		
-
 
 		function validateGiftVouchers(operation,type){
 					debugger;
 					var re = /^[0-9/]+$/;
-					
 					
 					if($("#voucherProgramCode").val().trim() == ""){
 						$("#errVoucherProgramCode").html("Enter Promo Code");
 						return;
 					}
 					
+					if(parseInt($("#voucherProgramCode").val().length)>50){
+						 $("#voucherProgramCode").focus();
+							$("#errVoucherProgramCode").html("Program Code can't exceeds 50 Characters");
+							return;
+					}else{
+					 $("#errVoucherProgramCode").html(" ");
+				  } 
 					
 					if($("#promoName").val().trim() == ""){
 						$("#errPromoName").html("Enter Promo Name");
 						return;
 					}
+					if(parseInt($("#promoName").val().length)>45){
+						 $("#promoName").focus();
+							$("#errPromoName").html("Program Name can't exceeds 45 Characters");
+							return;
+					}else{
+					 $("#errPromoName").html(" ");
+				    }
 					
 					if($("#unitCashValue").val().trim() == ""){
 						$("#errUnitCashValue").html("Enter Unit Cash Value");
@@ -97,8 +104,6 @@ function	viewGiftVoucherDetails(id,operation){
 						$("#expiryDateError").html("Expiry Date can't be less than Date");
 						return;
 					}
-
-					
 					
 					if($("#validityPeriod").val().trim() == "" || parseInt($("#validityPeriod").val().trim())==0){
 	 	     			$("#errValidityPeriod").html("Validity period should be atleast 1 day");
@@ -117,20 +122,31 @@ function	viewGiftVoucherDetails(id,operation){
 	 	     					$("#errValidityPeriod").html("Enter no of days properly");
 	 	              			return;
 	 	     					}
-	 	     				
-	 	          			
 	 	     			 }
 					
-					
-					
-					
+	 	     			if(parseInt($("#validityPeriod").val().length)>11){
+							 $("#validityPeriod").focus();
+								$("#errValidityPeriod").html("Validity period can't exceeds 11 Digits");
+								return;
+						}else{
+						 $("#errValidityPeriod").html(" ");
+					    }
+	 	     			
 					if($("#min_bill_amount").val().trim() == ""){
 						$("#errmin_bill_amount").html("Enter Min Bill Amount");
 						return;
 					}else{
 						$("#errmin_bill_amount").html("");
 					}
-				
+					
+					if(parseInt($("#description").val().length)>250){
+						 $("#description").focus();
+							$("#errdescription").html("Description can't exceeds 250 Characters");
+							return;
+					}else{
+					 $("#errdescription").html(" ");
+				  } 
+					
 					var zoneLocations = $("#location").val();
 					var locations = "";
 					var zone = "";
@@ -149,19 +165,14 @@ function	viewGiftVoucherDetails(id,operation){
 
 					$("#selectedLocation").val(locations.toString());
 
-					
-
-					for(var locItem in zoneLocations )
-					{
+					for(var locItem in zoneLocations ){
 						locations += zoneLocations[locItem] +","; 
 					}
 
-					for(var zoneItem in zones )
-					{
+					for(var zoneItem in zones ){
 						zone += zones[zoneItem] +","; 
 					}
 					$("#zone").val(zone);
-
 					$("#locations").val(locations);
 
 		/*		Written by: Manideep
@@ -184,14 +195,10 @@ function	viewGiftVoucherDetails(id,operation){
 			    			$("#on_discounted_bill_price").val("true");
 			    		else
 			    			$("#on_discounted_bill_price").val("false");
-		
-						
 					var formData  = $('form').serializeObject();
-					
 					
 					formData.createdOnStr = $("#createdOn").val();
 					formData.expiryDateStr = $("#expiryDate").val();
-					
 					formData.assignedStatusStr = $("#assignedStatus").val();
 					
 					if(formData.isPaidFlag==null || formData.isPaidFlag==undefined || formData.isPaidFlag=="")
@@ -208,7 +215,6 @@ function	viewGiftVoucherDetails(id,operation){
 					 formData.on_discounted_bill_price="false";
 					}
 					
-					
 			if(operation== "edit"){
 					var len = $("#cardsDetails tr").length-1;
 					var giftVouchers = [];
@@ -218,37 +224,25 @@ function	viewGiftVoucherDetails(id,operation){
 						
 						  var idAttr= $(this).attr("id").replace('customerName','');
 						
-						
 						debugger;
-						
 						
 							var obj = {voucherCode:$("#voucherCode"+idAttr).text(),voucherId:$("#voucherId"+idAttr).text(),assignedStatus:$("#assignedStatus"+idAttr).val(),voucherStatus:$("#voucherStatus"+idAttr).val(),voucherProgramCode:$("#voucherProgramCode").val()};
 							var obj1 = {issuedAt:$("#issuedAt"+idAttr).val(),customerName:$("#customerName"+idAttr).val(),customerEmail:$("#customerEmail"+idAttr).val(),customerMobile:$("#customerMobile"+idAttr).val(),claimStatus:$("#claimStatus"+idAttr).val(),voucherId:$("#voucherId"+idAttr).val(),voucherCode:$("#voucherCode"+idAttr).text(),voucherProgramCode:$("#voucherProgramCode"+idAttr).text(),voucherValue:$("#voucherValue"+idAttr).text(),validityDateStr:$("#validityDate"+idAttr).text(),billRef:$("#billRef"+idAttr).text(),issuedAtStr:$("#issueDate"+idAttr).text(),claimedAt:$("#claimedAt"+idAttr).text()};
-
-						
 						
 							giftVouchers.push(obj);
 							customerGiftVouchers.push(obj1);
 
 					});
-
-					  
-					  
 					
 					formData.giftVouchers=giftVouchers;
 					
 		                 formData.customerGiftVouchers=customerGiftVouchers;
 		                 
 		                 var editPlusVoucherss="";
-		                 
-		                 
-		                 for(var editPlusVoucher in editPlusVouchers )
-		 				{
+		                 for(var editPlusVoucher in editPlusVouchers ){
 		                	 editPlusVoucherss += editPlusVouchers[editPlusVoucher] +","; 
 		 				}
-		                 
-		                 
-		                 formData.voucheridsStr=editPlusVoucherss;
+		                formData.voucheridsStr=editPlusVoucherss;
 					
 					}
 					
@@ -391,8 +385,6 @@ function	viewGiftVoucherDetails(id,operation){
 			     		if(actionTest == null || actionTest == "" || actionTest == undefined){
 			     			actionTest="";
 			     		}
-
-
 					 
 					 var URL = contextPath + "/crm/searchGiftVouchers.do";
 					 $.ajax({
@@ -453,6 +445,14 @@ function	viewGiftVoucherDetails(id,operation){
 		 	     			return;
 		 	     		}
 		 	     		
+		 	     		if(parseInt($("#promoCode").val().length)>50){
+		 	  			 $("#promoCode").focus();
+		 	  				$("#errpromoCode").html("Promo Code Id can't exceeds 50 Characters");
+		 	  				return;
+		 	  		   }else{
+		 	  		        $("#errpromoCode").html(" ");
+		 	  	       } 
+		 	     		
 		 	     		if($("#createdOn").val().trim() == ""){
 		 	     			$("#createdOnError").html("Enter a Date");
 		 	     			$("#createdOn").focus();
@@ -470,12 +470,19 @@ function	viewGiftVoucherDetails(id,operation){
 		 	     			return;
 		 	     		}
 		 	     		
+		 	     		if(parseInt($("#promoName").val().length)>45){
+			 	  			 $("#promoName").focus();
+			 	  				$("#errPromoName").html("Promo Name can't exceeds 45 Characters");
+			 	  				return;
+			 	  		   }else{
+			 	  		        $("#errPromoName").html(" ");
+			 	  	       } 
+		 	     		
 		 	     		if($("#expiryDate").val().trim() == ""){
 		 	     			$("#expiryDateError").html("Enter a Date");
 		 	     			$("#expiryDate").focus();
 		 	     			return;
 		 	     		}
-		 	     		
 		 	     		
 		 	     		if(!re.test($("#expiryDate").val())){
 		 	     			$("#expiryDateError").html("Invalid Date");
@@ -496,6 +503,14 @@ function	viewGiftVoucherDetails(id,operation){
 		 	     			 $("#expiryDateError").html("Expiry Date can't be less than Date");
 		 	     			 return;
 		 	     		 }
+		 	     		 
+		 	     		if(parseInt($("#nofClaims").val().length)>11){
+			 	  			 $("#nofClaims").focus();
+			 	  				$("#errnofClaims").html("No Of Claims can't exceeds 11 Digit");
+			 	  				return;
+			 	  		   }else{
+			 	  		        $("#errnofClaims").html(" ");
+			 	  	       } 
 		 	     		
 		 	     		if($("#validityPeriod").val().trim() == "" || parseInt($("#validityPeriod").val().trim())==0){
 		 	     			$("#errValidityPeriod").html("Validity period should be atleast 1 day");
@@ -505,16 +520,38 @@ function	viewGiftVoucherDetails(id,operation){
 		 	     		 var validityPeriod = parseInt($("#validityPeriod").val().trim());
 		 	     			if(validityPeriod > noOfDays+1){
 		 	     				
-		 	     				if(noOfDays==0 && validityPeriod==1)
-		 	     					{
+		 	     				if(noOfDays==0 && validityPeriod==1){
 		 	     					
 		 	     					}
-		 	     				else
-		 	     					{
+		 	     				else{
 		 	     					$("#errValidityPeriod").html("Enter no of days properly");
-		 	              			return;
-		 	     					}
+		 	              			  return;
+		 	     				}
 		 	     			 }
+		 	     			
+		 	     			if(parseInt($("#validityPeriod").val().length)>11){
+				 	  			 $("#validityPeriod").focus();
+				 	  				$("#errValidityPeriod").html("Validity Period can't exceeds 11 Digit");
+				 	  				return;
+				 	  		   } else{
+				 	  		        $("#errValidityPeriod").html(" ");
+				 	  	       } 
+		 	     			
+		 	     			if(parseInt($("#perUserClaims").val().length)>11){
+				 	  			 $("#perUserClaims").focus();
+				 	  				$("#errperUserClaims").html("Per User Claims can't exceeds 11 Digit");
+				 	  				return;
+				 	  		   } else{
+				 	  		        $("#errperUserClaims").html(" ");
+				 	  	       } 
+		 	     			
+		 	     			if(parseInt($("#splitPeriod").val().length)>20){
+				 	  			 $("#splitPeriod").focus();
+				 	  				$("#errsplitPeriod").html("Split Period can't exceeds 20 Characters");
+				 	  				return;
+				 	  		   } else{
+				 	  		        $("#errsplitPeriod").html(" ");
+				 	  	       } 
 		 	     			
 		 	     			if($("#quantity").val().trim() == ""){
 		 	         			$("#errQuantity").html("Enter a Number");
@@ -684,7 +721,7 @@ function	viewGiftVoucherDetails(id,operation){
 		 			 		if($("#searchCoupons").length > 0 )
 		 			 			searchName = $("#searchCoupons").val().trim();
 		 			 		
-		 			 		var giftCouponsMasterObj = {};
+		 			   var giftCouponsMasterObj = {};
 		 			 		
 		 			 		giftCouponsMasterObj.couponProgramCode = $("#promoCode").val();
 		 			 		giftCouponsMasterObj.createdOnStr = $("#createdOn").val();
@@ -849,14 +886,7 @@ function	viewGiftVoucherDetails(id,operation){
 		 	     	  		});
 		 	     	}
 		 			
-		 			
-
-
-			
-			
-		
-		
-		
+		 
 
 		 function vieweditGiftCouponDetailsForPagination(id,index){
 		  	 var contextPath = $('#contextPath').val();
@@ -1021,10 +1051,7 @@ function	viewGiftVoucherDetails(id,operation){
 		
 		
 		function importDataxls(){
-			
 			debugger;
-			
-			
 			if(couponsFiles.length <= 0)
 			{
 			alert("Please Select Excel Sheet... ");
@@ -1105,9 +1132,6 @@ function	viewGiftVoucherDetails(id,operation){
 				error : function(result){
 					$("#Success").css("display","block");
 					$("#Error").css("display","block");
-					
-					
-		  			
 		  			
 					alert("Somthing Went Wrong, please contact Technolabs support.");
 					/*debugger;
@@ -1224,14 +1248,9 @@ function	viewGiftVoucherDetails(id,operation){
 		  			}
 
 		  			var msg = parsed_json.msg;
-		  			
-					
 				}
 			});
 		}
-
-		
-		
 
 		function loadFileAsURL(id,ele) {
 			if (ele.files && ele.files[0]) {
@@ -1324,8 +1343,6 @@ function	viewGiftVoucherDetails(id,operation){
 					
 					currentDealSlabDivContent = currentDealSlabDivContent.replace('1endDate',newcountProduct+'endDate');
 					currentDealSlabDivContent = currentDealSlabDivContent.replace('1claimStatus',+newcountProduct+'claimStatus');
-					
-					
 					
 					currentDealSlabDivContent = currentDealSlabDivContent.replace('1noOfCliams',newcountProduct+'noOfCliams');
 					currentDealSlabDivContent = currentDealSlabDivContent.replace('1couponState',newcountProduct+'couponState');
