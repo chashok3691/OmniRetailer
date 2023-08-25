@@ -20,6 +20,15 @@ function validateMemberships(operation){
 			$("#errpromoCode").html("Enter atleast 5 Characters/Numbers");
 			return;
 		}
+	
+	if(parseInt($("#promoCode").val().length)>50){
+		 $("#promoCode").focus();
+			$("#errpromoCode").html("Program Code can't exceeds 50 Characters");
+			return;
+	}else{
+	 $("#errpromoCode").html(" ");
+    } 
+	
 	if($("#startDate").val() == ""){
 		$("#startDateError").html("Enter a Date");
 		return;
@@ -28,11 +37,28 @@ function validateMemberships(operation){
 		$("#startDateError").html("Invalid Date");
 		return;
 	}
+	
+	if(parseInt($("#graceperiod").val().length)>11){
+		 $("#graceperiod").focus();
+			$("#graceperiodError").html("Grace Period can't exceeds 11 Digits");
+			return;
+	}else{
+	 $("#graceperiodError").html(" ");
+  }
+	
 	if($("#promoName").val().trim() == ""){
 		$("#promoName").focus();
 		$("#errPromoName").html("Enter Promo Name");
 		return;
 	}
+	
+	if(parseInt($("#promoName").val().length)>45){
+		 $("#promoName").focus();
+			$("#errPromoName").html("Program Name can't exceeds 45 Characters");
+			return;
+	}else{
+	 $("#errPromoName").html(" ");
+   }
 			
 	if($("#expiryDate").val() == ""){
 		$("#expiryDateError").html("Enter a Date");
@@ -69,7 +95,23 @@ debugger;
   		$("#errValidityPeriod").html("Enter Number of Days Properly");
   		return;
   	}
+	
+	if(parseInt($("#validityPeriod").val().length)>11){
+		 $("#validityPeriod").focus();
+			$("#errValidityPeriod").html("Validity period can't exceeds 11 Digits");
+			return;
+	}else{
+	 $("#errValidityPeriod").html(" ");
+   }
 		
+	if(parseInt($("#quantity").val().length)>11){
+		 $("#quantity").focus();
+			$("#errQuantity").html("No Of Membership can't exceeds 11 Digits");
+			return;
+	}else{
+	 $("#errQuantity").html(" ");
+   }
+	
 	  var maxRecords = 10;
  	  if($("#maxRecords").length>0)
  		  maxRecords = $("#maxRecords").val();

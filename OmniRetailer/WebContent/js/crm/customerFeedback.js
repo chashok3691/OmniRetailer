@@ -1,10 +1,10 @@
 function searchCustomerFeedback(name,searchCategory,index){
 	                  debugger;
-		   		 var location = "";
-		   		var feedbackCategory = "";
-		   		var startDate = $("#startdate").val();
- 	 		 var endDate = $("#enddate").val();
- 	 		 var status="";
+		   	var location = "";
+		   	var feedbackCategory = "";
+		   	var startDate = $("#startdate").val();
+ 	 		var endDate = $("#enddate").val();
+ 	 		var status="";
  	 		
  	 		 if($("#location").length>0 && $("#location").val != "")
 	    	 		location = $("#location").val();

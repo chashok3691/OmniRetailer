@@ -35,11 +35,27 @@ function createShoppingList(operation){
 	var customerShoppingList = {}, itemsList = [];
 	var filterAdded = false;
 	
-	
 	if($("#list_type").val().trim() == ""){
 			$("#listtypeError").html("Enter List Name");
             return false;			
-		}
+	}
+	
+	 if(parseInt($("#list_type").val().length)>18){
+		  $("#list_type").focus();
+		  $("#listtypeError").html("List Type can't exceeds 18 Characters");
+			return;
+	}else{
+	      $("#listtypeError").html(" ");
+   }
+	 
+	 if(parseInt($("#list_description").val().length)>60){
+		  $("#list_description").focus();
+		  $("#listDescriptionError").html("Description can't exceeds 60 Characters");
+			return;
+	}else{
+	      $("#listDescriptionError").html(" ");
+  }
+	 
 	 var zoneID= $("#salesZone").val();
 	 if(zoneID.trim() != "-- Select --"){
 		filterAdded = true;
@@ -47,21 +63,16 @@ function createShoppingList(operation){
 	}
 	
 	if($("#basedOnProduct").prop("checked") == true){
-	
 		var categoryIdVal="";
 		if($("#categoryMasterId").length>0)
 			categoryIdVal=$("#categoryMasterId").text();
-		console.log(categoryIdVal);
+		    console.log(categoryIdVal);
 		 var len = $("#offerSaleProductsIds tr").length;
-		 
 		 for(var i=1;i<len;i++){
 				var idAttr = $("#offerSaleProductsIds tr:eq("+i+") td:last").attr("id");
-				
 				idAttr = idAttr.replace('Del','');
-				
 				var obj = {skuId:$("#itemId"+idAttr).text(),skuDescription:$("#itemName"+idAttr).text(),orderQty:$("#orderedQuantity"+idAttr).text(),categoryId:categoryIdVal};
 				itemsList.push(obj);
-				
 			}
 		 customerShoppingList.itemsList = itemsList;
 		 console.log(itemsList);
@@ -70,7 +81,7 @@ function createShoppingList(operation){
 	{
 		var groupIdVal = "";
 		if($("#saleGroupId").length >0)
-			groupIdVal = $("#saleGroupId").text();
+		groupIdVal = $("#saleGroupId").text();
 		console.log($("#saleGroupId").text());
 		
 	  var len = $("#saleGroupSku tr").length;
@@ -95,16 +106,12 @@ function createShoppingList(operation){
 	console.log(customerShoppingList);
 		var contextPath = $("#contextPath").val();
 	   if(operation=="new"){
-		  
 		   URL = contextPath + "/b2c/createShoppinglistForm.do";
-		  
 	   }
 	   else if(operation=="edit"){
-		  
-		   
 		   customerShoppingList.listId=$("#list_id").val();
 		   URL = contextPath + "/b2c/updateShoppingList.do";
-	console.log(customerShoppingList);
+	       console.log(customerShoppingList);
 	   }
 	  
 		var formData = JSON.stringify(customerShoppingList);
@@ -125,15 +132,12 @@ function createShoppingList(operation){
 				$("#right-side").html(result);
 				$("#loading").css("display","none");
 				$("#mainDiv").removeClass('disabled');
-				
 		},
 		error : function() {
-			
 			alert("something went wrong");
 			$("#loading").css("display","none");
 			$("#mainDiv").removeClass('disabled');
 		}
-			
 });
 }
 

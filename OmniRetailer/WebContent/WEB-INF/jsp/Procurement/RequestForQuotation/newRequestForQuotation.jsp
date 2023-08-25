@@ -835,11 +835,12 @@ function isNumberKey(evt){
 	       		</div>
 	            <div class="form-group  col-lg-5 col-lg5-5" >
 	                <textarea class="form-control clearError" style="resize: none;" rows="2" id="purchaseTerms" placeholder="<spring:message code="purchase.terms.label"/>">${quoteObj.purchaseTerms}</textarea>
+				     <span id="purchaseTermsError" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
 				</div>
-					
 	            
-				 <div class="form-group  col-lg-5 col-lg5-5" >
+				<div class="form-group  col-lg-5 col-lg5-5" >
                 	<textarea class="form-control clearError" style="resize: none;" rows="2" id="shipmentTerms" placeholder="<spring:message code="shipment.terms.label"/>">${quoteObj.shipmentTerms}</textarea>
+				    <span id="shipmentTermsError" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
 				</div>
           </div>
          
@@ -871,10 +872,13 @@ function isNumberKey(evt){
        			</div>
        			<div class="form-group  col-lg-5 col-lg5-5">
                 	<textarea class="form-control clearError" style="resize: none;" rows="2" id="paymentInstructions" placeholder="<spring:message code="procurement.payment.instructions.label"/>"><%-- ${quoteObj.specialInstructions} --%></textarea>
+				<span id="paymentInstructionsError" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
 				</div>
 				
                 <div class="form-group  col-lg-5 col-lg5-5">
                 	<textarea class="form-control clearError" style="resize: none;" rows="2" id="specialInstructions" placeholder="<spring:message code="special.instructions.label"/>">${quoteObj.specialInstructions}</textarea>
+				
+				 <span id="specialInstructionsError" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
 				</div>
          </div>
 	</div><!-- /.box-body -->

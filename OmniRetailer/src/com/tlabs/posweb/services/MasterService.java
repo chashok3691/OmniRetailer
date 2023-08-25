@@ -223,11 +223,7 @@ public class MasterService {
 		
 		return categories;
 	}
-	
-	
-	
-	
-	
+
 	
 	/**
 	 * @author Mythri.S
@@ -252,19 +248,6 @@ public class MasterService {
 	}
 	
 	
-	
-	
-	
-	
-	
-	
-	
-
-	
-		
-		
-		
-		
 		
 
 		
@@ -284,8 +267,8 @@ public class MasterService {
 				
 				/*// log.info("Request String::::::::::::"+gson.toJson(customerComplaintsObj));
 				result = customerComplaintServiceProxyObj.createComplaint(gson.toJson(customerComplaintsObj));
-				// log.info("Response String:::::::::::"+result);*/
-				
+				 log.info("Response String:::::::::::"+result);*/
+				System.out.println("Request String:::::::"+gson.toJson(customerComplaintsObj));
 				/**
 				 * added by : vasudev
 				 * purpose : changing soap calls to rest calls
@@ -293,6 +276,7 @@ public class MasterService {
 				RestfulServiceConnection restFulServiceConnectionObj = new RestfulServiceConnection();
 				result = restFulServiceConnectionObj.getResponseFromPost(AppProperties.getRESTFulCloudServiceURL("create_customer_complaint"),gson.toJson(customerComplaintsObj));
 
+				System.out.println("Response String:::::::::::"+result);
 				
 				String responseCode = Response.getResponseCode(result);
 				if(responseCode.equals(AppProperties.getAppMessageByProperty("RESPONSE_SUCCESS_CODE").trim())){
@@ -302,6 +286,7 @@ public class MasterService {
 					//result = "Couldn't create, please try after some time";
 					result = Response.getResponseMessage(result);
 				}
+				
 			}catch(ConnectException ce) {
 				ce.printStackTrace();
 				result = AppProperties.getAppMessageByProperty("SERVER_NOT_RESPONDING").trim();

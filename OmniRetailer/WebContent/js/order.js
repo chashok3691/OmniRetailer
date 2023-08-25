@@ -2334,7 +2334,6 @@ for(var i=1;i<=1;i++){
 	
 	 debugger;
 	 $("#searchItemsErrorIDdiscounts").html("");
-	 
 		var online = window.navigator.onLine;
 	  	if(!online)
 	  	{
@@ -2363,7 +2362,25 @@ for(var i=1;i<=1;i++){
 	 if(noOfDays < 0){
 		 $("#deliveryDateError").html("Delivery Date can't be less than Order Date");
 		 return;
-	 }
+	 }else{
+  	   	 $("#deliveryDateError").html(" ");
+  	 }
+	 
+	 var noOfDays = daydiff(parseDate($('#confirmDate1').val()), parseDate($('#deliveryDate').val()));
+	 if(noOfDays < 0){
+		 $("#deliveryDateError").html("Delivery Date can't be less than Confirmation Date");
+		 return;
+	 }else{
+  	   	 $("#deliveryDateError").html(" ");
+  	 }
+	 
+	 var noOfDays = daydiff(parseDate($('#orderDate').val()), parseDate($('#confirmDate1').val()));
+	 if(noOfDays < 0){
+		 $("#confirmDate1Error").html("Confirmation Date can't be less than Ordered Date");
+		 return;
+	 }else{
+  	   	 $("#confirmDate1Error").html(" ");
+  	 }
 	
 	// var time = checkTimeSlots(parseDate($('#deliveryDate').val()),$('#deliverySlotEndTime').val());
 	 if($("#error").text() != ""){
@@ -2387,11 +2404,11 @@ for(var i=1;i<=1;i++){
 	 
 	  	var orderShipmentType = $("#orderDeliveryType").val();
 	  	var orderShipmentCharges = parseFloat($("#orderTotalCost").val());
-	 var shipmentError = $("#ErrorForShipment").html();
+	    var shipmentError = $("#ErrorForShipment").html();
 	 
 		if(orderShipmentType == "Door Delivery" && orderShipmentCharges!=0)
 		 {
-			var errorShipment = $("#ErrorForShipment").html().trim();
+		var errorShipment = $("#ErrorForShipment").html().trim();
 		if(errorShipment != ""){
 			focusDiv('ErrorForShipment');
 			return false;
@@ -2409,6 +2426,23 @@ for(var i=1;i<=1;i++){
   	 		$("#phoneNumber1Error").html("Enter 10 digits Mobile Number"); 
   	 		return;
   	 	 }
+  	 	 
+  	 	if(parseInt($("#firstName").val().length)>50){
+  			 $("#firstName").focus();
+  				$("#firstNameError").html("First Name can't exceeds 50 Characters");
+  				return;
+  		}else{
+  	   	 $("#firstNameError").html(" ");
+  	 }
+  	 	
+  	 	if(parseInt($("#lastName").val().length)>50){
+ 			 $("#lastName").focus();
+ 				$("#lastNameError").html("Last Name can't exceeds 50 Characters");
+ 				return;
+ 		}else{
+ 	   	 $("#lastNameError").html(" ");
+ 	 }
+  	 	 
 	 	 
 	 var defaultCountry = $("#defaultCountry").val().trim();
 	 var phoneNumber = $("#phoneNumber").val().trim();
@@ -2416,8 +2450,6 @@ for(var i=1;i<=1;i++){
 		 $("#mobile_num_code").val($("#defaultCountry option:selected").attr("text"));
 		 $("#mobile_num").val(phoneNumber);
 	 }
-	
-	
 	 
 	 var maxRecords = 10;
  	  if($("#maxRecords").length>0)
@@ -2448,27 +2480,97 @@ for(var i=1;i<=1;i++){
 			  $("#shipDno").focus();
 			  return false;
 		  }
+		 
+		  if(parseInt($("#shipDno").val().length)>150){
+	 			 $("#shipDno").focus();
+	 				$("#shipDnoError").html("Door Number can't exceeds 150 Characters");
+	 				return;
+	 		}else{
+	 	   	 $("#shipDnoError").html(" ");
+	 	 }
+		  
+		  
 		  if($("#shipappartmentname").val().trim() == ""){
 			  $("#shipappartmentnameError").html("Building name is Required");
 			  $("#shipappartmentname").focus();
 			  return false;
 		  }
+		  if(parseInt($("#shipappartmentname").val().length)>100){
+	 			 $("#shipappartmentname").focus();
+	 				$("#shipappartmentnameError").html("Building Name can't exceeds 100 Characters");
+	 				return;
+	 		}else{
+	 	   	 $("#shipappartmentnameError").html(" ");
+	 	 }
+		  
 		  if($("#shipStreet").val().trim() == ""){
 			  $("#shipStreetError").html("Street is required");
 			  $("#shipStreet").focus();
 			  return false;
 		  }
+		  if(parseInt($("#shipStreet").val().length)>150){
+	 			 $("#shipStreet").focus();
+	 				$("#shipStreetError").html("Street can't exceeds 150 Characters");
+	 				return;
+	 		}else{
+	 	   	 $("#shipStreetError").html(" ");
+	 	 }
+		  if($("#shipmentName").val().trim() == ""){
+			  $("#shipmentNameError").html("Name is required");
+			  $("#shipmentName").focus();
+			  return false;
+		  }
+		  if(parseInt($("#shipmentName").val().length)>150){
+	 			 $("#shipmentName").focus();
+	 				$("#shipmentNameError").html("Name can't exceeds 150 Characters");
+	 				return;
+	 		}else{
+	 	   	 $("#shipmentNameError").html(" ");
+	 	 }
+		  
 		  if($("#shipLoc").val().trim() == ""){
 			  $("#shipLocError").html("Location is required");
 			  $("#shipLoc").focus();
 			  return false;
 		  }
+		  
+		  if(parseInt($("#shipLoc").val().length)>150){
+	 			 $("#shipLoc").focus();
+	 				$("#shipLocError").html("Location can't exceeds 150 Characters");
+	 				return;
+	 		}else{
+	 	   	 $("#shipLocError").html(" ");
+	 	 }
+		  
+		  if(parseInt($("#shipLandmark").val().length)>200){
+	 			 $("#shipLandmark").focus();
+	 				$("#shipLandmarkError").html("Landmark can't exceeds 200 Characters");
+	 				return;
+	 		}else{
+	 	   	 $("#shipLandmarkError").html(" ");
+	 	 }
+		  
 		  if($("#shipCity").val().trim() == ""){
 			  $("#shipCityError").html("City is required");
 			  $("#shipCity").focus();
 			  return false;
 		  }
 		  
+		  if(parseInt($("#shipCity").val().length)>250){
+	 			 $("#shipCity").focus();
+	 				$("#shipCityError").html("City can't exceeds 250 Characters");
+	 				return;
+	 		}else{
+	 	   	 $("#shipCityError").html(" ");
+	 	    }
+		  
+		  if(parseInt($("#shipPin").val().length)>6){
+	 			 $("#shipPin").focus();
+	 				$("#shipPinError").html("Pin should be in 6 digits");
+	 				return;
+	 		}else{
+	 	   	 $("#shipPinError").html(" ");
+	 	    }
 		  
 		  if($("#shipmentState").val() == "" || $("#shipmentState").val() == undefined ){
 			  $("#shipmentStateError").html("Please Select State");
@@ -2477,12 +2579,111 @@ for(var i=1;i<=1;i++){
 		  }
 		  
 		  
+		 
 		  
-		  if($("#shipmentName").val().trim() == ""){
-			  $("#shipmentNameError").html("Name is required");
-			  $("#shipmentName").focus();
+		  if($("#billDno").val().trim() == ""){
+			  $("#billDnoError").html("Door No. is required");
+			  $("#billDno").focus();
 			  return false;
 		  }
+		 
+		  if(parseInt($("#billDno").val().length)>150){
+	 			 $("#billDno").focus();
+	 				$("#billDnoError").html("Door Number can't exceeds 150 Characters");
+	 				return;
+	 		}else{
+	 	   	 $("#billDnoError").html(" ");
+	 	 }
+		  
+		  
+		  if($("#billappartmentname").val().trim() == ""){
+			  $("#billappartmentnameError").html("Building name is Required");
+			  $("#billappartmentname").focus();
+			  return false;
+		  }
+		  if(parseInt($("#billappartmentname").val().length)>100){
+	 			 $("#billappartmentname").focus();
+	 				$("#billappartmentnameError").html("Building Name can't exceeds 100 Characters");
+	 				return;
+	 		}else{
+	 	   	 $("#billappartmentnameError").html(" ");
+	 	 }
+		  
+		  if($("#billStreet").val().trim() == ""){
+			  $("#billStreetError").html("Street is required");
+			  $("#billStreet").focus();
+			  return false;
+		  }
+		  if(parseInt($("#billStreet").val().length)>150){
+	 			 $("#billStreet").focus();
+	 				$("#billStreetError").html("Street can't exceeds 150 Characters");
+	 				return;
+	 		}else{
+	 	   	 $("#billStreetError").html(" ");
+	 	 }
+		  if($("#billshipmentName").val().trim() == ""){
+			  $("#billshipmentNameError").html("Name is required");
+			  $("#billshipmentName").focus();
+			  return false;
+		  }
+		  if(parseInt($("#billshipmentName").val().length)>150){
+	 			 $("#billshipmentName").focus();
+	 				$("#billshipmentNameError").html("Name can't exceeds 150 Characters");
+	 				return;
+	 		}else{
+	 	   	 $("#billshipmentNameError").html(" ");
+	 	 }
+		  
+		  if($("#billLoc").val().trim() == ""){
+			  $("#billLocError").html("Location is required");
+			  $("#billLoc").focus();
+			  return false;
+		  }
+		  
+		  if(parseInt($("#billLoc").val().length)>150){
+	 			 $("#billLoc").focus();
+	 				$("#billLocError").html("Location can't exceeds 150 Characters");
+	 				return;
+	 		}else{
+	 	   	 $("#billLocError").html(" ");
+	 	 }
+		  
+		  if(parseInt($("#billLandmark").val().length)>200){
+	 			 $("#billLandmark").focus();
+	 				$("#billLandmarkError").html("Landmark can't exceeds 200 Characters");
+	 				return;
+	 		}else{
+	 	   	 $("#billLandmarkError").html(" ");
+	 	 }
+		  
+		  if($("#billCity").val().trim() == ""){
+			  $("#billCityError").html("City is required");
+			  $("#billCity").focus();
+			  return false;
+		  }
+		  
+		  if(parseInt($("#billCity").val().length)>250){
+	 			 $("#billCity").focus();
+	 				$("#billCityError").html("City can't exceeds 250 Characters");
+	 				return;
+	 		}else{
+	 	   	 $("#billCityError").html(" ");
+	 	    }
+		  
+		  if(parseInt($("#billpinNum").val().length)>6){
+	 			 $("#billpinNum").focus();
+	 			 $("#billpinNumError").html("Pin should be in 6 digits");
+	 				return;
+	 		}else{
+	 	   	 $("#billpinNumError").html(" ");
+	 	    }
+		  
+		  if($("#billState").val() == "" || $("#billState").val() == undefined ){
+			  $("#billStateError").html("Please Select State");
+			  $("#billState").focus();
+			  return false;
+		  }
+		 
 		  if($("#custDno").val().trim() == ""){
 			  $("#custDnoError").html("Door No. is required");
 			  $("#custDno").focus();
@@ -2495,24 +2696,87 @@ for(var i=1;i<=1;i++){
 			  return false;
 		  }
 		  
+		  if(parseInt($("#cusappartmentname").val().length)>100){
+	 			 $("#cusappartmentname").focus();
+	 				$("#cusappartmentnameError").html("Building Name can't exceeds 100 Characters");
+	 				return;
+	 		}else{
+	 	   	 $("#cusappartmentnameError").html(" ");
+	 	 }
+		  
 		  
 		  if($("#custStreet").val().trim() == ""){
 			  $("#custStreetError").html("Street is required");
 			  $("#custStreet").focus();
 			  return false;
 		  }
+		  if(parseInt($("#custStreet").val().length)>150){
+	 			 $("#custStreet").focus();
+	 				$("#custStreetError").html("Street Name can't exceeds 150 Characters");
+	 				return;
+	 		}else{
+	 	   	 $("#custStreetError").html(" ");
+	 	 }
+		  
+		  if(parseInt($("#CusshipmentName").val().length)>150){
+	 			 $("#CusshipmentName").focus();
+	 				$("#CusshipmentNameError").html("Name can't exceeds 150 Characters");
+	 				return;
+	 		}else{
+	 	   	 $("#CusshipmentNameError").html(" ");
+	 	 }
+		  
 		  if($("#custLoc").val().trim() == ""){
 			  $("#custLocError").html("Location is required");
 			  $("#custLoc").focus();
 			  return false;
 		  }
+		  
+		  if(parseInt($("#custLoc").val().length)>150){
+	 			 $("#custLoc").focus();
+	 				$("#custLocError").html("Location can't exceeds 150 Characters");
+	 				return;
+	 		}else{
+	 	   	 $("#custLocError").html(" ");
+	 	 }
+		  
+		  if(parseInt($("#cusLandmark").val().length)>200){
+	 			 $("#cusLandmark").focus();
+	 				$("#cusLandmarkError").html("Landmark can't exceeds 200 Characters");
+	 				return;
+	 		}else{
+	 	   	 $("#cusLandmarkError").html(" ");
+	 	 }
+		  
 		  if($("#custCity").val().trim() == ""){
 			  $("#custCityError").html("City is required");
 			  $("#custCity").focus();
 			  return false;
 		  }
+		  if(parseInt($("#custCity").val().length)>250){
+	 			 $("#custCity").focus();
+	 				$("#custCityError").html("City can't exceeds 250 Characters");
+	 				return;
+	 		}else{
+	 	   	 $("#custCityError").html(" ");
+	 	    }
 		  
-		 
+		  if(parseInt($("#custpin").val().length)>6){
+	 			 $("#custpin").focus();
+	 			 $("#custpinError").html("Pin should be in 6 digits");
+	 				return;
+	 		}else{
+	 	   	 $("#custpinError").html(" ");
+	 	    }
+		  
+		  if($("#cusState").val() == "" || $("#cusState").val() == undefined ){
+			  $("#cusStateError").html("Please Select State");
+			  $("#cusState").focus();
+			  return false;
+		  }
+		  
+		  
+		  
 	  }
 	  
 		if(len == 0){
@@ -2535,8 +2799,6 @@ for(var i=1;i<=1;i++){
 						productRange:$("#productRange"+idAttr).val(),measureRange:$("#measureRange"+idAttr).val(),utility:$("#utility"+idAttr).val(),trackingRequired:$("#trackingRequired"+idAttr).val(),
 						department:$("#department"+idAttr).val(),subDepartment:$("#subDept"+idAttr).val(),manufacturedItem:$("#manufacturedItem"+idAttr).val(),category:$("#category"+idAttr).val(),subCategory:$("#subCategory"+idAttr).val(),
 						section:$("#section"+idAttr).val(),zeroStockFlag:$("#zeroStock"+idAttr).val(),packed:$("#packed"+idAttr).val(),editPriceFlag:$("#editable"+idAttr).val(),mrp:$("#price"+idAttr).text(),manualDiscount:$("#manualDiscount"+idAttr).val(),taxRate:$("#tax"+idAttr).text(),taxValue:$("#taxAmt"+idAttr).text(),order_item_id:$("#orderItemId"+idAttr).val(),skuId:$("#skuId"+idAttr).val(),pluCode:$("#pluCode"+idAttr).val(),item_name:$("#itemName"+idAttr).text(),salePrice:$("#itemPrice"+idAttr).text(),ordered_quantity:$("#confirmQuantity"+idAttr).text(),confirmQuantity:$("#confirmQuantity"+idAttr).text(),total_cost:$("#totalCost"+idAttr).text(),model:$("#model"+idAttr).text(),colour:$("#colour"+idAttr).text(),size:$("#size"+idAttr).text()};
-			
-			
 			}else
 				obj = {productClass:$("#classProduct"+idAttr).val(),subClass:$("#subclassProduct"+idAttr).val(),uOM:$("#uom"+idAttr).val(),brand:$("#brand"+idAttr).val(),style:"",ean:$("#ean"+idAttr).val(),item_price:$("#itemPrice"+idAttr).text(),hsnCode:$("#hsnCode"+idAttr).val(),
 					taxCode:$("#itemtaxCode"+idAttr).val(),itemScanCode:$("#itemScancode"+idAttr).val(),productRange:$("#productRange"+idAttr).val(),measureRange:$("#measureRange"+idAttr).val(),utility:$("#utility"+idAttr).val(),trackingRequired:$("#trackingRequired"+idAttr).val(),department:$("#department"+idAttr).val(),
@@ -2576,13 +2838,9 @@ for(var i=1;i<=1;i++){
 						discountId:$("#discountIdDisc"+discidAttr).val(),discountPrice:0,itemPrice:$("#itemPriceDisc"+discidAttr).val()};
 				discDetails.push(objDiscount);
 			}
-			
-		
 		
 		var items = JSON.stringify(itemDetails);
 		console.log(itemDetails);
-		
-		
 		
 		var trabsactionId =null;	
 for(var i=1;i<=1;i++){

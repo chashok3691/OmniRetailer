@@ -82,18 +82,6 @@ $(document).ready(function(){
 	debugger;
 	callCalender('from');
 	callCalender('to');
-	$('#mySearch').click(function(){
-	    return viewPackagingandProcessing('warehouseProcessingAndpackaging','0','warehouse','menu','');
-	})
-	$('#searchPackage').keypress(function(e){
-		
-		var searchName=$('#searchPackage').val()
-	    if(e.which == 13){//Enter key pressed
-	        $('#mySearch').click();//Trigger search button click event
-	    }else if(searchName!=""&&searchName.length>=2){
-	    	$('#mySearch').click();
-	    }
-	});
 	/*  $('#mySearch').click(function(){
 	        return viewPackagingandProcessing('warehouseProcessingAndpackaging','0','warehouse','menu','');
 	    })
@@ -395,28 +383,28 @@ $(document).ready(function(){
                     <br>
                     <br>
                     <div class="row">
-                       <div class="col-lg-1 col-xs-2" style="padding-right: 4px;">
-				                      	<select class="form-control" id="maxRecords" style="margin-top: 15%;padding: 3px 4px;" onchange="viewPackagingandProcessing('warehouseProcessingAndpackaging','0','warehouse','menu','');">
+                       <div class="col-lg-1 col-xs-2">
+				                      	<select class="form-control" id="maxRecords" style="padding: 3px 4px;" onchange="viewPackagingandProcessing('warehouseProcessingAndpackaging','0','warehouse','menu','');">
 				                      		<option value="10" ${maxRecords == '10' ? 'selected' : ''}>10</option>
 				                      		<option value="25" ${maxRecords == '25' ? 'selected' : ''}>25</option>
 				                      		<option value="50" ${maxRecords == '50' ? 'selected' : ''}>50</option>
 				                     		<option value="100" ${maxRecords == '100' ? 'selected' : ''}>100</option>
 				                      	</select>
-				       </div>
+				                      </div>
 				                      
 				                      <!--added by manasa  -->
-				                      <div class="col-lg-10 col-xs-8 nopadding" style="padding-top: 10px;">
+				                      <div class="col-lg-10 col-xs-8" style="padding-left:0px;padding-right:0px">
                       	 
                    
-                  <input type="text" class="form-control" value="" id="searchPackage" placeholder="Search Package" style="height:29px;">
-                   <button id="mySearch" class="searchbutton" style="margin-top: 10px;"></button>
-                   <input type="hidden" id="packaging" value=""> 
+                  <!--  <input type="text" class="form-control" value="" id="searchPackage" placeholder="Search Package">
+                   <button id="mySearch" class="searchbutton"></button>
+                   <input type="hidden" id="packaging" value=""> -->
                     </div>
 				                      
                    
-                  <div class="col-lg-1 col-sm-2" style="padding-top: 10px; padding-left: 4px;">
+                  <div class="col-lg-1">
                   
-             <a  class="button" onclick="addpackaging();" style="padding-top: 5px;padding-bottom: 25px;margin-top:0px;margin-bottom: 0px;">New</a>
+             <a  class="button" onclick="addpackaging();" style="margin-top:0px;margin-bottom:0px;padding: 2px 2px 28px 0px;">New</a>
                   
                   </div>
                    <input type="hidden" id="stockType" value="${stockType}">

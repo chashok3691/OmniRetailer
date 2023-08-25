@@ -89,11 +89,12 @@ $(document).ready(function(){
                                     	<div class="col-lg-3">
                                             <label>Address <span style="color:red; font-size:2">*</span></label>
 	                                        <input type="text" onblur="criteria(this)" class="form-control" name="plotNumber" value="" id="plotNumber" required placeholder="Plot/Building" style="width: 60%" />
-	                                        <span id="plotNumberError" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
+	                                        <span id="plotNumError" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
                                         </div>
 										<div class="form-group col-lg-3">
                                             <label>Business Type</label>
                                          	 <input type="text" onblur="criteria(this)" class="form-control" name="businessType" value="" id="businessType" required placeholder="Business Type" style=" width: 80%" />
+                                             <span id="businessTypeError" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
                                         </div>
                                         <div class="form-group col-lg-3">
                                             <label>GST Number </label>
@@ -116,10 +117,12 @@ $(document).ready(function(){
                                             <div class="col-lg-12 nopadding">
                                             <label>Bank Name</label>
                                             <input type="text" onblur="criteria(this)" class="form-control" name="bankName" value="" id="bankName" placeholder="Enter Bank Name" style=" width: 80%"/>
+                                        	<span id="bankNameError" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
                                         	</div>
                                         	<div class="col-lg-12 nopadding">
                                             <label>IFSC Code</label>
                                             <input type="text" onblur="criteria(this)" class="form-control" name="ifscCode" value="" id="ifscCode" placeholder="Enter IFSC Code" style=" width: 80%"/>
+                                        	<span id="ifscCodeError" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
                                         	</div>
                                         </div>
                                         <div class="col-lg-3">

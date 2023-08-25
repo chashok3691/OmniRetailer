@@ -14,7 +14,7 @@ function appendServiceAreaDetails(){
 	$('.slno').each(function(){
 			$(this).text(slNo);
 			slNo = parseInt(slNo) + 1;
-		});
+     });
 //debugger
      var contextPath = $("#contextPath").val();
 	 var len = parseInt($("#serviceAreaMasterTable tr").length);
@@ -354,13 +354,23 @@ var mapProp = {
 	    	$("#areCodeError").html("Enter Area Code");
 	    	$("#areaCode").focus();
 	    	return false;
-	    }else if(parseInt($("#areaCode").val().length)>=50){
+	    }else if(parseInt($("#areaCode").val().length)>50){
 			 $("#areaCode").focus();
 				$("#areCodeError").html("Area code can't exceeds 50 Characters");
 				return;
+			}else{
+				$("#areCodeError").html("");
 			}
  	    
- 	  if(areaDescription.trim() != "" && parseInt($("#areaDescription").val().length)>=150){
+ 	  if(parseInt($("#city").val().length)>20){
+           $("#city").focus();
+           $("#areaError").html("City can't exceeds 20 Characters");
+             return;
+      }else{
+			$("#areaError").html("");
+		}
+ 	   
+ 	  if(areaDescription.trim() != "" && parseInt($("#areaDescription").val().length)>150){
 			$("#areaDescription").focus();
 			$("#areaDescriptionError").html("Area Description can't exceeds 150 Characters");
 			return false;
@@ -368,6 +378,13 @@ var mapProp = {
 			$("#areaDescriptionError").html("");
 		}
  	  
+ 	 debugger
+ 	 if(startDate!=null && endDate!=null)
+  	    var noOfDays = daydiff(parseDate($('#startDate').val()), parseDate($('#endDate').val()));
+  		 if(noOfDays < 0) {
+  			 $("#endDateError").html("End Date can't be less than Start Date");
+  			 return;
+  		 }
  	  
  	   var radius=0;
  	   var isRadiusSpecific="false";

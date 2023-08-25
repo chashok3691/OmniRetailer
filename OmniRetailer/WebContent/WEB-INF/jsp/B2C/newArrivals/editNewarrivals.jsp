@@ -13,10 +13,6 @@
     <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <!DOCTYPE html>
-    
-    
-    
-
 
 <meta charset="UTF-8">
 	<title>Home | Omni Retailer</title>
@@ -131,7 +127,8 @@ $(document).ready(function(){
           </div>
           <div class="col-lg-8 col-md-8 col-xs-7 col-sm-9 " style="padding-left:0px;margin-bottom: 3px">
           <label><spring:message code="createNewArrivals.startDate.label"></spring:message></label>
-           <input class="form-control calendar_icon  fromNewarrivals" readonly="readonly" value="${newarrivalslist.startDateStr}" style="background-color: white;" id="from" size="20" type="text" onfocus="callCalender('from')" onclick="callCalender('from')" placeholder="Start Date" />               <span style="color:red; font-size:2; position: absolute;" id="startDateError"></span>
+           <input class="form-control calendar_icon  fromNewarrivals" readonly="readonly" value="${newarrivalslist.startDateStr}" style="background-color: white;" id="from" size="20" type="text" onfocus="callCalender('from')" onclick="callCalender('from')" placeholder="Start Date" />              
+            <span style="color:red; font-size:2; position: absolute;" id="startDateError"></span>
             </div>
  			</div>
 			 <div class=" col-lg-6 col-sm-6 form-group">
@@ -139,7 +136,8 @@ $(document).ready(function(){
                   </div>
                   <div class="col-lg-8 col-md-8 col-xs-7 col-sm-9 " style="padding-left:0px ;margin-bottom: 3px">
                    <label><spring:message code="createNewArrivals.endDate.label"/></label>
-                    <input class="form-control calendar_icon  toNewarrivals" readonly="readonly" value="${newarrivalslist.endDateStr}" style="background-color: white;" id="to" size="20" type="text" onfocus="callCalender('to')" onclick="callCalender('to')" placeholder="End Date" />               <span style="color:red; font-size:2; position: absolute;" id="endDateError"></span>
+                    <input class="form-control calendar_icon  toNewarrivals" readonly="readonly" value="${newarrivalslist.endDateStr}" style="background-color: white;" id="to" size="20" type="text" onfocus="callCalender('to')" onclick="callCalender('to')" placeholder="End Date" />              
+                    <span style="color:red; font-size:2; position: absolute;" id="endDateError"></span>
                     <span style="color:red; font-size:2; position: absolute;" id="toNewarrivalsError"></span>
                   </div>
 			</div>
@@ -164,7 +162,7 @@ $(document).ready(function(){
           <div class="col-lg-8 col-md-8 col-xs-7 col-sm-9" style="padding-left:0px;margin-bottom: 3px">
           <label><spring:message code="createNewArrivals.lastDate.label"/></label>
           <input class="form-control calendar_icon  startDateFeatured" readonly="readonly" value="${newarrivalslist.lastDateStr}" style="background-color: white;" id="last" size="20" type="text" onfocus="callCalender('last')" onclick="callCalender('last')" placeholder="Last Date" />               <span style="color:red; font-size:2; position: absolute;" id="effectiveError"></span>
-               <span style="color:red; font-size:2; position: absolute;" id="startDateError"></span>
+               <span style="color:red; font-size:2; position: absolute;" id="lastDateError"></span>
             </div>
  			</div>
 		</div>
@@ -209,9 +207,6 @@ $(document).ready(function(){
                   </div>
 				</div>
 
-
-
-
 		</div><div class="row">
 		 <div class=" col-lg-6 col-sm-6 form-group">
 			<div class="col-lg-2 col-md-2 col-xs-0 col-sm-2">
@@ -219,11 +214,11 @@ $(document).ready(function(){
                   <div class="col-lg-8 col-md-8 col-xs-7 col-sm-9 " style="padding-left:0px ;margin-bottom: 3px">
                    <label><spring:message code="createNewArrivals.productCatageory.label"/></label>
 					<select class="form-control" name="pricerange" id="category" onchange="getProductsByCriteria('','filter','0')">
-                               	<option value=""><spring:message code="createNewArrivals.productCatageory.option.all.label"/></option>
-                             			 <c:forEach var="category" items="${categories}">
+                         <option value=""><spring:message code="createNewArrivals.productCatageory.option.all.label"/></option>
+                             <c:forEach var="category" items="${categories}">
                              	<option value="${category.categoryName}" ${category.categoryName == newarrivalslist.categoryId ? 'selected' : ''}>${category.categoryName}</option>
 							 </c:forEach>
-          						 </select>
+          			</select>
                     
                     <span style="color:red; font-size:2; position: absolute;" id="endDateError"></span>
                   </div>
@@ -231,8 +226,7 @@ $(document).ready(function(){
 
 
 			<div class=" col-lg-6 col-sm-6 form-group">
-			<div class="col-lg-2 col-md-2 col-xs-0 col-sm-2">
-                  </div>
+			<div class="col-lg-2 col-md-2 col-xs-0 col-sm-2"></div>
                   <div class="col-lg-8 col-md-8 col-xs-7 col-sm-9 " style="padding-left:0px ;margin-bottom: 3px">
                    <label><spring:message code="createNewArrivals.productCatageory.groupID.label"/></label>
 				<select class="form-control" name="pricerange" id="groupId" onchange="getProductsByCriteria('','filter','0')">
@@ -240,31 +234,25 @@ $(document).ready(function(){
                              	  <c:forEach var="offerGroup" items="${groupsList}">
 												<option value='${offerGroup.groupId}' ${offerGroup.groupId == newarrivalslist.groupId ? 'selected' : ''}>${offerGroup.groupId}</option>
 											 </c:forEach>
-          						 </select>
+          		</select>
                     
                     <span style="color:red; font-size:2; position: absolute;" id="endDateError"></span>
                   </div>
-				</div>
+			</div>
 
-
-
-
-		</div>
+           </div>
 		<div class="row">
 		<div class="col-lg-12">
-		
             <div class="col-lg-1 col-md-1 col-xs-0 col-sm-1">
 				</div>
-				<div class="col-lg-10 col-md-10 col-xs-7 col-sm-10" style="padding-left:0px;;margin-bottom: 3px">
+		<div class="col-lg-10 col-md-10 col-xs-7 col-sm-10" style="padding-left:0px;;margin-bottom: 3px">
 				<label><spring:message code="createNewArrivals.remark.label"/></label>
 				<textarea class="form-control form-group" id="description" style="resize: none;" placeholder=<spring:message code="createNewArrivals.remark.Description.placeholder"/>>${newarrivalslist.remarks}</textarea>
-			</div>
-		
+		        <span style="color:red; font-size:2; position: absolute;font-weight: bold;" id="descriptionError"></span>
+		</div>
 		</div>
 		</div>
 		<br>
-
-		
 		</div>
   <div class="table-responsive">
              <table id="productsList" class="table table-bordered table-hover">
@@ -315,7 +303,7 @@ $(document).ready(function(){
            </table>
             <div id="resultsearch"></div>
            <br/>
-         </div>
+    </div>
   			
   			
   			 <!--added by manasa  -->

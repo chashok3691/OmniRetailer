@@ -226,6 +226,7 @@ $(document).ready(function(){
                                         <div class="form-group col-lg-3">
                                             <label><spring:message code="EmployeeForm.middleName" /></label>
                                             <input type="text" onblur="criteria(this)" class="form-control" name="middleName" value="${employee.middleName}" id="middleName" required placeholder="<spring:message code="enter.EmployeeForm.middleName" />" style=" width: 80%" />
+                                         <span id="middleNameError" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
                                         </div>
                                         <div class="form-group col-lg-2">
                                              <label><spring:message code="EmployeeForm.dob" /><!--  <span style="color:red; font-size:2">*</span> --></label>
@@ -245,7 +246,7 @@ $(document).ready(function(){
                                         <div class="form-group col-lg-3">
                                             <label><spring:message code="EmployeeForm.designation" /> <!-- <span style="color:red; font-size:2">*</span> --></label>
                                             <input type="text" onblur="criteria(this)" class="form-control" style="width:80%" name="designation" value="${employee.designation}" id="designation" required placeholder="<spring:message code="enter.EmployeeForm.designation" />"  />
-                                        	<!-- <span id="designationError" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span> -->
+                                        	 <span id="designationError" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span> 
                                         </div>
       
 								</div>
@@ -265,7 +266,7 @@ $(document).ready(function(){
                                        	<div class="form-group col-lg-2">
                                             <label><spring:message code="EmployeeForm.highestQualification" /> <!-- <span style="color:red; font-size:2">*</span> --></label>
                                             <input type="text" onblur="criteriaSlashes(this)" class="form-control" name="highestQualification" value="${employee.highestQualification}" id="highestQualification" required placeholder="<spring:message code="enter.EmployeeForm.highestQualification" />" />
-                                           <!--  <span id="highestQualificationError" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span> -->
+                                             <span id="highestQualificationError" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span> 
                                         </div>
                                         <div class="form-group col-lg-1"></div>
                                         <div class="form-group col-lg-3">
@@ -386,9 +387,11 @@ $(document).ready(function(){
 				                                 <div class="row" >
 				                                 	<div class="col-lg-6 col-md-4 col-sm-4 col-xs-4">
 				                                 		<input type="text" class="form-control" name="doorNum" id="doorNum" value="${employee.doorNum}" required placeholder="<spring:message code="EmployeeForm.address.door" />" oninput="this.value = this.value.replace(/[^0-9]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');"/>
+			                             		 	<span id="doorNumError" style="text-align:right;color: red;font-size: 2;font-weight: bold;margin-left: 20px;white-space: nowrap;"></span>
 			                             		 	</div>
 			                             			<div class="col-lg-6 col-md-8 col-sm-8 col-xs-8" style="padding-left: 0px">
 			                                 			<input type="text" class="form-control" name="streetName" id="streetName" value="${employee.streetName}" required placeholder="<spring:message code="EmployeeForm.address.street" />" />
+			                             			<span id="streetNameError" style="text-align:right;color: red;font-size: 2;font-weight: bold;margin-left: 20px;white-space: nowrap;"></span>
 			                             			</div>
 			                             		 </div>
 			                             	</div>
@@ -396,9 +399,8 @@ $(document).ready(function(){
                                    		</div>
                               <div class="row" style="width: 100%">  
                              			<div class="form-group col-lg-12">
-			                                
 			                                 <input type="text" onblur="criteriaSlashes(this)" class="form-control" name="jobLocation" id="jobLocation" value="${employee.jobLocation }" required placeholder="<spring:message code="EmployeeForm.address.area" />" />
-			 
+			                               <span id="jobLocationError" style="text-align:right;color: red;font-size: 2;font-weight: bold;margin-left: 20px;white-space: nowrap;"></span>
 			                            </div>
                               </div> 
                               <div class="row" style="width: 100%">  
@@ -417,9 +419,11 @@ $(document).ready(function(){
 			                                 <div class="row">
 			                                 <div class="form-group col-lg-8">
 			                                 <input type="text" onblur="criteria(this)" class="form-control" name="city" id="city" value="${employee.city}" required placeholder="<spring:message code="EmployeeForm.address.city" />" />
-			                             </div>
+			                                 <span id="cityError" style="text-align:right;color: red;font-size: 2;font-weight: bold;margin-left: 20px;white-space: nowrap;"></span>
+			                                </div>
 			                             <div class="form-group col-lg-4" style="padding-left: 0px">
 			                                 <input type="text" class="form-control" name="zipCode" id="zipCode" value="${employee.zipCode}" required placeholder="<spring:message code="EmployeeForm.address.pin" />" oninput="this.value = this.value.replace(/[^0-9]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" />
+			                                 <span id="zipCodeError" style="text-align:right;color: red;font-size: 2;font-weight: bold;margin-left: 20px;white-space: nowrap;"></span>
 			                             </div>
 			                             </div>
 			                             </div>

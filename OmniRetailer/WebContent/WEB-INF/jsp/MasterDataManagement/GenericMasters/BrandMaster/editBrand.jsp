@@ -156,7 +156,7 @@ if(subcategoryArray != undefined){
           </div>
       </div>
       <div class="row">
-          <div class="col-lg-12">
+          <%-- <div class="col-lg-12">
               <label><spring:message code="supplier.name.label" /> <span style="color:red; font-size:2">*</span></label>
               <input type="text"   class="form-control allField searchItems searchBar" name="supplier_name" id="searchSupplier" placeholder="<spring:message code="search.supplier.label" />" />
 		<div class=services>
@@ -166,7 +166,20 @@ if(subcategoryArray != undefined){
 	    </div>
 		<span id="supplierNameError" style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
 		<input type="hidden" class="allField" name="supplier_Id" id="supplier_Id" value="${brandDetails.supplier}" />
+         </div> --%>
+         
+          <div class="col-lg-12">
+              <label><spring:message code="supplier.name.label" /> <span style="color:red; font-size:2">*</span></label>
+              <input type="text"class="form-control allField searchItems searchBar" name="supplier_name" id="searchSupplier"value="${supplierName}" placeholder="<spring:message code="search.supplier.label" />" />
+		<div class=services>
+   			<div class="items">
+    			<ul class="matchedStringUl supplier" style="width: 89%!important;padding: 0px!important;"></ul>
+  			</div>
+	    </div>
+		<span id="supplierNameError" style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
+		<input type="hidden" class="allField" name="supplier_Id" id="supplier_Id" value="${brandDetails.supplier}" />
          </div>
+         
          </div>
     <div class="row">
           <br>

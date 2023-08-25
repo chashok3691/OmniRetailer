@@ -1033,6 +1033,39 @@ function appendProducts(productsList, searchCategory){
 		 focusDiv('Error');
 		 return;
 	 }
+	 
+	 if(parseInt($("#returnBy").val().length)>30){
+		 $("#returnBy").focus();
+			$("#returnByError").html("Returned By can't exceeds 30 Characters");
+			return;
+	}else{
+   	 $("#returnByError").html(" ");
+ }
+	
+	if(parseInt($("#supplierLocation").val().length)>50){
+		 $("#supplierLocation").focus();
+			$("#supplierLocationError").html("Supplier Location can't exceeds 50 Characters");
+			return;
+	}else{
+   	 $("#supplierLocationError").html(" ");
+ }
+	
+	if(parseInt($("#supplierShipmentRef").val().length)>25){
+		 $("#supplierShipmentRef").focus();
+			$("#supplierShipmentRefError").html("GRN Ref can't exceeds 25 Characters");
+			return;
+	}else{
+   	 $("#supplierShipmentRefError").html(" ");
+ }
+	
+	if(parseInt($("#pickedby").val().length)>50){
+		 $("#pickedby").focus();
+			$("#pickedbyError").html("Picked By can't exceeds 50 Characters");
+			return;
+	}else{
+   	 $("#pickedbyError").html(" ");
+ }
+	 
 	 if($("#supplierNameError").text() != ""){
 			$("#supplierNameError").html("Supplier Name doesn't exist");
 			focusDiv('supplierNameError');
@@ -1055,8 +1088,6 @@ function appendProducts(productsList, searchCategory){
         return false;
             		 }
         }
-
-
 
 	  if($("#returnDateStr").val() == ""){
 		  $("#returnDateStrError").html("Enter Return Date");
@@ -1092,8 +1123,6 @@ function appendProducts(productsList, searchCategory){
 		//finalObj.grnRef = $("#supplierShipmentRef").val();
 		finalObj.goodsVal = $("#goodsVal").val();
 		finalObj.type = type;
-		
-		
 		
 		 if($("#statusissue").val() == undefined ||  $("#statusissue").val() == ""){
 			finalObj.status = status;
@@ -1168,7 +1197,6 @@ function appendProducts(productsList, searchCategory){
 		if($("#outletLocation").length > 0)
 			location = $("#outletLocation").val();
 		
-		
 		var category = ""
 			if($("#outletCategory").length > 0)
 				category = $("#outletCategory").val();
@@ -1184,7 +1212,6 @@ function appendProducts(productsList, searchCategory){
 		var supplierid = ""
 			if($("#supplier_Id").length > 0)
 				supplierid = $("#supplier_Id").val();
-		
  
             name=""
 		 if($("#searchShipmentReturnsId").length>0)
@@ -1196,11 +1223,16 @@ function appendProducts(productsList, searchCategory){
 		var startDate = "";
 		 var endDate = "";
 		 if($("#from").val() != "" && $("#to").val() != ""){
-			var noOfDays = daydiff(parseDate($('#from').val()), parseDate($('#to').val()));
+			
+			 debugger
+			 var noOfDays = daydiff(parseDate($('#from').val()), parseDate($('#to').val()));
 			 if(noOfDays < 0){
-				 	$('#Error').html("Start Date can't be less than End Date");
-				 return;
-			 }
+				 	$('#EndDateError').html("End Date can't be less than Start Date");
+				     return;
+		 }else{
+		  	   	 $("#EndDateError").html(" ");
+		  	 }
+			 
 			 startDate = $("#from").val() + " 00:00:00";
 			 endDate = $("#to").val() + " 23:59:59";
 		}else if($("#from").val() != "")
@@ -1209,7 +1241,6 @@ function appendProducts(productsList, searchCategory){
 				endDate = $("#to").val() + " 23:59:59";
 		 var contextPath = $("#contextPath").val();
 		 var flowUnder = $("#flowUnder").val();
-		 
 		 
 		 var currentDate = getSystemDate();
 			if ($("#from").val() != "" && currentDate != "") {
@@ -1235,7 +1266,6 @@ function appendProducts(productsList, searchCategory){
 		 console.log(length)
 	      	$('#outletLocation option').each(function() { 
 	      		allLocationsList.push( $(this).attr('value'));
-	      	   
 	      	});
 		
 		 console.log(allLocationsList)
@@ -1257,9 +1287,7 @@ function appendProducts(productsList, searchCategory){
 			 endDate="";
 			 
 		 }
-		 
-		 
-		 
+		
 		 URL = contextPath + "/procurement/searchShipmentReturns.do";
 		 $.ajax({
 				type: "GET",
@@ -1277,7 +1305,6 @@ function appendProducts(productsList, searchCategory){
 					subcategory :subcategory,
 					supplier : supplier,
 					supplierid : supplierid
-
 				},
 				beforeSend: function(xhr){                    
 		   	   		$("#loading").css("display","block");

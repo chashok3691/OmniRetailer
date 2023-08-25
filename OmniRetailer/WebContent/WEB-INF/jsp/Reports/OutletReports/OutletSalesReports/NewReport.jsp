@@ -310,9 +310,7 @@ $(document).ready(function(){
                                             		
                                                 <th><spring:message code="sl.no.label" /></th>
                                                 <%-- <th><spring:message code="datetime.label" /></th> --%>
-                                                 <th>Bill ID</th><th>Yearly Bill ID</th>
-                                                 <th><spring:message code="business.enquiry.date.label" /></th>
-                                                  
+                                                 <th><spring:message code="business.enquiry.date.label" /></th> 
                                                 <th><spring:message code="user.name.label" /></th> 
                                                  <th><spring:message code="category.label" /></th> 
                                                   <th><spring:message code="subcategory.label" /></th> 
@@ -335,8 +333,6 @@ $(document).ready(function(){
                                            <c:forEach var="items" items="${warehousereport.reportsList}" varStatus="theCount">
                                         	 <tr>
                                         	 	<td>${theCount.index+index}</td>
-                                        	 	 <td>${items.billId}</td>
-                                        	 	 <td>${items.yearlySerialBillId}</td>
                                         	    <td>${items.date}</td>
                                         	    <td>${items.cashierName}</td>
                                         	 	<td>${items.category}</td>

@@ -461,7 +461,7 @@ function appendPackedSkuDetails(skuDetails,type){
 }
 function addPackedSku(sku,type){
 	 
-	$(".submit").removeAttr('disabled');
+	 
 	 debugger;
 	 var contextPath = $("#contextPath").val();
 	 
@@ -540,12 +540,12 @@ function addPackedSku(sku,type){
 			var row = "<tr class='dynamicdiv' id='dynamicdiv"+divLength+"' style='margin-top:5px;'><td><input type='checkbox' name='selectall' class='selectableCheckbox' id='selectall' value='"+slNo+"' /></td><td class='slno' id='itemno"+divLength+"'>"+slNo+"</td><td class='skuID"+divLength+"' id='skuID"+divLength+"'>"+sku.productId+"</td>" +
 			"<td id='Desc"+divLength+"'>"+description+"</td>"+
 			
-			"<td id='batchID"+divLength+"' class='Pack"+divLength+"'    contenteditable='true'></td>" +
-			"<td id='EAN"+divLength+"' class='Pack"+divLength+"'   contenteditable='true'></td>" +
+			"<td id='batchID"+divLength+"' class='Pack"+divLength+"'    contenteditable='true'>1</td>" +
+			"<td id='EAN"+divLength+"' class='Pack"+divLength+"'   contenteditable='true'>1</td>" +
 			"<td id='availQty"+divLength+"' class='Pack"+divLength+"' >"+sku.packSkuIDQty+"</td>" +
 			"<td id='inwardQty"+divLength+"' class='Pack"+divLength+"' ></td>" +
-			"<td id='procQty"+divLength+"' class='Pack"+divLength+" '  oninput='changeValue("+divLength+",this)' contenteditable='true'  onBlur=''>1</td>" +
-			"<td id='noofpacks"+divLength+"' class='Pack"+divLength+" ' oninput='changeValue("+divLength+",this)' onBlur='changePack(this);setData()'  contenteditable='true'>1</td>" +
+			"<td id='procQty"+divLength+"' class='Pack"+divLength+" '   contenteditable='true'  onBlur=''>0</td>" +
+			"<td id='noofpacks"+divLength+"' class='Pack"+divLength+" ' onBlur='changePack(this);setData()'  contenteditable='true'>1</td>" +
 			"<input type='hidden' id='parentData"+divLength+"' value='"+parsedparents+"'/>"+
 			"<input type='hidden' id='parentDataUnparsed"+divLength+"' value='"+parentsunparsed+"'/>"+
 			"<td class='Price' id='salePrice"+divLength+"'>"+sku.salePrice+"</td>" +"<td id='costPrice"+divLength+"'>"+sku.costPrice+"</td>"+
@@ -572,25 +572,7 @@ function addPackedSku(sku,type){
                              	
 			
 			var count = 1;
-			var error="";
-                     for (i = 0, lenths = parentsunparsed.length; i < lenths; i++) { 
-                    	 
-                    	 if(parentsunparsed[i].avlQty <= 0 && parentsunparsed[i].iszeroBilling == false){
-                    		 
-                    		 if(i == 0){
-                    			 error += "We can't process your request, Due to "+parentsunparsed[i].itemId
-                    		 }else{
-                    			 if(error == ""){
-                    				 error += "We can't process your request, Due to "+parentsunparsed[i].itemId
-                    			 }else{
-                    				 error += ","+parentsunparsed[i].itemId
-                    			 }
-                    			 
-                    		 }
-                    		 
-                    	 }
-                    	 
-                    	 
+                     for (i = 0, lenths = parentsunparsed.length; i < lenths; i++) {    		 
          	  		  	row2 =  "<tr  class='collapse rowone"+divLength+"' id='packagingdetails"+divLength+"' class='packagingdetails'>"+
          	  		  			 "<td></td>"+
          	  		  			 " <td>"+count+"</td>"+
@@ -605,18 +587,9 @@ function addPackedSku(sku,type){
          	        			 count =  count+1;
          	  		 row3 = row3 + row2
          	  		  			};
-         	  		  			
-         	  		  		/*$("#ErrorDetail").html("We can't process your request, Due to "+$("#skuID"+idAttr)+" Avl Quantity Should not be 0");*/
-         	  		  		if(error != ""){
-         	  		  			error += " SKU(s) has insufficient quantity."
-         	  		  			$(".submit").attr('disabled','disabled');
-         	  		  		    $("#ErrorDetail").html(error);
-         	  		  		}
                  debugger;     
 			row = row + row3;
 			$("#packagingList tbody").append(row);
-			$("#warehouseLocation").attr('disabled','disabled');
-			//"We can't process your request, Due to "+$("#skuID"+idAttr)+" Avl Quantity Should not be 0"
 			setData();
 	 }else{
 		 
@@ -786,10 +759,7 @@ function createPackageAndProcessing(operation)
 		  	alert("Check your internet connection,Please try agian after some time.");
 		  	return;
 		  	}
-		  	if($('#searchSupplier').val() == "" || $('#searchSupplier').val() == null || $('#searchSupplier').val() == undefined){
-		   		$('#supplierNameError').html("Enter Supplier Name")
-		   		return
-		   	}
+
 		  var contextPath = $('#contextPath').val();
 	  
 	   	
@@ -845,9 +815,9 @@ function createPackageAndProcessing(operation)
 			
 			for(var i =0; i<parentDataList.length;i++ ){
 				
-				var obj = {childSkuId:$("#skuID"+idAttr).text(),childSkuIdDescription:$("#Desc"+idAttr).text(),stockQty:$("#stockQty"+idAttr).text(),noOfPacks:$("#noofpacks"+idAttr).text(),salePrice:parseInt($("#salePrice"+idAttr).text()),costPrice:parseInt($("#costPrice"+idAttr).text()),saleValue:parseInt($("#saleValue"+idAttr).text()),costValue:parseInt($("#costValue"+idAttr).text()),ean:$("#EAN"+idAttr).text(),batchId:$("#batchID"+idAttr).text(),avlQty:parentDataList[i].avlQty,inwardQty:parseFloat($("#inwardQty"+idAttr).text()),procQty:parseFloat($("#procQty"+idAttr).text()),parentSkuId:parentDataList[i].itemId,parentSkuIdDescription:parentDataList[i].itemDescription,uom:parentDataList[i].uom,inwardQty:parentDataList[i].quantity,childSkuAvailableQty:parseFloat($("#availQty"+idAttr).text())};
-				/*var obj = {childSkuId:$("#skuID"+idAttr).text(),childSkuIdDescription:$("#Desc"+idAttr).text(),stockQty:$("#stockQty"+idAttr).text(),noOfPacks:$("#noofpacks"+idAttr).text(),salePrice:parseInt($("#salePrice"+idAttr).text()),costPrice:parseInt($("#costPrice"+idAttr).text()),saleValue:parseInt($("#saleValue"+idAttr).text()),costValue:parseInt($("#costValue"+idAttr).text()),ean:$("#EAN"+idAttr).text(),batchId:$("#batchID"+idAttr).text(),avlQty:parentDataList[i].avlQty,inwardQty:parseFloat($("#inwardQty"+idAttr).text()),procQty:parseFloat($("#procQty"+idAttr).text()),parentSkuId:parentDataList[i].itemId,parentSkuIdDescription:parentDataList[i].itemDescription,uom:parentDataList[i].uom,childSkuAvailableQty:parseFloat($("#availQty"+idAttr).text())};
-				*///var obj = {childSkuId:$("#skuID"+idAttr).text(),childSkuIdDescription:$("#Desc"+idAttr).text(),stockQty:$("#stockQty"+idAttr).text(),noOfPacks:$("#noofpacks"+idAttr).text()};
+			
+				var obj = {childSkuId:$("#skuID"+idAttr).text(),childSkuIdDescription:$("#Desc"+idAttr).text(),stockQty:$("#stockQty"+idAttr).text(),noOfPacks:$("#noofpacks"+idAttr).text(),salePrice:parseInt($("#salePrice"+idAttr).text()),costPrice:parseInt($("#costPrice"+idAttr).text()),saleValue:parseInt($("#saleValue"+idAttr).text()),costValue:parseInt($("#costValue"+idAttr).text()),ean:$("#EAN"+idAttr).text(),batchId:$("#batchID"+idAttr).text(),avlQty:parentDataList[i].avlQty,inwardQty:parseFloat($("#inwardQty"+idAttr).text()),procQty:parseFloat($("#procQty"+idAttr).text()),parentSkuId:parentDataList[i].itemId,parentSkuIdDescription:parentDataList[i].itemDescription,uom:parentDataList[i].uom,childSkuAvailableQty:parseFloat($("#availQty"+idAttr).text())};
+				//var obj = {childSkuId:$("#skuID"+idAttr).text(),childSkuIdDescription:$("#Desc"+idAttr).text(),stockQty:$("#stockQty"+idAttr).text(),noOfPacks:$("#noofpacks"+idAttr).text()};
 				
         
          PackagingDetails.push(obj);
@@ -862,9 +832,8 @@ function createPackageAndProcessing(operation)
 			 
 				formData.packagingRefId = $('#packageRef').val();
 				
-				formData.status = $('#status').val();
 				
-				formData.isUpdateQty = $('#isUpdateQty').val();
+				
 				
 			 debugger;
 			 $('.slnos').each(function() {
@@ -926,12 +895,11 @@ function createPackageAndProcessing(operation)
 				  		var childSkuAvailableQty = parseFloat($("#availQty"+idAttr).text());
 				  		
 
-				  		var obj = {childSkuId:childSkuId,childSkuIdDescription:childSkuIdDescription,stockQty:stockQty,noOfPacks:noOfPacks,salePrice:salePrice,costPrice:costPrice,saleValue:saleValue,costValue:costValue,ean:ean,batchId:batchId,procQty:procQty,inwardQty:inwardQty,avlQty:avlQty,parentSkuId:parentSkuId,parentSkuIdDescription:parentSkuIdDescription,packagingRefId:$('#packageRef').val(),uom:uom,inwardQty:editParentDataList[i].inwardQty,childSkuAvailableQty:childSkuAvailableQty};
 
 
 
-				  			/*var obj = {childSkuId:childSkuId,childSkuIdDescription:childSkuIdDescription,stockQty:stockQty,noOfPacks:noOfPacks,salePrice:salePrice,costPrice:costPrice,saleValue:saleValue,costValue:costValue,ean:ean,batchId:batchId,procQty:procQty,inwardQty:inwardQty,avlQty:avlQty,parentSkuId:parentSkuId,parentSkuIdDescription:parentSkuIdDescription,packagingRefId:$('#packageRef').val(),uom:uom,childSkuAvailableQty:childSkuAvailableQty};
-				  			*///var obj = {childSkuId:$("#skuID"+idAttr).text(),childSkuIdDescription:$("#Desc"+idAttr).text(),stockQty:$("#stockQty"+idAttr).text(),noOfPacks:$("#noofpacks"+idAttr).text()};
+				  			var obj = {childSkuId:childSkuId,childSkuIdDescription:childSkuIdDescription,stockQty:stockQty,noOfPacks:noOfPacks,salePrice:salePrice,costPrice:costPrice,saleValue:saleValue,costValue:costValue,ean:ean,batchId:batchId,procQty:procQty,inwardQty:inwardQty,avlQty:avlQty,parentSkuId:parentSkuId,parentSkuIdDescription:parentSkuIdDescription,packagingRefId:$('#packageRef').val(),uom:uom,childSkuAvailableQty:childSkuAvailableQty};
+				  			//var obj = {childSkuId:$("#skuID"+idAttr).text(),childSkuIdDescription:$("#Desc"+idAttr).text(),stockQty:$("#stockQty"+idAttr).text(),noOfPacks:$("#noofpacks"+idAttr).text()};
 				  			PackagingDetails.push(obj);
 				  			
 
@@ -957,16 +925,9 @@ function createPackageAndProcessing(operation)
 				
 				for(var j =0; j<parentDataList.length;j++ ){
 					
-					/*if(parseFloat($("#availQty"+idAttr).text()) < 0 || parseFloat($("#availQty"+idAttr).text()) != 0){
-						 $("#ErrorDetail").html("We can't process your request, Due to "+$("#skuID"+idAttr)+" Avl Quantity Should not be 0");
-						 return
-					}
-*/
-					/*var obj1 = {childSkuId:$("#skuID"+idAttr).text(),childSkuIdDescription:$("#Desc"+idAttr).text(),stockQty:$("#stockQty"+idAttr).text(),noOfPacks:$("#noofpacks"+idAttr).text(),salePrice:parseInt($("#salePrice"+idAttr).text()),costPrice:parseInt($("#costPrice"+idAttr).text()),saleValue:parseInt($("#saleValue"+idAttr).text()),costValue:parseInt($("#costValue"+idAttr).text()),ean:$("#EAN"+idAttr).text(),batchId:$("#batchID"+idAttr).text(),avlQty:parseFloat($("#availQty"+idAttr).text()),inwardQty:parseFloat($("#inwardQty"+idAttr).text()),procQty:parseFloat($("#procQty"+idAttr).text()),parentSkuId:parentDataList[j].itemId,parentSkuIdDescription:parentDataList[j].itemDescription};
-*/					//var obj = {childSkuId:$("#skuID"+idAttr).text(),childSkuIdDescription:$("#Desc"+idAttr).text(),stockQty:$("#stockQty"+idAttr).text(),noOfPacks:$("#noofpacks"+idAttr).text()};
-					
-					var obj1 = {childSkuId:$("#skuID"+idAttr).text(),childSkuIdDescription:$("#Desc"+idAttr).text(),stockQty:$("#stockQty"+idAttr).text(),noOfPacks:$("#noofpacks"+idAttr).text(),salePrice:parseInt($("#salePrice"+idAttr).text()),costPrice:parseInt($("#costPrice"+idAttr).text()),saleValue:parseInt($("#saleValue"+idAttr).text()),costValue:parseInt($("#costValue"+idAttr).text()),ean:$("#EAN"+idAttr).text(),batchId:$("#batchID"+idAttr).text(),avlQty:parseFloat($("#availQty"+idAttr).text()),inwardQty:parseFloat($("#inwardQty"+idAttr).text()),procQty:parseFloat($("#procQty"+idAttr).text()),parentSkuId:parentDataList[j].itemId,inwardQty:parentDataList[i].quantity,parentSkuIdDescription:parentDataList[j].itemDescription};
 
+					var obj1 = {childSkuId:$("#skuID"+idAttr).text(),childSkuIdDescription:$("#Desc"+idAttr).text(),stockQty:$("#stockQty"+idAttr).text(),noOfPacks:$("#noofpacks"+idAttr).text(),salePrice:parseInt($("#salePrice"+idAttr).text()),costPrice:parseInt($("#costPrice"+idAttr).text()),saleValue:parseInt($("#saleValue"+idAttr).text()),costValue:parseInt($("#costValue"+idAttr).text()),ean:$("#EAN"+idAttr).text(),batchId:$("#batchID"+idAttr).text(),avlQty:parseFloat($("#availQty"+idAttr).text()),inwardQty:parseFloat($("#inwardQty"+idAttr).text()),procQty:parseFloat($("#procQty"+idAttr).text()),parentSkuId:parentDataList[j].itemId,parentSkuIdDescription:parentDataList[j].itemDescription};
+					//var obj = {childSkuId:$("#skuID"+idAttr).text(),childSkuIdDescription:$("#Desc"+idAttr).text(),stockQty:$("#stockQty"+idAttr).text(),noOfPacks:$("#noofpacks"+idAttr).text()};
 					PackagingDetails.push(obj1);
 					
 					
@@ -1065,9 +1026,9 @@ for(var j=0;j<skuList.length;j++){
 	var sku = skuList[j];
 	
 
-	var divLength = parseInt($("#packagingList tr").length);
-	if (divLength != 1)
-		divLength = parseInt($("#packagingList tr:last").attr("id").replace('dynamicdiv', '')) + 1;
+	var len = parseInt($("#packagingList tr").length);
+	if (len != 1)
+		len = parseInt($("#packagingList tr:last").attr("id").replace('dynamicdiv', '')) + 1;
 	
 	
 	
@@ -1081,7 +1042,7 @@ for(var j=0;j<skuList.length;j++){
 	 debugger
 	 
 	
-				/*for(var i=0;i<sku.quantity;i++){*/
+				for(var i=0;i<sku.quantity;i++){
 	 
 					var len = parseInt($("#packagingList tr").length);
 					if (len != 1)
@@ -1103,32 +1064,17 @@ for(var j=0;j<skuList.length;j++){
 						else
 							description = $("#desc").val();
 						
-						var parsedparents =  JSON.stringify(sku.boMaterialChilds);
-						var parentsunparsed = sku.boMaterialChilds;
+					
 
-						/*var row = "<tr id='dynamicdiv"+len+"' style='margin-top:5px;'><td><input type='checkbox' name='selectall' class='selectableCheckbox' id='selectall' value='"+slNo+"' /></td><td class='slno' id='itemno"+len+"'>"+slNo+"</td><td class='skuID"+len+"' id='skuID"+len+"'>"+sku.skuId+"</td>" +
+						var row = "<tr id='dynamicdiv"+len+"' style='margin-top:5px;'><td class='slno' id='itemno"+len+"'>"+slNo+"</td><td class='skuID"+len+"' id='skuID"+len+"'>"+sku.skuId+"</td>" +
 						"<td id='Desc"+len+"'>"+description+"</td>"+
 						"<td id='stockQty"+len+"' class='Pack"+len+"' onBlur='changePack(this);'  contenteditable='true'>1</td>" +
 						"<td id='noofpacks"+len+"' class='Pack"+len+"' onBlur='changePack(this);'  contenteditable='true'>1</td>" +
 						"<td class='Price' id='salePrice"+len+"'>"+sku.salePrice+"</td>" +"<td id='costPrice"+len+"'>"+sku.cost+"</td>"+
-						"<td class='Price' id='saleValue"+len+"'>"+sku.salePrice+"</td>" +"<td id='costValue"+len+"'>"+sku.cost+"</td></tr>";*/
-						var row = "<tr class='dynamicdiv' id='dynamicdiv"+divLength+"' style='margin-top:5px;'><td><input type='checkbox' name='selectall' class='selectableCheckbox' id='selectall' value='"+slNo+"' /></td><td class='slno' id='itemno"+divLength+"'>"+slNo+"</td><td class='skuID"+divLength+"' id='skuID"+divLength+"'>"+sku.skuId+"</td>" +
-						"<td id='Desc"+divLength+"'>"+description+"</td>"+
-						
-						"<td id='batchID"+divLength+"' class='Pack"+divLength+"'    contenteditable='true'></td>" +
-						"<td id='EAN"+divLength+"' class='Pack"+divLength+"'   contenteditable='true'></td>" +
-						"<td id='availQty"+divLength+"' class='Pack"+divLength+"' ></td>" +
-						"<td id='inwardQty"+divLength+"' class='Pack"+divLength+"' >"+sku.quantity+"</td>" +
-						"<td id='procQty"+divLength+"' class='Pack"+divLength+" '  oninput='changeValue("+divLength+",this)' contenteditable='true'  onBlur=''>1</td>" +
-						"<td id='noofpacks"+divLength+"' class='Pack"+divLength+" ' oninput='changeValue("+divLength+",this)' onBlur='changePack(this);setData()'  contenteditable='true'>1</td>" +
-						"<input type='hidden' id='parentData"+divLength+"' value='"+parsedparents+"'/>"+
-						"<input type='hidden' id='parentDataUnparsed"+divLength+"' value='"+parentsunparsed+"'/>"+
-						"<td class='Price' id='salePrice"+divLength+"'>"+sku.price+"</td>" +"<td id='costPrice"+divLength+"'></td>"+
-						"<td class='Price' id='saleValue"+divLength+"'>"+sku.price+"</td>" +"<td id='costValue"+divLength+"'></td>"+
-						"<td>"+"<a  class='clickable' data-toggle='collapse' id='row"+divLength+"' data-target=''.row"+divLength+"''> <span style='font-size: 17px' onclick='expandPackage("+divLength+")' id='categoryExpand"+divLength+"'><i class='fa fa1 fa-sort-desc'></i></span></a></td></tr>"
+						"<td class='Price' id='saleValue"+len+"'>"+sku.salePrice+"</td>" +"<td id='costValue"+len+"'>"+sku.cost+"</td></tr>";
 	                    $("#packagingList tbody").append(row);
 	
-			/*	}*/
+				}
 	 
 	
 
@@ -1140,7 +1086,6 @@ for(var j=0;j<skuList.length;j++){
 
 function clearAll(){
 	debugger;
-	$("#warehouseLocation").removeAttr('disabled');
 	$("#packagingList tbody tr").remove();
 	setData();
 }
@@ -1214,13 +1159,7 @@ function expandPackage(ele){
 
 	}
 
-function changeValue(divLength,element){
-	
-	
-	var value =  element.innerText;
-	 $("#procQty"+divLength).html(value);
-	 $("#noofpacks"+divLength).html(value);
-}
+
 
 
 

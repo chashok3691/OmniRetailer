@@ -281,49 +281,7 @@ setData();
                        <input type="hidden" id="packageRef" value="${packages.packagingRefId}"/>
                        <input type="hidden" id="editPackageList" value='${packagesLists}'/>
                        
-                        <div class="row" style="margin-right: 0px;margin-left: 0px;margin-bottom: 20px;">
-									
-									 <c:if test="${not empty previousStates}"> 
-									   <div class="col-lg-12" style="min-height: 38px;/* width: 104%; */background-color: lightgray;padding:5px;" >
-									       
-      									<%-- <c:forEach var="previousWorkFlowList" items="${previousStates}">
-      									  
-      									<div class="col-lg-3" style="padding-right: 0px;padding-left: 0px;width: 150px;display:inline-block;margin-top: 12px;">
-                                             <span class=" border" style="padding-left: 0px;padding-top: 17px;font-size: 16px;"><img alt="" style="height:30px" src="/OmniRetailer/images/workflow_arrow.png">${previousWorkFlowList }
-      									
-      										</span>
-      									     </div>
-                                 	  </c:forEach> --%>
-                                 	  
-                                 	    <c:forEach var="previousWorkFlowList" items="${previousStates}">
-                                     	<c:choose>
-                                     	   <c:when test="${not empty nextWorkFlowStates}">
-                                     	      <div class="col-lg-3" style="margin-bottom: 12px;padding-right: 0px;padding-left: 0px;width: 150px;display:inline-block;margin-top: 12px;">
-                                             <span class=" border" style="padding-left: 0px;padding-top: 17px;font-size: 16px;"><img alt="" style="height:30px" src="/OmniRetailer/images/workflow_arrow.png">${previousWorkFlowList }
-      									
-      										</span>
-      									     </div>
-                                     	   </c:when>
-                                     	   <c:otherwise>
-                                     	      <div class="col-lg-3" style="padding-right: 0px;padding-left: 0px;width: 150px;display:inline-block;margin-top: 12px;margin-bottom: 12px;">
-                                             <span class=" border" style="padding-left: 0px;padding-top: 17px;font-size: 16px;"><img alt="" style="height:30px" src="/OmniRetailer/images/workflow_arrow.png">${previousWorkFlowList }
-      									
-      										</span>
-      									     </div>
-                                     	   </c:otherwise>
-                                     	</c:choose>
-      									  
-                                 	  </c:forEach>
-      									
-      									     
-      									
-      									
-									   </div>
-									
-									 </c:if>
-									
-									
-								</div>
+                       
                        
                   
                        

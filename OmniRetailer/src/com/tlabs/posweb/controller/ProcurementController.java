@@ -643,9 +643,6 @@ public class ProcurementController {
 			
 		modelAndViewObj.addObject("locationBeanList", locationsList);
 		
-		
-		
-		
 		List<String> workLocationsList = adminServiceObj.getOutletAndWarehouseLocationsList(customerIdStr,emailIdStr,false);
 		modelAndViewObj.addObject("workLocationsList", workLocationsList);
 		

@@ -713,8 +713,7 @@ function createSaleQuotation(status,type){
 	debugger;
 	 //purpose:for checking internet conection
 	var online = window.navigator.onLine;
-  	if(!online)
-  	{
+  	if(!online){
   	alert("check your internet connection,please try agian after some time");
   	return;
   	}
@@ -725,6 +724,61 @@ function createSaleQuotation(status,type){
 		focusDiv("Error");
 		return;
 	}
+	
+	if(parseInt($("#customerId").val().length)>30){
+			 $("#customerId").focus();
+				$("#Error").html("Customer Id can't exceeds 30 Characters");
+				return;
+		}else{
+	   	 $("#Error").html(" ");
+	 }
+	
+	if(parseInt($("#customerName").val().length)>50){
+		 $("#customerName").focus();
+			$("#Error").html("Customer Name can't exceeds 50 Characters");
+			return;
+	}else{
+  	 $("#Error").html(" ");
+  }
+	
+	if(parseInt($("#fromAdderss").val().length)>100){
+		 $("#fromAdderss").focus();
+			$("#Error").html("Company Name can't exceeds 100 Characters");
+			return;
+	}else{
+ 	 $("#Error").html(" ");
+ }
+	if(parseInt($("#fromStreetName").val().length)>100){
+		 $("#fromStreetName").focus();
+			$("#Error").html("Street Name can't exceeds 100 Characters");
+			return;
+	}else{
+	 $("#Error").html(" ");
+}
+	
+	if(parseInt($("#fromLocality").val().length)>50){
+		 $("#fromLocality").focus();
+			$("#Error").html("Location Name can't exceeds 50 Characters");
+			return;
+	}else{
+	 $("#Error").html(" ");
+}
+	if(parseInt($("#fromCity").val().length)>20){
+		 $("#fromCity").focus();
+			$("#Error").html("City Name can't exceeds 20 Characters");
+			return;
+	}else{
+	 $("#Error").html(" ");
+}
+	if(parseInt($("#fromState").val().length)>20){
+		 $("#fromState").focus();
+			$("#Error").html("State Name can't exceeds 20 Characters");
+			return;
+	}else{
+	 $("#Error").html(" ");
+}
+	
+	
 	if($("#tenderOpenDate").val()==""){
 		$("#Error").html("Select Tender Open Date");
 		focusDiv("Error");
@@ -735,11 +789,16 @@ function createSaleQuotation(status,type){
 		focusDiv("Error");
 		return;
 	}
+	
+	debugger
 	if ($("#tenderOpenDate").val() != "" && $("#tenderCloseDate").val() != "") {
    		var noOfDays = daydiff(parseDate($("#tenderOpenDate").val()), parseDate($("#tenderCloseDate").val()));
    		if (noOfDays < 0) {
-   			alert("Tender Open Date can't be less than Tender Close Date");
+   			$("#Error").html("Tender Close Date can't be less than Tender Open Date");
    			return;
+   		}
+   		else{
+   			$("#Error").html("");
    		}
    	}
 	
@@ -757,7 +816,7 @@ function createSaleQuotation(status,type){
 	if ($("#startDate").val() != "" && $("#endDate").val() != "") {
    		var noOfDays = daydiff(parseDate($("#startDate").val()), parseDate($("#endDate").val()));
    		if (noOfDays < 0) {
-   			alert("Start Date can't be less than End Date");
+   			$("#Error").html("End Date can't be less than Start Date");
    			return;
    		}
    	}
@@ -767,6 +826,51 @@ function createSaleQuotation(status,type){
 		focusDiv("Error");
 		return;
 	}
+	
+	if(parseInt($("#toAddress").val().length)>100){
+		 $("#toAddress").focus();
+			$("#Error").html("Company Name can't exceeds 100 Characters");
+			return;
+	}else{
+	 $("#Error").html(" ");
+}
+	if(parseInt($("#toStreetName").val().length)>100){
+		 $("#toStreetName").focus();
+			$("#Error").html("Street Name can't exceeds 100 Characters");
+			return;
+	}else{
+	 $("#Error").html(" ");
+}
+	
+	if(parseInt($("#toLocality").val().length)>50){
+		 $("#toLocality").focus();
+			$("#Error").html("Location Name can't exceeds 50 Characters");
+			return;
+	}else{
+	 $("#Error").html(" ");
+}
+	if(parseInt($("#toCity").val().length)>20){
+		 $("#toCity").focus();
+			$("#Error").html("City Name can't exceeds 20 Characters");
+			return;
+	}else{
+	 $("#Error").html(" ");
+}
+	if(parseInt($("#toState").val().length)>20){
+		 $("#toState").focus();
+			$("#Error").html("State Name can't exceeds 20 Characters");
+			return;
+	}else{
+	 $("#Error").html(" ");
+}
+	if(parseInt($("#fromContactNum").val().length)>10){
+		 $("#fromContactNum").focus();
+			$("#Error").html("Phone Num can't exceeds 10 Digits");
+			return;
+	}else{
+	 $("#Error").html(" ");
+}
+	
 	if($("#toContactNum").val()==""){
 		$("#Error").html("Select Customer Phone No");
 		focusDiv("Error");
@@ -778,12 +882,40 @@ function createSaleQuotation(status,type){
 		return;
 	}
 	
+	if(parseInt($("#tenderRef").val().length)>25){
+		 $("#tenderRef").focus();
+			$("#Error").html("Tender Ref can't exceeds 25 Characters");
+			return;
+	}else{
+	 $("#Error").html(" ");
+}
+	
+	if(parseInt($("#toContactNum").val().length)>10){
+		 $("#toContactNum").focus();
+			$("#Error").html("Contact Num can't exceeds 10 Digits");
+			return;
+	}else{
+	 $("#Error").html(" ");
+}
+	
+	if(parseInt($("#salesTerms").val().length)>100){
+		 $("#salesTerms").focus();
+			$("#Error").html("Sales Terms can't exceeds 100 Character");
+			return;
+	}else{
+	 $("#Error").html(" ");
+}
+	
+	if(parseInt($("#shipmentTerms").val().length)>100){
+		 $("#shipmentTerms").focus();
+			$("#Error").html("Shipment Terms can't exceeds 100 Character");
+			return;
+	}else{
+	 $("#Error").html(" ");
+}
 	
 	
 	 var finalObj = {},saleQuotationItems=[];
-	
-	 
-	 
 	 finalObj.fromLocation = $("#fromlocation option:selected").text();
 	 finalObj.fromAddress = $("#fromAdderss").val();	
 	 finalObj.fromStreetName =$("#fromStreetName").val();
@@ -837,10 +969,7 @@ function createSaleQuotation(status,type){
 					quantity:$("#quantity"+idAttr).val(),tax:$("#tax"+idAttr).text(),
 					discount:$("#discount"+idAttr).text(),cost:$("#cost"+idAttr).text(),uom:$("#uom"+idAttr).text(),
 				};
-			
-			
 			saleQuotationItems.push(obj);
-			
 		}
 		
 		finalObj.salesQuotationItems = saleQuotationItems;

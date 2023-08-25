@@ -1605,21 +1605,13 @@ public String addpackage(ProcessingAndPackaging processingAndPackaging,String cu
 		restfulConnectionObj = new RestfulServiceConnection();
 		processingAndPackaging.setRequestHeader(RequestHeaderUtil.getRequestHeader(sessionScope));
 		
-		/*if(processingAndPackaging.getOperation() == "submit" || processingAndPackaging.getOperation().equalsIgnoreCase("submit") ){
+		if(processingAndPackaging.getOperation() == "submit" || processingAndPackaging.getOperation().equalsIgnoreCase("submit") ){
 			processingAndPackaging.setStatus("confirmed");
 			
 		}else if (processingAndPackaging.getOperation() == "draft" || processingAndPackaging.getOperation().equalsIgnoreCase("draft") || processingAndPackaging.getOperation() == "updraft" || processingAndPackaging.getOperation().equalsIgnoreCase("updraft") ){
 			processingAndPackaging.setStatus("draft");
 		}else{
 			processingAndPackaging.setStatus("confirmed");
-		}*/
-		
-		
-		if(processingAndPackaging.getOperation() == "submit" || processingAndPackaging.getOperation().equalsIgnoreCase("submit") ){
-			processingAndPackaging.setStatus("Submitted");
-			
-		}else if (processingAndPackaging.getOperation() == "draft" || processingAndPackaging.getOperation().equalsIgnoreCase("draft") || processingAndPackaging.getOperation() == "updraft" || processingAndPackaging.getOperation().equalsIgnoreCase("updraft") ){
-			processingAndPackaging.setStatus("draft");
 		}
 		
 		// ////////System.out.println("Request String:::"+gson.toJson(processingAndPackaging));

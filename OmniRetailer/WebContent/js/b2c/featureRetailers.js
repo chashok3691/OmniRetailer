@@ -9,8 +9,31 @@ function validateFeaturedRetailers(operation){
 	}else{
 		$("#featureIdError").html("");
 	}
+	
+	 if(parseInt($("#featureId").val().length)>30){
+		  $("#featureId").focus();
+		  $("#featureIdError").html("Featured Retailer can't exceeds 30 Characters");
+			return;
+	}else{
+	 $("#featureIdError").html(" ");
+    }
 
-
+	 if(parseInt($("#description").val().length)>100){
+		  $("#description").focus();
+		  $("#descriptionError").html("Description can't exceeds 100 Characters");
+			return;
+	}else{
+	 $("#descriptionError").html(" ");
+   }
+	 
+	 if(parseInt($("#package").val().length)>50){
+		  $("#package").focus();
+		  $("#packageError").html("Package can't exceeds 50 Characters");
+			return;
+	}else{
+	 $("#packageError").html(" ");
+    }
+	 
 	var re = /^[0-9/]+$/;
 	if($("#startDate").val().trim() == ""){
 		$("#startDate").focus();
@@ -59,12 +82,11 @@ function validateFeaturedRetailers(operation){
 	}
 
 	var selectedLocation = $("#reatilerLocation").val();
-	 if(selectedLocation == "" || selectedLocation == null || selectedLocation == undefined){
+	if(selectedLocation == "" || selectedLocation == null || selectedLocation == undefined){
 		 $("#reatilerLocation").focus();
 		 $("#reatilerLocationError").html("Add location from dropdown.");
 		 return;
 	 }
-	 
 	 
     var imagerefId=$("#retailerImage_refId").val();
     featuredRetailer.locationId =selectedLocation;
@@ -91,7 +113,6 @@ function validateFeaturedRetailers(operation){
 	else if(operation=="edit"){
 		URL = contextPath + "/b2c/updateFeatureRetailers.do";
 	}
-	
 	var formData = JSON.stringify(featuredRetailer);
 	//console.info(formData)
 	
@@ -115,7 +136,6 @@ function validateFeaturedRetailers(operation){
 			$("#mainDiv").removeClass('disabled');
 		}
 	});
-
 }
 		 
  function addNameToTextBox(id){

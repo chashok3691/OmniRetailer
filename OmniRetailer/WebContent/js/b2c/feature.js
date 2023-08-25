@@ -369,6 +369,23 @@ function viewEditFeaturedGroup(featuredId,operation){
 					$("#featuredTitleError").html("Enter Featured Group title");
 					return;
 				}
+				
+				 if(parseInt($("#featuredTitle").val().length)>150){
+					  $("#featuredTitle").focus();
+					  $("#Error").html("Title can't exceeds 150 Characters");
+						return;
+				} else{
+				 $("#Error").html(" ");
+			    }
+				
+				 if(parseInt($("#approvedByFeatured").val().length)>25){
+					  $("#approvedByFeatured").focus();
+					  $("#Error").html("Approved By can't exceeds 25 Characters");
+						return;
+				} else{
+				 $("#Error").html(" ");
+			   }
+				
 				var re = /^[0-9/]+$/;
 				 if($(".startDateFeatured").val().trim() == ""){
 					 $("#startDateFeatured").focus();
@@ -392,7 +409,16 @@ function viewEditFeaturedGroup(featuredId,operation){
 						 return;
 					 }
 				 }
-					var len = parseInt($("#productsList tr").length);
+				 
+				 if(parseInt($("#description").val().length)>200){
+					  $("#description").focus();
+					  $("#Error").html("Description can't exceeds 200 Characters");
+						return;
+				} else{
+				 $("#Error").html(" ");
+			    }
+				 
+				    var len = parseInt($("#productsList tr").length);
 					if(len <= 1){
 						alert("Add Atleast One Item");
 						return false;
@@ -415,7 +441,6 @@ function viewEditFeaturedGroup(featuredId,operation){
 						 featuredproducts.productCategory="Select";
 					 }
 					 
-					 
 				/*	if($("#groupImageimage").length > 0)
 						productGroupMaster.imageFlag = "true";
 					else
@@ -423,10 +448,8 @@ function viewEditFeaturedGroup(featuredId,operation){
 					for(var i=1;i<len;i++){
 						var idAttr = $("#productsList tr:eq("+i+") td:last").attr("id");
 						idAttr = idAttr.replace('Del','');
-						
 						var obj = {skuId:$("#skuId"+idAttr).text(),productDescription:$("#productDescription"+idAttr).text(),sno:$("#itemno"+idAttr).val(),skuImageRefId:$("#picture"+idAttr+"_refId").val(),skuImage:$("#picture"+idAttr+"_name").val(),skuImageFlag:true,featuredText:$("#featuredText"+idAttr).val()};
 						productList.push(obj);
-						
 					}
 					featuredproducts.productList = productList;
 					var contextPath = $("#contextPath").val();
@@ -436,7 +459,6 @@ function viewEditFeaturedGroup(featuredId,operation){
 				   else if(operation=="edit"){
 					   URL = contextPath + "/b2c/updateFeatureProductGroupMaster.do";
 					   featuredproducts.featureId = $("#featuredGroup").val();
-					   
 				   }
 					var formData = JSON.stringify(featuredproducts);
 					console.info(formData)
@@ -444,7 +466,7 @@ function viewEditFeaturedGroup(featuredId,operation){
 						type: "POST",
 						url : URL,
 						contentType: "application/json",
-			       data : formData,
+			                  data : formData,
 			       beforeSend: function(xhr){                    
 				   			$("#loading").css("display","block");
 				   			$("#mainDiv").addClass("disabled");
@@ -460,7 +482,6 @@ function viewEditFeaturedGroup(featuredId,operation){
 						$("#mainDiv").removeClass('disabled');
 					}
 			});
-
 			}
 	
 		

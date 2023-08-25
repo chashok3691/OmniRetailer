@@ -726,13 +726,15 @@ label{
 									<div class="row">
 											<div class="col-lg-2" style="width:20%;margin-right: 20px;">
 											<div class="row">
-	                                      <div class="col-lg-6" style="padding-right: 0px;">  
+	                                 <div class="col-lg-6" style="padding-right: 0px;">  
  										<label>First Name</label>
-                                            <input class="form-control" style="" id="firstName" />	                                        	                                                                            
+                                        <input class="form-control" style="" id="firstName" />
+                                        <span id="firstNameError" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>	                                        	                                                                            
                                      </div> 
 	                                      <div class="col-lg-6" style="padding-left: 5px; width: 44%;">  
  										<label>Last Name</label>
-                                            <input class="form-control"  id="lastName" />	                                        	                                                                            
+                                            <input class="form-control" id="lastName" />	
+                                            <span id="lastNameError" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>                                        	                                                                            
                                      </div>                                      
 										</div>
                                         </div>
@@ -742,7 +744,7 @@ label{
                                      <div class="col-lg-6" style="width:40%;">
                                             <label>Delivery Date <span style="color:red; font-size:2">*</span></label>
  											<input class="form-control calendar_icon" readonly="readonly" value="${orderDetails.deliveryDate}" style="background-color: white;" name="deliveryDate" id="deliveryDate" size="20" type="text" onfocus="callCalenderOrder('deliveryDate','check')" onblur="callCalenderOrder('deliveryDate','check')" onclick="callCalenderOrder('deliveryDate','check')" placeholder="DD/MM/YYYY"/>                                        <span id="orderDateError" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
-                                    		
+                                    		<span id="deliveryDateError" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
                                      </div> 
 										<div class="col-lg-6" style="padding-left: 10px;padding-right: 0px;">
                                             <div class="row" style="width:105%;">
@@ -824,9 +826,9 @@ label{
                                         <div class="form-group col-lg-4" style="padding-left: 0px;width: 33%;">
                                         <div class="row" style="">                                      
                                      <div class="col-lg-6" style="width:40%;">
-                                            <label>Confirm Date<span style="color:red; font-size:2">*</span></label>
-										  <input class="form-control  calendar_icon" readonly="readonly"  style="background-color: white;width:130px;"  id="confirmDate1"  size="20" type="text" onfocus="callCalenderOrder('confirmDate1','check')"  onclick="callCalenderOrder('confirmDate1','check')" placeholder="DD/MM/YYYY" /> 
-                                        	
+                                          <label>Confirm Date<span style="color:red; font-size:2">*</span></label>
+										  <input class="form-control  calendar_icon" readonly="readonly"  style="background-color: white;width:130px;" id="confirmDate1" size="20" type="text" onfocus="callCalenderOrder('confirmDate1','check')"  onclick="callCalenderOrder('confirmDate1','check')" placeholder="DD/MM/YYYY" /> 
+                                          <span id="confirmDate1Error" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>	
                                      </div> 
 										<div class="col-lg-6" style="padding-left: 10px;padding-right: 0px;">
                                              <div class="row" style="width:105%;">
@@ -1031,8 +1033,8 @@ label{
                                     	 <div class="form-group col-lg-3" style="margin-top: -17px;">
 										<div class="form-group col-lg-6" style="padding-left: 0px;padding-right: 5px;">
 										   <label><spring:message code="pin.label" /></label>
-                                            <input type="text" class="form-control" id="shipPin" name="shipmentPinNo" value="${orderDetails.shipmentPinNo}" placeholder="<spring:message code="order.enter.pin" />"/>
-                                            
+                                           <input type="text" class="form-control" id="shipPin" name="shipmentPinNo" value="${orderDetails.shipmentPinNo}" oninput="this.value = this.value.replace(/[^0-9]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" placeholder="<spring:message code="order.enter.pin" />"/>
+                                           <span id="shipPinError" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span> 
                                     	
 										</div>
 										
@@ -1148,6 +1150,7 @@ label{
                                       <div class="form-group col-lg-3" style="margin-top: -28px;">
                                       <label><spring:message code="shipment.name.label" /> <span style="color:red; font-size:2">*</span></label>
 										<input type="text" class="form-control" id="billshipmentName" value="${orderDetails.shipmentName}"/>
+                                         <span id="billshipmentNameError" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span> 
                                       </div>
                                    
                                     <div class="form-group col-lg-3" style="margin-top: -28px;">
@@ -1175,8 +1178,8 @@ label{
 								
 								<div class="form-group col-lg-6" style="padding-left: 0px;padding-right: 5px;">
 										   <label><spring:message code="pin.label" /></label>
-                                            <input type="text" class="form-control" id="billpinNum" name="billing_pinNo" value="${orderDetails.billing_pinNo}" placeholder="<spring:message code="order.enter.pin" />"/>
-                                            
+                                            <input type="text" class="form-control" id="billpinNum" oninput="this.value = this.value.replace(/[^0-9]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" name="billing_pinNo" value="${orderDetails.billing_pinNo}" placeholder="<spring:message code="order.enter.pin" />"/>
+                                            <span id="billpinNumError" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
                                     	
 										</div>
 								<div class="form-group col-lg-6" style="padding-right: 0px;padding-left: 5px;">
@@ -1271,6 +1274,7 @@ label{
                                      <div class="form-group col-lg-3" style="margin-top: -28px;">
                                        <label><spring:message code="shipment.name.label" /> <span style="color:red; font-size:2">*</span></label>
 										<input type="text" class="form-control" id="CusshipmentName" value="${orderDetails.shipmentName}"/>                        
+                                       <span id="CusshipmentNameError" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
                                      </div>
                                       
                           <div class="col-lg-3" style="margin-top: -28px;">
@@ -1281,11 +1285,11 @@ label{
                              
                               <div class="form-group col-lg-3" style="margin-top: -28px;">
                               
-                              <div class="form-group col-lg-6" style="padding-left: 0px;padding-right: 5px;">
+                           <div class="form-group col-lg-6" style="padding-left: 0px;padding-right: 5px;">
                               <label><spring:message code="landmark.label" /></label>
                               <input type="text" class="form-control" id="cusLandmark"  value="" placeholder="<spring:message code="landmark.label" />"/>
                                <span id="cusLandmarkError" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
-                                </div>
+                           </div>
                                 
                              <div class="form-group col-lg-6" style="padding-left: 0px;padding-right: 5px;">
 								 <label><spring:message code="customer_city.label" /> <span style="color:red; font-size:2">*</span></label>
@@ -1302,10 +1306,9 @@ label{
                              <div class="form-group col-lg-3" style="margin-top: -28px;">
                              <div class="form-group col-lg-6" style="padding-left: 0px;padding-right: 5px;">
 										   <label><spring:message code="pin.label" /></label>
-                                            <input type="text" class="form-control" id="custpin" name="customer_pinNo" value="${orderDetails.customer_pinNo}" placeholder="<spring:message code="order.enter.pin" />"/>
-                                            
-                                    	
-										</div>
+                                            <input type="text" class="form-control" id="custpin" oninput="this.value = this.value.replace(/[^0-9]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" name="customer_pinNo" value="${orderDetails.customer_pinNo}" placeholder="<spring:message code="order.enter.pin" />"/>
+                                            <span id="custpinError" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
+							</div>
 								
 								<div class="form-group col-lg-6" style="padding-right: 0px;padding-left: 5px;">
 								 <label><spring:message code="shipment.state.label" /><span style="color:red; font-size:2">*</span></label>
