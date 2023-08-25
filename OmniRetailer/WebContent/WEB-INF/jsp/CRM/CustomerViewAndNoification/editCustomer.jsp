@@ -232,6 +232,7 @@
 						<div class="form-group col-lg-6 col-md-6">
 							<label><spring:message code="customer.last.name.label" /></label>
                             <input type="text" class="form-control clearError" name="lastName" value="${customerObj.lastName}" id="lastName" required placeholder="<spring:message code="enter.customer.last.name.label" />" />
+						<span id="lastNameError" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
 						</div>
                       </div>
                        <div class="col-lg-6 col-md-6"> </div>
@@ -241,6 +242,7 @@
 						<div class="form-group col-lg-4 col-md-6" style="margin-right: -6px;">
 							<label><spring:message code="customer.company.name" /></label>
                             <input type="text" class="form-control clearError" name="companyName" value="${customerObj.companyName}" id="companyName" required placeholder="<spring:message code="enter.employer.name" />" />
+						    <span id="companyNameError" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
 						</div>
 						<div class="form-group col-lg-4 col-md-6">
 							<label><spring:message code="site.url.label" /></label>
@@ -249,6 +251,7 @@
 						<div class="form-group col-lg-4 col-md-6">
 							<label>Card Code</label>
                             <input type="text"  class="form-control" name="cardCode" value="${customerObj.cardCode}" id="cardCode" required placeholder="Enter Card Code" />
+						    <span id="cardCodeError" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
 						</div>
                       </div>
                       <div class="col-lg-6 col-md-6"> </div>
@@ -283,6 +286,7 @@
 			                       </div>
 			                       <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8" style="padding-left: 0px">
 			                       	<input type="text" class="form-control"  placeholder="<spring:message code="customer.mobile.number.label" />"  value="${customerObj.phone}" id="phoneNumber" size="15" maxlength="15" oninput="this.value = this.value.replace(/[^0-9]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');"/>
+			                        <span id="phoneNumberError" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
 			                       </div>
 			                       <input type="hidden" class="form-control" name="mobileNumber" id="mobileNumber"  value="${customerObj.mobileNumber}"/>
 			                       <input type="hidden" class="form-control" name="mobileNumber" id="phone"  value="${customerObj.phone}"/>
@@ -322,30 +326,37 @@
                         <div class="form-group col-lg-1 col-md-1"> 
 							<label><spring:message code="customer.house.number.label" /></label>
                             <input type="text" class="form-control clearError" name="houseNo" value="${customerObj.houseNo}" id="houseNo" required placeholder="<spring:message code="customer.house.number.label" />" />
+						    <span id="houseNoError" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
 						</div>
 						<div class="form-group col-lg-1 col-md-1"> 
 							<label><spring:message code="street.name.label" /></label>
                             <input type="text" class="form-control street-class clearError" name="streetName" value="${customerObj.street}" id="street" required placeholder="<spring:message code="street.name.label" />" />
+						    <span id="streetError" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>  
 						</div>
 						<div class="form-group col-lg-1 col-md-1">
 							<label><spring:message code="customer.locality.label" /></label>
                             <input type="text" class="form-control locality-class clearError" name="locality" value="${customerObj.locality}" id="locality" required placeholder="<spring:message code="customer.locality.label" />" />
+						<span id="localitysError" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
 						</div>
 						<div class="form-group col-lg-1 col-md-1">
 							<label><spring:message code="customer.city.label" /></label>
                             <input type="text" class="form-control city-class clearError" name="city" value="${customerObj.city}" id="city" required placeholder="<spring:message code="customer.city.label" />" />
+						    <span id="cityError" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
 						</div>
 						<div class="form-group col-lg-1 col-md-1">
 							<label><spring:message code="customer.zip.code.label" /></label>
                             <input type="text" class="form-control zip-code-class clearError" name="zipCode" value="${customerObj.pin_no}" id="zipCode" oninput="this.value = this.value.replace(/[^0-9]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" required placeholder="<spring:message code="customer.zip.code.label" />" />
+						    <span id="zipCodeError" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
 						</div>
 						<div class="form-group col-lg-1 col-md-1">
 							<label><spring:message code="customer.state.label" /></label>
                             <input type="text" class="form-control state-class clearError" name="state" value="${customerObj.state}" id="state"  required placeholder="<spring:message code="customer.state.label" />" />
+						   <span id="stateError" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
 						</div>
 						<div class="form-group col-lg-1 col-md-1">
 							<label><spring:message code="customer.country.label" /></label>
                             <input type="text" class="form-control country-class clearError" name="country" value="${customerObj.country}" id="country"  required placeholder="<spring:message code="customer.country.label" />" />
+						 <span id="countryError" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
 						</div>
                       
                       </div>
@@ -449,30 +460,32 @@
                         <div class="form-group col-lg-1 col-md-1"> 
 							<label><spring:message code="customer_doorNumber.label" /></label>
                             <input type="text" class="form-control clearError" name="customerDoorNumber" value="${addressList[0].doorNumber}" id="doorNumber" required placeholder="<spring:message code="customer_doorNumber.label" />" />
-							
+							<span id="doorNumberError" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
 						</div>
 						<div class="form-group col-lg-1 col-md-1"> 
 							<label><spring:message code="customer_streetName.label" /></label>
                             <input type="text" class="form-control street-class1 clearError" name="street1" value="${addressList[0].streetName}" id="street1" required placeholder="<spring:message code="customer_streetName.label" />" />
-							
+							<span id="street1Error" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
 						</div>
 						<div class="form-group col-lg-1 col-md-1">
 							<label><spring:message code="customer_locality.label" /></label>
                             <input type="text" class="form-control locality-class1 clearError" name="locality1" value="${addressList[0].locality}" id="locality1" required placeholder="<spring:message code="customer_locality.label" />" />
-							
+							<span id="locality1Error" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
 						</div>
 						<div class="form-group col-lg-1 col-md-1">
 							<label><spring:message code="customer_city.label" /></label>
                             <input type="text" class="form-control city-class1  clearError" name="city1" value="${addressList[0].city}" id="city1" required placeholder="<spring:message code="customer_city.label" />" />
-							
+							<span id="city1Error" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
 						</div>
 						<div class="form-group col-lg-1 col-md-1">
 							<label><spring:message code="customer_zipCode.label" /></label>
                             <input type="text" class="form-control zip-code-class1 clearError" name="zipCode1" value="${addressList[0].zipCode}" id="zipCode1" oninput="this.value = this.value.replace(/[^0-9]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" required placeholder="<spring:message code="customer_zipCode.label" />" />
+						    <span id="zipCode1Error" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
 						</div>
 						<div class="form-group col-lg-1 col-md-1">
 							<label><spring:message code="customer.state.label" /></label>
                             <input type="text" class="form-control state-class1 clearError" name="state1" value="${addressList[0].state}" id="state1" required placeholder="<spring:message code="customer.state.label" />" />
+						    <span id="state1Error" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
 						</div>
 						<div class="form-group col-lg-1 col-md-1">
 							<label><spring:message code="customer.country.label" /></label>
@@ -481,21 +494,22 @@
          					<input class="longitude-class1" type="hidden" id="longitude1" value="${addressList[0].longitude}" >
          					<input type="hidden" id="custAddressId" value="${addressList[0].custAddressId}" >
          					<input type="hidden" id="addressType" value="${addressList[0].addressType}" >
+						    <span id="country1Error" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
 						</div>
                   </div>
                   </div>
                   </div>
                   <br>
-	              <div class="row">
-	              	<div class="col-lg-12 col-md-12">
-                   	<div class="form-group col-lg-2 col-md-2">
+	          <div class="row">
+	            <div class="col-lg-12 col-md-12">
+                   <div class="form-group col-lg-2 col-md-2">
                            <label><spring:message code="customer.personnel.details.label" /></label>
-                      </div>
-					  <div class="form-group col-lg-10 col-md-10" style="padding-left: 0px;">
+                   </div>
+				   <div class="form-group col-lg-10 col-md-10" style="padding-left: 0px;">
 					  	<hr style="margin-top: 10px;margin-bottom:0px;margin-left: -4%;width: 105%;border-top: 1px solid rgb(233,233,233);" />
-                      </div>
-                     </div>
-	              </div>
+                   </div>
+               </div>
+	         </div>
 	              <div class="row">
                    	 <div class="col-lg-10 col-md-10">
 						<div class="col-lg-3" style="padding: 0px;">
@@ -533,6 +547,7 @@
 						<div class="form-group col-lg-2 col-md-3">
 							<label><spring:message code="customer.nationality.label" /></label>
                             <input type="text" class="form-control clearError" name="nationality" value="${customerObj.nationality}" id="nationality" required placeholder="<spring:message code="customer.nationality.label" />" />
+						<span id="nationalityError" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
 						</div>
 						<div class="form-group col-lg-2 col-md-3">
 							<label><spring:message code="customer.dob.label" /></label>
@@ -540,14 +555,13 @@
 						</div>
 						<div class="form-group col-lg-2 col-md-3">
 							<label><spring:message code="customer.billLimit.label" /></label>
-                            <input type="text"  class="form-control" name=creditBillLimit value="${customerObj.creditBillLimit}" id="creditBillLimit" required placeholder="<spring:message code="customer.billLimit.label" />" />
+                            <input type="text"  class="form-control" name=creditBillLimit value="${customerObj.creditBillLimit}" id="creditBillLimit" required oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" placeholder="<spring:message code="customer.billLimit.label" />" />
 						</div>
                       </div>
                      <div class="col-lg-2 col-md-2">
-                     
-                     <label>Customer Tax ID</label>
- 								       <input type="text" class="form-control"  id="customertaxid" value="${customerObj.customerGstin}"/>	 
-                     
+                        <label>Customer Tax ID</label>
+ 						<input type="text" class="form-control"  id="customertaxid" value="${customerObj.customerGstin}"/>	 
+                        <span id="customertaxidError" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
                      </div>
 	              </div>
 	              <div class="row">
@@ -555,10 +569,12 @@
                    	 	<div class="form-group col-lg-3 col-md-3">
 							<label><spring:message code="customer.qualification.label" /></label>
                             <input type="text" class="form-control clearError" name="qualification" value="${customerObj.qualification}" id="qualification" required placeholder="<spring:message code="customer.qualification.label" />" />
+						     <span id="qualificationError" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
 						</div>
 						<div class="form-group col-lg-3 col-md-3">
 							<label><spring:message code="customer.profession.label" /></label>
                             <input type="text" class="form-control clearError" name="profession" value="${customerObj.designation}" id="profession" required placeholder="<spring:message code="customer.profession.label" />" />
+						    <span id="professionError" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
 						</div>
 						<div class="form-group col-lg-2 col-md-3">
 							<label><spring:message code="customer.monthly.income.label" /></label>

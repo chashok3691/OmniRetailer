@@ -17,8 +17,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Home | Omni Retailer</title>
-<meta
-	content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no'
+<meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no'
 	name='viewport'>
 
 <script type="text/javascript"
@@ -58,7 +57,6 @@
 	//if($("#itemDisountBased").prop("checked")){
 		if($("#itemDisountBased").prop("checked")){
 			$("#basedOnProduct").prop("checked", true);
-			
 			$(".b2cVisibility").hide();
 		/* 	var dateTime = getCurrentDate();
 			  var date = dateTime.split(' ');
@@ -110,8 +108,6 @@
 		$("#dealTextFont").fontselect();
 		setDealSlabDivContent();
 		setDealProductSlabDivContent();
-		
-		
 		
 		 /* $(".itemDiscount").click(function () { //when click on flip radio button
 
@@ -178,8 +174,6 @@
  .span2 {
 	width: 14.05%;
 	*width: 14.05%;
-	
-	
 }
 
 .disableItemSpecific {
@@ -243,7 +237,6 @@ img.thumbnail {
   overflow: hidden;
   float: left;
   clear: left; */
-	
 }
 
 .myFile input[type="file"] {
@@ -492,8 +485,6 @@ label {
 													<option value="5 or Above">5 or Above</option>
 												</select>
 											</div>
-											
-											
 										</div>
 										<div class="col-lg-12">
 											<div class="form-group col-lg-4" style="padding-left: 0px;">
@@ -502,6 +493,7 @@ label {
 												<!--  <select id ="city" class="form-control" >
 																<option >Select State</option>
 															</select> -->
+											 <span id="cityError" style="text-align:right;color:red;font-weight:bold;"></span>
 											</div>
 										
 										
@@ -512,17 +504,15 @@ label {
 													<option value="-- Select --">-- Select --</option>
 													<option value="Business">Business</option>
 													<option value="Accountant">Accountant</option>
-													<option value="Software Professional">Software
-														Professional</option>
+													<option value="Software Professional">Software Professional</option>
 													<option value="Engineer">Engineer</option>
 													<option value="Professor">Professor</option>
 													<option value="Bureaucrat">Bureaucrat</option>
-													<option value="Financial Professional">Financial
-														Professional</option>
+													<option value="Financial Professional">Financial Professional</option>
 													<option value="Doctor">Doctor</option>
 													<option value="Others">Others</option>
 												</select>
-											</div>
+										</div>
 										
 										
 										<div class="form-group col-lg-4">
@@ -681,6 +671,7 @@ label {
 													readonly="readonly" style="background-color: white;"
 													id="endDate" onfocus="callCalender('endDate')"
 													onclick="callCalender('endDate')" placeholder="DD/MM/YYYY" />
+											     <span id="endDateErr" style="text-align:right;color:red;font-weight:bold;"></span>
 											</div>
 											<div class="form-group col-lg-1"></div>
 											<div class="form-group col-lg-6">
@@ -1003,6 +994,8 @@ label {
 										<textarea class="form-control" name="offerDesc" id="offerDesc"
 											rows="1" style="resize: none;"
 											placeholder="<spring:message code="offer_desc_enter.label" />"></textarea>
+									<span id="offerDescError"
+											style="text-align: right; color: red; font-weight: bold;"></span>
 									</div>	
 										
 									</div>

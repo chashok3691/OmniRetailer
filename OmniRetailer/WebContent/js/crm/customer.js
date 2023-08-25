@@ -181,7 +181,6 @@ $('#zipCode').on('input',function(e){
 	 }
 });
 
-
 $("#shipmentContact").on('input',function(e){
 	 $("#error2").html("");
 	$("#Error").html("");
@@ -316,7 +315,13 @@ function getCustomers(index){
 		if($("#maxRecords").length >0 && $("#maxRecords").val() !="")
 			maxRecords = $("#maxRecords").val();
 	
-	
+		if(parseInt($("#city").val().length)>30){
+			 $("#city").focus();
+				$("#errcity").html("City can't exceeds 30 Characters");
+				return;
+		}else{
+		 $("#errcity").html(" ");
+	 }
 		
 		
 	if($("#startPrice").val() != "" && $("#endPrice").val() != ""){
@@ -326,7 +331,7 @@ function getCustomers(index){
 		}
 	}
 	
-	 if($("#fromDate").length>0 && $("#endDate").length>0){
+	if($("#fromDate").length>0 && $("#endDate").length>0){
 	if($("#fromDate").val() != "" && $("#endDate").val() != ""){
 		 var noOfDays = daydiff(parseDate($('#fromDate').val()), parseDate($('#endDate').val()));
 		 if(noOfDays < 0){
@@ -678,7 +683,7 @@ $("#siteUrl").blur(function(){
 	}
 });
 
-function validateCustomerForm(operation){
+  function validateCustomerForm(operation){
 	debugger;
 	var previousId = $(".highlightaddress").attr("id");
 	 $("#"+previousId ).trigger( "click" );
@@ -693,6 +698,196 @@ function validateCustomerForm(operation){
 	}
 	finalObj.name = $("#firstName").val();
 	finalObj.lastName = $("#lastName").val();
+	
+	if(parseInt($("#firstName").val().length)>50){
+		 $("#firstName").focus();
+			$("#firstNameError").html("First Name can't exceeds 50 Characters");
+			return;
+	}else{
+	 $("#firstNameError").html(" ");
+   }
+	
+	if(parseInt($("#lastName").val().length)>50){
+		 $("#lastName").focus();
+			$("#lastNameError").html("Last Name can't exceeds 50 Characters");
+			return;
+	}else{
+	 $("#lastNameError").html(" ");
+  }
+	
+	if(parseInt($("#companyName").val().length)>50){
+		 $("#companyName").focus();
+			$("#companyNameError").html("Company Name can't exceeds 50 Characters");
+			return;
+	}else{
+	 $("#companyNameError").html(" ");
+  }
+	
+	if(parseInt($("#cardCode").val().length)>50){
+		 $("#cardCode").focus();
+			$("#cardCodeError").html("Card Code can't exceeds 50 Characters");
+			return;
+	}else{
+	 $("#cardCodeError").html(" ");
+     }
+	 if(parseInt($("#phoneNumber").val().length)>10){
+		 $("#phoneNumber").focus();
+			$("#phoneNumberError").html("Phone Number can't exceeds 10 Digits");
+			return;
+	}else{
+	 $("#phoneNumberError").html(" ");
+  }
+	 if(parseInt($("#houseNo").val().length)>20){
+		 $("#houseNo").focus();
+			$("#houseNoError").html("House Number can't exceeds 20 Character");
+			return;
+	}else{
+	 $("#houseNoError").html(" ");
+  }
+	 if(parseInt($("#street").val().length)>200){
+		 $("#street").focus();
+			$("#streetError").html("Street Name can't exceeds 200 Character");
+			return;
+	}else{
+	 $("#streetError").html(" ");
+    }
+	 
+	 if(parseInt($("#locality").val().length)>150){
+		 $("#locality").focus();
+			$("#localitysError").html("Locality can't exceeds 150 Character");
+			return;
+	}else{
+	 $("#localitysError").html(" ");
+    }
+	 
+	 if(parseInt($("#city").val().length)>30){
+		 $("#city").focus();
+			$("#cityError").html("City can't exceeds 30 Characters");
+			return;
+	}else{
+	 $("#cityError").html(" ");
+    }
+	 
+	 if(parseInt($("#zipCode").val().length)>6){
+		 $("#zipCode").focus();
+			$("#zipCodeError").html("Zip Code can't exceeds 6 Digits");
+			return;
+	}else{
+	 $("#zipCodeError").html(" ");
+    }
+	 
+	 if(parseInt($("#state").val().length)>25){
+		 $("#state").focus();
+			$("#stateError").html("State can't exceeds 25 Characters");
+			return;
+	}else{
+	 $("#stateError").html(" ");
+    }
+	 
+	 if(parseInt($("#country").val().length)>50){
+		 $("#country").focus();
+			$("#countryError").html("Country can't exceeds 50 Characters");
+			return;
+	}else{
+	 $("#countryError").html(" ");
+    }
+	 
+	 if(parseInt($("#shipmentName").val().length)>25){
+		 $("#shipmentName").focus();
+			$("#shipmentNameError").html("Shipment Name can't exceeds 25 Characters");
+			return;
+	}else{
+	 $("#shipmentNameError").html(" ");
+   }
+	 
+	 if(parseInt($("#doorNumber").val().length)>20){
+		 $("#doorNumber").focus();
+			$("#doorNumberError").html("Door Number can't exceeds 20 Character");
+			return;
+	}else{
+	 $("#doorNumberError").html(" ");
+    }
+	
+	 if(parseInt($("#street1").val().length)>200){
+		 $("#street1").focus();
+			$("#street1Error").html("Street Name can't exceeds 200 Character");
+			return;
+	}else{
+	 $("#street1Error").html(" ");
+    }
+	 
+	 if(parseInt($("#locality1").val().length)>150){
+		 $("#locality1").focus();
+			$("#locality1Error").html("Locality can't exceeds 150 Character");
+			return;
+	}else{
+	 $("#locality1Error").html(" ");
+    }
+	 
+	 if(parseInt($("#city1").val().length)>30){
+		 $("#city1").focus();
+			$("#city1Error").html("City can't exceeds 30 Characters");
+			return;
+	}else{
+	 $("#city1Error").html(" ");
+    }
+	 
+	 if(parseInt($("#zipCode1").val().length)>6){
+		 $("#zipCode1").focus();
+			$("#zipCode1Error").html("Zip Code can't exceeds 6 Digits");
+			return;
+	}else{
+	 $("#zipCode1Error").html(" ");
+    } 
+	 
+	 if(parseInt($("#state1").val().length)>25){
+		 $("#state1").focus();
+			$("#state1Error").html("State can't exceeds 25 Characters");
+			return;
+	}else{
+	 $("#state1Error").html(" ");
+    }
+	 
+	 if(parseInt($("#country1").val().length)>50){
+		 $("#country1").focus();
+			$("#country1Error").html("Country can't exceeds 50 Characters");
+			return;
+	}else{
+	 $("#country1Error").html(" ");
+    }
+	 
+	 if(parseInt($("#nationality").val().length)>25){
+		 $("#nationality").focus();
+			$("#nationalityError").html("Nationality can't exceeds 25 Characters");
+			return;
+	}else{
+	 $("#nationalityError").html(" ");
+    }
+	 
+	 if(parseInt($("#qualification").val().length)>50){
+		 $("#qualification").focus();
+			$("#qualificationError").html("Qualification can't exceeds 50 Characters");
+			return;
+	}else{
+	 $("#qualificationError").html(" ");
+    }
+	 if(parseInt($("#profession").val().length)>30){
+		 $("#profession").focus();
+			$("#professionError").html("Proffession can't exceeds 30 Characters");
+			return;
+	}else{
+	 $("#professionError").html(" ");
+    }
+	 
+	 /*if(parseInt($("#customertaxid").val().length)>150){
+		 $("#customertaxid").focus();
+			$("#customertaxidError").html("Customer Tax Id can't exceeds 150 Characters");
+			return;
+	}else{
+	    $("#customertaxidError").html(" ");
+    }*/
+
+	 
 	finalObj.companyName = $("#companyName").val();
 	var txt = $('#siteUrl').val().trim();
 	var re = /^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/|www\.)[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/
@@ -715,6 +910,7 @@ function validateCustomerForm(operation){
 		 return false;
 	 }
 	 //
+	 
      var defaultCountry = $("#defaultCountry").val().trim();
 	 var phoneNumber = $("#phoneNumber").val().trim();
 	 if(defaultCountry != "" && phoneNumber != ""){
@@ -724,8 +920,8 @@ function validateCustomerForm(operation){
 		 else{
 			 if($("#phoneNumber").attr("readonly") != "readonly")
 				 finalObj.mobileNumber = phoneNumber;
-			 finalObj.phoneNumber = phoneNumber;
-			 finalObj.phone = $("#phone").val();
+			     finalObj.phoneNumber = phoneNumber;
+			     finalObj.phone = $("#phone").val();
 		 }
 		 if($("#country").val().trim() == "")
 			 finalObj.country = $("#defaultCountry option:selected").attr("text");

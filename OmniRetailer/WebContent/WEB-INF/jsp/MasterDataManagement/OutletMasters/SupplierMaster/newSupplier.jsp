@@ -531,15 +531,17 @@ function validatePhoneNumber1(){
 								 <div class="col-lg-12" >
                                             <label><spring:message code="gstin.lael" /></label>
                                             <input type="text" name="gstn_num"  id="gstIn" class="form-control" placeholder="<spring:message code="enter.gstin.no.label"/>" />
-                                        </div>
+                                            <span id="gstInError" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
+                                  </div>
 								</div>
 								</div>
 								
                                <div class="form-group col-lg-3">
                                 
-                                  <div class=" col-lg-8" style="padding-left: 0px;padding-right: 40px">
+                               <div class=" col-lg-8" style="padding-left: 0px;padding-right: 40px">
                                    <label><spring:message code="supplier.target.order.value.label" /></label>
-                                   <input type="text" class="form-control" name="targetOrderValue" id="targetOrderValue"  placeholder="<spring:message code="supplier.enter.target.order.value.label" />" />
+                                   <input type="text" class="form-control" name="targetOrderValue" id="targetOrderValue"  oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" placeholder="<spring:message code="supplier.enter.target.order.value.label" />" />
+                                    <span id="targetOrderValueError" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
                                </div>
                                </div>
                                <div class="form-group col-lg-3">
@@ -597,14 +599,17 @@ function validatePhoneNumber1(){
                                 <div class="form-group col-lg-3">
                                    <label><spring:message code="supplier.payment.terms.label" /></label>
                                    <textarea class="form-control" onblur="criteria(this)"  name="paymentTerms" id="paymentTerms" style="resize: none;" rows="2" placeholder="<spring:message code="supplier.enter.payment.terms.label" />" ></textarea>
+                                    <span id="paymentTermsError" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
                                </div>
                                <div class="form-group col-lg-3">
                                    <label><spring:message code="supplier.shipment.terms.label" /></label>
                                    <textarea class="form-control" onblur="criteria(this)" name="shipmentTerms" id="shipmentTerms" style="resize: none;" rows="2" placeholder="<spring:message code="supplier.enter.shipment.terms.label" />" ></textarea>
+                                   <span id="shipmentTermsError" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
                                </div>
                                <div class="form-group col-lg-3">
                                    <label>Return Terms</label>
                                    <textarea class="form-control" onblur="criteria(this)" name="returnTerms" id="returnTerms" style="resize: none;" rows="2" placeholder="Enter Return Terms" ></textarea>
+                               <span id="returnTermsError" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
                                </div>
                                <div class="form-group col-lg-3">
                                     <div class=" col-lg-6" style="padding-left: 0px;white-space:nowrap">

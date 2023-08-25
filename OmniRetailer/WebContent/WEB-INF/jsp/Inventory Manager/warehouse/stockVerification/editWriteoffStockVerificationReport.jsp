@@ -329,8 +329,9 @@ $(document).ready(function(){
 	                   <div class="col-lg1-2 col-lg-2">
               <div class="col-lg-12" style="padding-left:0px;padding-right: 0px;">
                  		<label><spring:message code="verified.by.label"/></label>
-	            <input type="text" name="verifiedBy"  class="form-control" id="verifiedBy" value="${verified_by}"  />
-	              </div>
+	                    <input type="text" name="verifiedBy"  class="form-control" id="verifiedBy" value="${verified_by}"  />
+	                    <span id="verifiedByError" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
+	          </div>
 	            </div>
 	         <%--   <div class="col-lg-1">
                   <label></label>

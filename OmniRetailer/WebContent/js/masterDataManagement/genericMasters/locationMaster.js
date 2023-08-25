@@ -160,9 +160,9 @@ function validateLocationForm(operation){
 	    	$("#locationId").focus();
 	    	$("#locationIdError").html("Enter Location Id");
 	    	return false;
-	    }else if(parseInt($("#locationId").val().length)>=200){
+	    }else if(parseInt($("#locationId").val().length)>50){
 			 $("#locationId").focus();
-			 $("#locationIdError").html("Location Id can't exceeds 200 characters");
+			 $("#locationIdError").html("Location Id can't exceeds 50 characters");
 			 return;
 		} 
 	    	
@@ -201,7 +201,7 @@ function validateLocationForm(operation){
 	    	$("#city").focus();
 	    	$("#cityError").html("City Required");
 	    	return false;
-	    }else if(parseInt($("#city").val().length)>=15){
+	    }else if(parseInt($("#city").val().length)>15){
 			 $("#city").focus();
 			 $("#cityError").html("City can't exceeds 15 characters");
 			 return;
@@ -210,7 +210,7 @@ function validateLocationForm(operation){
 	    	$("#address").focus();
 	    	$("#streetNameError").html("Street Name Required");
 	    	return false;
-	    }else if(parseInt($("#address").val().length)>=100){
+	    }else if(parseInt($("#address").val().length)>100){
 	    	$("#address").focus();
 	    	 $("#streetNameError").html("Street name can't exceeds 100 characters");
 	    	 return;
@@ -220,7 +220,7 @@ function validateLocationForm(operation){
 	    	$("#area").focus();
 	    	$("#areaError").html("Area Required");
 	    	return false;
-	    }else if(parseInt($("#area").val().length)>= 100){
+	    }else if(parseInt($("#area").val().length)>100){
 			 $("#area").focus();
 			 $("#areaError").html("Area can't exceeds 100 characters");
 			 return;
@@ -236,14 +236,24 @@ function validateLocationForm(operation){
 			 return;
 		}
 	    
+	    if(parseInt($("#gpsLongitude").val().length) >50){
+	    	$("#gpsLongitude").focus();
+	    	$("#gpsLongitudeError").html("GpsLongitude can't exceeds 50 characters");
+	    	return false;
+	    }
+    	if(parseInt($("#gpsLatitude").val().length) >50){
+	    	$("#gpsLatitude").focus();
+	    	$("#gpsLatitudeError").html("GpsLatitude can't exceeds 50 characters");
+	    	return false;
+	    }
+	    
 	    if(operation=="new"){
 	    	
-	    if(parseInt($("#customergstin").val().length) > 20){
+	    if(parseInt($("#customergstin").val().length) >20){
 			 $("#customergstin").focus();
 			 $("#gstnNoError").html("GSTIN No can't exceeds 20 characters");
 			 return false;
 		}
-	   
 	    }
 	    
 	    if(operation=="edit"){
@@ -253,22 +263,18 @@ function validateLocationForm(operation){
 				 $("#gstnNoError").html("GSTIN No can't exceeds 20 characters");
 				 return false;
 			}
-		    
-		    if(parseInt($("#gpsLongitude").val().length) >= 50){
-		    	$("#gpsLongitude").focus();
-		    	$("#gpsLongitudeError").html("GpsLongitude can't exceeds 50 characters");
-		    	return false;
-		    }
-	    	if(parseInt($("#gpsLatitude").val().length) >= 20){
-		    	$("#gpsLatitude").focus();
-		    	$("#gpsLatitudeError").html("GpsLatitude can't exceeds 50 characters");
-		    	return false;
-		    }
-		   
 		    }
 	    
+	    if(parseInt($("#franchiseCode").val().length) > 50){
+			 $("#franchiseCode").focus();
+			 $("#franchiseCodeError").html("FranchiseCode can't exceeds 50 characters");
+			 return;
+		}else{
+			 $("#franchiseCodeError").html(" ");
+		}
+	    
 	    var description = $("#description").val().trim();
-	    if(description.trim() != "" && parseInt($("#description").val().length)>=250){
+	    if(description.trim() != "" && parseInt($("#description").val().length)>250){
 			$("#description").focus();
 			$("#descriptionError").html("Description can't exceeds 250 Characters");
 			return false;

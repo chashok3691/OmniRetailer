@@ -561,8 +561,8 @@ $('#searchChildWallet').on('input',function(e){
                                      	</div>
 									</div>
 								<div class="row">
-                                      	<div class="form-group col-lg-2">
-                                      		
+                                      	<div class="form-group col-lg-3">
+                                      		<div class="col-lg-12">
                                             <label class="name" style="font-family: Calibri;color: gray;"><spring:message code="zones.all" /> <span style="color:red; font-size:2">*</span></label>
                                             <select onchange="getLocationsBasedonZones();" id ="zones" multiple="multiple" class="form-control" >
     										 <c:forEach var="zoneList" items="${zoneList}">
@@ -586,7 +586,7 @@ $('#searchChildWallet').on('input',function(e){
 						 					</c:forEach>	<!-- <option >Select State</option> -->
     										</select>
     										<span class="clearErrors" style="color:red; font-size:2;font-weight: bold;" id="errStates"></span>
-    										
+    										</div>
                                     	</div>
                                     	<input type="hidden" value="${LocationString}" id="LocationString">
                                     	<div class="form-group col-lg-2">
@@ -598,7 +598,7 @@ $('#searchChildWallet').on('input',function(e){
     										</select>
     										<span style="color:red; font-size:2;font-weight: bold" id="errLocation"></span>
                                     	</div>
-                                    	<div class="col-lg-8" style="left:0px;margin-top: 18px;">
+                                    	<div class="col-lg-7" style="left:0px;margin-top: 18px;">
                                     	
                                     	<div class="col-lg-4" style="padding:0px;pointer-events: all;">
 										<input type="text"  class="form-control searchItems" value="${searchCriteria}" id="searchChildWallet"  placeholder="Search Wallets here.."   style="height:30PX;text-align:left;background:url(${pageContext.request.contextPath}/images/search.png) no-repeat;background-position:right;" />
@@ -619,7 +619,7 @@ $('#searchChildWallet').on('input',function(e){
 										<input type="hidden" id="fileName" />
                                     	</div>
                                     	 -->
-                                    	 <div class="col-lg-3" style="padding-right: 0px;margin-bottom: 5px;">
+                                    	 <div class="col-lg-4" style="padding-right: 0px;margin-bottom: 5px;">
 										<input type="file" id="importButton"class="btn bg-olive btn-inline" accept=".xlsx" title="To import, Choose the valid Exel Sheet format" style="height: 30px;display: inline-block;padding: 3px !important;width: 100%;" id="wallets" name="uploadedfilePath" onchange="addNameToTextBox('wallets');" /> 
 										<b><span id="fileNameShow" Style="color:blue;display:block;text-align:left;"></span></b>
 										<input type="hidden" id="coupons_refId" name="coupons" /> 
@@ -629,7 +629,7 @@ $('#searchChildWallet').on('input',function(e){
                                     	</div>
                                     	 
                                     	 
-                                    	 <%-- <div class="col-lg-2" style="padding-right: 0px;">
+                                    	 <div class="col-lg-2" style="padding-right: 0px;">
                                     	<input type="button" class="btnCls" style="width: 100%;font-size: 15px;padding: 4px 4px;" onclick="importDataxls()" value="Import">
                                     	</div>
                                     	<div class="col-lg-2" style="padding-right: 0px; pointer-events: auto;">
@@ -638,36 +638,12 @@ $('#searchChildWallet').on('input',function(e){
 												data-toggle="modal" data-target="#myModalIos"
 												style="font-size: 14px;"
 												value="<spring:message code="save.label" />" />
-                                    	</div> --%>
-
-
-								<div class="col-lg-5"
-									style="padding-right: 0px; padding-left: 0px;">
-
-									<div class="col-lg-4" style="padding-right: 0px;">
-										<input type="button" class="btnCls"
-											style="width: 100%; font-size: 15px; padding: 4px 4px;"
-											onclick="importDataxls()" value="Import">
-									</div>
-
-									<div class="col-lg-4"
-										style="padding-right: 0px; pointer-events: auto;">
-										<input type="button"
-											class="addBtn btn bg-olive btn-inline addBtn"
-											data-toggle="modal" data-target="#myModalIos"
-											style="font-size: 14px;" value="Save">
-									</div>
-									<div class="col-lg-4"
-										style="padding-right: 0px; pointer-events: auto;">
-										<input type="button"
-											class="addBtn btn bg-olive btn-inline addBtn"
-											data-toggle="modal" data-target="#myModalIos1"
-											style="padding-left: 5px; /* text-align: center; */ font-size: 14px;"
-											value="Save Ledger">
-									</div>
-								</div>
-
-								<div class="modal fade" id="myModalIos" role="dialog"
+                                    	</div>
+                                    	
+                                    	
+                                    	
+                                    	
+                                    	<div class="modal fade" id="myModalIos" role="dialog"
 												tabindex="-1" style="pointer-events: auto;">
 												<div class="modal-dialog iosmodeldialog">
 
@@ -737,86 +713,7 @@ $('#searchChildWallet').on('input',function(e){
 											
 											
 											
-											
-											
-											
-											
-											
-											
-											<div class="modal fade" id="myModalIos1" role="dialog"
-												tabindex="-1" style="pointer-events: auto;">
-												<div class="modal-dialog iosmodeldialog">
-
-													<!-- Modal content-->
-													<div class="modal-content iospopup"
-														style="width: 58% !important;height: 150px !important;">
-														<div class="modal-header">
-
-															<button type="button" class="close" onclick=""
-																data-dismiss="modal">&times;</button>
-														</div>
-														<div class="modal-body">
-															<div class="form-group col-lg-12"
-																style="padding: 0px; font-size: 15px">
-																Are you sure,you want to save the file
-
-																<!-- <div class="col-lg-1"> -->
-																<div id="generatedCoupons">
-																	<input type="hidden" id="downloadurl"
-																		value="${downloadurl}">
-																</div>
-
-																<!--  </div> -->
-															</div>
-															<div class="form-group col-lg-12"></div>
-															<div class="col-lg-4 col-sm-6 col-xs-6" style=""></div>
-															<div class="form-group col-lg-8 col-sm-8 col-xs-8"
-																style="padding-left: 0px; padding-right: 0px;">
-																<div class="col-lg-3 col-sm-4 col-xs-6"
-																	style="margin-left: 29%;">
-																	<input type="hidden" value="${giftCoupon.quantity}" />
-																	<input type="hidden" value="${giftCoupon.noOfCoupons}" />
-                                        <c:choose>
-											<c:when test="${operation != 'view'}" >
-												<input type="button" class="iosclosebutton1" style="width:75px"
-												onclick= "ExportTransactionsDataxls('edit','${walletList.walletProgramId}','','0','true','true')"
-																		
-																		value="Ok">
-                                           </c:when>
-											<c:otherwise>
-												<input type="button" class="iosclosebutton1" style="width:75px"
-												onclick= "ExportTransactionsDataxls('view','${walletList.walletProgramId}','','0','true','true')"
-																		
-																		value="Ok">
-                                            </c:otherwise>
-											</c:choose>
-																	
-
-
-																</div>
-
-
-
-
-																<!-- <div class="col-lg-1 col-sm-4 col-xs-6" style="padding-left: 5px; padding-right: 5px;">
-  <input type="button" class="iosclosebutton1" data-dismiss="modal" value="Cancel">
-</div> -->
-															</div>
-															<br />
-														</div>
-														<br />
-														<div class="modal-footer" style="padding: 0px;">
-															<!--  <input type="button" class="iosclosebutton" data-dismiss="modal" value="Close"/> -->
-														</div>
-													</div>
-
-												</div>
-											</div>
-											
-											
-											
-											
-                                    	<div id="tableforPagination" style="text-align:center;">
+                                    	<div id="tableforPagination">
                                     	<table class="table table-striped table-bordered">
                                     	<thead style="background-color: #eeee !important; border-left: hidden;border-right: hidden;" >
                                     	<tr>
@@ -929,7 +826,7 @@ $('#searchChildWallet').on('input',function(e){
               	</div>
                                     	</div>
 									  </div>
-                           <br><br>
+                           
        <div class="col-lg-12">
                                 <div class="col-lg-3"></div>
                           
@@ -959,7 +856,7 @@ $('#searchChildWallet').on('input',function(e){
 	                    </c:if>
                            
                            </c:if>
-                                <div class="col-lg-2"></div>
+                                <div class="col-lg-1"></div>
                         
                            <div class="col-lg-2">
                	<input type="button" class="btn bg-olive btn-inline" style="

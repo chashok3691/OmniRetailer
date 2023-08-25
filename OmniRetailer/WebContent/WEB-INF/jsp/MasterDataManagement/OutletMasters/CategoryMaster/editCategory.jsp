@@ -134,7 +134,7 @@ $("#categoryDescription").keydown(function(){
                             
                             <div class="form-group col-lg-6">
                             <label><spring:message code="priority.label" /> <!-- <font color="red" size="2">*</font> --></label>
-                            <input type="text" class="form-control" id="categoryPriority" style="width:100%;" placeholder="<spring:message code="enter.priority.number" />" value="${categoryDetails.sortOrder}" />
+                            <input type="text" class="form-control" id="categoryPriority" style="width:100%;" placeholder="<spring:message code="enter.priority.number" />" value="${categoryDetails.sortOrder}" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');"/>
                             <div id="categorypriorityError" style="color: red;font-size: 2;font-weight: bold;"></div>
                             </div>
                             

@@ -3327,7 +3327,6 @@ public List<DailyStockTracker> getStockHistory(String searchName,String searchTy
 			
 		}
 		for(int i=0;i<dailyStockTrackerObj.getDailyStockTrackers().size();i++){
-			
 			dailyStockTrackerObj.getDailyStockTrackers().get(i).setTotalRecords(dailyStockTrackerObj.getTotalRecords());
 		}
 
@@ -3346,7 +3345,7 @@ public List<DailyStockTracker> getStockHistory(String searchName,String searchTy
 
 
 
-public String getpackage(String searchName,String searchType,String startDateStr,String endDateStr,String outletLocationStr,String stockTypeStr,String customerIdStr,String emailIdStr,String index,String flowUnder,String zone,String category,String subcategory,String brand,String department,Boolean stockdownload,String supplierName,String maxRecords,String locationsListValue,String packageID,String searchCriteria){
+public String getpackage(String searchName,String searchType,String startDateStr,String endDateStr,String outletLocationStr,String stockTypeStr,String customerIdStr,String emailIdStr,String index,String flowUnder,String zone,String category,String subcategory,String brand,String department,Boolean stockdownload,String supplierName,String maxRecords,String locationsListValue,String packageID){
 	ProcessingAndPackaging dailyStockTrackerObj = null;
 	com.tlabs.posweb.beans.Response responseobj = null;
 	String resultStr = null;
@@ -3371,11 +3370,11 @@ public String getpackage(String searchName,String searchType,String startDateStr
 		dailyStockTrackerObj.setDepartment(department);
 		dailyStockTrackerObj.setSubDepartment(department);
 		dailyStockTrackerObj.setPackagingRefId(packageID);
-		dailyStockTrackerObj.setSearchCriteria(searchCriteria);
 		
 		
 		
-	/////////System.out.println("packaging Request String:::"+(gson.toJson(dailyStockTrackerObj)) );
+		
+	////////////////////////////////////System.out.println"packaging Request String:::"+(gson.toJson(dailyStockTrackerObj)) );
 		
        resultStr = restfulConnectionObj.getResponse(AppProperties.getRESTFulCloudServiceURL("get_packages"), gson.toJson(dailyStockTrackerObj), "GET");
     ////////////////////////////////System.out.println"packaging Response String:::"+resultStr);

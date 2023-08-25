@@ -7006,8 +7006,6 @@ function daydiff(first, second) {
 
 
 function validateShipmentReceipt(operation,poflag){
-	
-	
 	debugger;
 	$("#Success").html("");
 	$('#ErrorExcel').html("");
@@ -7035,18 +7033,14 @@ function validateShipmentReceipt(operation,poflag){
 
       if( $("#igstAmt").val()==""){
 			 $("#igstAmt").val("0");
-		}
+	}
 		
 	if(operation == "save"){
-		
 		debugger
-		
 		var subtotalval = $("#subtotalCostgrn").val();
 		$("#subtotalCostgrn").val(subtotalval.replace(",",""));
 		var delivered_by = $("#po_reference").val();
 		var inspected_by = $("#inspected_by").val();
-		
-		
 		
 		/*if(delivered_by == ""){
 			$("#po_referenceError").html("PO reference is required");
@@ -7059,6 +7053,21 @@ function validateShipmentReceipt(operation,poflag){
 			  return;
 		  }*/
 		
+		if(parseInt($("#invoiceRefNumber").val().length)>30){
+			 $("#invoiceRefNumber").focus();
+				$("#invoiceNumberError").html("Invoice Number can't exceeds 30 Characters");
+				return;
+		}else{
+	   	 $("#invoiceNumberError").html(" ");
+	 }
+		
+		if(parseInt($("#delivered_by").val().length)>80){
+			 $("#delivered_by").focus();
+				$("#deliveredByError").html("Delivered By can't exceeds 80 Characters");
+				return;
+		}else{
+	   	 $("#deliveredByError").html(" ");
+	 }
 		
 		
 		if($("#supplierNameError").text() != ""){
@@ -7098,7 +7107,6 @@ function validateShipmentReceipt(operation,poflag){
 				 //alert("fbhdf");
 	     			$('#invoiceNumberError').html('Enter Invoice Number');
 	     			 $("#invoiceRefNumber").focus();
-	     			
 	   	    		 return ;
 	   	    	 }	
 	}
@@ -7110,7 +7118,6 @@ function validateShipmentReceipt(operation,poflag){
 			 //alert("fbhdf");
      			$('#invoiceNumberError').html('Enter Invoice Number');
      			 $("#invoiceRefNumber").focus();
-     			
    	    		 return ;
    	    	 }	
 		 
@@ -7118,10 +7125,24 @@ function validateShipmentReceipt(operation,poflag){
 			 //alert("fbhdf");
      			$('#receivedByError').html('Received By');
      			 $("#receivedBy").focus();
-     			
    	    		 return ;
    	    	 }	
 		 
+		 if(parseInt($("#invoiceRefNumber").val().length)>30){
+			 $("#invoiceRefNumber").focus();
+				$("#invoiceNumberError").html("Invoice Number can't exceeds 30 Characters");
+				return;
+		}else{
+	   	 $("#invoiceNumberError").html(" ");
+	 }
+		
+		if(parseInt($("#delivered_by").val().length)>80){
+			 $("#delivered_by").focus();
+				$("#deliveredByError").html("Delivered By can't exceeds 80 Characters");
+				return;
+		}else{
+	   	 $("#deliveredByError").html(" ");
+	 }
 		 
 		/* if($('#Approvedby').val().trim()==""){
 			 //alert("fbhdf");
@@ -7147,11 +7168,6 @@ function validateShipmentReceipt(operation,poflag){
    	    		 return ;
    	    	 }	
 	
-	
-	
-		 
-		 
-		 
 		 
 	}
 	
@@ -7168,8 +7184,6 @@ function validateShipmentReceipt(operation,poflag){
 		if($("#statusissue").val() == "draft"){
 		var status = "Submitted";
 			$("#statusissue :selected").attr("value", "Submitted");
-			
-			
 		}
 		
 	}
@@ -7186,10 +7200,6 @@ var docLink = $("#attachmentUpload_refId").val();
                 if(docLink == null || docLink == undefined){
                         docLink == ""; 
                 }
-
-
-
-
 
 		var docLink = $("#attachmentUploadFile").val();
         var docLinkId = $("#attachmentUpload_refId").val();
@@ -7256,10 +7266,8 @@ var docLink = $("#attachmentUpload_refId").val();
 			   }	
 			  }
 	// }
+	            }
 	
-			  }
-	
-
 	debugger
 
 	for(var i=1;i<=len;i++){
@@ -7610,6 +7618,43 @@ function validatePurchaseOrder(operation,type){
 		  $("#searchSupplier").focus();
 		  return;
 	  }
+	  
+	  
+			 debugger
+			  if(parseInt($("#credit_terms").val().length)>250){
+					 $("#credit_terms").focus();
+						$("#confirmError2").html("Credit Terms can't exceeds 250 Characters");
+						return;
+				}else{
+			   	 $("#confirmError2").html(" ");
+			   }
+			  
+			  if(parseInt($("#payment_terms").val().length)>250){
+					 $("#payment_terms").focus();
+						$("#confirmError2").html("Payment Terms can't exceeds 250 Characters");
+						return;
+				}else{
+			   	 $("#confirmError2").html(" ");
+			   }
+			  
+			  if(parseInt($("#shipping_terms").val().length)>250){
+					 $("#shipping_terms").focus();
+						$("#confirmError2").html("Shipping Terms can't exceeds 250 Characters");
+						return;
+				}else{
+			   	 $("#confirmError2").html(" ");
+			   }
+			  
+			  if(parseInt($("#remarks").val().length)>250){
+					 $("#remarks").focus();
+						$("#confirmError2").html("Remark can't exceeds 250 Characters");
+						return;
+				}else{
+			   	 $("#confirmError2").html(" ");
+			   }		
+			
+		      
+	  
 	  /*if(operation != "draft"){
 	  if($("#order_submitted_by").val() == ""){
 		  $("#orderSubmittedByError").html("Enter Submitted By");
@@ -7620,12 +7665,7 @@ function validatePurchaseOrder(operation,type){
 		 
 	  //debugger
 		
-	
-
-		 
-		
-		
-		/*var items = JSON.stringify(itemDetails);
+	/*var items = JSON.stringify(itemDetails);
 		var deliveryLocations = JSON.stringify(pOShipmentLocations);
 		$("#whPurchaseItems").val(items);
 		$("#deliveryLocations").val(deliveryLocations);*/

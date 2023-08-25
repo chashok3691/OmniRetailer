@@ -73,11 +73,21 @@ function getCustomerPurchases(index){
 			return;
 		}
 	}
+	
+	 if(parseInt($("#city").val().length)>30){
+		 $("#city").focus();
+		 $("#Error").html("City can't exceeds 30 Characters");
+			return;
+	  }else{
+	    $("#Error").html(" ");
+      }
+	
+	 
 	if($("#fromDate").val() != "" && $("#endDate").val() != ""){
 		 var noOfDays = daydiff(parseDate($('#fromDate').val()), parseDate($('#endDate').val()));
 		 if(noOfDays < 0){
 //			$("#Error").html("Enter End Date greater than Start Date");
-			 alert("Start Date can't be less than End Date");
+			 alert("End Date can't be less than Start Date");
 			return;
 		 }
 		

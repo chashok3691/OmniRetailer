@@ -19,7 +19,7 @@ function validateStateMaster(id,operation){
  	    		$("#statecode").focus();
  	    		 $("#statecodeError").html("Please Enter State Code");
  	    		 return;
- 	    	 }else if(parseInt($("#statecode").val().length)>=20){
+ 	    	 }else if(parseInt($("#statecode").val().length)>20){
  				 $("#statecode").focus();
  				$("#statecodeError").html("State Code can't exceeds 20 characters");
  				return;
@@ -29,7 +29,7 @@ function validateStateMaster(id,operation){
   	    		$("#countryCode").focus();
   	    		 $("#countrycodeError").html("Please Enter Country Code");
   	    		 return;
-  	    	 }else if(parseInt($("#countryCode").val().length)>=20){
+  	    	 }else if(parseInt($("#countryCode").val().length)>20){
  				 $("#countryCode").focus();
   				$("#countrycodeError").html("Country Code can't exceeds 20 characters");
   				return;
@@ -46,7 +46,7 @@ function validateStateMaster(id,operation){
   	    		 $("#GSTCode").focus();
   	    		 $("#GSTCodeError").html("Please Enter GST State Code");
   	    		 return;
-  	    	 }else if(parseInt($("#GSTCode").val().length)>=20){
+  	    	 }else if(parseInt($("#GSTCode").val().length)>20){
   	    		 	$("#GSTCode").focus();
     				$("#GSTCodeError").html("GST State Code can't exceeds 20 characters");
     				return;

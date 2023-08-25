@@ -162,8 +162,8 @@ $(document).ready(function(){
           </div>
           <div class="col-lg-8 col-md-8 col-xs-7 col-sm-9" style="padding-left:0px;margin-bottom: 3px">
           <label><spring:message code="createNewArrivals.lastDate.label"/></label>
-          <input class="form-control calendar_icon  startDateFeatured" readonly="readonly" value="${featuredProductsResponse.startDateStr}" style="background-color: white;" id="last" size="20" type="text" onfocus="callCalender('last')" onclick="callCalender('last')" placeholder="Last Date" />               <span style="color:red; font-size:2; position: absolute;" id="effectiveError"></span>
-               <span style="color:red; font-size:2; position: absolute;font-weight: bold;" id="startDateError"></span>
+          <input class="form-control calendar_icon  startDateFeatured" readonly="readonly" value="${featuredProductsResponse.startDateStr}" style="background-color: white;" id="last" size="20" type="text" onfocus="callCalender('last')" onclick="callCalender('last')" placeholder="Last Date" />              
+           <span style="color:red; font-size:2; position: absolute;font-weight: bold;" id="lastDateError"></span>
             </div>
  			</div>
 		</div>
@@ -255,9 +255,10 @@ $(document).ready(function(){
 		
             <div class="col-lg-1 col-md-1 col-xs-0 col-sm-1">
 				</div>
-				<div class="col-lg-10 col-md-10 col-xs-7 col-sm-10" style="padding-left:0px;;margin-bottom: 3px">
+			<div class="col-lg-10 col-md-10 col-xs-7 col-sm-10" style="padding-left:0px;;margin-bottom: 3px">
 				<label><spring:message code="createNewArrivals.remark.label"/></label>
 				<textarea class="form-control form-group" id="description" style="resize: none;" placeholder=<spring:message code="createNewArrivals.remark.Description.placeholder"/>/></textarea>
+			    <span style="color:red; font-size:2; position: absolute;font-weight: bold;" id="descriptionError"></span>
 			</div>
 		
 		</div>

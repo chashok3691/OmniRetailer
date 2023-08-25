@@ -186,6 +186,8 @@ $("#searchShipmentReturnsId").val($("#shipmentReturns").val());
                  <div class="col-lg-12" style="padding-left: 0px;padding-right: 0px;">
 			        <div class="col-lg-12 col-xs-8 col-sm-12 col-md-12" style="padding-left: 0px;">
 	                    <input class="form-control calendar_icon " readonly="readonly" value="" style="background-color: white;" id="to" size="20" type="text" onfocus="callCalender('to')" onclick="callCalender('to')" placeholder="DD/MM/YYYY" />
+	               
+	                  <span id="EndDateError" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
 	                </div>
 	           </div>
 	          </div>
