@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	   http://www.springframework.org/schema/beans/spring-beans.xsd 
+	   http://www.springframework.org/schema/aop 
+       http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+	   http://www.springframework.org/schema/context
+	   http://www.springframework.org/schema/context/spring-context-3.0.xsd
+	   http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+	   http://www.springframework.org/schema/tx
+	   http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
+	   
+	<context:component-scan base-package="com.tlabs.posweb" />
+	<context:annotation-config />
+    <mvc:annotation-driven/>    
+    
+    
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver" p:prefix="/WEB-INF/jsp/" p:suffix=".jsp" />
+    
+	<bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+    	<!-- <property name="basename" value="classpath:ApplicationResources"/> -->
+    	 <property name="defaultEncoding" value="UTF-8"/>
+   		 <property name="basenames">
+      	  <list>
+        	   <value>/WEB-INF/ApplicationResources</value>
+       	 </list>
+   		 </property>
+    	
+	</bean>
+	 <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+
+		<property name="maxUploadSize" value="629145600" /> <!-- 20MB 20971520-->
+    	<property name="maxInMemorySize" value="629145600" />
+
+	 </bean>
+	<!-- <bean id="handlerMapping" class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping">
+	    <property name="interceptors">
+	        <bean class="com.tlabs.posweb.controller.LastModelAndViewInterceptor"/>
+	    </property>
+	</bean> -->
+	<bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
+    	<property name="defaultLocale" value="en" />
+	</bean>
+	
+	<bean id="localeChangeInterceptor"
+		class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+		<property name="paramName" value="language" />
+	</bean>
+ 
+	<bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping" >
+		<property name="interceptors">
+		   <list>
+			<ref bean="localeChangeInterceptor" />
+		   </list>
+		</property>
+	</bean>
+	<bean id="pdfViewResolver" class="org.springframework.web.servlet.view.ResourceBundleViewResolver">
+		<property name="order" value="1"/>
+		<property name="basename" value="views"/>
+	</bean>
+	
+	
+	
+	<bean id="gson" class="com.google.gson.Gson"/>
+	
+    <bean id="loginServiceObj" class="com.tlabs.posweb.services.LoginService"/>
+    <bean id="adminServiceObj" class="com.tlabs.posweb.services.AdminService"/>
+    <bean id="storeServiceObj" class="com.tlabs.posweb.services.StoreService"/>
+    <bean id="masterServiceObj" class="com.tlabs.posweb.services.MasterService"/>
+    <!-- <bean id="rawMaterialServiceObj" class="com.tlabs.posweb.services.RawMaterialService"/> -->
+	<bean id="procurementServiceObj" class="com.tlabs.posweb.services.ProcurementService"/>
+	<bean id="stockReceiptServiceObj" class="com.tlabs.posweb.services.StockReceiptService"/>
+	<bean id="stockIssueServiceObj" class="com.tlabs.posweb.services.StockIssueService"/>
+	
+	<bean id="skuServiceObj" class="com.tlabs.posweb.services.SkuService"/>
+	<bean id="storeStockVerificationServiceObj" class="com.tlabs.posweb.services.StockVerificationService"/>
+	
+		<!-- 30-04-2015    Sambaiah Y -->
+	<bean id="orderServiceObj" class="com.tlabs.posweb.services.OrderService"/>
+	<bean id="billServiceObj" class="com.tlabs.posweb.services.BillingService"/>
+	<bean id="shipmentServiceObj" class="com.tlabs.posweb.services.ShipmentService"/>
+	
+	<bean id="shoppingListServiceObj" class="com.tlabs.posweb.services.ShoppingListService"/>
+	<bean id="loyaltyCardServiceObj" class="com.tlabs.posweb.services.LoyaltyCardService"/>
+	<bean id="dealServiceObj" class="com.tlabs.posweb.services.DealService"/>
+	<bean id="offerServiceObj" class="com.tlabs.posweb.services.OfferService"/>
+	<bean id="salesReportsServiceObj" class="com.tlabs.posweb.services.SalesReportsService"/>
+	<bean id="productServiceObj" class="com.tlabs.posweb.services.ProductService"/>
+	<bean id="warehouseServiceObj" class="com.tlabs.posweb.services.WarehouseService"/>
+	<bean id="roleServiceObj" class="com.tlabs.posweb.services.RoleService"/>
+	<bean id="shiftServiceObj" class="com.tlabs.posweb.services.ShiftService"/>
+	<bean id="reportsServiceObj" class="com.tlabs.posweb.services.ReportsService"/>
+	<bean id="dashboardServiceObj" class="com.tlabs.posweb.services.DashboardService"/>
+	<bean id="customerServiceObj" class="com.tlabs.posweb.services.CustomerService"/>
+	<bean id="departmentServiceObj" class="com.tlabs.posweb.services.DepartmentService"/>
+	<bean id="orgdepartmentServiceObj" class="com.tlabs.posweb.services.OrganizationDepartmentService"/>
+	<bean id="outletNotificataionServiceObj" class="com.tlabs.posweb.services.OutletNotificationService"/>
+	<bean id="bannerServiceObj" class="com.tlabs.posweb.services.BannerService"/>
+	<bean id="logServiceObj" class="com.tlabs.posweb.services.LogService"/>
+	<bean id="settingsServiceObj" class="com.tlabs.posweb.services.SettingsService"/>
+	<bean id="genericMasterServiceObj" class="com.tlabs.posweb.services.GenericMasterService"/>
+	<bean id="outletMasterServiceObj" class="com.tlabs.posweb.services.OutletMasterService"/>
+	<bean id="dataManagementServiceObj" class="com.tlabs.posweb.services.DataManagementService"/>
+	<bean id="userServiceObj" class="com.tlabs.posweb.services.UserService"/>
+	<bean id="eventServiceObj" class="com.tlabs.posweb.services.EventService"/>
+	<bean id="warrentyServiceObj" class="com.tlabs.posweb.services.WarrantService"/>
+	<bean id="feedbackServiceObj" class="com.tlabs.posweb.services.FeedbackService"/>
+	<bean id="featuredServiceObj" class="com.tlabs.posweb.services.FeaturedProductService"/>
+	<bean id="newArrivalsServiceObj" class="com.tlabs.posweb.services.NewArrivalsService"/>
+	<bean id="paymentGateWayServiceObj" class="com.tlabs.posweb.services.PaymentGateWayService"/>
+	<bean id="menuServiceObj" class="com.tlabs.posweb.services.MenuService"/>
+	<bean id= "sessionScope" class="com.tlabs.posweb.beans.SessionScope" scope="session">
+		<aop:scoped-proxy/>
+	</bean>
+	<bean id="requestHeaderUtil" class="com.tlabs.posweb.util.RequestHeaderUtil" />
+	
+	<mvc:annotation-driven />
+	</beans>
