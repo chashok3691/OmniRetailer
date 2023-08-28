@@ -48,54 +48,19 @@ public class ProcessingAndPackaging {
 
 	//private Set<PackagingDetails> packagingDetails;
 	private List<PackagingDetails> packagingDetails;
-	
 	private RequestHeader requestHeader;
 	
-	private List<String> previousWorkFlowStates;
 	
-	private List<String> nextWorkFlowStates;
 	
 
-	private boolean isUpdateQty;
-	
-	private String searchCriteria;
+
 	
 
 	
 
 	
 
-	public String getSearchCriteria() {
-		return searchCriteria;
-	}
-
-	public void setSearchCriteria(String searchCriteria) {
-		this.searchCriteria = searchCriteria;
-	}
-
-	public boolean isUpdateQty() {
-		return isUpdateQty;
-	}
-
-	public void setUpdateQty(boolean isUpdateQty) {
-		this.isUpdateQty = isUpdateQty;
-	}
-
-	public List<String> getPreviousWorkFlowStates() {
-		return previousWorkFlowStates;
-	}
-
-	public void setPreviousWorkFlowStates(List<String> previousWorkFlowStates) {
-		this.previousWorkFlowStates = previousWorkFlowStates;
-	}
-
-	public List<String> getNextWorkFlowStates() {
-		return nextWorkFlowStates;
-	}
-
-	public void setNextWorkFlowStates(List<String> nextWorkFlowStates) {
-		this.nextWorkFlowStates = nextWorkFlowStates;
-	}
+	
 
 	private String category;
 	

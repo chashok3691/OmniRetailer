@@ -7,7 +7,6 @@ function filterNewarrivals(name, searchCategory, index) {
 	var startdate=$("#from").val();
 	var enddate=$("#to").val();
 	var maxRecords=$("#maxRecords").val();
-	
 	var contextPath = $("#contextPath").val();
 	URL = contextPath + "/b2c/getNewArrivals.do";
 	$.ajax({
@@ -22,7 +21,6 @@ function filterNewarrivals(name, searchCategory, index) {
 			startdate:startdate,
 			enddate:enddate,
 			maxRecords:maxRecords,
-			
 		},
 		beforeSend : function(xhr) {
 			$("#loading").css("display", "block");
@@ -124,8 +122,6 @@ function searchNewarrivalproducts(name,searchCategory,index){
 	 var startDate = "";
 	 var endDate = "";
 	 
-	 
-	 
 	 //modified by manasa
 		if($("#arrivalfrom").val() != "" && $("#arrivalto").val() != ""){
 			var noOfDays = daydiff(parseDate($('#from').val()), parseDate($('#to').val()));
@@ -192,6 +188,15 @@ function validateNewarrivalForm(type){
 			$("#startDateError").html("Invalid Date");
 			return;
 	 }
+	 
+	 if(parseInt($("#newarrivalGroup").val().length)>50){
+		  $("#newarrivalGroup").focus();
+		  $("#groupNameError").html("Title can't exceeds 50 Characters");
+			return;
+	}else{
+	 $("#groupNameError").html(" ");
+  }
+	 
 	 if($(".toNewarrivals").val().trim() != ""){
 		 if(!re.test($(".toNewarrivals").val())){
 				$("#endDateError").html("Invalid Date");
@@ -201,8 +206,27 @@ function validateNewarrivalForm(type){
 		 if(noOfDays < 0){
 			 $("#endDateError").html("End Date can't be less than Start Date");
 			 return;
-		 }
+		 }else{
+			 $("#endDateError").html(" ");
+		   }
 	 }
+	 
+	 var noOfDays = daydiff(parseDate($('#effective').val()), parseDate($('#last').val()));
+	 if(noOfDays < 0){
+		 $("#lastDateError").html("Last Date can't be less than From Date");
+		 return;
+	 }else{
+		 $("#lastDateError").html(" ");
+	   }
+	 
+	 if(parseInt($("#description").val().length)>200){
+		  $("#description").focus();
+		  $("#descriptionError").html("Remark can't exceeds 200 Characters");
+			return;
+	}else{
+	 $("#descriptionError").html(" ");
+   }
+	 
 		var len = parseInt($("#productsList tr").length);
 		if(len <= 1){
 			alert("Add Atleast One Item");
@@ -231,7 +255,6 @@ function validateNewarrivalForm(type){
 			 newarrivals.productCategory="Select";
 		 }
 		 
-		 
 	/*	if($("#groupImageimage").length > 0)
 			productGroupMaster.imageFlag = "true";
 		else
@@ -242,7 +265,6 @@ function validateNewarrivalForm(type){
 			
 			var obj = {skuId:$("#skuId"+idAttr).text(),skuDesc:$("#productDescription"+idAttr).text(),serNo:$("#itemno"+idAttr).val(),newArrivalImageRefId:$("#picture"+idAttr+"_refId").val(),image:$("#picture"+idAttr+"_name").val(),newArrivalImageFlag:true};
 			newArrivalProductsList.push(obj);
-			
 		}
 		newarrivals.newArrivalProductsList = newArrivalProductsList;
 		var contextPath = $("#contextPath").val();
@@ -259,7 +281,7 @@ function validateNewarrivalForm(type){
 			type: "POST",
 			url : URL,
 			contentType: "application/json",
-       data : formData,
+            data : formData,
        beforeSend: function(xhr){                    
 	   			$("#loading").css("display","block");
 	   			$("#mainDiv").addClass("disabled");
@@ -276,6 +298,8 @@ function validateNewarrivalForm(type){
 		}
 });
 }
+
+
 function deleteItem(element){
 	var id = $(element).attr("id").replace('Img','');
 	//deletedPlus.push($("#skuId"+id).text());

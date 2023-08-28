@@ -1339,7 +1339,6 @@ function validateStockReceipt(status,operation,receipt_ref_num,id_goods_receipt)
 			    $("#delivered").focus();
 				$("#deliveredByError").html("Enter Delivered By");
 				//focusDiv('deliveredByError');
-				
 				return;
 		 }
 		 if(!re.test($("#date").val())){
@@ -1372,6 +1371,55 @@ function validateStockReceipt(status,operation,receipt_ref_num,id_goods_receipt)
         		 else{
         			 status = $('#statusissue').val(); 
         		 }
+			 
+			 if(parseInt($("#delivered").val().length)>50){
+    			 $("#delivered").focus();
+    				$("#deliveredByError").html("Delivered by can't exceeds 50 Characters");
+    				return;
+    		}else{
+    	   	 $("#deliveredByError").html(" ");
+    	 }
+			
+			 if(parseInt($("#inspected").val().length)>50){
+    			 $("#inspected").focus();
+    				$("#inspectedByError").html("Inspected by can't exceeds 50 Characters");
+    				return;
+    		}else{
+    	   	 $("#inspectedByError").html(" ");
+    	 }
+			 
+			 if(parseInt($("#received").val().length)>40){
+    			 $("#received").focus();
+    				$("#receivedByError").html("Received by can't exceeds 40 Characters");
+    				return;
+    		}else{
+    	   	 $("#receivedByError").html(" ");
+    	 }
+			 
+			 if(parseInt($("#issuedBy").val().length)>30){
+    			 $("#issuedBy").focus();
+    				$("#issuedByError").html("Issued by can't exceeds 30 Characters");
+    				return;
+    		}else{
+    	   	 $("#issuedByError").html(" ");
+    	 }
+			 
+			 if(parseInt($("#shippmentRef").val().length)>30){
+    			 $("#shippmentRef").focus();
+    				$("#shippmentRefError").html("Shipment Ref can't exceeds 30 Characters");
+    				return;
+    		}else{
+    	   	 $("#shippmentRefError").html(" ");
+    	 }
+			 
+		if(parseInt($("#remarks").val().length)>250){
+    			 $("#remarks").focus();
+    				$("#remarksError").html("Remark can't exceeds 250 Characters");
+    				return;
+    		}else{
+    	   	 $("#remarksError").html(" ");
+    	 }
+			 
 		 }
 		 var flag = "";
 		 if($("#trackingRequired").val()== undefined || $("#trackingRequired").val()== null || $("#trackingRequired").val()== "" || $("#trackingRequired").val()== false){

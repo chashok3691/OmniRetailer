@@ -237,7 +237,7 @@ $(document).ready(function(){
 									     			<ul class="matchedStringUl productNameSku" style=""></ul>
 									   			</div>
 											</div> -->
-	                                        <span id="productNameError" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
+	                                        <span id="productNameDetailError" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
 											<input type="hidden"  onblur="criteria(this)" class="allField" id="productId" value="${warehousesku.productId}">
 										</div>
 										<div class="form-group col-lg-2">
@@ -272,7 +272,7 @@ $(document).ready(function(){
                                     	<div class="form-group col-lg-2">
                                     		<label><spring:message code="ean.label" /></label>
                                             <input type="text"  onblur="criteria(this)" class="form-control allField"  id="ean" name="ean" value="" required placeholder="<spring:message code="enter.ean.label" />" />
-                                            <span id="eanError" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
+                                            <span id="eanwarehouseError" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
                                         </div>
                                         <div class="form-group col-lg-2">
 											<label><spring:message code="supplier.name.label" /> <span style="color:red; font-size:2">*</span></label>
@@ -316,13 +316,13 @@ $(document).ready(function(){
                                           <div class="form-group col-lg-9 col-sm-12">
                                             <label><spring:message code="uom.label.label" /></label>
                                             <input type="text"  onblur="criteria(this)" class="form-control allField" name="uomLabel" id="uomLabel" value=""  placeholder="<spring:message code="enter.uom.label.label" />" />
-                                        	<span id="weightError" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
+                                        	<span id="weightwarehouseError" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
                                         </div></div>
                                           <div class=" col-lg-2" style="padding-left:0px">
                                           <div class="form-group col-lg-8 col-sm-12">
                                             <label><spring:message code="pack.size.label" /></label>
                                             <input type="text"  onblur="criteria(this)" class="form-control allField" name="packSize" id="packSize" value="${warehousesku.packSize}" required placeholder="<spring:message code="enter.pack.size.label" />" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" />
-                                            <span id="packSizeError" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
+                                            <span id="packSizewarehouseError" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
 										</div>
 										</div>
 										<div class=" col-lg-2" style="padding-left:0px">
@@ -348,7 +348,10 @@ $(document).ready(function(){
                                           <div class="col-lg-9 col-sm-12">
                                     		<label><spring:message code="retail.units.label" /></label>
 												<input  class="form-control"  onblur="criteria(this)" type="text" name ="retailunits" id="retailunits"/>
-                                        </div></div>
+                                                <span id="retailunitsError" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
+                                        </div>
+                                        
+                                        </div>
 										<div class="col-lg-2" style="padding-left:0px;pxpadding-right:0px;">
                                           <div class="form-group col-lg-10 col-sm-12">
                                     		<label><spring:message code="brand.code.label" /></label>
@@ -362,7 +365,7 @@ $(document).ready(function(){
                                           <div class="form-group col-lg-9 col-sm-12">
                                             <label><spring:message code="model.label" /></label>
                                             <input type="text"  onblur="criteria(this)" class="form-control allField" name="model" id="model" value="${warehousesku.model}"   placeholder="<spring:message code="enter.model.label" />"  />
-                                        	<span id="modelError" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
+                                        	<span id="modelwarehouseError" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
 										</div> </div>
                                        <div class=" col-lg-2" style="padding-left:0px;padding-right:0px;">
                                           <div class="form-group col-lg-9 col-sm-12">
@@ -445,6 +448,7 @@ $(document).ready(function(){
                                           <div class="form-group col-lg-9 col-sm-12">
                                         	<label><spring:message code="fr.tax.code.label" /></label>
                                              <input type="text"  onblur="criteria(this)" class="form-control allField" name="frTaxCode" id="frTaxCode" value="${warehousesku.frTaxCode}" oninput="this.value = this.value.replace(/[^0-9]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" required placeholder="<spring:message code="enter.fr.tax.code.label" />" /> 
+                                         <span id="frTaxCodewarehouseError" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
                                          </div></div>
                                          <div class=" col-lg-2" style="padding-left:0px;padding-right:0px;">
                                           <div class="form-group col-lg-8 col-sm-12">
@@ -455,6 +459,7 @@ $(document).ready(function(){
                                           <div class="form-group col-lg-9 col-sm-12">
                                             <label><spring:message code="mark.down.label" /></label>
                                             <input type="text"  onblur="criteria(this)" class="form-control allField" name="markDown" id="markDown" value="${warehousesku.markDown}" required  placeholder="<spring:message code="enter.mark.down.label" />"  />
+										<span id="markDownError" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
 										</div></div>
                                       <div class=" col-lg-2" style="padding-left:0px;padding-right:0px;">
                                       <div class="form-group col-lg-10 col-sm-12">
@@ -593,10 +598,8 @@ $(document).ready(function(){
 								<div class="row">
 										<div class="form-group col-lg-12">
 											<label>Theme</label>
-											
 												<input type="text" id="skutheme"  placeholder="Theme" class="form-control allField" value="${sku.theme}"/>
-											
-											<span id="skuThemeError"
+											<span id="skuThemewarehouseError"
 												style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
 										</div>
 									</div>
@@ -606,10 +609,8 @@ $(document).ready(function(){
 								<div class="row">
 										<div class="form-group col-lg-12">
 											<label>Sub Theme</label>
-											
 												<input type="text" id="skuSubtheme"  placeholder="Sub Theme" class="form-control allField" ${sku.subTheme}/>
-											
-											<span id="skuSubthemeError"
+											<span id="skuSubthemewarehouseError"
 												style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
 										</div>
 									</div>
@@ -624,6 +625,8 @@ $(document).ready(function(){
 										type="text" class="form-control allField" name="alternate_sku" onblur="criteria(this)"
 										id="alternate_sku" value=""
 										placeholder="<spring:message code="alternate.sku.description.label" />" />
+								<span id="alternate_skuwarehouseError"
+												style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
 								</div>
 
 								<div class="form-group col-lg-2">
@@ -631,6 +634,9 @@ $(document).ready(function(){
 										type="text" class="form-control allField" name="season_code" onblur="criteria(this)"
 										id="season_code" value=""
 										placeholder="<spring:message code="season.code.description.label" />" />
+								
+								<span id="season_codeError"
+												style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
 								</div>
 
 								<div class="form-group col-lg-2">
@@ -638,6 +644,9 @@ $(document).ready(function(){
 										type="text" class="form-control allField" name="alias_name" onblur="criteria(this)"
 										id="alias_name" value=""
 										placeholder="<spring:message code="alias.name.description.label" />" />
+								
+								<span id="alias_namewarehouseError"
+												style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
 								</div>
 
 								<div class="form-group col-lg-2">
@@ -645,6 +654,9 @@ $(document).ready(function(){
 										type="text" class="form-control allField" name="item_type"
 										id="item_type" value="" onblur="criteria(this)"
 										placeholder="<spring:message code="item.type.description.label" />" />
+								<span id="item_typeWarehouseError"
+												style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
+								
 								</div>
 
 								<div class="form-group col-lg-2">
@@ -652,6 +664,8 @@ $(document).ready(function(){
 										type="text"  onblur="criteria(this)" class="form-control allField" name="item_design"
 										id="item_design" value=""
 										placeholder="<spring:message code="item.design.description.label" />" />
+								<span id="item_designWarehouseError"
+												style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
 								</div>
 								
 								
@@ -670,14 +684,7 @@ $(document).ready(function(){
 										</select>
 									</div>
 								</div>
-								
-
 							</div>
-                                        
-                                        
-                           
-                           
-                           
                            
                            
 							<div class="row">
@@ -707,6 +714,9 @@ $(document).ready(function(){
 										name="productHanding" style="resize: none;"
 										class="form-control allField"  value="${sku.productHandlng}"
 										placeholder="<spring:message code="enter.product.handing.label" />">
+								<span id="productHandingDetailwarehouseError"
+												style="text-align: right; color: red; font-size: 2; font-weight: bold;"></span>
+								
 								</div>
 
 							
@@ -934,6 +944,7 @@ $(document).ready(function(){
                                        <div class="form-group span2">
                                        		<label><spring:message code="ean.label" /></label>
                                             <input type="text"  onblur="criteria(this)" class="form-control allField"  id="eanAllLocation1" value="" placeholder="<spring:message code="enter.ean.label" />" />
+										    <span id="eanAllLocation1Error" style="text-align:right;color: red;font-size: 2;font-weight: bold;"></span>
 										</div> 
                                        <div class="form-group span2">
                                             <label><spring:message code="created.date.label" /></label>

@@ -17,12 +17,14 @@ public class PackagingDetails {
 	private String measureRange;
 	
 	private String noOfPacks;
-	
 	private String stockQty;
+	
+
 	
 	private String ean;
 	
 	private String batchId;
+
 	
 	private float avlQty;
 	
@@ -31,36 +33,25 @@ public class PackagingDetails {
 	private float procQty;
 	
 	private float childSkuAvailableQty;
-	
 	private String uom;
+
 	
-	private boolean iszeroBilling;
-
-	private String batchNumber;
-
-	private int costPrice;
-
-	private int salePrice;
-
-	private int totalCostValue;
-
-	private int saleValue;
 	
-	private int costValue;
-
-	private String comments;
-
-	private String pluCode;
-
-
-	public boolean isIszeroBilling() {
-		return iszeroBilling;
-	}
-
-	public void setIszeroBilling(boolean iszeroBilling) {
-		this.iszeroBilling = iszeroBilling;
-	}
-
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	public float getChildSkuAvailableQty() {
 		return childSkuAvailableQty;
 	}
@@ -125,7 +116,27 @@ public class PackagingDetails {
 		this.stockQty = stockQty;
 	}
 
+	private String batchNumber;
+	
+	private int costPrice;
+	
+	private int salePrice;
+	
+	private int totalCostValue;
+	
+	private int saleValue;
+	private int costValue;
+	
+	
+	
+	
 
+	private String comments;
+
+	private String pluCode;
+	
+	
+	
 	public String getPluCode() {
 		return pluCode;
 	}
@@ -206,7 +217,7 @@ public class PackagingDetails {
 		this.batchNumber = batchNumber;
 	}
 
-
+	
 
 	public String getComments() {
 		return comments;
@@ -256,9 +267,9 @@ public class PackagingDetails {
 		this.costValue = costValue;
 	}
 
-
-
-
-
-
+	
+	
+	
+	
+	
 }

@@ -104,13 +104,13 @@ function saveTax(){
 	    if(taxName.trim() == ""){
 	    	$("#taxNameError").html("Tax Name Required");
 	    	return false;
-	    }else if(parseInt($("#taxName").val().length)>=50){
+	    }else if(parseInt($("#taxName").val().length)>50){
 			 $("#taxName").focus();
 				$("#taxNameError").html("Tax Name can't exceeds 50 Characters");
 				return;
 			}
 	    
-	    if(taxDescription.trim() != "" && parseInt($("#taxDescription").val().length)>=50){
+	    if(taxDescription.trim() != "" && parseInt($("#taxDescription").val().length)>50){
 			$("#taxDescription").focus();
 			$("#taxdescError").html("Tax Description can't exceeds 50 Characters");
 			return false;

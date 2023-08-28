@@ -409,6 +409,7 @@ white-space: nowrap;
                                          <div class="form-group  col-lg-12">
                                          	<label><spring:message code="remarks.label" /></label>
                                             <textarea class="form-control"  onblur="criteria(this)" name="remarks" id="remarks" rows="2" style="resize: none;" placeholder="<spring:message code="enter.remarks.label" />" >${stockReceiptDetails.remarks}</textarea>
+ 										  <span id="remarksError" style="text-align:right;color:red;font-weight:bold;"></span>
  										 </div>
                                         <!--  <div class="col-lg-3"></div> -->
                                         </div>
