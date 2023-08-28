@@ -1,0 +1,142 @@
+/* for search string  START*/
+
+div.matchedString {
+	background: #fff;
+	position: absolute;
+	/* top: -9px; */
+	/* left: -8px; */
+	z-index: 100;
+	width: 300px;
+	overflow: auto;
+	display: none;
+	margin-left: 0px;
+	padding: 0px 0 0px;
+	border-radius: 6px;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.45);
+}
+
+.matchedString {
+	padding: 0px 0px 0px 0px;
+	position: absolute;
+	list-style: none;
+	background-color: #e5e55e;
+}
+
+div.matchedString {
+	text-align: left;
+	border-bottom: 1px solid #f5f5f5;
+	color: #666666 !important;
+	display: block;
+	/* margin: 0; */
+	padding: 8px 12px;
+	text-decoration: none;
+	/* margin-left: 10%; */
+	/* width: 150px; */
+	/* margin-left: 50%; */
+}
+
+.matchedStringUl {
+	background-color: #FFF;
+	list-style: none;
+	position: absolute;
+	width: 94%;
+	z-index: 1;
+	margin: 0px -0px;
+	padding: 10px;
+    border: 1px solid #ccc;
+    display: none;
+    height: 250px;
+    overflow-y: scroll;
+}
+
+.matchedStringUl li {
+  padding: 5px;
+  }
+.matchedStringUl li:hover {
+	color: #fff;
+	background-color: #E2E2E2;
+}
+
+.matchedStringUl li a {
+	cursor : pointer;
+}
+
+.services li.selected {
+	background-color: #E2E2E2;
+}
+/* for search string  END*/
+
+
+.paginationButton {
+ /*  background: #3498db;
+  background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
+  background-image: -moz-linear-gradient(top, #3498db, #2980b9);
+  background-image: -ms-linear-gradient(top, #3498db, #2980b9);
+  background-image: -o-linear-gradient(top, #3498db, #2980b9);
+  background-image: linear-gradient(to bottom, #3498db, #2980b9);
+  -webkit-border-radius: 25;
+  -moz-border-radius: 25;
+  border-radius: 25px;
+  font-family: Georgia;
+  color: #ffffff;
+  font-size: 19px;
+  padding: 3px 20px 3px 20px;
+  text-decoration: none; */
+  background: #3498db;
+    border: 2px solid #3498db;
+    color: #FFFFFF;
+}
+
+.paginationButton:hover {
+  background: #3cb0fd;
+  background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+  text-decoration: none;
+}
+
+.requiredField{
+	color:red; font-size:2;
+}
+
+.row-inner{
+	margin-top:-20px !important;
+}
+
+.calendar_icon{
+	background-color: white;
+    color: #666;
+    padding: 8px 0px 8px 27px!important;
+    background: url(http://soe.syr.edu/images/cal_icon_mini.gif) no-repeat left center #fff;
+    width: 100%;
+    background-position: 5px 5px;
+    border: 1px solid #DFDFDF;
+    border-radius: 4px;
+    -webkit-transition: all .2s ease-out;
+    -moz-transition: all .2s ease-out;
+    -ms-transition: all .2s ease-out;
+    transition: all .2s ease-out;
+    box-shadow: none;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.labelHeader {
+ 
+    font-size: 10px;
+    font-weight: normal;
+    color: #000;
+    background-color:#B0E0E6
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    background-color: #6FC143;
+    border-radius: 50px;
+    width: 18px;
+    height: 18px;
+    float: left;
+   
+}
